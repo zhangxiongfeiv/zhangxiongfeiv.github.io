@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.68.3" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="算法学习之字符串 - My New Hugo Site">
+    <meta name="twitter:description" content="151. 翻转字符串里的单词 题目 给定一个字符串，逐个反转字符串中的每个单词
+示例 1：
+输入: &amp;quot;the sky is blue&amp;quot; 输出: &amp;quot;blue is sky the&amp;quot; 说明：
+无空格字符构成一个单词。 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
+解题思路 1,采取双指针方法, 去除多余的空格
+3,有效字符串整体反转
+4.反转以后， 再逐个反转每个单词
+示例代码 public static String reverseWords(String s) { if (s == null) return s; // cur 指针指向当前重组后的字符串当前的index  int cur = 0; // len 代表重组后的字符串的有效长度  int len = 0; char[] chars = s.toCharArray(); // 上一个是否是空格，如果是空格，则下次进入空格时 cur不加加  boolean prevIsSpace = true; for (int i = 0; i &amp;lt; chars.">
+    <meta name="twitter:site" content="https://zhangxiongfeiv.github.io">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="https://zhangxiongfeiv.github.io">
+    
+    
+    <meta property="og:locale" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="算法学习之字符串 - My New Hugo Site">
+    <meta property="og:description" content="151. 翻转字符串里的单词 题目 给定一个字符串，逐个反转字符串中的每个单词
+示例 1：
+输入: &amp;quot;the sky is blue&amp;quot; 输出: &amp;quot;blue is sky the&amp;quot; 说明：
+无空格字符构成一个单词。 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
+解题思路 1,采取双指针方法, 去除多余的空格
+3,有效字符串整体反转
+4.反转以后， 再逐个反转每个单词
+示例代码 public static String reverseWords(String s) { if (s == null) return s; // cur 指针指向当前重组后的字符串当前的index  int cur = 0; // len 代表重组后的字符串的有效长度  int len = 0; char[] chars = s.toCharArray(); // 上一个是否是空格，如果是空格，则下次进入空格时 cur不加加  boolean prevIsSpace = true; for (int i = 0; i &amp;lt; chars.">
+    <meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+    <meta property="og:site_name" content="My New Hugo Site">
+    <meta property="og:image" content="https://zhangxiongfeiv.github.io">
+    
+    <title>算法学习之字符串 - My New Hugo Site</title>
+
+    <meta name="author" content="">
+    <meta name="description" content="151. 翻转字符串里的单词 题目 给定一个字符串，逐个反转字符串中的每个单词
+示例 1：
+输入: &amp;quot;the sky is blue&amp;quot; 输出: &amp;quot;blue is sky the&amp;quot; 说明：
+无空格字符构成一个单词。 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
+解题思路 1,采取双指针方法, 去除多余的空格
+3,有效字符串整体反转
+4.反转以后， 再逐个反转每个单词
+示例代码 public static String reverseWords(String s) { if (s == null) return s; // cur 指针指向当前重组后的字符串当前的index  int cur = 0; // len 代表重组后的字符串的有效长度  int len = 0; char[] chars = s.toCharArray(); // 上一个是否是空格，如果是空格，则下次进入空格时 cur不加加  boolean prevIsSpace = true; for (int i = 0; i &amp;lt; chars.">
+
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/theme.css">
+    <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/chroma.dracula.css">
+</head>
+<body class="font-serif bg-gray-200 border-t-4 border-blue-500 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+            
+            <div class="mb-6 md:flex md:items-center">
+                
+<div>
+    <a class="text-lg mb-8 inline-block" href="/">&larr; Back Home</a>
+
+    
+    
+    <h1 class="text-4xl font-bold">算法学习之字符串</h1>
+    <time datetime="2019-04-05 20:52:54 CST">05 Apr 2019</time>
+    
+    
+    
+</div>
+
+            </div>
+
+            
+            
+        </header>
+
+        
+        
+<article class="mb-12">
+    <h4 id="151-翻转字符串里的单词httpsleetcode-cncomproblemsreverse-words-in-a-string"><a href="https://leetcode-cn.com/problems/reverse-words-in-a-string/">151. 翻转字符串里的单词</a></h4>
+<h2 id="题目"><strong>题目</strong></h2>
+<p>给定一个字符串，逐个反转字符串中的每个单词</p>
+<p><strong>示例 1：</strong></p>
+<pre><code>输入: &quot;the sky is blue&quot;
+输出: &quot;blue is sky the&quot;
+</code></pre><p>说明：</p>
+<p>无空格字符构成一个单词。
+输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。
+如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</p>
+<h2 id="解题思路">解题思路</h2>
+<p>1,采取双指针方法, 去除多余的空格</p>
+<p>3,有效字符串整体反转</p>
+<p>4.反转以后， 再逐个反转每个单词</p>
+<h2 id="示例代码">示例代码</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">reverseWords</span><span style="color:#f92672">(</span>String s<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>s <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> s<span style="color:#f92672">;</span>
+        <span style="color:#75715e">// cur 指针指向当前重组后的字符串当前的index
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> cur <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        <span style="color:#75715e">// len 代表重组后的字符串的有效长度
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> chars <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span><span style="color:#a6e22e">toCharArray</span><span style="color:#f92672">();</span>
+
+        <span style="color:#75715e">// 上一个是否是空格，如果是空格，则下次进入空格时 cur不加加
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">boolean</span> prevIsSpace <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> chars<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">char</span> c <span style="color:#f92672">=</span> chars<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>c <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">){</span>
+                chars<span style="color:#f92672">[</span>cur <span style="color:#f92672">++]</span> <span style="color:#f92672">=</span> chars<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+                prevIsSpace <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>prevIsSpace <span style="color:#f92672">==</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">){</span>
+                chars<span style="color:#f92672">[</span>cur <span style="color:#f92672">++]</span> <span style="color:#f92672">=</span> chars<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+                prevIsSpace <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#75715e">// 算出有效长度
+</span><span style="color:#75715e"></span>        len <span style="color:#f92672">=</span> prevIsSpace <span style="color:#f92672">?</span> cur <span style="color:#f92672">-</span> 1 <span style="color:#f92672">:</span> cur<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>len <span style="color:#f92672">&lt;=</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">// 反转整体字符串
+</span><span style="color:#75715e"></span>        reverse<span style="color:#f92672">(</span>chars<span style="color:#f92672">,</span>0<span style="color:#f92672">,</span>len<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">// 分别反转 每个单词
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> prevSpaceIdx <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> len<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>chars<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+            reverse<span style="color:#f92672">(</span>chars<span style="color:#f92672">,</span>prevSpaceIdx <span style="color:#f92672">+</span> 1<span style="color:#f92672">,</span>i<span style="color:#f92672">);</span>
+            prevSpaceIdx <span style="color:#f92672">=</span> i<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        reverse<span style="color:#f92672">(</span>chars<span style="color:#f92672">,</span>prevSpaceIdx <span style="color:#f92672">+</span> 1<span style="color:#f92672">,</span>len<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> String<span style="color:#f92672">(</span>chars<span style="color:#f92672">,</span>0<span style="color:#f92672">,</span>len<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 反转[l,r) 左闭右开
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">reverse</span><span style="color:#f92672">(</span><span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> chars<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> l<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> r<span style="color:#f92672">){</span>
+        r <span style="color:#f92672">--;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r<span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">char</span> tmp <span style="color:#f92672">=</span> chars<span style="color:#f92672">[</span>l<span style="color:#f92672">];</span>
+            chars<span style="color:#f92672">[</span>l<span style="color:#f92672">++]</span> <span style="color:#f92672">=</span> chars<span style="color:#f92672">[</span>r<span style="color:#f92672">];</span>
+            chars<span style="color:#f92672">[</span>r<span style="color:#f92672">--]</span> <span style="color:#f92672">=</span> tmp<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div>
+
+    
+</article>
+
+
+        <footer>
+            <p>
+                &copy; 2020. Proudly made with 💕 with <a href="https://gohugo.io/" target="_blank">Hugo</a> and <a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a>.
+            </p>
+        </footer>
+    </div>
+
+    
+</body>
+</html>
