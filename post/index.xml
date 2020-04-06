@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My New Hugo Site</title>
+    <link>https://zhangxiongfeiv.github.io/post/</link>
+    <description>Recent content in Posts on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://zhangxiongfeiv.github.io/post/hugo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/hugo/</guid>
+      <description>title: &amp;ldquo;A simple hugo guide for begainners&amp;rdquo; date: 2020-04-05T21:54:47+08:00 draft: true
+ Mac环境下安装Hugo 第一步：安装hugo mac环境下用homebrew工具安装hugo，一句命令即可
+$ brew install hugo 第二步：生成站点 利用brew生成站点，(比如生成在myblog目录下)执行如下命令
+$ hugo new site myblog 第三步：创建文章 创建的文章一般放在post下， 方便之后聚合生成页面。
+$ hugo new post/文章名称.md 文章内容为MArkDown格式，可用vim命令编辑，亦可以其他编辑器如Typora等编辑。
+第四步：安装主题 去官网找喜欢的主题，本文以Tailwind Journal为例。
+找到其github地址，将其克隆到Themes/目录下
+$ cd Themes $ git clone https://github.com/ianrodrigues/hugo-tailwind-journal.git 第五步：运行站点 在myblog目录下，执行一下命令
+$ hugo server -t hugo-tailwind-journal —buildDrafts 运行站点后，可以在本地测试 http://localhost:1313
+第六步：部署到Github公网 1，首先在Github上创建一个仓库， 这里⚠️注意仓库名称需要和Github用户名一致，并拼接上.github.io 后缀。如下图:
+2，在站点根目录下，执行命令生成页面。
+$ hugo --theme=hugo-tailwind-journal --baseUrl=&amp;quot;https://zhangxiongfeiv.github.io&amp;quot; --buildDrafts 3, 执行完毕，会生成public文件夹，所有的静态页面存放在此。将public目录下所有文件push到刚刚创建Git仓库master目录下。
+$ cd public $ git init $ git remote add origin https://github.</description>
+    </item>
+    
+  </channel>
+</rss>
