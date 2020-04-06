@@ -6,10 +6,31 @@
     <description>Recent content on 张雄飞&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Apr 2020 14:04:58 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 06 Apr 2020 21:16:57 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>滑动窗口</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
+      <pubDate>Mon, 06 Apr 2020 21:16:57 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
+      <description>字符串算法之滑动窗口 题目 3. 无重复字符的最长子串 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+示例 1:
+输入: &amp;ldquo;abcabcbb&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;abc&amp;rdquo;，所以其长度为 3。 示例 2:
+输入: &amp;ldquo;bbbbb&amp;rdquo; 输出: 1 解释: 因为无重复字符的最长子串是 &amp;ldquo;b&amp;rdquo;，所以其长度为 1。 示例 3:
+输入: &amp;ldquo;pwwkew&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;wke&amp;rdquo;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&amp;ldquo;pwke&amp;rdquo; 是一个子序列，不是子串。
+解题思路 此题采用滑动窗口解题方法，将一个hashmap作为窗口，map中key，value分别为，字符和字符所在的index。
+两个指针，left指针是便利时不重复字串的起点。 i指针是当前遍历的index。
+max用来存储最终结果，即无重复字串的长度。
+一遍循环，循环时有如下情况：
+1，当map的key中不包含当前遍历的字符时，将其加入窗口中（即加入map中，设置map的key为当前字符，value为当前index）。
+2，当map中的key包含当前遍历的字符时，滑动窗口滑动至包含字符对应value（即index）的下一个,并且需要将left到index之间的key清除掉。 然后其加入窗口中。
+3，上述两种情况都分别计算，当前不重复字串的长度。 max = Math.max(max, i - left + 1);
+代码如下 public static int lengthOfLongestSubstring(String s) { if (s == null || s.</description>
+    </item>
     
     <item>
       <title>Hugo</title>
