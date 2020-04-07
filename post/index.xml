@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 张雄飞&#39;s Blog</title>
-    <link>https://zhangxiongfeiv.github.io/post/</link>
+    <link>https://zhangxiongfei.github.io/post/</link>
     <description>Recent content in Posts on 张雄飞&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 06 Apr 2020 21:16:57 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfei.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>滑动窗口</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
+      <title>字符串常用算法 --&gt; 滑动窗口</title>
+      <link>https://zhangxiongfei.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
       <pubDate>Mon, 06 Apr 2020 21:16:57 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
+      <guid>https://zhangxiongfei.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
       <description>字符串算法之滑动窗口 题目 3. 无重复字符的最长子串 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
 示例 1:
 输入: &amp;ldquo;abcabcbb&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;abc&amp;rdquo;，所以其长度为 3。 示例 2:
@@ -33,11 +33,27 @@ max用来存储最终结果，即无重复字串的长度。
     </item>
     
     <item>
-      <title>Hugo</title>
-      <link>https://zhangxiongfeiv.github.io/post/hugo/</link>
-      <pubDate>Mon, 06 Apr 2020 14:04:58 +0800</pubDate>
+      <title>字符串常用算法 --&gt; 双指针</title>
+      <link>https://zhangxiongfei.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <pubDate>Fri, 05 Apr 2019 20:52:54 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/hugo/</guid>
+      <guid>https://zhangxiongfei.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <description>151. 翻转字符串里的单词 题目 给定一个字符串，逐个反转字符串中的每个单词
+示例 1：
+输入: &amp;quot;the sky is blue&amp;quot; 输出: &amp;quot;blue is sky the&amp;quot; 说明：
+无空格字符构成一个单词。 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
+解题思路 1,采取双指针方法, 去除多余的空格
+3,有效字符串整体反转
+4.反转以后， 再逐个反转每个单词
+示例代码 public static String reverseWords(String s) { if (s == null) return s; // cur 指针指向当前重组后的字符串当前的index  int cur = 0; // len 代表重组后的字符串的有效长度  int len = 0; char[] chars = s.toCharArray(); // 上一个是否是空格，如果是空格，则下次进入空格时 cur不加加  boolean prevIsSpace = true; for (int i = 0; i &amp;lt; chars.</description>
+    </item>
+    
+    <item>
+      <title>Hugo基本使用</title>
+      <link>https://zhangxiongfei.github.io/post/hugo/</link>
+      <pubDate>Mon, 06 Mar 2017 14:04:58 +0800</pubDate>
+      
+      <guid>https://zhangxiongfei.github.io/post/hugo/</guid>
       <description>Mac环境下安装Hugo 第一步：安装hugo mac环境下用homebrew工具安装hugo，一句命令即可
 $ brew install hugo 第二步：生成站点 利用brew生成站点，(比如生成在myblog目录下)执行如下命令
 $ hugo new site myblog 第三步：创建文章 创建的文章一般放在post下， 方便之后聚合生成页面。
@@ -50,22 +66,6 @@ $ hugo server -t hugo-tailwind-journal —buildDrafts 运行站点后，可以�
 2，在站点根目录下，执行命令生成页面。
 $ hugo --theme=hugo-tailwind-journal --baseUrl=&amp;quot;https://zhangxiongfeiv.github.io&amp;quot; --buildDrafts 3, 执行完毕，会生成public文件夹，所有的静态页面存放在此。将public目录下所有文件push到刚刚创建Git仓库master目录下。
 $ cd public $ git init $ git remote add origin https://github.com/zhangxiongfeiv/zhangxiongfeiv.github.io.git $ git add .</description>
-    </item>
-    
-    <item>
-      <title>算法学习之字符串</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
-      <pubDate>Fri, 05 Apr 2019 20:52:54 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
-      <description>151. 翻转字符串里的单词 题目 给定一个字符串，逐个反转字符串中的每个单词
-示例 1：
-输入: &amp;quot;the sky is blue&amp;quot; 输出: &amp;quot;blue is sky the&amp;quot; 说明：
-无空格字符构成一个单词。 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
-解题思路 1,采取双指针方法, 去除多余的空格
-3,有效字符串整体反转
-4.反转以后， 再逐个反转每个单词
-示例代码 public static String reverseWords(String s) { if (s == null) return s; // cur 指针指向当前重组后的字符串当前的index  int cur = 0; // len 代表重组后的字符串的有效长度  int len = 0; char[] chars = s.toCharArray(); // 上一个是否是空格，如果是空格，则下次进入空格时 cur不加加  boolean prevIsSpace = true; for (int i = 0; i &amp;lt; chars.</description>
     </item>
     
   </channel>
