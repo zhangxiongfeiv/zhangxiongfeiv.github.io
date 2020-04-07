@@ -17,12 +17,12 @@
       <pubDate>Mon, 06 Apr 2020 21:16:57 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
-      <description>字符串算法之滑动窗口 题目 3. 无重复字符的最长子串 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+      <description>字符串算法之滑动窗口 题目 3. 无重复字符的最长子串  给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
 示例 1:
 输入: &amp;ldquo;abcabcbb&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;abc&amp;rdquo;，所以其长度为 3。 示例 2:
 输入: &amp;ldquo;bbbbb&amp;rdquo; 输出: 1 解释: 因为无重复字符的最长子串是 &amp;ldquo;b&amp;rdquo;，所以其长度为 1。 示例 3:
 输入: &amp;ldquo;pwwkew&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;wke&amp;rdquo;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&amp;ldquo;pwke&amp;rdquo; 是一个子序列，不是子串。
-解题思路 此题采用滑动窗口解题方法，将一个hashmap作为窗口，map中key，value分别为，字符和字符所在的index。
+ 解题思路 此题采用滑动窗口解题方法，将一个hashmap作为窗口，map中key，value分别为，字符和字符所在的index。
 两个指针，left指针是便利时不重复字串的起点。 i指针是当前遍历的index。
 max用来存储最终结果，即无重复字串的长度。
 一遍循环，循环时有如下情况：
