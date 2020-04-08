@@ -6,10 +6,27 @@
     <description>Recent content on 张雄飞&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Apr 2020 21:16:57 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2020 17:33:35 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数据结构学习 --&gt; 算法评判标准</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</link>
+      <pubDate>Wed, 08 Apr 2020 17:33:35 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
+      <description>首先看一到leetcode题目:斐波那契数列。
+509. 斐波那契数  斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
+F(0) = 0, F(1) = 1 F(N) = F(N - 1) + F(N - 2), 其中 N &amp;gt; 1. 给定 N，计算 F(N)。
+来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/fibonacci-number 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ 解法一 : 本题非常明显可以通过递归来解决，代码如下
+public int fib(int n){ if(n &amp;lt;= 1) return n; return fib(n-1) + fib(n-2) } 但是这种方式在代码提交后，测试用例43超时，而题目给出的要求是[0,100]之内的数字,很明显算法需要优化。算法时间复杂度为O(2 ^ n), 空间复杂度为O(1).
+接下来，我们尝试换一种算法解题
+解法二 : 动态规划思想,利用dp数组存放每一位上斐波那契数列的值。
+步骤： 1，定义初始化状态. dp[0] = 0; dp[1] = 1;</description>
+    </item>
     
     <item>
       <title>字符串常用算法 --&gt; 滑动窗口</title>
