@@ -2,88 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>张雄飞&#39;s Blog</title>
-    <link>https://zhangxiongfeiv.github.io/</link>
+    <link>https://zhangxiongferv.github.io/</link>
     <description>Recent content on 张雄飞&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Apr 2020 17:33:35 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongferv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>数据结构学习 --&gt; 算法评判标准</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</link>
-      <pubDate>Wed, 08 Apr 2020 17:33:35 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
-      <description>首先看一到leetcode题目:斐波那契数列。
-509. 斐波那契数  斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
-F(0) = 0, F(1) = 1 F(N) = F(N - 1) + F(N - 2), 其中 N &amp;gt; 1. 给定 N，计算 F(N)。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/fibonacci-number 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 解法一 : 本题非常明显可以通过递归来解决，代码如下
-public int fib(int n){ if(n &amp;lt;= 1) return n; return fib(n-1) + fib(n-2) } 但是这种方式在代码提交后，测试用例43超时，而题目给出的要求是[0,100]之内的数字,很明显算法需要优化。算法时间复杂度为O(2 ^ n), 空间复杂度为O(1).
-接下来，我们尝试换一种算法解题
-解法二 : 动态规划思想,利用dp数组存放每一位上斐波那契数列的值。
-步骤： 1，定义初始化状态. dp[0] = 0; dp[1] = 1;</description>
-    </item>
-    
-    <item>
-      <title>字符串常用算法 --&gt; 滑动窗口</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
-      <pubDate>Mon, 06 Apr 2020 21:16:57 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
-      <description>字符串算法之滑动窗口 题目 3. 无重复字符的最长子串  给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
-示例 1:
-输入: &amp;ldquo;abcabcbb&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;abc&amp;rdquo;，所以其长度为 3。 示例 2:
-输入: &amp;ldquo;bbbbb&amp;rdquo; 输出: 1 解释: 因为无重复字符的最长子串是 &amp;ldquo;b&amp;rdquo;，所以其长度为 1。 示例 3:
-输入: &amp;ldquo;pwwkew&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;wke&amp;rdquo;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&amp;ldquo;pwke&amp;rdquo; 是一个子序列，不是子串。
- 解题思路 此题采用滑动窗口解题方法，将一个hashmap作为窗口，map中key，value分别为，字符和字符所在的index。
-两个指针，left指针是便利时不重复字串的起点。 i指针是当前遍历的index。
-max用来存储最终结果，即无重复字串的长度。
-一遍循环，循环时有如下情况：
-1，当map的key中不包含当前遍历的字符时，将其加入窗口中（即加入map中，设置map的key为当前字符，value为当前index）。
-2，当map中的key包含当前遍历的字符时，滑动窗口滑动至包含字符对应value（即index）的下一个,并且需要将left到index之间的key清除掉。 然后其加入窗口中。
-3，上述两种情况都分别计算，当前不重复字串的长度。 max = Math.max(max, i - left + 1);
-代码如下 public static int lengthOfLongestSubstring(String s) { if (s == null || s.</description>
-    </item>
-    
-    <item>
-      <title>字符串常用算法 --&gt; 双指针</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</link>
-      <pubDate>Fri, 05 Apr 2019 20:52:54 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
-      <description>151. 翻转字符串里的单词 题目 给定一个字符串，逐个反转字符串中的每个单词
-示例 1：
-输入: &amp;quot;the sky is blue&amp;quot; 输出: &amp;quot;blue is sky the&amp;quot; 说明：
-无空格字符构成一个单词。 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
-解题思路 1,采取双指针方法, 去除多余的空格
-3,有效字符串整体反转
-4.反转以后， 再逐个反转每个单词
-示例代码 public static String reverseWords(String s) { if (s == null) return s; // cur 指针指向当前重组后的字符串当前的index  int cur = 0; // len 代表重组后的字符串的有效长度  int len = 0; char[] chars = s.toCharArray(); // 上一个是否是空格，如果是空格，则下次进入空格时 cur不加加  boolean prevIsSpace = true; for (int i = 0; i &amp;lt; chars.</description>
-    </item>
-    
-    <item>
-      <title>Hugo基本使用</title>
-      <link>https://zhangxiongfeiv.github.io/post/hugo/</link>
-      <pubDate>Mon, 06 Mar 2017 14:04:58 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/hugo/</guid>
-      <description>Mac环境下安装Hugo 第一步：安装hugo mac环境下用homebrew工具安装hugo，一句命令即可
-$ brew install hugo 第二步：生成站点 利用brew生成站点，(比如生成在myblog目录下)执行如下命令
-$ hugo new site myblog 第三步：创建文章 创建的文章一般放在post下， 方便之后聚合生成页面。
-$ hugo new post/文章名称.md 文章内容为MArkDown格式，可用vim命令编辑，亦可以其他编辑器如Typora等编辑。
-第四步：安装主题 去官网找喜欢的主题，本文以Tailwind Journal为例。
-找到其github地址，将其克隆到Themes/目录下
-$ cd Themes $ git clone https://github.com/ianrodrigues/hugo-tailwind-journal.git 第五步：运行站点 在myblog目录下，执行一下命令
-$ hugo server -t hugo-tailwind-journal —buildDrafts 运行站点后，可以在本地测试 http://localhost:1313
-第六步：部署到Github公网 1，首先在Github上创建一个仓库， 这里⚠️注意仓库名称需要和Github用户名一致，并拼接上.github.io 后缀。如下图:
-2，在站点根目录下，执行命令生成页面。
-$ hugo --theme=hugo-tailwind-journal --baseUrl=&amp;quot;https://zhangxiongfeiv.github.io&amp;quot; --buildDrafts 3, 执行完毕，会生成public文件夹，所有的静态页面存放在此。将public目录下所有文件push到刚刚创建Git仓库master目录下。
-$ cd public $ git init $ git remote add origin https://github.com/zhangxiongfeiv/zhangxiongfeiv.github.io.git $ git add .</description>
-    </item>
     
   </channel>
 </rss>
