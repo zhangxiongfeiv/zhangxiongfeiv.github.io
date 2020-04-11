@@ -6,10 +6,31 @@
     <description>Recent content in Posts on 张雄飞&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Apr 2020 17:33:35 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2020 11:25:40 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数组刷题记录</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sat, 11 Apr 2020 11:25:40 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
+      <description>1. 两数之和  给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
+示例:
+给定 nums = [2, 7, 11, 15], target = 9
+因为 nums[0] + nums[1] = 2 + 7 = 9 所以返回 [0, 1]
+来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/two-sum 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ 解题方法 思路一 ： 暴力法 暴力法非常简单， 从首元素开始依次扫描，记录下此元素与target的差值，往后遍历，之后元素与target一致时，返回元素下标。
+时间复杂度：O（N ^ 2）,空间复杂度(O(1))
+思路二 ：两遍哈希表 二次迭代，第一遍迭代先把index 和 与target的差值存入map， 第二次迭代检查每个元素对应的差值，是否存在map中。有则返回下标。
+时间复杂度：O（N ）,空间复杂度(O(N))
+思路三 ：一遍哈希表 一次迭代，迭代时判断map的key中是否存在nums[i], 如果存在，则返回i 和 map.get[nums[i]], 不存在则把map中存放(target - nums[i], i).
+时间复杂度：O（N ）,空间复杂度(O(N))
+代码如下 public int[] twoSum(int[] nums, int target) { HashMap&amp;lt;Integer,Integer&amp;gt; map = new HashMap&amp;lt;&amp;gt;(); for (int i = 0; i &amp;lt; nums.</description>
+    </item>
     
     <item>
       <title>数据结构学习 --&gt; 算法评判标准</title>
