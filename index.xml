@@ -6,32 +6,35 @@
     <description>Recent content on 张雄飞</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Apr 2020 20:35:24 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2020 22:20:03 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>栈刷题记录</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E6%A0%88/</link>
-      <pubDate>Tue, 14 Apr 2020 20:35:24 +0800</pubDate>
+      <title>集合刷题记录</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%9B%86%E5%90%88/</link>
+      <pubDate>Wed, 15 Apr 2020 22:20:03 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E6%A0%88/</guid>
-      <description>栈 栈是一种特殊的线性表,只能在一端操作
-往栈中添加元素的操作，一般叫做push，入栈
-从栈中移除元素的操作，一般叫做pop，出栈（只能移除栈顶元素，也叫做弹出栈顶元素）
-后进先出的原则，Last In First Out, LIFO
-练习题 20. 有效的括号  给定一个只包括 &amp;lsquo;(&#39;，&#39;)&#39;，&#39;{&#39;，&#39;}&#39;，&#39;[&#39;，&#39;]&amp;rsquo; 的字符串，判断字符串是否有效。
-有效字符串需满足：
-左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串。
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%9B%86%E5%90%88/</guid>
+      <description>集合（Set） 集合的定义： 由一个或者多个确定的元素所构成的整体。
+特点： 1，不存在重复元素
+2，一般用于去重（比如一本书中统计词汇，统计访问网站的ip）
+实现： 可使用动态数组，链表，二叉搜索树等实现集合。
+ListSet(使用链表) TreeSet(使用红黑树) HashSet(哈希表)
+复杂度分析： TreeSet： 添加，删除，查找时间复杂度都是 O(logN)
+ListSet ： 添加，删除，查找时间复杂度都是O(logN)
+HashSet: 添加，删除，查找时间复杂度都是O(logN)
+TreeMap局限性： 元素必须具备可比较性，如果没有可比较性， 无法使用TreeMap。因为二叉搜索树中的元素必须具备可比较性。
+练习题 349. 两个数组的交集  给定两个数组，编写一个函数来计算它们的交集。
 示例 1:
-输入: &amp;ldquo;()&amp;rdquo; 输出: true
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/valid-parentheses 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解： 这道题使用栈数据结构。
-1，左括号时，入栈，
-2，右括号时，如果栈顶是与其对应的左括号， 则出栈。如果不对应，则返回false。
-3，最终返回结果是栈是否为空
-代码如下： private static HashMap&amp;lt;Character,Character&amp;gt; map = new HashMap&amp;lt;&amp;gt;(); static { map.put(&amp;#39;(&amp;#39;,&amp;#39;)&amp;#39;); map.put(&amp;#39;[&amp;#39;,&amp;#39;]&amp;#39;); map.put(&amp;#39;{&amp;#39;,&amp;#39;}&amp;#39;); } public boolean isValid(String s) { Stack stack = new Stack(); for (int i = 0; i &amp;lt; s.length(); i++) { char c = s.</description>
+输入: nums1 = [1,2,2,1], nums2 = [2,2] 输出: [2] 示例 2:
+输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4] 输出: [9,4] 说明:
+输出结果中的每个元素一定是唯一的。 我们可以不考虑输出结果的顺序。
+来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/intersection-of-two-arrays 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ 题解： 把第一个数组依次加入firSet去重，第二个数组也依次加入secSet中去重复，遍历secSet如果firSet中包含，则加入结果数组中。
+代码如下:
+public int[] intersection(int[] nums1, int[] nums2){ HashSet set = new HashSet(); for (int i = 0; i &amp;lt; nums1.</description>
     </item>
     
     <item>
@@ -74,6 +77,29 @@ public void deleteNode(ListNode node) { node.</description>
 思路三 ：一遍哈希表 一次迭代，迭代时判断map的key中是否存在nums[i], 如果存在，则返回i 和 map.get[nums[i]], 不存在则把map中存放(target - nums[i], i).
 时间复杂度：O（N ）,空间复杂度(O(N))
 代码如下 public int[] twoSum(int[] nums, int target) { HashMap&amp;lt;Integer,Integer&amp;gt; map = new HashMap&amp;lt;&amp;gt;(); for (int i = 0; i &amp;lt; nums.</description>
+    </item>
+    
+    <item>
+      <title>栈刷题记录</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%A0%88/</link>
+      <pubDate>Sat, 11 Apr 2020 11:25:40 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%A0%88/</guid>
+      <description>栈 栈是一种特殊的线性表,只能在一端操作
+往栈中添加元素的操作，一般叫做push，入栈
+从栈中移除元素的操作，一般叫做pop，出栈（只能移除栈顶元素，也叫做弹出栈顶元素）
+后进先出的原则，Last In First Out, LIFO
+练习题 20. 有效的括号  给定一个只包括 &amp;lsquo;(&#39;，&#39;)&#39;，&#39;{&#39;，&#39;}&#39;，&#39;[&#39;，&#39;]&amp;rsquo; 的字符串，判断字符串是否有效。
+有效字符串需满足：
+左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串。
+示例 1:
+输入: &amp;ldquo;()&amp;rdquo; 输出: true
+来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/valid-parentheses 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ 题解： 这道题使用栈数据结构。
+1，左括号时，入栈，
+2，右括号时，如果栈顶是与其对应的左括号， 则出栈。如果不对应，则返回false。
+3，最终返回结果是栈是否为空
+代码如下： private static HashMap&amp;lt;Character,Character&amp;gt; map = new HashMap&amp;lt;&amp;gt;(); static { map.put(&amp;#39;(&amp;#39;,&amp;#39;)&amp;#39;); map.put(&amp;#39;[&amp;#39;,&amp;#39;]&amp;#39;); map.put(&amp;#39;{&amp;#39;,&amp;#39;}&amp;#39;); } public boolean isValid(String s) { Stack stack = new Stack(); for (int i = 0; i &amp;lt; s.length(); i++) { char c = s.</description>
     </item>
     
     <item>
