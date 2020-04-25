@@ -157,6 +157,24 @@ max用来存储最终结果，即无重复字串的长度。
     </item>
     
     <item>
+      <title>NSObject内存结构</title>
+      <link>https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</link>
+      <pubDate>Mon, 25 Jun 2018 17:24:50 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</guid>
+      <description>一，Objective-C的本质 我们平时编写的Objective-C代码，底层实现都是C/C++代码。
+所以Objective-C的面向对象，都是通过C/C++的数据结构实现的。
+Objective-C的对象，是用C++中的结构体来实现的。
+二，猜测 接下来我们通过代码来验证下OC对象的本质。OC代码如下：
+#import &amp;lt;Foundation/Foundation.h&amp;gt; int main(int argc, const char * argv[]) { @autoreleasepool { NSObject *objc = [[NSObject alloc] init]; NSLog(@&amp;#34;Hello, World!&amp;#34;); } return 0; } 我们使用命令行工具将一下代码转化为C++代码，命令如下：
+clang -rewrite-objc main.m -o main.cpp 我们可以指定架构，命令如下：
+xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main-arm64.cpp 生成 main-arm64.cpp 接下来，我们在main-arm64.cpp文件中，探索NSObject对象的本质，可以找到NSObject_IMPL(即NSObject对象转化为C++后的实现)
+struct NSObject_IMPL { Class isa; }; // 查看Class本质 typedef struct objc_class *Class; 我们发现Class其实就是一个指针，对象底层实现其实就是这个样子。 通过以上代码，发现NSObject对象转换为结构体后，结构体成员中只有一个isa指针，指针在arm64架构下，大小为8个字节，在32位下是4个字节，也就是说一个NSObject对象在64位所占用的内存空间为8个字节，32位下是4个字节。
+三，验证 1，代码层次： 我们通过class_getInstanceSize()来打印NSObject对象的大小，代码如下：
+#import &amp;lt;Foundation/Foundation.h&amp;gt; #import &amp;lt;objc/runtime.</description>
+    </item>
+    
+    <item>
       <title>Hugo基本使用</title>
       <link>https://zhangxiongfeiv.github.io/post/hugo/</link>
       <pubDate>Mon, 06 Mar 2017 14:04:58 +0800</pubDate>
