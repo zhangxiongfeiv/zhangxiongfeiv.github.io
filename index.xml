@@ -6,10 +6,31 @@
     <description>Recent content on 张雄飞</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Apr 2020 22:20:03 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2020 18:25:18 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>队列刷题记录</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
+      <description>队列 一，定义 队列是一种特殊的线性表，只能在头尾两端进行操作
+  队尾(rear) : 只能从队尾添加元素，一般叫做enQueue,入队
+  对头(front) : 只能从对头移除元素，一般叫做deQueue,出队
+  先进先出的原则，First In First Out，FIFO
+  二，内部实现 队列的内部实现是否可以直接利用以前用过的数据结构？
+ 动态数组，链表 优先使用双向链表，因为队列主要网头尾操作元素  三，几种特殊队列 双端队列 双端队列是能在头尾两端添加，删除的队列
+英文名Deque, 是double ended queue的简称
+循环队列 其实队列底层也可以用动态数组实现，并且各项接口也可以优化到O(1)的时间复杂度
+这个用数组实现并且优化之后的队列也叫做，循环队列
+循环双端队列：可以进行两端添加，删除操作的循环队列。
+四，题目 225. 用队列实现栈  使用队列实现栈的下列操作：
+push(x) &amp;ndash; 元素 x 入栈 pop() &amp;ndash; 移除栈顶元素 top() &amp;ndash; 获取栈顶元素 empty() &amp;ndash; 返回栈是否为空 注意:
+你只能使用队列的基本操作&amp;ndash; 也就是 push to back, peek/pop from front, size, 和 is empty 这些操作是合法的。 你所使用的语言也许不支持队列。 你可以使用 list 或者 deque（双端队列）来模拟一个队列 , 只要是标准的队列操作即可。 你可以假设所有操作都是有效的（例如, 对一个空的栈不会调用 pop 或者 top 操作）。</description>
+    </item>
     
     <item>
       <title>集合刷题记录</title>
