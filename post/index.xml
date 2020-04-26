@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 张雄飞</title>
-    <link>https://zhangxiongfeiv.github.io/post/</link>
+    <link>https://zhangxiongfgfeiv.github.io/post/</link>
     <description>Recent content in Posts on 张雄飞</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 26 Apr 2020 10:15:13 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfgfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>二叉树</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+      <link>https://zhangxiongfgfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
       <pubDate>Sun, 26 Apr 2020 10:15:13 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
+      <guid>https://zhangxiongfgfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
       <description>一 树形结构： 数据结构分为线性结构和树形结构，如下图：
  线性结构：   树形结构：    生活中的树形结构
   二 树(Tree)的基本概念   节点，父节点，子节点，跟节点，兄弟节点
@@ -38,10 +38,10 @@
     
     <item>
       <title>队列刷题记录</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
+      <link>https://zhangxiongfgfeiv.github.io/post/%E9%98%9F%E5%88%97%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://zhangxiongfgfeiv.github.io/post/%E9%98%9F%E5%88%97%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
       <description>队列 一，定义 队列是一种特殊的线性表，只能在头尾两端进行操作
   队尾(rear) : 只能从队尾添加元素，一般叫做enQueue,入队
   对头(front) : 只能从对头移除元素，一般叫做deQueue,出队
@@ -59,10 +59,10 @@ push(x) &amp;ndash; 元素 x 入栈 pop() &amp;ndash; 移除栈顶元素 top() &
     
     <item>
       <title>集合刷题记录</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E9%9B%86%E5%90%88/</link>
+      <link>https://zhangxiongfgfeiv.github.io/post/%E9%9B%86%E5%90%88/</link>
       <pubDate>Wed, 15 Apr 2020 22:20:03 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E9%9B%86%E5%90%88/</guid>
+      <guid>https://zhangxiongfgfeiv.github.io/post/%E9%9B%86%E5%90%88/</guid>
       <description>集合（Set） 集合的定义： 由一个或者多个确定的元素所构成的整体。
 特点： 1，不存在重复元素
 2，一般用于去重（比如一本书中统计词汇，统计访问网站的ip）
@@ -85,10 +85,10 @@ public int[] intersection(int[] nums1, int[] nums2){ HashSet set = new HashSet()
     
     <item>
       <title>链表刷题记录</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E9%93%BE%E8%A1%A8/</link>
+      <link>https://zhangxiongfgfeiv.github.io/post/%E9%93%BE%E8%A1%A8/</link>
       <pubDate>Tue, 14 Apr 2020 20:33:49 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E9%93%BE%E8%A1%A8/</guid>
+      <guid>https://zhangxiongfgfeiv.github.io/post/%E9%93%BE%E8%A1%A8/</guid>
       <description>链表(Linked List)
 动态数组有个明显的缺点，可能会造成内存空间浪费。 链表可以做到用多少就申请多少内存。
 链表是一种链式存储的线性表，所有元素的内存地址不一定是连续的。
@@ -106,10 +106,10 @@ public void deleteNode(ListNode node) { node.</description>
     
     <item>
       <title>数组刷题记录</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
+      <link>https://zhangxiongfgfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Sat, 11 Apr 2020 11:25:40 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://zhangxiongfgfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
       <description>1. 两数之和  给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
 示例:
@@ -127,10 +127,10 @@ public void deleteNode(ListNode node) { node.</description>
     
     <item>
       <title>栈刷题记录</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E6%A0%88/</link>
+      <link>https://zhangxiongfgfeiv.github.io/post/%E6%A0%88/</link>
       <pubDate>Sat, 11 Apr 2020 11:25:40 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E6%A0%88/</guid>
+      <guid>https://zhangxiongfgfeiv.github.io/post/%E6%A0%88/</guid>
       <description>栈 栈是一种特殊的线性表,只能在一端操作
 往栈中添加元素的操作，一般叫做push，入栈
 从栈中移除元素的操作，一般叫做pop，出栈（只能移除栈顶元素，也叫做弹出栈顶元素）
@@ -150,10 +150,10 @@ public void deleteNode(ListNode node) { node.</description>
     
     <item>
       <title>数据结构学习 --&gt; 算法评判标准</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</link>
+      <link>https://zhangxiongfgfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</link>
       <pubDate>Wed, 08 Apr 2020 17:33:35 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
+      <guid>https://zhangxiongfgfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
       <description>首先看一到leetcode题目:斐波那契数列。
 509. 斐波那契数  斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
 F(0) = 0, F(1) = 1 F(N) = F(N - 1) + F(N - 2), 其中 N &amp;gt; 1. 给定 N，计算 F(N)。
@@ -167,10 +167,10 @@ public int fib(int n){ if(n &amp;lt;= 1) return n; return fib(n-1) + fib(n-2) } 
     
     <item>
       <title>字符串常用算法 --&gt; 滑动窗口</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
+      <link>https://zhangxiongfgfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
       <pubDate>Mon, 06 Apr 2020 21:16:57 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
+      <guid>https://zhangxiongfgfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
       <description>字符串算法之滑动窗口 题目 3. 无重复字符的最长子串  给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
 示例 1:
 输入: &amp;ldquo;abcabcbb&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;abc&amp;rdquo;，所以其长度为 3。 示例 2:
@@ -188,10 +188,10 @@ max用来存储最终结果，即无重复字串的长度。
     
     <item>
       <title>字符串常用算法 --&gt; 双指针</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <link>https://zhangxiongfgfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</link>
       <pubDate>Fri, 05 Apr 2019 20:52:54 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <guid>https://zhangxiongfgfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
       <description>151. 翻转字符串里的单词 题目 给定一个字符串，逐个反转字符串中的每个单词
 示例 1：
 输入: &amp;quot;the sky is blue&amp;quot; 输出: &amp;quot;blue is sky the&amp;quot; 说明：
@@ -204,10 +204,10 @@ max用来存储最终结果，即无重复字串的长度。
     
     <item>
       <title>NSObject内存结构</title>
-      <link>https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</link>
+      <link>https://zhangxiongfgfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</link>
       <pubDate>Mon, 25 Jun 2018 17:24:50 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</guid>
+      <guid>https://zhangxiongfgfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</guid>
       <description>一，Objective-C的本质 我们平时编写的Objective-C代码，底层实现都是C/C++代码。
 所以Objective-C的面向对象，都是通过C/C++的数据结构实现的。
 Objective-C的对象，是用C++中的结构体来实现的。
@@ -222,10 +222,10 @@ struct NSObject_IMPL { Class isa; }; // 查看Class本质 typedef struct objc_cl
     
     <item>
       <title>Hugo基本使用</title>
-      <link>https://zhangxiongfeiv.github.io/post/hugo/</link>
+      <link>https://zhangxiongfgfeiv.github.io/post/hugo/</link>
       <pubDate>Mon, 06 Mar 2017 14:04:58 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/hugo/</guid>
+      <guid>https://zhangxiongfgfeiv.github.io/post/hugo/</guid>
       <description>Mac环境下安装Hugo 第一步：安装hugo mac环境下用homebrew工具安装hugo，一句命令即可
 $ brew install hugo 第二步：生成站点 利用brew生成站点，(比如生成在myblog目录下)执行如下命令
 $ hugo new site myblog 第三步：创建文章 创建的文章一般放在post下， 方便之后聚合生成页面。

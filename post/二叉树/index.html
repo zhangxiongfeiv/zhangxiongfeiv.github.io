@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="张雄飞" />
     <meta name="description" content="" />
-    <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/main.min.61bb32028587f24ca28522d8d197970c7ef33284e5fffb45a75fcbbb2dbc4dcb.css" />
+    <link rel="stylesheet" href="https://zhangxiongfgfeiv.github.io/css/main.min.61bb32028587f24ca28522d8d197970c7ef33284e5fffb45a75fcbbb2dbc4dcb.css" />
 
     
     <meta name="twitter:card" content="summary"/>
@@ -49,7 +49,7 @@
   树的深度等于树的高度
   有序树，无序树，森林  有序树：树中任意节点的字节点有顺序关系 无序树：树中任意节点的字节点没有顺序关系，也成为自由树 森林：由m(m &gt;= 0) 棵互不相交的树组成的集合  二叉树（Binary Tree） 二叉树的特点：  每个节点的度最大为2（最多拥有两棵子树） 左子树和右子树是有顺序的 即使某一节点只有一棵树，也要区分左右子树 有序树  二叉树的性质：   非空二叉树，第i层最多有 (2 ^ （i-1）)个节点" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/" />
+<meta property="og:url" content="https://zhangxiongfgfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/" />
 <meta property="article:published_time" content="2020-04-26T10:15:13+08:00" />
 <meta property="article:modified_time" content="2020-04-26T10:15:13+08:00" />
 
@@ -57,7 +57,7 @@
   </head>
   <body>
     <header class="app-header">
-      <a href="https://zhangxiongfeiv.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="张雄飞" /></a>
+      <a href="https://zhangxiongfgfeiv.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="张雄飞" /></a>
       <h1>张雄飞</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
       <div class="app-header-social">
@@ -82,7 +82,7 @@
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          3 min read
+          5 min read
         </div></div>
     </header>
     <div class="post-content">
@@ -393,11 +393,143 @@
 链接：https://leetcode-cn.com/problems/invert-binary-tree
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
 </blockquote>
+<p>思路：</p>
+<p>此题目考查二叉树反转，实际上是考察二叉树遍历，前序，中序，后序遍历都可以拿到节点，把节点的左右子树反转。</p>
+<p>前序遍历代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> TreeNode <span style="color:#a6e22e">invertTree</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+        TreeNode tmp <span style="color:#f92672">=</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
+        root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">;</span>
+        root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> tmp<span style="color:#f92672">;</span>
+
+        invertTree<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+        invertTree<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> root<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>层序遍历代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> TreeNode <span style="color:#a6e22e">invertTree</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+        Queue <span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">&gt;</span>queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">();</span>
+        queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>root<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>queue<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+            TreeNode node <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">poll</span><span style="color:#f92672">();</span>
+            TreeNode tmp <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">;</span>
+            node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
+            node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> tmp<span style="color:#f92672">;</span>
+
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> root<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><hr>
+<h4 id="面试题55---i-二叉树的深度httpsleetcode-cncomproblemser-cha-shu-de-shen-du-lcof"><a href="https://leetcode-cn.com/problems/er-cha-shu-de-shen-du-lcof/">面试题55 - I. 二叉树的深度</a></h4>
+<blockquote>
+<p>输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。</p>
+<p>例如：</p>
+<p>给定二叉树 [3,9,20,null,null,15,7]，</p>
+<p>3</p>
+<p>/<br>
+9  20
+/ <br>
+15   7
+返回它的最大深度 3 。</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/er-cha-shu-de-shen-du-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<p>思路一：递归</p>
+<p>二叉树的最大深度就是根节点的深度，根节点的深度为其左右子节点的最大深度加1， 而其左右子树的最大深度也分别是其子树的最大深度+1， 故想到递归。 代码如下，非常简单。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">public</span> TreeNode <span style="color:#a6e22e">invertTree</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-			
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxDepth</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">return</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>maxDepth<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">),</span>maxDepth<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">))</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
+</code></pre></div><p>思路二：迭代</p>
+<p>类似层序遍历，利用队列，遍历完一层时，height++ 直至结束。 代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxDepth</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> height <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        Queue<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;();</span>
+        queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>root<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>queue<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+
+            <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>size <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">){</span>
+                TreeNode node <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">poll</span><span style="color:#f92672">();</span>
+
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+
+                size <span style="color:#f92672">--;</span>
+            <span style="color:#f92672">}</span>
+
+            height <span style="color:#f92672">++;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> height<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><hr>
+<h4 id="222-完全二叉树的节点个数httpsleetcode-cncomproblemscount-complete-tree-nodes"><a href="https://leetcode-cn.com/problems/count-complete-tree-nodes/">222. 完全二叉树的节点个数</a></h4>
+<blockquote>
+<p>给出一个完全二叉树，求出该树的节点个数。</p>
+<p>说明：</p>
+<p>完全二叉树的定义如下：在完全二叉树中，除了最底层节点可能没填满外，其余每层节点数都达到最大值，并且最下面一层的节点都集中在该层最左边的若干位置。若最底层为第 h 层，则该层包含 1~ 2h 个节点。</p>
+<p>示例:</p>
+<p>输入:
+1
+/<br>
+2   3
+/ \  /
+4  5 6</p>
+<p>输出: 6</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/count-complete-tree-nodes
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<p>思路一：递归分别计算左右子树的节点个数 再加上1，就是当前树的节点个数。 需要递归每个元素，代码如下，此方法时间复杂度为O（N）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">countNodes</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> countNodes<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> countNodes<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>思路二：以上方法中，适用于任意二叉树，没有用到完全二叉树的特点，效率较差。 故我们在此基础上做一些优化。 heigh方法计算传入node的高度，如果left的高度 == right的高度，则左子树一定是满二叉树，则总节点个数等于左子树个数 + 递归计算右子树节点个数 + 1；</p>
+<p>若left的高度 != right的高度， 则右子树一定是满二叉树，则总节点个数等于递归计算左子树个数 + 右子树节点个数 + 1；</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">countNodes1</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> height_l <span style="color:#f92672">=</span> height<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">int</span> height_r <span style="color:#f92672">=</span> height<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>height_l <span style="color:#f92672">==</span> height_r<span style="color:#f92672">){</span>
+            <span style="color:#75715e">// 左子树一定是满二叉树
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>1 <span style="color:#f92672">&lt;&lt;</span> height_l<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> countNodes<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// 右子树一定是满二叉树
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>1 <span style="color:#f92672">&lt;&lt;</span> height_r<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> countNodes<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> height <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        TreeNode node <span style="color:#f92672">=</span> root<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            height <span style="color:#f92672">++;</span>
+            node <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> height<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
 </code></pre></div>
     </div>
     <div class="post-footer">
