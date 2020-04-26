@@ -6,10 +6,35 @@
     <description>Recent content on 张雄飞</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Apr 2020 18:25:18 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2020 10:15:13 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>二叉树</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+      <pubDate>Sun, 26 Apr 2020 10:15:13 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
+      <description>一 树形结构： 数据结构分为线性结构和树形结构，如下图：
+ 线性结构：   树形结构：    生活中的树形结构
+  二 树(Tree)的基本概念   节点，父节点，子节点，跟节点，兄弟节点
+  一棵树可以没有任何节点，成为空树
+  一棵树可以只有一个节点，也就是跟节点
+  子树，左子树，右子树
+  节点的度：子树的个数
+  树的度：所有接点度中的最大值
+  叶子节点leaf：度为0的节点
+  非叶子节点： 度不为0的节点
+  层数：根节点在第一层，根节点的字节点在第二层，以此类推
+  节点的深度：从根节点到当前节点的节点总数
+  节点的高度：从当前节点到最远叶子节点的路径上的节点总数
+  树的深度：所有节点深度中的最大值
+  树的高度：所有节点高度中的最大值
+  树的深度等于树的高度
+  有序树，无序树，森林  有序树：树中任意节点的字节点有顺序关系 无序树：树中任意节点的字节点没有顺序关系，也成为自由树 森林：由m(m &amp;gt;= 0) 棵互不相交的树组成的集合  二叉树（Binary Tree） 二叉树的特点：  每个节点的度最大为2（最多拥有两棵子树） 左子树和右子树是有顺序的 即使某一节点只有一棵树，也要区分左右子树 有序树  二叉树的性质：   非空二叉树，第i层最多有 (2 ^ （i-1）)个节点</description>
+    </item>
     
     <item>
       <title>队列刷题记录</title>
