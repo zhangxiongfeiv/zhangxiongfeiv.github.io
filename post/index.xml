@@ -6,10 +6,25 @@
     <description>Recent content in Posts on 张雄飞</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Apr 2020 17:40:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 27 Apr 2020 21:06:09 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>打家劫舍DP</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddp/</link>
+      <pubDate>Mon, 27 Apr 2020 21:06:09 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddp/</guid>
+      <description>198. 打家劫舍  你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
+给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。
+示例 1:
+输入: [1,2,3,1] 输出: 4 解释: 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。 偷窃到的最高金额 = 1 + 3 = 4 。 示例 2:
+输入: [2,7,9,3,1] 输出: 12 解释: 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。 偷窃到的最高金额 = 2 + 9 + 1 = 12 。
+来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/house-robber 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ 题解： 此题目使用动态规划的解题方法，动态规划三步骤分别为：</description>
+    </item>
     
     <item>
       <title>零钱找零DP</title>
@@ -17,7 +32,7 @@
       <pubDate>Mon, 27 Apr 2020 17:40:44 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6dp/</guid>
-      <description>零钱兑换](https://leetcode-cn.com/problems/coin-change/)   给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。
+      <description>零钱兑换   给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。
 示例 1:
 输入: coins = [1, 2, 5], amount = 11 输出: 3 解释: 11 = 5 + 5 + 1 示例 2:
 输入: coins = [2], amount = 3 输出: -1
