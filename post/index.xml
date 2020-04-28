@@ -6,10 +6,29 @@
     <description>Recent content in Posts on 张雄飞</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Apr 2020 22:08:29 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 28 Apr 2020 11:25:21 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>最长上升子序列DP</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</link>
+      <pubDate>Tue, 28 Apr 2020 11:25:21 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</guid>
+      <description>300. 最长上升子序列  给定一个无序的整数数组，找到其中最长上升子序列的长度。
+示例:
+输入: [10,9,2,5,3,7,101,18] 输出: 4 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。 说明:
+可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。 你算法的时间复杂度应该为 O(n2) 。 进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?
+来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/longest-increasing-subsequence 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ 题解： 此题使用动态规划解题方法
+  定义状态 dp[i]代表以 第i个元素结尾的序列 的最长上升子序列
+  定义初始值 第一位时, 最长上升子序列为1
+  定义状态转移方程。 计算dp[i] 时, 将其与前边元素比较， 当比前边元素大时，则取出当前对应的dp值+1就是dp[i].
+  用max记录，所有dp数组中的最大值。
+  代码如下： public int lengthOfLIS(int[] nums) { if (nums == null || nums.length == 0) return 0; // 定义状态 dp[i]代表以 第i个元素结尾的序列 的最长上升子序列  int[] dp = new int[nums.</description>
+    </item>
     
     <item>
       <title>打家劫舍DPII</title>
