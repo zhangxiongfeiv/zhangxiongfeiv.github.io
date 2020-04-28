@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>最长公共子序列DP // 张雄飞</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="张雄飞" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/main.min.61bb32028587f24ca28522d8d197970c7ef33284e5fffb45a75fcbbb2dbc4dcb.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="最长公共子序列DP"/>
+<meta name="twitter:description" content="1143. 最长公共子序列  给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。
+一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。 例如，&ldquo;ace&rdquo; 是 &ldquo;abcde&rdquo; 的子序列，但 &ldquo;aec&rdquo; 不是 &ldquo;abcde&rdquo; 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。
+若这两个字符串没有公共子序列，则返回 0。
+示例 1:
+输入：text1 = &ldquo;abcde&rdquo;, text2 = &ldquo;ace&rdquo; 输出：3
+解释：最长公共子序列是 &ldquo;ace&rdquo;，它的长度为 3。 示例 2:
+输入：text1 = &ldquo;abc&rdquo;, text2 = &ldquo;abc&rdquo; 输出：3 解释：最长公共子序列是 &ldquo;abc&rdquo;，它的长度为 3。 示例 3:
+输入：text1 = &ldquo;abc&rdquo;, text2 = &ldquo;def&rdquo; 输出：0 解释：两个字符串没有公共子序列，返回 0。
+提示:
+1 &lt;= text1.length &lt;= 1000 1 &lt;= text2.length &lt;= 1000 输入的字符串只含有小写英文字符。
+来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/longest-common-subsequence 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。"/>
+
+    <meta property="og:title" content="最长公共子序列DP" />
+<meta property="og:description" content="1143. 最长公共子序列  给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。
+一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。 例如，&ldquo;ace&rdquo; 是 &ldquo;abcde&rdquo; 的子序列，但 &ldquo;aec&rdquo; 不是 &ldquo;abcde&rdquo; 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。
+若这两个字符串没有公共子序列，则返回 0。
+示例 1:
+输入：text1 = &ldquo;abcde&rdquo;, text2 = &ldquo;ace&rdquo; 输出：3
+解释：最长公共子序列是 &ldquo;ace&rdquo;，它的长度为 3。 示例 2:
+输入：text1 = &ldquo;abc&rdquo;, text2 = &ldquo;abc&rdquo; 输出：3 解释：最长公共子序列是 &ldquo;abc&rdquo;，它的长度为 3。 示例 3:
+输入：text1 = &ldquo;abc&rdquo;, text2 = &ldquo;def&rdquo; 输出：0 解释：两个字符串没有公共子序列，返回 0。
+提示:
+1 &lt;= text1.length &lt;= 1000 1 &lt;= text2.length &lt;= 1000 输入的字符串只含有小写英文字符。
+来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/longest-common-subsequence 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97dp/" />
+<meta property="article:published_time" content="2020-04-28T18:10:13+08:00" />
+<meta property="article:modified_time" content="2020-04-28T18:10:13+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://zhangxiongfeiv.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="张雄飞" /></a>
+      <h1>张雄飞</h1>
+      <p>iOS Developer, 喜欢逆向, 喜欢刷题...</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">最长公共子序列DP</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 28, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h2 id="heading"></h2>
+<h2 id="1143-最长公共子序列httpsleetcode-cncomproblemslongest-common-subsequence"><a href="https://leetcode-cn.com/problems/longest-common-subsequence/">1143. 最长公共子序列</a></h2>
+<blockquote>
+<p>给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。</p>
+<p>一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。
+例如，&ldquo;ace&rdquo; 是 &ldquo;abcde&rdquo; 的子序列，但 &ldquo;aec&rdquo; 不是 &ldquo;abcde&rdquo; 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。</p>
+<p>若这两个字符串没有公共子序列，则返回 0。</p>
+<p>示例 1:</p>
+<p>输入：text1 = &ldquo;abcde&rdquo;, text2 = &ldquo;ace&rdquo;
+输出：3<br>
+解释：最长公共子序列是 &ldquo;ace&rdquo;，它的长度为 3。
+示例 2:</p>
+<p>输入：text1 = &ldquo;abc&rdquo;, text2 = &ldquo;abc&rdquo;
+输出：3
+解释：最长公共子序列是 &ldquo;abc&rdquo;，它的长度为 3。
+示例 3:</p>
+<p>输入：text1 = &ldquo;abc&rdquo;, text2 = &ldquo;def&rdquo;
+输出：0
+解释：两个字符串没有公共子序列，返回 0。</p>
+<p>提示:</p>
+<p>1 &lt;= text1.length &lt;= 1000
+1 &lt;= text2.length &lt;= 1000
+输入的字符串只含有小写英文字符。</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/longest-common-subsequence
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h2 id="题解">题解：</h2>
+<p>很明显使用动态规划解题</p>
+<ol>
+<li>定义状态  dp[i] [j]为字符串1 截止到下标i 的子串，和字符串2截止到下标j 的子串 的最长公共子序列。</li>
+<li>定义初始值  初始值默认都为0，不需要重新赋值</li>
+<li>动态转移方程
+<ul>
+<li>当c1 和 c2相等时，dp为其左上的值 + 1</li>
+<li>当c1 和 c2不想等时，dp为其左边 和 上边值中的大者</li>
+</ul>
+</li>
+</ol>
+<p>下图为例子，便于理解：(a b c d 和 a c e f的最长公共子序列)</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ge9nhbovjej30j20kujrx.jpg" alt="7"></p>
+<h2 id="代码如下">代码如下：</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">longestCommonSubsequence</span><span style="color:#f92672">(</span>String text1<span style="color:#f92672">,</span> String text2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#75715e">// 定义状态  dp[i][j]为 字符串1 以i结尾的字串，和字符串2以j结尾的字串的最长公共子序列。
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> <span style="color:#f92672">[][]</span>dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>text1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">][</span>text2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
+
+        <span style="color:#75715e">// 定义初始值 数组中默认都为0，不需要重新赋值
+</span><span style="color:#75715e"></span>        
+        <span style="color:#75715e">// 动态转移方程
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 当 c1 和 c2相等时，dp为其左上的值加1
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 当 c1 和 c2不想等时，dp为其左边 和 上边的最大值
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;=</span> text1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">char</span> c1 <span style="color:#f92672">=</span> text1<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
+
+            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;=</span> text2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">();</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">char</span> c2 <span style="color:#f92672">=</span> text2<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>j <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
+
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>c1 <span style="color:#f92672">==</span> c2<span style="color:#f92672">){</span>
+                    dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> dp<span style="color:#f92672">[</span>i<span style="color:#f92672">-</span>1<span style="color:#f92672">][</span>j<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">+</span>1<span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                    dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">-</span>1<span style="color:#f92672">][</span>j<span style="color:#f92672">],</span> dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">-</span>1<span style="color:#f92672">]);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> dp<span style="color:#f92672">[</span>text1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()][</span>text2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()];</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h2 id="复杂度分析">复杂度分析：</h2>
+<p>时间复杂度为 O(N * M) 两层循环，N * M次运算</p>
+<p>空间复杂度为 O(N * M) 利用了额外的二维数组存储空间。</p>
+<h2 id="优化">优化：</h2>
+<p>上边的解题过程中，我们在计算dp[i] [j] 时只用到了上边一层dp[i - 1] [&hellip;]，及其leftTop的值，而leftTop就是上次dp[j]的值。 是否可以把二维数组优化成一位数组，降低其空间复杂度至O(N)级别 ？ 下边我们尝试做一下空间复杂度的优化。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">longestCommonSubsequence</span><span style="color:#f92672">(</span>String text1<span style="color:#f92672">,</span> String text2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#75715e">// 定义状态  dp[j]为 字符串1 以i结尾的字串，和字符串2以j结尾的字串的最长公共子序列。
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> <span style="color:#f92672">[]</span>dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>text2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
+
+        <span style="color:#75715e">// 定义初始值 数组中默认都为1，不需要重新赋值
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">// 动态转移方程
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 当 c1 和 c2相等时，dp为其左上的值加1
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 当 c1 和 c2不想等时，dp为其左边 和 上边的最大值
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;=</span> text1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">char</span> c1 <span style="color:#f92672">=</span> text1<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">int</span> cur <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+
+            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;=</span> text2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">();</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">char</span> c2 <span style="color:#f92672">=</span> text2<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>j <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
+
+              	<span style="color:#75715e">// leftTop就是上次dp[i] 的值
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">int</span> leftTop <span style="color:#f92672">=</span> cur<span style="color:#f92672">;</span>
+                cur <span style="color:#f92672">=</span> dp<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
+
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>c1 <span style="color:#f92672">==</span> c2<span style="color:#f92672">){</span>
+                    dp<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> leftTop <span style="color:#f92672">+</span>1<span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                    dp<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>j<span style="color:#f92672">],</span> dp<span style="color:#f92672">[</span>j<span style="color:#f92672">-</span>1<span style="color:#f92672">]);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> dp<span style="color:#f92672">[</span>text2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()];</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h2 id="优化过后的复杂度">优化过后的复杂度：</h2>
+<p>空间复杂度： O(N)		额外使用了一维数组的存储空间。</p>
+<p>时间复杂度：O(N * M)  两层循环 N * M次计算。</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
