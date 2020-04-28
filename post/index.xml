@@ -6,10 +6,26 @@
     <description>Recent content in Posts on 张雄飞</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Apr 2020 11:25:21 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 28 Apr 2020 14:27:19 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>三角形最小路径和DP</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/</link>
+      <pubDate>Tue, 28 Apr 2020 14:27:19 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/</guid>
+      <description>三角形最小路径和  给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
+例如，给定三角形：
+[ [2], [3,4], [6,5,7], [4,1,8,3] ] 自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。
+说明：
+如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。
+来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/triangle 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ 题解： 使用动态规划解法，三个步骤：
+ 定义状态， dp[i] [j]为第i行，包含第j列的最小三角形路径和。 定义初始值，假设我们dp数组从1 1开始取值，则dp[0] [0] = 0; dp[1] [1]就是 三角形[0] [0],也就是三角形的顶部。 定义动态转移方程，  dp[i] [j] 当 j 是第一列时，则为dp[i - 1] [j] + 三角形[i] [j]. 当 j 为最后一列时, 则dp[i] [j] 为dp[i - 1] [j - 1]. 当j 不是第一列也不是最后一列时， dp[i] [j]为上一行两个相邻列的最小值。    代码如下：</description>
+    </item>
     
     <item>
       <title>最长上升子序列DP</title>
