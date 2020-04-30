@@ -6,10 +6,25 @@
     <description>Recent content in Posts on 张雄飞</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Apr 2020 18:10:13 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 28 Apr 2020 20:56:35 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>最大子序和DP</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8Cdp/</link>
+      <pubDate>Tue, 28 Apr 2020 20:56:35 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8Cdp/</guid>
+      <description>53. 最大子序和  给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+示例:
+输入: [-2,1,-3,4,-1,2,1,-5,4], 输出: 6 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。 进阶:
+如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。
+来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/maximum-subarray 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ 题解： 思路一： 动态规划：
+ 定义dp数组的状态是以i结尾的子序列的最大子序列和(必须包含i). 设置初始状态,dp[0] 就是nums[0]. 当dp[i-1] &amp;gt; 0时，dp[i]为dp[i-1] + nums[i]。 当dp[i - 1] &amp;lt;= 0时,dp[i] 为 nums[i].  代码如下： public int maxSubArray(int[] nums) { // 定义状态 dp[i] 是以i结尾的最大子序列和  int[] dp = new int[nums.length]; // 定义初始值 dp[0] 就是数组的第一个元素  dp[0] = nums[0]; // 用来存储最终的最大值  int maxVal = nums[0]; for (int i = 1; i &amp;lt; nums.</description>
+    </item>
     
     <item>
       <title>最长公共子序列DP</title>
