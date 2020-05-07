@@ -6,10 +6,36 @@
     <description>Recent content on 张雄飞</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 May 2020 18:01:04 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2020 20:45:03 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>IOS基于码云创建私有库</title>
+      <link>https://zhangxiongfeiv.github.io/post/ios%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</link>
+      <pubDate>Thu, 07 May 2020 20:45:03 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/ios%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</guid>
+      <description>iOS 组件化初试-基于码云创建私有库 iOS组件的实现基本是基于cocoapods，如何利用cocoapod创建我们自己的私有库，是实现组件话的第一步，下边步骤中，我们将利用码云的仓库创建私有库来呈现私有库的创建过程。
+此文使用 码云 做私有库存储，也可以使用公司 自己服务器 存储私有库，步骤是一样的。
+一，创建私有库的索引库 我们需要创建两个库，一个索引库用于存放spec文件的地方，用于索引倒代码的位置。 一个私有库，指的是我们真正放置组件代码的地方。
+索引库 就好比指针，私有库就好比对象，指针中存放了对象的地址，通过地址就可以找到对象。
+点击创建后，创建的仓库如下图：
+二，将创建好的索引库添加到本地cocoapods仓库   cocoapods本地仓库路径
+$ ~/.cocoapods/repos   在本地添加一个自己的远程索引库
+pod repo add CGRepo https://gitee.com/zhang_xiong__fei/CGRepo.git 上边的地址是刚刚我们在码云上创建的索引库的地址。
+  添加完成后，在repos文件夹中，多了一个CGRepo文件夹，如图:
+我们把自己创建的索引库放置在cocoapods管理的仓库下，默认情况下只有一个master, 我们常用的SDWebImage,AFNetworking等的本地索引就放在这个仓库中。
+现在通过码云创建的自己的仓库，所以需要自己创建一个索引仓库， 该仓库只存放各组件的索引文件，不存放代码。
+三，创建模板 在桌面创建一个CGTool文件夹，并在终端中cd到此文件夹目录下,
+执行创建模板的命令
+pod lib create CGTool 通过以上命令，会自动创建一个模板工程,里边包含我们需要的索引文件, 格式为 spec, 接下来通过该模板制作组件。
+四，将组件放入制定目录 我们将组件放入 CGTool/Pods/Development Pods/CGTool文件夹下，如图
+五，将制作好的组件上传至码云 上边说过，我们需要创建两个仓库索引库和私有库，私有库用来存放我们制作的组件，接下来我们就要创建私有库，并把制作的组件上传至私有库中。
+执行下边命令，上传模板文件
+$ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gitee.com/zhang_xiong__fei/CGTool.git $ git push -u origin master 上边几条命令，我们只上传了模板文件，接下来，我们创建自己添加的组件代码</description>
+    </item>
     
     <item>
       <title>王道计算机网络笔记</title>
