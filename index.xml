@@ -6,10 +6,36 @@
     <description>Recent content on 张雄飞</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 May 2020 21:40:52 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2020 21:04:44 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AVL树</title>
+      <link>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</link>
+      <pubDate>Mon, 11 May 2020 21:04:44 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</guid>
+      <description>AVL树  平衡因子(Balance Factor): 某节点左右子树的高度差 AVL树的特点  每个节点的平衡因子只可能是1, 0, -1(绝对值 &amp;lt;= 1, 如果超过1，称之为 &amp;ldquo;失衡&amp;rdquo;) 每个节点的左右子树高度差不超过1 搜索， 添加， 删除的时间复杂度是 O(log N)    </description>
+    </item>
+    
+    <item>
+      <title>平衡二叉搜索树</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <pubDate>Mon, 11 May 2020 21:03:47 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <description>平衡二叉搜索树 (BBST) 二叉搜索树(BST)的缺陷？ 二叉搜索树，在某种情况下会导致极度的不平衡，导致时间复杂度剧增。
+如图，如果按照 7 4 9 2 5 8 11 的顺序添加节点
+如果按照从小到大的顺序添加节点
+二叉树退化成链表
+如何改进BST？ 有没有办法防止二叉搜索树退化成链表？
+让添加，删除，搜索的复杂度维持在 O(log N)
+平衡 平衡：当节点数量固定时，左右子树的高度越来越接近，这棵二叉树就越平衡(高度越低).
+理想平衡 最理想的平衡，就是像完全二叉树，满二叉树那样，高度是最小的。
+改进  首先，节点的添加，删除顺序是无法限制的，可以认为是随机的 所以改进的方案是，在节点添加，删除操作之后，想办法让二叉搜索树恢复平衡(减小树的高度)   如果接着继续调整节点的位置，完全可以达到理想平衡，但是付出的代价可能会比较大  比如调整的次数会比较多，反而增加了时间复杂度   总结来说，比较合理的改进方案是：用尽量少的调整次数达到适度的平衡即可。 一棵达到适度平衡的二叉搜索树，可以称之为平衡二叉搜索树。  平衡二叉搜索树 (Balanced Binary Search Tree)  英文简称为: BBST 经典常见的平衡二叉搜索树  AVL树 (Windows NT内核广泛应用) 红黑树  C++ STL (map , set) Java中的TreeMap, TreeSet, HashMap, HashSet Linux的进程调度 Ngix 的 timer 管理     一般也称它们为： 自平衡的二叉搜索树(Self-balancing Binary Search Tree)  练习题 110.</description>
+    </item>
     
     <item>
       <title>买卖股票的最佳时机</title>
