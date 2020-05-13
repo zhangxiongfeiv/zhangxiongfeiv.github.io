@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 张雄飞</title>
-    <link>https://zhangxiopongfeiv.github.io/post/</link>
+    <link>https://zhangxiongfeiv.github.io/post/</link>
     <description>Recent content in Posts on 张雄飞</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 12 May 2020 22:31:36 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiopongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Leetcode面试题集锦</title>
-      <link>https://zhangxiopongfeiv.github.io/post/leetcode%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E9%94%A6/</link>
+      <link>https://zhangxiongfeiv.github.io/post/leetcode%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E9%94%A6/</link>
       <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/leetcode%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E9%94%A6/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/leetcode%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E9%94%A6/</guid>
       <description>leetcode上面试题目集合 面试题 01.01. 判定字符是否唯一  实现一个算法，确定一个字符串 s 的所有字符是否全都不同。
 示例 1：
 输入: s = &amp;ldquo;leetcode&amp;rdquo; 输出: false 示例 2：
@@ -29,19 +29,19 @@
     
     <item>
       <title>AVL树</title>
-      <link>https://zhangxiopongfeiv.github.io/post/avl%E6%A0%91/</link>
+      <link>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</link>
       <pubDate>Mon, 11 May 2020 21:04:44 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/avl%E6%A0%91/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</guid>
       <description>AVL树  平衡因子(Balance Factor): 某节点左右子树的高度差 AVL树的特点  每个节点的平衡因子只可能是1, 0, -1(绝对值 &amp;lt;= 1, 如果超过1，称之为 &amp;ldquo;失衡&amp;rdquo;) 每个节点的左右子树高度差不超过1 搜索， 添加， 删除的时间复杂度是 O(log N)    </description>
     </item>
     
     <item>
       <title>平衡二叉搜索树</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Mon, 11 May 2020 21:03:47 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
       <description>平衡二叉搜索树 (BBST) 二叉搜索树(BST)的缺陷？ 二叉搜索树，在某种情况下会导致极度的不平衡，导致时间复杂度剧增。
 如图，如果按照 7 4 9 2 5 8 11 的顺序添加节点
 如果按照从小到大的顺序添加节点
@@ -55,10 +55,10 @@
     
     <item>
       <title>买卖股票的最佳时机</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/</link>
       <pubDate>Sat, 09 May 2020 21:40:52 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/</guid>
       <description>买卖股票的最佳时机  给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
 如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。
 注意：你不能在买入股票前卖出股票。
@@ -71,10 +71,10 @@
     
     <item>
       <title>乘积最大子数组</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</link>
       <pubDate>Sat, 09 May 2020 21:40:02 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
       <description>152. 乘积最大子数组  给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字）。
 示例 1:
 输入: [2,3,-2,4] 输出: 6 解释: 子数组 [2,3] 有最大乘积 6。 示例 2:
@@ -86,10 +86,10 @@
     
     <item>
       <title>二叉搜索树</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
       <description>思考？ 在 n 个动态的整数中搜索某个整数？ (查看其是否存在)
  假设用动态数组存放元素，从第0个位置开始遍历搜索，平均时间复杂度 O(N) 如果维护一个有序的动态数组，使用二分搜索，最坏时间复杂度 O(log N)  但是添加，删除的平均时间复杂度是 O(N)   针对这个需求， 有没有更好的方案？  使用二叉搜索树，添加/删除/搜索的最坏时间复杂度均可优化至 O(log N)    定义： 二叉搜索树是二叉树的一种，是应用非常广泛的一种二叉树，英文简称 BST ，又被称为：二叉查找树，二叉排序树
  任意节点的值都 大于 其左子树的节点的值 任意节点的值都 小于 其右子树节点的值 它的左右子树也是一棵二叉搜索树  二叉搜索树可以大大提高搜索数据的效率
@@ -103,10 +103,10 @@ root = [5,3,6,2,4,null,7] key = 3</description>
     
     <item>
       <title>IOS基于码云创建私有库</title>
-      <link>https://zhangxiopongfeiv.github.io/post/ios%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</link>
+      <link>https://zhangxiongfeiv.github.io/post/ios%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</link>
       <pubDate>Thu, 07 May 2020 20:45:03 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/ios%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/ios%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</guid>
       <description>iOS 组件化初试-基于码云创建私有库 iOS组件的实现基本是基于cocoapods，如何利用cocoapod创建我们自己的私有库，是实现组件话的第一步，下边步骤中，我们将利用码云的仓库创建私有库来呈现私有库的创建过程。
 此文使用 码云 做私有库存储，也可以使用公司 自己服务器 存储私有库，步骤是一样的。
 一，创建私有库的索引库 我们需要创建两个库，一个索引库用于存放spec文件的地方，用于索引倒代码的位置。 一个私有库，指的是我们真正放置组件代码的地方。
@@ -129,10 +129,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>王道计算机网络笔记</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
       <pubDate>Sat, 02 May 2020 18:01:04 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
       <description>计算机网络的概念 计算机网络:是一个将分散的，具有独立功能的计算机系统，通过通信设备与线路连接起来，由功能完善的软件实现资源共享和信息传递的系统。
 计算机网络是互连的，自治的计算机集合。
 互联是指互相连通，通信链路
@@ -142,10 +142,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>王道操作系统笔记</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sat, 02 May 2020 11:04:13 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
       <description>操作系统 2020.5.2概念(定义) 操作系统（Operating System, OS）是指控制和管理整个计算机系统的硬件和软件资源，并合理地组织调度计算机的工作和资源的分配，以提供给用户和其它软件方便的接口和环境，它是计算机系统最基本的系统软件。
 功能和目标 补充知识： 进程是一个程序的执行过程。 执行前需要将该程序放到内存中，才能被CPU处理。
 操作系统，作为系统资源的管理者提供处理机管理，存储器管理，文件管理，设备管理的功能。
@@ -181,10 +181,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>王道数据结构笔记</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 02 May 2020 08:36:02 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</guid>
       <description>2020.5.2日记录[TOC]
 数据结构在学什么？  如何用程序代码把现实世界的问题信息话 如何用计算机高效的处理这些信息从而创造价值  数据结构的基本概念 数据：数据是信息的载体，是描述客观事物属性的数，字符以及所有能输入到计算机中能被计算机程序识别和处理的符号的集合。 数据时计算机程序加工的原料。二进制 0 1。
 数据元素：是数据的基本单位，通常作为一个整理进行考虑和处理，一个数据元素可由若干个数据项组成
@@ -207,10 +207,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>803计算机学科基础综合</title>
-      <link>https://zhangxiopongfeiv.github.io/post/803%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E7%A7%91%E5%9F%BA%E7%A1%80%E7%BB%BC%E5%90%88/</link>
+      <link>https://zhangxiongfeiv.github.io/post/803%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E7%A7%91%E5%9F%BA%E7%A1%80%E7%BB%BC%E5%90%88/</link>
       <pubDate>Thu, 30 Apr 2020 18:09:56 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/803%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E7%A7%91%E5%9F%BA%E7%A1%80%E7%BB%BC%E5%90%88/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/803%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E7%A7%91%E5%9F%BA%E7%A1%80%E7%BB%BC%E5%90%88/</guid>
       <description>一、 考查目标
 计算机学科基础综合考试涵盖数据结构、计算机组成原理、操作系统和计算机网络等学科专业基础课程。要求考生比较系统地掌握上述专业基础课程的基本概念、基本原理和基本方法，能够综合运用所学的基本原理和基本方法分析、判断和解决有关理论问题和实际问题。
 二、考试形式和试卷结构
@@ -248,10 +248,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>愿北邮成为我邮</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</link>
       <pubDate>Thu, 30 Apr 2020 17:57:19 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</guid>
       <description>愿北邮成为我邮 琢磨了好几年的考研，因为张清妍的到来，显得更加紧迫了，以后时间越来越少，精力也逐渐不如以前。遂决定，不再拖，今年考研！
 仅以此文鞭挞自己，望能坚持学习，更新学习计划，学习进度。尽人事，而后听天命。
 目标： 北京邮电大学 网络空间安全学院
@@ -267,10 +267,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>最大子序和DP</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8Cdp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8Cdp/</link>
       <pubDate>Tue, 28 Apr 2020 20:56:35 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8Cdp/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8Cdp/</guid>
       <description>53. 最大子序和  给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
 示例:
 输入: [-2,1,-3,4,-1,2,1,-5,4], 输出: 6 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。 进阶:
@@ -282,10 +282,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>最长公共子序列DP</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97dp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97dp/</link>
       <pubDate>Tue, 28 Apr 2020 18:10:13 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97dp/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97dp/</guid>
       <description>1143. 最长公共子序列  给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。
 一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。 例如，&amp;ldquo;ace&amp;rdquo; 是 &amp;ldquo;abcde&amp;rdquo; 的子序列，但 &amp;ldquo;aec&amp;rdquo; 不是 &amp;ldquo;abcde&amp;rdquo; 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。
 若这两个字符串没有公共子序列，则返回 0。
@@ -301,10 +301,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>三角形最小路径和DP</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/</link>
       <pubDate>Tue, 28 Apr 2020 14:27:19 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/</guid>
       <description>三角形最小路径和  给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
 例如，给定三角形：
 [ [2], [3,4], [6,5,7], [4,1,8,3] ] 自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。
@@ -317,10 +317,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>最长上升子序列DP</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</link>
       <pubDate>Tue, 28 Apr 2020 11:25:21 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</guid>
       <description>300. 最长上升子序列  给定一个无序的整数数组，找到其中最长上升子序列的长度。
 示例:
 输入: [10,9,2,5,3,7,101,18] 输出: 4 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。 说明:
@@ -336,10 +336,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>打家劫舍DPII</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</link>
       <pubDate>Mon, 27 Apr 2020 22:08:29 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</guid>
       <description>213. 打家劫舍 II  你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
 给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。
 示例 1:
@@ -353,10 +353,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>打家劫舍DP</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddp/</link>
       <pubDate>Mon, 27 Apr 2020 21:06:09 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddp/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddp/</guid>
       <description>198. 打家劫舍  你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
 给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。
 示例 1:
@@ -368,10 +368,10 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
     
     <item>
       <title>零钱找零DP</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6dp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6dp/</link>
       <pubDate>Mon, 27 Apr 2020 17:40:44 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6dp/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6dp/</guid>
       <description>零钱兑换   给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。
 示例 1:
 输入: coins = [1, 2, 5], amount = 11 输出: 3 解释: 11 = 5 + 5 + 1 示例 2:
@@ -383,10 +383,10 @@ static int coinChange(int n) { if (n &amp;lt; 1) return Integer.</description>
     
     <item>
       <title>一文了解动态规划(Dynamic Programming)</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</link>
       <pubDate>Mon, 27 Apr 2020 10:20:11 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</guid>
       <description>动态规划(Dynamic Programming) 简称 DP , 是求解最优化问题的一种常用策略。
 来自维基百科的解释：
  Dynamic Programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once,and storing their solutions.
@@ -398,10 +398,10 @@ static int coinChange(int n) { if (n &amp;lt; 1) return Integer.</description>
     
     <item>
       <title>Hello,张清妍</title>
-      <link>https://zhangxiopongfeiv.github.io/post/hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</link>
+      <link>https://zhangxiongfeiv.github.io/post/hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</link>
       <pubDate>Sun, 26 Apr 2020 16:15:11 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</guid>
       <description>Hello, 张清妍 地点：北京天坛医院 2020年4月16日 医生检查我们嘟嘟生长受限，决定提前生产，早上vv做了otc检查，用来判断是否符合顺产的条件，otc顺利通过，下午开始打催产素，然而直到打完，孩他妈仍然没有要生产的感觉，以为着急的嘟嘟下午就要个我们见面，结果可能又要等到今晚或者明天。 妈和倩回家休息，我继续在医院即将临盆的vv和即将到来的小生命。
 晚上的天坛医院，非常安静，我的vv和阿嘟还在病房里输着营养液，等待着。
 心情没有激动，却很紧张，只盼着一件事，vv和阿嘟都要健健康康的，孩子小点不怕，只要身体健康，生出来我们肯定能涨上来。 加油啊，嘟嘟。你爹妈是你坚强的后盾！
@@ -419,10 +419,10 @@ static int coinChange(int n) { if (n &amp;lt; 1) return Integer.</description>
     
     <item>
       <title>二叉树</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
       <pubDate>Sun, 26 Apr 2020 10:15:13 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
       <description>一 树形结构： 数据结构分为线性结构和树形结构，如下图：
  线性结构：   树形结构：    生活中的树形结构
   二 树(Tree)的基本概念   节点，父节点，子节点，跟节点，兄弟节点
@@ -444,10 +444,10 @@ static int coinChange(int n) { if (n &amp;lt; 1) return Integer.</description>
     
     <item>
       <title>队列刷题记录</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E9%98%9F%E5%88%97%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E9%98%9F%E5%88%97%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
       <description>队列 一，定义 队列是一种特殊的线性表，只能在头尾两端进行操作
   队尾(rear) : 只能从队尾添加元素，一般叫做enQueue,入队
   对头(front) : 只能从对头移除元素，一般叫做deQueue,出队
@@ -465,10 +465,10 @@ push(x) &amp;ndash; 元素 x 入栈 pop() &amp;ndash; 移除栈顶元素 top() &
     
     <item>
       <title>集合刷题记录</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E9%9B%86%E5%90%88/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%9B%86%E5%90%88/</link>
       <pubDate>Wed, 15 Apr 2020 22:20:03 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E9%9B%86%E5%90%88/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%9B%86%E5%90%88/</guid>
       <description>集合（Set） 集合的定义： 由一个或者多个确定的元素所构成的整体。
 特点： 1，不存在重复元素
 2，一般用于去重（比如一本书中统计词汇，统计访问网站的ip）
@@ -491,10 +491,10 @@ public int[] intersection(int[] nums1, int[] nums2){ HashSet set = new HashSet()
     
     <item>
       <title>链表刷题记录</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E9%93%BE%E8%A1%A8/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%93%BE%E8%A1%A8/</link>
       <pubDate>Tue, 14 Apr 2020 20:33:49 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E9%93%BE%E8%A1%A8/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%93%BE%E8%A1%A8/</guid>
       <description>链表(Linked List)
 动态数组有个明显的缺点，可能会造成内存空间浪费。 链表可以做到用多少就申请多少内存。
 链表是一种链式存储的线性表，所有元素的内存地址不一定是连续的。
@@ -512,10 +512,10 @@ public void deleteNode(ListNode node) { node.</description>
     
     <item>
       <title>数组刷题记录</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Sat, 11 Apr 2020 11:25:40 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
       <description>1. 两数之和  给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
 示例:
@@ -533,10 +533,10 @@ public void deleteNode(ListNode node) { node.</description>
     
     <item>
       <title>栈刷题记录</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E6%A0%88/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%A0%88/</link>
       <pubDate>Sat, 11 Apr 2020 11:25:40 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E6%A0%88/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%A0%88/</guid>
       <description>栈 栈是一种特殊的线性表,只能在一端操作
 往栈中添加元素的操作，一般叫做push，入栈
 从栈中移除元素的操作，一般叫做pop，出栈（只能移除栈顶元素，也叫做弹出栈顶元素）
@@ -556,10 +556,10 @@ public void deleteNode(ListNode node) { node.</description>
     
     <item>
       <title>数据结构学习 --&gt; 算法评判标准</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</link>
       <pubDate>Wed, 08 Apr 2020 17:33:35 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
       <description>首先看一到leetcode题目:斐波那契数列。
 509. 斐波那契数  斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
 F(0) = 0, F(1) = 1 F(N) = F(N - 1) + F(N - 2), 其中 N &amp;gt; 1. 给定 N，计算 F(N)。
@@ -573,10 +573,10 @@ public int fib(int n){ if(n &amp;lt;= 1) return n; return fib(n-1) + fib(n-2) } 
     
     <item>
       <title>字符串常用算法 --&gt; 滑动窗口</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
       <pubDate>Mon, 06 Apr 2020 21:16:57 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
       <description>字符串算法之滑动窗口 题目 3. 无重复字符的最长子串  给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
 示例 1:
 输入: &amp;ldquo;abcabcbb&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;abc&amp;rdquo;，所以其长度为 3。 示例 2:
@@ -594,10 +594,10 @@ max用来存储最终结果，即无重复字串的长度。
     
     <item>
       <title>字符串常用算法 --&gt; 双指针</title>
-      <link>https://zhangxiopongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</link>
       <pubDate>Fri, 05 Apr 2019 20:52:54 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
       <description>151. 翻转字符串里的单词 题目 给定一个字符串，逐个反转字符串中的每个单词
 示例 1：
 输入: &amp;quot;the sky is blue&amp;quot; 输出: &amp;quot;blue is sky the&amp;quot; 说明：
@@ -610,10 +610,10 @@ max用来存储最终结果，即无重复字串的长度。
     
     <item>
       <title>NSObject内存结构</title>
-      <link>https://zhangxiopongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</link>
+      <link>https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</link>
       <pubDate>Mon, 25 Jun 2018 17:24:50 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</guid>
       <description>一，Objective-C的本质 我们平时编写的Objective-C代码，底层实现都是C/C++代码。
 所以Objective-C的面向对象，都是通过C/C++的数据结构实现的。
 Objective-C的对象，是用C++中的结构体来实现的。
@@ -628,10 +628,10 @@ struct NSObject_IMPL { Class isa; }; // 查看Class本质 typedef struct objc_cl
     
     <item>
       <title>Hugo基本使用</title>
-      <link>https://zhangxiopongfeiv.github.io/post/hugo/</link>
+      <link>https://zhangxiongfeiv.github.io/post/hugo/</link>
       <pubDate>Mon, 06 Mar 2017 14:04:58 +0800</pubDate>
       
-      <guid>https://zhangxiopongfeiv.github.io/post/hugo/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/hugo/</guid>
       <description>Mac环境下安装Hugo 第一步：安装hugo mac环境下用homebrew工具安装hugo，一句命令即可
 $ brew install hugo 第二步：生成站点 利用brew生成站点，(比如生成在myblog目录下)执行如下命令
 $ hugo new site myblog 第三步：创建文章 创建的文章一般放在post下， 方便之后聚合生成页面。
