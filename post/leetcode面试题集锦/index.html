@@ -64,7 +64,7 @@
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          6 min read
+          9 min read
         </div></div>
     </header>
     <div class="post-content">
@@ -519,7 +519,260 @@ second = &ldquo;pal&rdquo;
     
 </code></pre></div><p>时间复杂度 ：O(N ^ 2)</p>
 <p>空间复杂度 : O(1)</p>
+<h4 id="面试题-0108-零矩阵httpsleetcode-cncomproblemszero-matrix-lcci">面试题 01.08. 零矩阵](<a href="https://leetcode-cn.com/problems/zero-matrix-lcci/">https://leetcode-cn.com/problems/zero-matrix-lcci/</a>)</h4>
+<h5 id="题解-4">题解：</h5>
+<ul>
+<li>开辟两个一维存放bool值数组</li>
+<li>line数组 用来存放 需要清空的行</li>
+<li>column数组 用来存放 需要清空的列</li>
+<li>1，遍历矩阵。 把需要清空的line 和 column在数组中赋值为 true</li>
+<li>2，把line数组中需要清空的行，清零</li>
+<li>3，把column数组中需要清空的列，清零</li>
+</ul>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setZeroes</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> matrix<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 
+    <span style="color:#75715e">// 需要清空的行数组
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">boolean</span><span style="color:#f92672">[]</span> line  <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">boolean</span><span style="color:#f92672">[</span>matrix<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">];</span>
+    <span style="color:#75715e">// 需要清空的列数组
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">boolean</span><span style="color:#f92672">[]</span> column <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">boolean</span><span style="color:#f92672">[</span>matrix<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">];</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> matrix<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> matrix<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>matrix<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">){</span>
+                line<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+                column<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 需要清零的行 置为零
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> matrix<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>line<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> matrix<span style="color:#f92672">[</span>0<span style="color:#f92672">].</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                matrix<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 需要清零的列 置为零
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> matrix<span style="color:#f92672">[</span>0<span style="color:#f92672">].</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>column<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> matrix<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                matrix<span style="color:#f92672">[</span>j<span style="color:#f92672">][</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>时间复杂度: O(M * N)</p>
+<p>空间复杂度: O(M + N)</p>
+<h4 id="面试题-0109-字符串轮转httpsleetcode-cncomproblemsstring-rotation-lcci"><a href="https://leetcode-cn.com/problems/string-rotation-lcci/">面试题 01.09. 字符串轮转</a></h4>
+<blockquote>
+<p>字符串轮转。给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成（比如，waterbottle是erbottlewat旋转后的字符串）。</p>
+<p>示例1:</p>
+<p>输入：s1 = &ldquo;waterbottle&rdquo;, s2 = &ldquo;erbottlewat&rdquo;
+输出：True
+示例2:</p>
+<p>输入：s1 = &ldquo;aa&rdquo;, &ldquo;aba&rdquo;
+输出：False
+提示：</p>
+<p>字符串长度在[0, 100000]范围内。
+说明:</p>
+<p>你能只调用一次检查子串的方法吗？</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/string-rotation-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-5">题解：</h5>
+<h6 id="思路一-2">思路一：</h6>
+<p>暴力法：</p>
+<ul>
+<li>如果s2是由s1旋转而来  则从头到尾开始旋转s1</li>
+<li>遍历旋转0位(原串)， 1位&hellip;直至最后</li>
+<li>如果遍历构成中，有跟s2相同的字符串，则return true</li>
+<li>遍历一遍完后，都没有相同字符串，则return false</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#75715e">// 暴力法
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果 s2 是由 s1 旋转而来 则从头到位开始旋转s1
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 遍历旋转0位(原字串)， 1位... 直到旋转到倒数第二位
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果遍历过程中，有跟s2相同的字符串， 则return true
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 遍历一遍完后，都没有相同字符串， 则return false
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isFlipedString1</span><span style="color:#f92672">(</span>String s1<span style="color:#f92672">,</span> String s2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">((</span>s1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> s2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">||</span> <span style="color:#f92672">(</span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">&amp;&amp;</span> s2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">))</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>s1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> s2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">!=</span> s2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">())</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        StringBuilder sb <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StringBuilder<span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">&lt;</span> s1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()){</span>
+
+            sb<span style="color:#f92672">.</span><span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span>sb<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">());</span>
+            sb<span style="color:#f92672">.</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span>i<span style="color:#f92672">,</span> s1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()));</span>
+            sb<span style="color:#f92672">.</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span>i<span style="color:#f92672">));</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>sb<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">().</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>s2<span style="color:#f92672">))</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+            i<span style="color:#f92672">++;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geqqvnvv6zj30o606k0ti.jpg" alt="image-20200513131156369"></p>
+<p>此方法执行时间38ms， 有大量的拼接，比较操作。</p>
+<h6 id="思路二-3">思路二：</h6>
+<ul>
+<li>
+<p>题目中有说明， 你能只调用一次检查子串的方法吗？</p>
+</li>
+<li>
+<p>显然上述解题，不符合检查一次字串的要求。拼接了N次字串，比较了N次字串</p>
+</li>
+<li>
+<p>上述方法时间复杂度 : O(N ^ 2)</p>
+</li>
+<li>
+<p>空间复杂度 : O(1)</p>
+</li>
+<li>
+<p>时间复杂度非常高，算法虽过了，但是用时很长</p>
+</li>
+<li>
+<p>接下来，我们尝试做时间复杂度的优化</p>
+</li>
+<li>
+<p>思路是 裁剪字串成两个子串</p>
+</li>
+<li>
+<p>从头到位比较,当字串s1 i位置， 与字串s2的0位置，字符相同时，根据i分割两个字串</p>
+</li>
+<li>
+<p>如果s1 和 s2 分割后，两部分分别都相同，说明是旋转字串</p>
+</li>
+<li>
+<p>如果不相同， 则往下遍历下一个与 s2 0位置相同的元素。</p>
+</li>
+<li>
+<p>i遍历完， 即与s2 0号位置相同的字符又两部分分别相同的字串。 则return false</p>
+</li>
+<li>
+<p>我们的时间复杂度有了大幅度的提升，截图中可以看出，由之前的40ms左右，提高到1ms左右。</p>
+</li>
+<li>
+<p>时间复杂度 : O(N)</p>
+</li>
+<li>
+<p>空间复杂度 : O(1)</p>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geqqz7nri2j30qa0620tl.jpg" alt="屏幕快照 2020-05-13 下午12.55.01"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">		<span style="color:#75715e">// 题目中有说明， 你能只调用一次检查子串的方法吗？
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 显然上述解题，不符合检查一次字串的要求。拼接了N次字串，比较了N次字串
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 上述方法时间复杂度 : O(N ^ 2)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间复杂度 : O(1)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度非常高，算法虽过了，但是用时很长
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 接下来，我们尝试做时间复杂度的优化
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// 思路是 裁剪字串成两个子串
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 从头到位比较,当字串s1 i位置， 与字串s2的0位置，字符相同时，根据i分割两个字串
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果s1 和 s2 分割后，两部分分别都相同，说明是旋转字串
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果不相同， 则往下遍历下一个与 s2 0位置相同的元素。
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// i遍历完， 即与s2 0号位置相同的字符又两部分分别相同的字串。 则return false
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// 我们的时间复杂度有了大幅度的提升，截图中可以看出，由之前的40ms左右，提高到1ms左右。
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度 : O(N)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间复杂度 : O(1)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isFlipedString2</span><span style="color:#f92672">(</span>String s1<span style="color:#f92672">,</span> String s2<span style="color:#f92672">){</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">((</span>s1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> s2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">||</span> <span style="color:#f92672">(</span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">&amp;&amp;</span> s2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">))</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>s1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> s2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">!=</span> s2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">())</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span>len <span style="color:#f92672">=</span> s1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">((</span>i <span style="color:#f92672">&lt;</span> len<span style="color:#f92672">)){</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>i<span style="color:#f92672">)</span> <span style="color:#f92672">!=</span> s2<span style="color:#f92672">.</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>0<span style="color:#f92672">)){</span>
+                i <span style="color:#f92672">++;</span>
+                <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            String l_s1 <span style="color:#f92672">=</span> s1<span style="color:#f92672">.</span><span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span>i<span style="color:#f92672">);</span>
+            String r_s1 <span style="color:#f92672">=</span> s1<span style="color:#f92672">.</span><span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span>i<span style="color:#f92672">,</span>len<span style="color:#f92672">);</span>
+
+            String l_s2 <span style="color:#f92672">=</span> s2<span style="color:#f92672">.</span><span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span>len <span style="color:#f92672">-</span> i<span style="color:#f92672">);</span>
+            String r_s2 <span style="color:#f92672">=</span> s2<span style="color:#f92672">.</span><span style="color:#a6e22e">substring</span><span style="color:#f92672">(</span>len <span style="color:#f92672">-</span> i<span style="color:#f92672">,</span>len<span style="color:#f92672">);</span>
+
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>l_s1<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>r_s2<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> r_s1<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>l_s2<span style="color:#f92672">))</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+            i<span style="color:#f92672">++;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路三-2">思路三：</h6>
+<ul>
+<li>以下为leetcode大神解题思路</li>
+<li>如果 s2 是由 s1旋转而来，则 s1 + s1 必然包含 s2 ⚠️⚠️⚠️</li>
+<li>想到了字符串拼接可能能解决问题，没想到这种思路</li>
+<li>感觉费半天劲，牛逼的思路一行代码搞定了，差距非常大啊😓😓😓</li>
+<li>非常6，双百操作。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isFlipedString</span><span style="color:#f92672">(</span>String s1<span style="color:#f92672">,</span> String s2<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">((</span>s1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> s2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">||</span> <span style="color:#f92672">(</span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">&amp;&amp;</span> s2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">))</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>s1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> s2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> s1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">!=</span> s2<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">())</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+        
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>s1 <span style="color:#f92672">+</span> s1<span style="color:#f92672">).</span><span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>s2<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geqr3gck8qj30s406c0tl.jpg" alt="屏幕快照 2020-05-13 下午1.07.44"></p>
+<h4 id="面试题-0201-移除重复节点httpsleetcode-cncomproblemsremove-duplicate-node-lcci"><a href="https://leetcode-cn.com/problems/remove-duplicate-node-lcci/">面试题 02.01. 移除重复节点</a></h4>
+<h5 id="题解-6">题解：</h5>
+<p>思路一：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 思路一
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 用set存储，已经遍历过的元素
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 遍历节点，set中包含时，则删除节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// set中不包含时，将节点值加入set
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度O(N)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间复杂度O(N)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间换时间
+</span><span style="color:#75715e"></span>    HashSet<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> set <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;();</span>
+    <span style="color:#66d9ef">public</span> ListNode <span style="color:#a6e22e">removeDuplicateNodes</span><span style="color:#f92672">(</span>ListNode head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        ListNode prev <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        ListNode node <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">)){</span>
+                <span style="color:#75715e">// 删除node
+</span><span style="color:#75715e"></span>                prev<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                set<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">);</span>
+                prev <span style="color:#f92672">=</span> node<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            node <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> head<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路二-4">思路二：</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#75715e">// 思路二：
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 不使用额外的存储空间
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 两遍循环
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// [1, 2, 3, 3, 2, 1]
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度 : O(N ^ 2)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间复杂度 : O(1)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> ListNode <span style="color:#a6e22e">removeDuplicateNodes1</span><span style="color:#f92672">(</span>ListNode head<span style="color:#f92672">){</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>head <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+        ListNode node <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            ListNode cur <span style="color:#f92672">=</span> node<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span> <span style="color:#f92672">==</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                    cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+            node <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> head<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div>
     </div>
     <div class="post-footer">
       
