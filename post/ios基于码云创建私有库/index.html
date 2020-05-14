@@ -84,7 +84,7 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          1 min read
+          2 min read
         </div></div>
     </header>
     <div class="post-content">
@@ -206,6 +206,44 @@ $ git push --tags
 <h3 id="十二repo管理多个版本库">十二，repo管理多个版本库</h3>
 <p>重复执行 <strong>三 到 九</strong>步骤即可。</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geqmxh624qj307r09m41o.jpg" alt="屏幕快照 2020-05-13 上午10.54.54"></p>
+<h3 id="十二repo管理多个版本库-1">十二，repo管理多个版本库</h3>
+<p>重复执行 <strong>三 到 九</strong>步骤即可。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geqmxh624qj307r09m41o.jpg" alt="屏幕快照 2020-05-13 上午10.54.54"></p>
+<h3 id="十三私有库有依赖库">十三，私有库有依赖库</h3>
+<p>依然是重复 <strong>三 到 九</strong>步骤即可，不同之处, 需要以下几点</p>
+<ul>
+<li>
+<p>编辑  <strong>.podspec</strong> 文件</p>
+</li>
+<li>
+<p>指定依赖库, 如笔者依赖 SVProgressHUD</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">s<span style="color:#f92672">.</span>dependency <span style="color:#e6db74">&#39;SVProgressHUD&#39;</span>, <span style="color:#e6db74">&#39;~&gt;2.2.5&#39;</span>
+</code></pre></div></li>
+<li>
+<p>修改版本 s.version</p>
+</li>
+<li>
+<p>在第七步验证spec时，需要指定私有库的源 ，和cocoapods的源. (笔者直接使用清华的镜像源，速度更快)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> pod lib lint <span style="color:#f92672">--</span><span style="color:#66d9ef">private</span> <span style="color:#f92672">--</span>sources<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://gitee.com/zhang_xiong__fei/ZXFTools.git,https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git&#39;</span>
+</code></pre></div></li>
+<li>
+<p>第九步建立关联时，也需要指定源</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> pod repo push <span style="color:#66d9ef">ZXFRepo</span> <span style="color:#66d9ef">ZXFTool</span><span style="color:#f92672">.</span>podspec <span style="color:#f92672">--</span>sources<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://gitee.com/zhang_xiong__fei/ZXFTools.git,https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git&#39;</span>
+</code></pre></div></li>
+<li>
+<p>在使用私有库时，在项目的podfile中，依然需要指定源</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">source <span style="color:#e6db74">&#39;https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git&#39;</span>
+source <span style="color:#e6db74">&#39;https://gitee.com/zhang_xiong__fei/ZXFRepo&#39;</span>
+  
+target <span style="color:#e6db74">&#39;测试&#39;</span> <span style="color:#66d9ef">do</span>
+  <span style="color:#75715e"># Comment the next line if you don&#39;t want to use dynamic frameworks</span>
+  use_frameworks!
+  
+  pod <span style="color:#e6db74">&#39;ZXFTool&#39;</span>, <span style="color:#e6db74">&#39;~&gt; 0.1.1&#39;</span>
+  
+<span style="color:#66d9ef">end</span>
+</code></pre></div></li>
+</ul>
 
     </div>
     <div class="post-footer">

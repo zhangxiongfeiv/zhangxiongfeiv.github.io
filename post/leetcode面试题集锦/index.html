@@ -64,7 +64,7 @@
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          9 min read
+          12 min read
         </div></div>
     </header>
     <div class="post-content">
@@ -772,7 +772,241 @@ second = &ldquo;pal&rdquo;
 
         <span style="color:#66d9ef">return</span> head<span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
-</code></pre></div>
+</code></pre></div><h4 id="面试题-0202-返回倒数第-k-个节点httpsleetcode-cncomproblemskth-node-from-end-of-list-lcci">面试题 02.02. 返回倒数第 k 个节点](<a href="https://leetcode-cn.com/problems/kth-node-from-end-of-list-lcci/">https://leetcode-cn.com/problems/kth-node-from-end-of-list-lcci/</a>)</h4>
+<h5 id="题解-7">题解：</h5>
+<ul>
+<li>此题与 <strong>题目19</strong> 基本一样</li>
+<li>利用快慢指针思想</li>
+<li>开始快慢指针都指向head</li>
+<li>快指针往前走k步时，慢指针开始走</li>
+<li>当快指针指向null时，慢指针就指向第k个节点</li>
+<li>然后把 慢指针的val返回即可</li>
+</ul>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">kthToLast</span><span style="color:#f92672">(</span>ListNode head <span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> k<span style="color:#f92672">){</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">;</span>
+
+        ListNode fast <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        ListNode slow <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> step <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>fast <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>step <span style="color:#f92672">&gt;=</span> k<span style="color:#f92672">)</span> slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            fast <span style="color:#f92672">=</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            step <span style="color:#f92672">++;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="面试题-0203-删除中间节点httpsleetcode-cncomproblemsdelete-middle-node-lcci"><a href="https://leetcode-cn.com/problems/delete-middle-node-lcci/">面试题 02.03. 删除中间节点</a></h4>
+<blockquote>
+<p>实现一种算法，删除单向链表中间的某个节点（除了第一个和最后一个节点，不一定是中间节点），假定你只能访问该节点。</p>
+<p>示例：</p>
+<p>输入：单向链表a-&gt;b-&gt;c-&gt;d-&gt;e-&gt;f中的节点c
+结果：不返回任何数据，但该链表变为a-&gt;b-&gt;d-&gt;e-&gt;f</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/delete-middle-node-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-8">题解：</h5>
+<p>删除当前传入的中间节点(非第一个，和最后一个节点)，我们不知道其前驱元素，所以把当前传入元素的值，置为当前元素下一个元素的值，当前元素的next指向其next.next即可。</p>
+<p>代码如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deleteNode</span><span style="color:#f92672">(</span>ListNode node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        node<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">;</span>
+        node<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gerwl5m9snj30p2068752.jpg" alt="屏幕快照 2020-05-14 下午12.47.36"></p>
+<h4 id="面试题-0204-分割链表httpsleetcode-cncomproblemspartition-list-lcci"><a href="https://leetcode-cn.com/problems/partition-list-lcci/">面试题 02.04. 分割链表</a></h4>
+<blockquote>
+<p>编写程序以 x 为基准分割链表，使得所有小于 x 的节点排在大于或等于 x 的节点之前。如果链表中包含 x，x 只需出现在小于 x 的元素之后(如下所示)。分割元素 x 只需处于“右半部分”即可，其不需要被置于左右两部分之间。</p>
+<p>示例:</p>
+<p>输入: head = 3-&gt;5-&gt;8-&gt;5-&gt;10-&gt;2-&gt;1, x = 5
+输出: 3-&gt;1-&gt;2-&gt;10-&gt;5-&gt;5-&gt;8</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/partition-list-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-9">题解：</h5>
+<p>思路很简单:</p>
+<ul>
+<li>创建smallHead 串起来比 x小的节点</li>
+<li>创建bigHead 穿起来比 x 大的节点</li>
+<li>最后把 smallHead 和 bigHead 串起来返回即可</li>
+</ul>
+<p>代码如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> ListNode <span style="color:#a6e22e">partition</span><span style="color:#f92672">(</span>ListNode head<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> x<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        ListNode smallHead <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode<span style="color:#f92672">(-</span>1<span style="color:#f92672">);</span>
+        ListNode smallNode <span style="color:#f92672">=</span> smallHead<span style="color:#f92672">;</span>
+
+        ListNode bigHead <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode<span style="color:#f92672">(-</span>1<span style="color:#f92672">);</span>
+        ListNode bigNode <span style="color:#f92672">=</span> bigHead<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>head <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>head<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span> <span style="color:#f92672">&lt;</span> x<span style="color:#f92672">){</span>
+                smallNode<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+                smallNode <span style="color:#f92672">=</span> smallNode<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+                bigNode<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+                bigNode <span style="color:#f92672">=</span> bigNode<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            head <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        bigNode<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        smallNode<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> bigHead<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> smallHead<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>时间复杂度: O(N)</p>
+<p>空间复杂度 : O(N)</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gerxn21t4oj30ps078gme.jpg" alt="屏幕快照 2020-05-14 下午1.40.28"></p>
+<h4 id="面试题-0205-链表求和httpsleetcode-cncomproblemssum-lists-lcci"><a href="https://leetcode-cn.com/problems/sum-lists-lcci/">面试题 02.05. 链表求和</a></h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">给定两个用链表表示的整数<span style="color:#960050;background-color:#1e0010">，</span>每个节点包含一个数位<span style="color:#960050;background-color:#1e0010">。</span>
+
+这些数位是反向存放的<span style="color:#960050;background-color:#1e0010">，</span>也就是个位排在链表首部<span style="color:#960050;background-color:#1e0010">。</span>
+
+编写函数对这两个整数求和<span style="color:#960050;background-color:#1e0010">，</span>并用链表形式返回结果<span style="color:#960050;background-color:#1e0010">。</span>
+
+ 
+
+示例<span style="color:#960050;background-color:#1e0010">：</span>
+
+输入<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">(</span>7 <span style="color:#f92672">-&gt;</span> 1 <span style="color:#f92672">-&gt;</span> 6<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>5 <span style="color:#f92672">-&gt;</span> 9 <span style="color:#f92672">-&gt;</span> 2<span style="color:#f92672">)</span><span style="color:#960050;background-color:#1e0010">，</span>即617 <span style="color:#f92672">+</span> 295
+输出<span style="color:#960050;background-color:#1e0010">：</span>2 <span style="color:#f92672">-&gt;</span> 1 <span style="color:#f92672">-&gt;</span> 9<span style="color:#960050;background-color:#1e0010">，</span>即912
+进阶<span style="color:#960050;background-color:#1e0010">：</span>假设这些数位是正向存放的<span style="color:#960050;background-color:#1e0010">，</span>请再做一遍<span style="color:#960050;background-color:#1e0010">。</span>
+
+示例<span style="color:#960050;background-color:#1e0010">：</span>
+
+输入<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#f92672">(</span>6 <span style="color:#f92672">-&gt;</span> 1 <span style="color:#f92672">-&gt;</span> 7<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>2 <span style="color:#f92672">-&gt;</span> 9 <span style="color:#f92672">-&gt;</span> 5<span style="color:#f92672">)</span><span style="color:#960050;background-color:#1e0010">，</span>即617 <span style="color:#f92672">+</span> 295
+输出<span style="color:#960050;background-color:#1e0010">：</span>9 <span style="color:#f92672">-&gt;</span> 1 <span style="color:#f92672">-&gt;</span> 2<span style="color:#960050;background-color:#1e0010">，</span>即912
+
+来源<span style="color:#960050;background-color:#1e0010">：</span>力扣<span style="color:#960050;background-color:#1e0010">（</span>LeetCode<span style="color:#960050;background-color:#1e0010">）</span>
+链接<span style="color:#960050;background-color:#1e0010">：</span>https<span style="color:#f92672">:</span><span style="color:#75715e">//leetcode-cn.com/problems/sum-lists-lcci
+</span><span style="color:#75715e"></span>著作权归领扣网络所有<span style="color:#960050;background-color:#1e0010">。</span>商业转载请联系官方授权<span style="color:#960050;background-color:#1e0010">，</span>非商业转载请注明出处<span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><h5 id="题解-10">题解：</h5>
+<p>串链表</p>
+<ul>
+<li>初始化 newHead 作为新链表的虚拟头结点</li>
+<li>变量carry 记录是否上一个值有无进位</li>
+<li>当L1 或者 L2不为空时，遍历L1, L2</li>
+<li>当前sum = L1.val + L2.val + carry. 当然当L1 或者 L2 为空时，其值为0</li>
+<li>根据sum创建节点，拼接在newHead上</li>
+<li>遍历完毕，如果carry &gt; 0, 代表末尾需要拼上 carry</li>
+<li>最终返回 newHead.next</li>
+</ul>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> ListNode <span style="color:#a6e22e">addTwoNumbers</span><span style="color:#f92672">(</span>ListNode l1<span style="color:#f92672">,</span> ListNode l2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        ListNode newHead <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode<span style="color:#f92672">(-</span>1<span style="color:#f92672">);</span>
+        ListNode node <span style="color:#f92672">=</span> newHead<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">int</span> carry <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l1 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> l2 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>l1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> 0 <span style="color:#f92672">:</span> l1<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>l2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> 0 <span style="color:#f92672">:</span> l2<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> carry<span style="color:#f92672">;</span>
+            carry <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>sum <span style="color:#f92672">&gt;=</span> 10<span style="color:#f92672">){</span>
+                sum <span style="color:#f92672">-=</span> 10<span style="color:#f92672">;</span>
+                carry <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            node<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode<span style="color:#f92672">(</span>sum<span style="color:#f92672">);</span>
+            node <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+
+            l1 <span style="color:#f92672">=</span> l1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">:</span> l1<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            l2 <span style="color:#f92672">=</span> l2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">:</span> l2<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>carry <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">){</span>
+            node<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode<span style="color:#f92672">(</span>carry<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> newHead<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>时间复杂度: O(N)
+空间复杂度: O(N)</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ges3hnnib4j30ok05st9h.jpg" alt="屏幕快照 2020-05-14 下午5.04.33"></p>
+<h4 id="面试题-0206-回文链表httpsleetcode-cncomproblemspalindrome-linked-list-lcci"><a href="https://leetcode-cn.com/problems/palindrome-linked-list-lcci/">面试题 02.06. 回文链表</a></h4>
+<h5 id="题解-11">题解：</h5>
+<h6 id="思路一-3">思路一:</h6>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 使用栈，加入前一半元素，再与后一半元素逐个对比
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度 O(N) 遍历一遍链表元素
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间复杂度 O(N) 使用了额外的栈存储控件
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isPalindrome1</span><span style="color:#f92672">(</span>ListNode head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        Stack<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> stack <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stack<span style="color:#f92672">&lt;&gt;();</span>
+        ListNode slow <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        ListNode fast <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">// 前一半入栈
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>fast <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+
+            stack<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>slow<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">);</span>
+            slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            fast <span style="color:#f92672">=</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#75715e">// 说明节点总数是 单数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>fast <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">// 栈中元素和后一半元素对比
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 不一致， return false
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 全部一致， return true
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>slow <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>stack<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">()</span> <span style="color:#f92672">!=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+            slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路二-5">思路二：</h6>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#75715e">// 前边相同，找到链表中间节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 翻转中间节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 依次比较头结点 和 中间节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 有不一致的则 return false
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 全部都一致，则 return true
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度 : O(N) 遍历一整遍 链表
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间复杂度 : O(1) 没有使用额外内存控件
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isPalindrome</span><span style="color:#f92672">(</span>ListNode head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#75715e">// 找到中间元素
+</span><span style="color:#75715e"></span>        ListNode slow <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        ListNode fast <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>fast <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            fast <span style="color:#f92672">=</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#75715e">// 说明节点总数是 单数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>fast <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">// 翻转slow
+</span><span style="color:#75715e"></span>        ListNode newSlow <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>slow <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            ListNode tmp <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> newSlow<span style="color:#f92672">;</span>
+            newSlow <span style="color:#f92672">=</span> slow<span style="color:#f92672">;</span>
+            slow <span style="color:#f92672">=</span> tmp<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>newSlow <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>head<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span> <span style="color:#f92672">!=</span> newSlow<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+
+            head <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            newSlow <span style="color:#f92672">=</span> newSlow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>第二种算法明显比前一种算法更优秀， 时间复杂度都是O(N) ， 但是其空间复杂度优化至O(1). 在leetcode上提交代码后，也有所提现。</p>
+<p>如图，分别是方法一,方法二执行用时以及内存消耗</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ges4kw7hbjj30p405k751.jpg" alt="屏幕快照 2020-05-14 下午5.50.12"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ges4ih0qr9j30rg06aq3q.jpg" alt="屏幕快照 2020-05-14 下午5.43.39"></p>
+
     </div>
     <div class="post-footer">
       
