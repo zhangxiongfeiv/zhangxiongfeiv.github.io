@@ -64,7 +64,7 @@
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          15 min read
+          19 min read
         </div></div>
     </header>
     <div class="post-content">
@@ -1348,6 +1348,355 @@ queue.empty(); // 返回 false</p>
 
         <span style="color:#66d9ef">return</span> arrayList<span style="color:#f92672">.</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">(</span>ListNode<span style="color:#f92672">[]::</span><span style="color:#66d9ef">new</span><span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="110-平衡二叉树httpsleetcode-cncomproblemsbalanced-binary-tree"><a href="https://leetcode-cn.com/problems/balanced-binary-tree/">110. 平衡二叉树</a></h4>
+<blockquote>
+<p>给定一个二叉树，判断它是否是高度平衡的二叉树。</p>
+<p>本题中，一棵高度平衡二叉树定义为：</p>
+<p>一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。</p>
+<p>示例 1:</p>
+<p>给定二叉树 [3,9,20,null,null,15,7]</p>
+<pre><code>3
+</code></pre>
+<p>/<br>
+9  20
+/ <br>
+15   7
+返回 true 。</p>
+<p>示例 2:</p>
+<p>给定二叉树 [1,2,2,3,3,null,null,4,4]</p>
+<pre><code>   1
+  / \
+ 2   2
+/ \
+</code></pre>
+<p>3   3
+/<br>
+4   4
+返回 false 。</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/balanced-binary-tree
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-17">题解：</h5>
+<h6 id="思路一-5">思路一：</h6>
+<ul>
+<li>从头节点开始，计算节点高度，所有节点的左右节点高度差 &lt;=1 ,则平衡</li>
+<li>否则平衡</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 二叉树层序遍历，求节点高度
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">height1</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> height <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        Queue<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;();</span>
+        queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>root<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>queue<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+            <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>size <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">){</span>
+
+                TreeNode node <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+                size <span style="color:#f92672">--;</span>
+            <span style="color:#f92672">}</span>
+
+            height <span style="color:#f92672">++;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> height<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isBalanced1</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">boolean</span> isbalance <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">abs</span><span style="color:#f92672">(</span>height<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">-</span> height<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">))</span> <span style="color:#f92672">&lt;=</span> 1<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> isBalanced1<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> isBalanced1<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> isbalance<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路二-7">思路二：</h6>
+<ul>
+<li>上述方法中计算height存在大量冗余</li>
+<li>每次调用height时，同时计算其子树的高度</li>
+<li>但是自底向上计算，每个子树的高度智慧计算一次</li>
+<li>可以递归先计算当前节点子节点的高度</li>
+<li>然后通过子节点的高度判断当前节点是否平衡</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 思路二：
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 上述方法计算height存在大量冗余
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 每次调用height时，同时计算其子树的高度
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 但是自底向上计算，每个子树的高度只会计算一次
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 可以递归先计算当前节点子节点高度
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 然后通过子节点高度判断当前节点是否平衡
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> height<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">==</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> height<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>r <span style="color:#f92672">==</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">return</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">abs</span><span style="color:#f92672">(</span>r <span style="color:#f92672">-</span> l<span style="color:#f92672">)</span> <span style="color:#f92672">&lt;=</span> 1 <span style="color:#f92672">?</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>l<span style="color:#f92672">,</span>r<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 1 <span style="color:#f92672">:</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isBalanced</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">return</span> height<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="面试题-0405-合法二叉搜索树httpsleetcode-cncomproblemslegal-binary-search-tree-lcci"><a href="https://leetcode-cn.com/problems/legal-binary-search-tree-lcci/">面试题 04.05. 合法二叉搜索树</a></h4>
+<blockquote>
+<p>实现一个函数，检查一棵二叉树是否为二叉搜索树。</p>
+<p>示例 1:
+输入:
+2
+/<br>
+1   3
+输出: true
+示例 2:
+输入:
+5
+/<br>
+1   4
+/<br>
+3   6
+输出: false
+解释: 输入为: [5,1,4,null,null,3,6]。
+根节点的值为 5 ，但是其右子节点值为 4 。</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/legal-binary-search-tree-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-18">题解：</h5>
+<ul>
+<li>合法的二叉搜索树中序遍历的结果是升序的</li>
+<li>所以升序遍历二叉树，看是否是升序即可</li>
+<li>变量prev记录前一个中序遍历的节点</li>
+<li>当遍历的当前节点值 &lt;= prev时，不满足二叉搜索性质</li>
+<li>当遍历节点 &gt; prev 时，满足性质，将prev赋值为当前节点，遍历下一个元素</li>
+<li>中序遍历完毕，一直是升序，则为二叉搜索树</li>
+</ul>
+<h6 id="思路一-6">思路一：</h6>
+<p>递归</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">long</span> prev <span style="color:#f92672">=</span> Long<span style="color:#f92672">.</span><span style="color:#a6e22e">MIN_VALUE</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isValidBST</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">// 遍历左子节点
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isValidBST<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span> <span style="color:#f92672">&lt;=</span> prev<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+        prev <span style="color:#f92672">=</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">// 遍历右子节点
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> isValidBST<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h6 id="迭代">迭代</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+    <span style="color:#75715e">// 迭代
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">long</span> prev <span style="color:#f92672">=</span> Long<span style="color:#f92672">.</span><span style="color:#a6e22e">MIN_VALUE</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isValidBST1</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+
+        Stack<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">&gt;</span> stack <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stack<span style="color:#f92672">&lt;&gt;();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>stack<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()</span> <span style="color:#f92672">||</span> root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+                stack<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>root<span style="color:#f92672">);</span>
+                root <span style="color:#f92672">=</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            root <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">();</span>
+
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span> <span style="color:#f92672">&lt;=</span> prev<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+
+            prev <span style="color:#f92672">=</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">;</span>
+            root <span style="color:#f92672">=</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="面试题-0406-后继者httpsleetcode-cncomproblemssuccessor-lcci"><a href="https://leetcode-cn.com/problems/successor-lcci/">面试题 04.06. 后继者</a></h4>
+<blockquote>
+<p>设计一个算法，找出二叉搜索树中指定节点的“下一个”节点（也即中序后继）。</p>
+<p>如果指定节点没有对应的“下一个”节点，则返回null。</p>
+<p>示例 1:</p>
+<p>输入: root = [2,1,3], p = 1</p>
+<p>2
+/<br>
+1   3</p>
+<p>输出: 2
+示例 2:</p>
+<p>输入: root = [5,3,6,2,4,null,null,1], p = 6</p>
+<pre><code>  5
+ / \
+3   6
+</code></pre>
+<p>/<br>
+2   4
+/<br>
+1</p>
+<p>输出: null</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/successor-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-19">题解：</h5>
+<ul>
+<li>当p节点有右子树时，则其后继元素是p节点的右子树的最左子节点</li>
+<li>当p没有右子树时，中序遍历，找到其后继节点</li>
+</ul>
+<h6 id="思路一-7">思路一：</h6>
+<p>迭代</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 思路
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 当p节点有右子树时， 则其后继元素时p节点的右子树的最左子节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 当p节点没有左子树树，需中序遍历树，找到其后继节点
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> TreeNode <span style="color:#a6e22e">inorderSuccessor1</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">,</span> TreeNode p<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<span style="color:#75715e">//        // 有右子节点时，后继元素是当前元素右子节点 最左子节点
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>p<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            p <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>p<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> p <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">return</span> p<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#75715e">// 没有右子节点时，后继元素时当前元素的父节点
+</span><span style="color:#75715e"></span>        Stack<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">&gt;</span> stack <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stack<span style="color:#f92672">&lt;&gt;();</span>
+        <span style="color:#66d9ef">boolean</span> isNext <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>stack<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()</span> <span style="color:#f92672">||</span> root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                stack<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>root<span style="color:#f92672">);</span>
+                root <span style="color:#f92672">=</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            root <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isNext<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> root<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> p<span style="color:#f92672">)</span> isNext <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+
+            root <span style="color:#f92672">=</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路二-8">思路二：</h6>
+<p>递归</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+    <span style="color:#66d9ef">boolean</span> isnext <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+    TreeNode resnode <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> TreeNode <span style="color:#a6e22e">inorderSuccessor</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">,</span> TreeNode p<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> resnode<span style="color:#f92672">;</span>
+
+        inorderSuccessor<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">,</span>p<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isnext<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            resnode <span style="color:#f92672">=</span> root<span style="color:#f92672">;</span>
+            isnext <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> p<span style="color:#f92672">)</span> isnext <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+
+        inorderSuccessor<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">,</span>p<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> resnode<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="面试题-0408-首个共同祖先httpsleetcode-cncomproblemsfirst-common-ancestor-lcci"><a href="https://leetcode-cn.com/problems/first-common-ancestor-lcci/">面试题 04.08. 首个共同祖先</a></h4>
+<h5 id="题解-20">题解：</h5>
+<ul>
+<li>p或者q两个节点的首个共同祖先，要么是root，要么在root的左子树中，要么在root的右子树中</li>
+<li>递归， 当root为空时，返回null</li>
+<li>当root等于p 或者q时，返回root</li>
+</ul>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#75715e">// 思路
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 两个节点 p q的 首个公共祖先。有三种情况：要么是root，要么在root的左子树中,要么在root的右子树中
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 假设递归返回结果为，当root为空，返回null。  或者 root等于p 或者 q时，返回 root。
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> TreeNode <span style="color:#a6e22e">lowestCommonAncestor</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">,</span> TreeNode p<span style="color:#f92672">,</span> TreeNode q<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> root <span style="color:#f92672">==</span> p <span style="color:#f92672">||</span> root <span style="color:#f92672">==</span> q<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> root<span style="color:#f92672">;</span>
+
+      	<span style="color:#75715e">// left为null 或者p q中的一个
+</span><span style="color:#75715e"></span>        TreeNode left <span style="color:#f92672">=</span> lowestCommonAncestor<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">,</span> p<span style="color:#f92672">,</span> q<span style="color:#f92672">);</span>
+      
+	      <span style="color:#75715e">// right为null 或者p q中的一个
+</span><span style="color:#75715e"></span>        TreeNode right <span style="color:#f92672">=</span> lowestCommonAncestor<span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">,</span> p<span style="color:#f92672">,</span> q<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">// 如果left不为空,说明在左子树中找到了 p 或者 q
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 如果right不为空,说明在右子树中找到了 p 或者 q
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">// left 不为空 且 right不为空时，说明 p q分别在root的左右子树中，所以最终结果为root
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>left <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> right <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> root<span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">// left不为空 且 right为空， 说明right中不存在p 或者 q。 所以p 和 q都在left中
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">// left为空 且 right不为空，说明left中不存在p 或者 q。 说明 p 和 q都在right中
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> left <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> left <span style="color:#f92672">:</span> right<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="面试题-0410-检查子树httpsleetcode-cncomproblemscheck-subtree-lcci"><a href="https://leetcode-cn.com/problems/check-subtree-lcci/">面试题 04.10. 检查子树</a></h4>
+<blockquote>
+<p>检查子树。你有两棵非常大的二叉树：T1，有几万个节点；T2，有几万个节点。设计一个算法，判断 T2 是否为 T1 的子树。</p>
+<p>如果 T1 有这么一个节点 n，其子树与 T2 一模一样，则 T2 为 T1 的子树，也就是说，从节点 n 处把树砍断，得到的树与 T2 完全相同。</p>
+<p>示例1:</p>
+<p>输入：t1 = [1, 2, 3], t2 = [2]
+输出：true
+示例2:</p>
+<p>输入：t1 = [1, null, 2, 4], t2 = [3, 2]
+输出：false
+提示：</p>
+<p>树的节点数目范围为[0, 20000]。</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/check-subtree-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-21">题解：</h5>
+<h6 id="思路一-8">思路一：</h6>
+<ul>
+<li>二叉树同一种遍历方式，遍历后，结果拼接成字符串</li>
+<li>判断t1 生成的串， 是否包含t2生成的串</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">StringBuilder sb <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StringBuilder<span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">inorderTraversal</span><span style="color:#f92672">(</span>TreeNode node<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> sb<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">();</span>
+
+        inorderTraversal<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+        sb<span style="color:#f92672">.</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">);</span>
+        inorderTraversal<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> sb<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">checkSubTree1</span><span style="color:#f92672">(</span>TreeNode t1<span style="color:#f92672">,</span> TreeNode t2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        String s1 <span style="color:#f92672">=</span> inorderTraversal<span style="color:#f92672">(</span>t1<span style="color:#f92672">);</span>
+        sb<span style="color:#f92672">.</span><span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span>s1<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">());</span>
+
+        String s2 <span style="color:#f92672">=</span> inorderTraversal<span style="color:#f92672">(</span>t2<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> s1<span style="color:#f92672">.</span><span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>s2<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路二-9">思路二：</h6>
+<ul>
+<li>t2是t1的子树，有三种情况：
+<ul>
+<li>t1 与 t2一样</li>
+<li>t1 的左子树(包含左子树自身)中有与t2一样的树</li>
+<li>t1 的右子树(包含自身)中有与t2一样的树</li>
+</ul>
+</li>
+<li>不满足以上三种情况，则t2不为t1的子树</li>
+<li>以下递归实现</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 思路二：
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// t2 是 t1的子树，有三种情况。 1，t1与t2一样。2，t1.左子树中有与t2相等的树。 3，t1.右子树中有与t2相等的树
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 不满足以上三种情况，则t2不为t1的子树
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 以下递归实现
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isSameTree</span><span style="color:#f92672">(</span>TreeNode t1<span style="color:#f92672">,</span> TreeNode t2<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> t2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> t2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t1<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span> <span style="color:#f92672">!=</span> t2<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">return</span> isSameTree<span style="color:#f92672">(</span>t1<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">,</span>t2<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> isSameTree<span style="color:#f92672">(</span>t1<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">,</span> t2<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">checkSubTree</span><span style="color:#f92672">(</span>TreeNode t1<span style="color:#f92672">,</span> TreeNode t2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>t1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isSameTree<span style="color:#f92672">(</span>t1<span style="color:#f92672">,</span>t2<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">boolean</span> left <span style="color:#f92672">=</span> checkSubTree<span style="color:#f92672">(</span>t1<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">,</span> t2<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">boolean</span> right <span style="color:#f92672">=</span> checkSubTree<span style="color:#f92672">(</span>t1<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">,</span> t2<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> left <span style="color:#f92672">||</span> right<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
 </code></pre></div>
     </div>
     <div class="post-footer">
