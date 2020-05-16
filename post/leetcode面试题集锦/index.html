@@ -64,7 +64,7 @@
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          12 min read
+          15 min read
         </div></div>
     </header>
     <div class="post-content">
@@ -772,7 +772,7 @@ second = &ldquo;pal&rdquo;
 
         <span style="color:#66d9ef">return</span> head<span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
-</code></pre></div><h4 id="面试题-0202-返回倒数第-k-个节点httpsleetcode-cncomproblemskth-node-from-end-of-list-lcci">面试题 02.02. 返回倒数第 k 个节点](<a href="https://leetcode-cn.com/problems/kth-node-from-end-of-list-lcci/">https://leetcode-cn.com/problems/kth-node-from-end-of-list-lcci/</a>)</h4>
+</code></pre></div><h4 id="面试题-0202-返回倒数第-k-个节点httpsleetcode-cncomproblemskth-node-from-end-of-list-lcci"><a href="https://leetcode-cn.com/problems/kth-node-from-end-of-list-lcci/">面试题 02.02. 返回倒数第 k 个节点</a></h4>
 <h5 id="题解-7">题解：</h5>
 <ul>
 <li>此题与 <strong>题目19</strong> 基本一样</li>
@@ -1006,7 +1006,349 @@ second = &ldquo;pal&rdquo;
 <p>如图，分别是方法一,方法二执行用时以及内存消耗</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ges4kw7hbjj30p405k751.jpg" alt="屏幕快照 2020-05-14 下午5.50.12"></p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ges4ih0qr9j30rg06aq3q.jpg" alt="屏幕快照 2020-05-14 下午5.43.39"></p>
+<h4 id="面试题-0208-环路检测httpsleetcode-cncomproblemslinked-list-cycle-lcci"><a href="https://leetcode-cn.com/problems/linked-list-cycle-lcci/">面试题 02.08. 环路检测</a></h4>
+<blockquote>
+<p>给定一个有环链表，实现一个算法返回环路的开头节点。
+有环链表的定义：在链表中某个节点的next元素指向在它前面出现过的节点，则表明该链表存在环路。</p>
+<p>示例 1：</p>
+<p>输入：head = [3,2,0,-4], pos = 1
+输出：tail connects to node index 1
+解释：链表中有一个环，其尾部连接到第二个节点。</p>
+<p>示例 2：</p>
+<p>输入：head = [1,2], pos = 0
+输出：tail connects to node index 0
+解释：链表中有一个环，其尾部连接到第一个节点。</p>
+<p>示例 3：</p>
+<p>输入：head = [1], pos = -1
+输出：no cycle
+解释：链表中没有环。</p>
+<p>进阶：
+你是否可以不用额外空间解决此题？</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/linked-list-cycle-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-12">题解：</h5>
+<h6 id="思路一-4">思路一：</h6>
+<p>使用 set 存储遍历过的节点</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#75715e">// set存储遍历过的节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// head节点，依次往下遍历
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 遍历当前节点时，如果set中包含，当前节点就是 环路节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 遍历完链表，没有set中包含的，说明没环。 返回null
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 因为用到了额外set存储空间，所以时间复杂度比较高
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度 : O(N)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间复杂度 : O(N)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 题干中进阶 要求 ： 不使用额外存储空间
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 接下来我们尝试使用 O(1) 的时间复杂度 解决此题目
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> ListNode <span style="color:#a6e22e">delegeCycle1</span><span style="color:#f92672">(</span>ListNode head<span style="color:#f92672">){</span>
 
+        HashSet<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">&gt;</span> set <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>head <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+                set<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>head<span style="color:#f92672">);</span>
+                head <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>head<span style="color:#f92672">))</span> <span style="color:#66d9ef">return</span> head<span style="color:#f92672">;</span>
+            set<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>head<span style="color:#f92672">);</span>
+
+            head <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+</code></pre></div><h6 id="思路二-6">思路二：</h6>
+<p>快慢指针</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">		<span style="color:#75715e">// 快慢指针
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 快指针一次走两步，慢指针一次走两步
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 遍历链表， 条件当快指针不为空 且 快指针.next不为空时
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 遍历过程中如果slow == fast了，就说明链表有环
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 相等时，将slow指针置为head。 slow和fast均每次走一步，相遇时，即为环路节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 遍历完毕，一直没有相遇，无环，返回null
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度 : O(N)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间复杂度 : O(1)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> ListNode <span style="color:#a6e22e">detectCycle</span><span style="color:#f92672">(</span>ListNode head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        ListNode slow <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        ListNode fast <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>fast <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            fast <span style="color:#f92672">=</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>slow <span style="color:#f92672">==</span> fast<span style="color:#f92672">){</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>fast <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+        slow <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>slow <span style="color:#f92672">!=</span> fast<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            slow <span style="color:#f92672">=</span> slow<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            fast <span style="color:#f92672">=</span> fast<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> slow<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="面试题-0302-栈的最小值httpsleetcode-cncomproblemsmin-stack-lcci"><a href="https://leetcode-cn.com/problems/min-stack-lcci/">面试题 03.02. 栈的最小值</a></h4>
+<blockquote>
+<p>请设计一个栈，除了常规栈支持的pop与push函数以外，还支持min函数，该函数返回栈元素中的最小值。执行push、pop和min操作的时间复杂度必须为O(1)。</p>
+<p>示例：</p>
+<p>MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin();   &ndash;&gt; 返回 -3.
+minStack.pop();
+minStack.top();      &ndash;&gt; 返回 0.
+minStack.getMin();   &ndash;&gt; 返回 -2.</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/min-stack-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-13">题解：</h5>
+<ul>
+<li>使用两个栈</li>
+<li>一个保存正常值，一个保存最小值</li>
+<li>push时需要注意， 如果minStack不为空，则minStack入栈 minStack.peek() 和 val 的较小者</li>
+<li>getMin时，直接返回minStack中的较小者即可。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">		<span style="color:#75715e">// 利用两个栈，一个存放正常数据，一个存放最小数据
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// push的时候要注意，如果minStack不为空，minStack要入栈 其栈顶和当前元素中较小的
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// getMin时，直接返回minStack的栈顶元素即可
+</span><span style="color:#75715e"></span>    Stack<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> normalStack<span style="color:#f92672">;</span>
+    Stack<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> minStack<span style="color:#f92672">;</span>
+
+    <span style="color:#75715e">/** initialize your data structure here. */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">_面试题_03_02_栈的最小值</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+
+        normalStack <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stack<span style="color:#f92672">&lt;&gt;();</span>
+        minStack <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stack<span style="color:#f92672">&lt;&gt;();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        normalStack<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>x<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>minStack<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+            minStack<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>x<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            minStack<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>minStack<span style="color:#f92672">.</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">(),</span>x<span style="color:#f92672">));</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pop</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        normalStack<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">();</span>
+        minStack<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">top</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> normalStack<span style="color:#f92672">.</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getMin</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> minStack<span style="color:#f92672">.</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="面试题-0304-化栈为队httpsleetcode-cncomproblemsimplement-queue-using-stacks-lcci"><a href="https://leetcode-cn.com/problems/implement-queue-using-stacks-lcci/">面试题 03.04. 化栈为队</a></h4>
+<blockquote>
+<p>实现一个MyQueue类，该类用两个栈来实现一个队列。</p>
+<p>示例：</p>
+<p>MyQueue queue = new MyQueue();</p>
+<p>queue.push(1);
+queue.push(2);
+queue.peek();  // 返回 1
+queue.pop();   // 返回 1
+queue.empty(); // 返回 false</p>
+<p>说明：</p>
+<p>你只能使用标准的栈操作 &ndash; 也就是只有 push to top, peek/pop from top, size 和 is empty 操作是合法的。
+你所使用的语言也许不支持栈。你可以使用 list 或者 deque（双端队列）来模拟一个栈，只要是标准的栈操作即可。
+假设所有操作都是有效的 （例如，一个空的队列不会调用 pop 或者 peek 操作）。</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/implement-queue-using-stacks-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-14">题解：</h5>
+<ul>
+<li>使用两个队列实现栈</li>
+<li>push时，存入 q1</li>
+<li>pop
+<ul>
+<li>如果q2不为空，q2队头出队，再返回即可。</li>
+<li>如果q2为空，q1逐个出队列，入队q2。 然后q2队头出队，再返回即可</li>
+</ul>
+</li>
+<li>peek
+<ul>
+<li>基本同 pop. 将pop()  换为 peek() 即可</li>
+</ul>
+</li>
+<li>isEmpty
+<ul>
+<li>q1 和 q2都为空，则为空</li>
+<li>否则不为空</li>
+</ul>
+</li>
+</ul>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 利用两个队列 实现栈
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// push时，存入q1
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// pop时，如果q2不空， 则q2 移除队头元素并返回
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果 q2为空， 则将q1的元素依次出队，再入队q2。 最后q2移除队头元素并返回
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// peek ，同pop同理，只是将pop操作 换为 peek即可
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// isEmpty ， 如果q1 和 q2都为空，则为空。 否则不为空
+</span><span style="color:#75715e"></span>
+    Queue<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> q1<span style="color:#f92672">;</span>
+    Queue<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> q2<span style="color:#f92672">;</span>
+    <span style="color:#75715e">/** Initialize your data structure here. */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">_面试题_03_04_化栈为队</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+
+        q1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;();</span>
+        q2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/** Push element x to the back of queue. */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> x<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        q1<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>x<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/** Removes the element from in front of queue and returns that element. */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">pop</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>q2<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+            <span style="color:#66d9ef">return</span> q2<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>q1<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+            q2<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>q1<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> q2<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/** Get the front element. */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">peek</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>q2<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+            <span style="color:#66d9ef">return</span> q2<span style="color:#f92672">.</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>q1<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+            q2<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>q1<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span>  q2<span style="color:#f92672">.</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/** Returns whether the queue is empty. */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">empty</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> q1<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()</span> <span style="color:#f92672">&amp;&amp;</span> q2<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+</code></pre></div><h4 id="面试题-0402-最小高度树httpsleetcode-cncomproblemsminimum-height-tree-lcci"><a href="https://leetcode-cn.com/problems/minimum-height-tree-lcci/">面试题 04.02. 最小高度树</a></h4>
+<blockquote>
+<p>给定一个有序整数数组，元素各不相同且按升序排列，编写一个算法，创建一棵高度最小的二叉搜索树。</p>
+<p>示例:
+给定有序数组: [-10,-3,0,5,9],</p>
+<p>一个可能的答案是：[0,-3,9,-10,null,5]，它可以表示下面这个高度平衡二叉搜索树：</p>
+<pre><code>   0 
+  / \ 
+-3   9 
+/   / 
+</code></pre>
+<p>-10  5</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/minimum-height-tree-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-15">题解：</h5>
+<p>思路：</p>
+<ul>
+<li>升序数组，且生成二叉排序树</li>
+<li>所以树的根节点，必为数组的中间元素(总个数偶数的数组，中间左右均可)</li>
+<li>先取出树的根节点</li>
+<li>再分别递归计算其 左，右子树</li>
+</ul>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 思路：
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 因为是升序数组，且生成二叉排序树
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 所以树的根节点，是数组的中间元素(总个数为双数的数组，中间左右均可)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 先取出树的根节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 再分别递归计算其 左，右子树
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> TreeNode <span style="color:#a6e22e">sourtedArrayToBST</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> left<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> right<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>right <span style="color:#f92672">-</span> left <span style="color:#f92672">&lt;=</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>left <span style="color:#f92672">+</span> right<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">;</span>
+        TreeNode node <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode<span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>mid<span style="color:#f92672">]);</span>
+
+        node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> sourtedArrayToBST<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span>left<span style="color:#f92672">,</span>mid<span style="color:#f92672">);</span>
+        node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> sourtedArrayToBST<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span>mid<span style="color:#f92672">,</span>right<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> node<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    
+    <span style="color:#66d9ef">public</span> TreeNode <span style="color:#a6e22e">sortedArrayToBST</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> sourtedArrayToBST<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span>0<span style="color:#f92672">,</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="面试题-0403-特定深度节点链表httpsleetcode-cncomproblemslist-of-depth-lcci"><a href="https://leetcode-cn.com/problems/list-of-depth-lcci/">面试题 04.03. 特定深度节点链表</a></h4>
+<blockquote>
+<p>给定一棵二叉树，设计一个算法，创建含有某一深度上所有节点的链表（比如，若一棵树的深度为 D，则会创建出 D 个链表）。返回一个包含所有深度的链表的数组。</p>
+<p>示例：</p>
+<p>输入：[1,2,3,4,5,null,7,8]</p>
+<pre><code> 1
+/  \ 
+</code></pre>
+<p>2    3
+/ \    \
+4   5    7
+/
+8</p>
+<p>输出：[[1],[2,3],[4,5,7],[8]]</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/list-of-depth-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-16">题解：</h5>
+<ul>
+<li>二叉树层序遍历</li>
+<li>把每一层的数据串成一个链表</li>
+<li>将每一个链表加入数组</li>
+<li>最终返回数组即可</li>
+</ul>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#75715e">// 二叉树的层序遍历
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 把每一层的元素串成一个链表
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 将链表分别加入数组
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 最终返回数组即可
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> ListNode<span style="color:#f92672">[]</span> <span style="color:#a6e22e">listOfDepth</span><span style="color:#f92672">(</span>TreeNode tree<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>tree <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+        ArrayList<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">&gt;</span> arrayList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+        Queue<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;();</span>
+        queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>tree<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>queue<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+            <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span>
+
+            ListNode listnode <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode<span style="color:#f92672">(-</span>1<span style="color:#f92672">);</span>
+            ListNode cur <span style="color:#f92672">=</span> listnode<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>size <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">){</span>
+
+                TreeNode node <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+
+                cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">);</span>
+                cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+                size <span style="color:#f92672">--;</span>
+            <span style="color:#f92672">}</span>
+
+            arrayList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>listnode<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> arrayList<span style="color:#f92672">.</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">(</span>ListNode<span style="color:#f92672">[]::</span><span style="color:#66d9ef">new</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div>
     </div>
     <div class="post-footer">
       

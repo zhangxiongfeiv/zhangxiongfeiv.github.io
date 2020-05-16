@@ -242,6 +242,9 @@ target <span style="color:#e6db74">&#39;测试&#39;</span> <span style="color:#6
   pod <span style="color:#e6db74">&#39;ZXFTool&#39;</span>, <span style="color:#e6db74">&#39;~&gt; 0.1.1&#39;</span>
   
 <span style="color:#66d9ef">end</span>
+</code></pre></div><h3 id="十四忽略警告">十四：忽略警告</h3>
+<p>在验证 podspec 和 建立关联时，如果是警告而非错误导致的验证不通过，则可以加上 &ndash;allow-warnings解决. 例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> pod lib lint <span style="color:#f92672">--</span><span style="color:#66d9ef">private</span> <span style="color:#f92672">--</span>sources<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://gitee.com/zhang_xiong__fei/ZXFTools.git,https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git&#39;</span> <span style="color:#f92672">--</span>allow<span style="color:#f92672">-</span>warnings
 </code></pre></div></li>
 </ul>
 
