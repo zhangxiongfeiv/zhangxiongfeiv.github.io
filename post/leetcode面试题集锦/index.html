@@ -64,7 +64,7 @@
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          19 min read
+          20 min read
         </div></div>
     </header>
     <div class="post-content">
@@ -1697,6 +1697,80 @@ queue.empty(); // 返回 false</p>
         <span style="color:#66d9ef">return</span> left <span style="color:#f92672">||</span> right<span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
 
+</code></pre></div><h4 id="面试题-0801-三步问题httpsleetcode-cncomproblemsthree-steps-problem-lcci"><a href="https://leetcode-cn.com/problems/three-steps-problem-lcci/">面试题 08.01. 三步问题</a></h4>
+<blockquote>
+<p>三步问题。有个小孩正在上楼梯，楼梯有n阶台阶，小孩一次可以上1阶、2阶或3阶。实现一种方法，计算小孩有多少种上楼梯的方式。结果可能很大，你需要对结果模1000000007。</p>
+<p>示例1:</p>
+<p>输入：n = 3
+输出：4
+说明: 有四种走法
+示例2:</p>
+<p>输入：n = 5
+输出：13
+提示:</p>
+<p>n范围在[1, 1000000]之间</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/three-steps-problem-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-22">题解：</h5>
+<h6 id="思路一-9">思路一：</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 思路一：
+</span><span style="color:#75715e">// 递归
+</span><span style="color:#75715e">// 同斐波那契数列，递归解法存在大量重复的计算
+</span><span style="color:#75715e">// 递归解法，提交后，毫无疑问的超出时间限制
+</span><span style="color:#75715e">// 时间复杂度为指数级
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">waysToStep</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;=</span> 2<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> n<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">==</span> 3<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 4<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">((</span>waysToStep<span style="color:#f92672">(</span>n <span style="color:#f92672">-</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> waysToStep<span style="color:#f92672">(</span>n <span style="color:#f92672">-</span> 2<span style="color:#f92672">))</span> <span style="color:#f92672">%</span> 1000000007 <span style="color:#f92672">+</span> waysToStep<span style="color:#f92672">(</span>n <span style="color:#f92672">-</span> 3<span style="color:#f92672">))</span> <span style="color:#f92672">%</span> 1000000007<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路二-10">思路二：</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 思路二
+</span><span style="color:#75715e">// 动态规划 递推
+</span><span style="color:#75715e">// 用dp数组记录，前n - 1阶，需要的步数
+</span><span style="color:#75715e">// 第 n 阶，需要的步数就是 dp数组中 n - 1, n - 2, n - 3 的和
+</span><span style="color:#75715e">// 时间复杂度 : O(N)
+</span><span style="color:#75715e">// 空间复杂度 : O(N)，因为使用了dp数组存储之前结果
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">waysToStep1</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;=</span> 2<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> n<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">==</span> 3<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 4<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>n<span style="color:#f92672">];</span>
+    dp<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+    dp<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 2<span style="color:#f92672">;</span>
+    dp<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 4<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 3<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> n<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">((</span>dp<span style="color:#f92672">[</span>i <span style="color:#f92672">-</span> 1<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> dp<span style="color:#f92672">[</span>i <span style="color:#f92672">-</span> 2<span style="color:#f92672">])</span> <span style="color:#f92672">%</span> 1000000007 <span style="color:#f92672">+</span> dp<span style="color:#f92672">[</span>i <span style="color:#f92672">-</span> 3<span style="color:#f92672">])</span> <span style="color:#f92672">%</span> 1000000007<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">return</span> dp<span style="color:#f92672">[</span>n <span style="color:#f92672">-</span> 1<span style="color:#f92672">];</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路三-3">思路三：</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 思路二
+</span><span style="color:#75715e">// 动态规划 递推
+</span><span style="color:#75715e">// 上个解法看出，貌似不需要使用数组记录之前结果
+</span><span style="color:#75715e">// 因为计算的当前结果，用到的知识前三个结果
+</span><span style="color:#75715e">// 下边我们尝试使用三个变量记录，优化空间复杂度
+</span><span style="color:#75715e">// 时间复杂度 : O(N)
+</span><span style="color:#75715e">// 空间复杂度 : O(1)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">waysToStep2</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;=</span> 2<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> n<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">==</span> 3<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 4<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 1<span style="color:#f92672">,</span> b <span style="color:#f92672">=</span> 2<span style="color:#f92672">,</span> c <span style="color:#f92672">=</span> 4<span style="color:#f92672">,</span> result <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 3<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> n<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        result <span style="color:#f92672">=</span> <span style="color:#f92672">((</span>a <span style="color:#f92672">+</span> b<span style="color:#f92672">)</span> <span style="color:#f92672">%</span> 1000000007 <span style="color:#f92672">+</span> c<span style="color:#f92672">)</span> <span style="color:#f92672">%</span> 1000000007<span style="color:#f92672">;</span>
+
+        a <span style="color:#f92672">=</span> b<span style="color:#f92672">;</span>
+        b <span style="color:#f92672">=</span> c<span style="color:#f92672">;</span>
+        c <span style="color:#f92672">=</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
 </code></pre></div>
     </div>
     <div class="post-footer">
