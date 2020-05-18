@@ -64,7 +64,7 @@
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          20 min read
+          24 min read
         </div></div>
     </header>
     <div class="post-content">
@@ -1771,6 +1771,301 @@ queue.empty(); // 返回 false</p>
 
     <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
 <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="面试题-0803-魔术索引httpsleetcode-cncomproblemsmagic-index-lcci"><a href="https://leetcode-cn.com/problems/magic-index-lcci/">面试题 08.03. 魔术索引</a></h4>
+<blockquote>
+<p>魔术索引。 在数组A[0&hellip;n-1]中，有所谓的魔术索引，满足条件A[i] = i。给定一个有序整数数组，编写一种方法找出魔术索引，若有的话，在数组A中找出一个魔术索引，如果没有，则返回-1。若有多个魔术索引，返回索引值最小的一个。</p>
+<p>示例1:</p>
+<p>输入：nums = [0, 2, 3, 4, 5]
+输出：0
+说明: 0下标的元素为0
+示例2:</p>
+<p>输入：nums = [1, 1, 1]
+输出：1
+提示:</p>
+<p>nums长度在[1, 1000000]之间</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/magic-index-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-23">题解：</h5>
+<h6 id="思路一-10">思路一：</h6>
+<p>暴力法，从前往后暴力迭代，比较下标和数字值是否相同，相同则返回，找到末尾均未发现，则返回 -1.</p>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">findMagicIndex1</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">])</span> <span style="color:#66d9ef">return</span> i<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>时间复杂度 : O(n)</p>
+<p>空间复杂度 : O(1)</p>
+<h6 id="思路二-11">思路二：</h6>
+<ul>
+<li>二分查找，先找到mid的下标</li>
+<li>如果mid == nums[mid] , 继续在mid的前边找</li>
+<li>否则分别在mid的左边和右边查找结果。</li>
+</ul>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> left <span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> right<span style="color:#f92672">){</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>left <span style="color:#f92672">&gt;=</span> right<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>left <span style="color:#f92672">+</span> right<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>mid<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> mid<span style="color:#f92672">){</span>
+            <span style="color:#75715e">// 找到相同的
+</span><span style="color:#75715e"></span>            res <span style="color:#f92672">=</span> mid<span style="color:#f92672">;</span>
+            <span style="color:#75715e">// 在左边继续找较小的结果
+</span><span style="color:#75715e"></span>            search<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span> left<span style="color:#f92672">,</span> mid<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+            <span style="color:#75715e">// 没有相同的，先找左边
+</span><span style="color:#75715e"></span>            search<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span> left<span style="color:#f92672">,</span> mid<span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>res <span style="color:#f92672">==</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">){</span>
+                <span style="color:#75715e">// 左边没找到，在右边找
+</span><span style="color:#75715e"></span>                search<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span> mid <span style="color:#f92672">+</span> 1<span style="color:#f92672">,</span> right<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 二分查找
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">findMagicIndex</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">){</span>
+
+        search<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span>0<span style="color:#f92672">,</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> res<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+</code></pre></div><h4 id="面试题-1001-合并排序的数组httpsleetcode-cncomproblemssorted-merge-lcci"><a href="https://leetcode-cn.com/problems/sorted-merge-lcci/">面试题 10.01. 合并排序的数组</a></h4>
+<blockquote>
+<p>给定两个排序后的数组 A 和 B，其中 A 的末端有足够的缓冲空间容纳 B。 编写一个方法，将 B 合并入 A 并排序。</p>
+<p>初始化 A 和 B 的元素数量分别为 m 和 n。</p>
+<p>示例:</p>
+<p>输入:
+A = [1,2,3,0,0,0], m = 3
+B = [2,5,6],       n = 3</p>
+<p>输出: [1,2,2,3,5,6]
+说明:</p>
+<p>A.length == n + m</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/sorted-merge-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-24">题解：</h5>
+<ul>
+<li>
+<h6 id="双指针-m和n分别指向数组a-和-b的末尾">双指针， m和n分别指向数组A 和 B的末尾</h6>
+</li>
+<li>
+<p>从后往前开始比较，较大者放入m + n - 1的位置</p>
+</li>
+<li>
+<p>并将较大者的指针往前移动一位</p>
+</li>
+<li>
+<p>直到m 和 n 两个指针都移动到末尾</p>
+</li>
+<li>
+<p>当m为0，且n不为0时，说明元素已经全部合并的A中，直接break</p>
+</li>
+<li>
+<p>当n为0，且m不为0时，说明A中的元素已全部合并，则依次把B中的元素合并到A中</p>
+</li>
+<li>
+<p>排序后的数组放入A中，因为A的存储空间时足够的</p>
+</li>
+<li>
+<p>时间复杂度: O(m + n)</p>
+</li>
+<li>
+<p>空间复杂度: O(1)</p>
+</li>
+</ul>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> A<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> m<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> B<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>m <span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">||</span> n <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>m <span style="color:#f92672">==</span> 0<span style="color:#f92672">){</span>
+                A<span style="color:#f92672">[</span>n <span style="color:#f92672">-</span> 1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> B<span style="color:#f92672">[</span>n <span style="color:#f92672">-</span> 1<span style="color:#f92672">];</span>
+                n <span style="color:#f92672">--;</span>
+                <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">==</span> 0<span style="color:#f92672">){</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> A<span style="color:#f92672">[</span>m <span style="color:#f92672">-</span> 1<span style="color:#f92672">];</span>
+            <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> B<span style="color:#f92672">[</span>n <span style="color:#f92672">-</span> 1<span style="color:#f92672">];</span>
+
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>a <span style="color:#f92672">&gt;</span> b<span style="color:#f92672">){</span>
+                A<span style="color:#f92672">[</span>m <span style="color:#f92672">+</span> n <span style="color:#f92672">-</span> 1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> a<span style="color:#f92672">;</span>
+                m <span style="color:#f92672">--;</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                A<span style="color:#f92672">[</span>m <span style="color:#f92672">+</span> n <span style="color:#f92672">-</span> 1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> b<span style="color:#f92672">;</span>
+                n <span style="color:#f92672">--;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="面试题-1617-连续数列httpsleetcode-cncomproblemscontiguous-sequence-lcci"><a href="https://leetcode-cn.com/problems/contiguous-sequence-lcci/">面试题 16.17. 连续数列</a></h4>
+<blockquote>
+<p>给定一个整数数组，找出总和最大的连续数列，并返回总和。</p>
+<p>示例：</p>
+<p>输入： [-2,1,-3,4,-1,2,1,-5,4]
+输出： 6
+解释： 连续子数组 [4,-1,2,1] 的和最大，为 6。
+进阶：</p>
+<p>如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/contiguous-sequence-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-25">题解：</h5>
+<h6 id="思路一-11">思路一：</h6>
+<p>动态规划</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxSubArray</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">// dp数组表示，以第i结尾的连续数列的最大和
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">];</span>
+        dp<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>0<span style="color:#f92672">];</span>
+        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>0<span style="color:#f92672">];</span>
+
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// 以i结尾的连续数列的最大和，为 两者nums[i] 和 dp[i - 1] + nums[i] 中的较大值
+</span><span style="color:#75715e"></span>            dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>i <span style="color:#f92672">-</span> 1<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">],</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]);</span>
+            result <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>result<span style="color:#f92672">,</span> dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路二-12">思路二：</h6>
+<p>空间复杂度的优化</p>
+<pre><code>    // 优化空间复杂度
+    // 上述题解中看出，dp数组中的元素我们只利用了 dp[i - 1] 也就是上一个元素
+    // 所以可以用一个变量 代替数组记录之前的值即可
+    // 时间复杂度仍然是 O(N)
+    // 空间复杂度优化为 O(1)
+    public int maxSubArray1(int[] nums) {
+        if (nums.length == 0) return 0;
+
+        // dp数组表示，以第i结尾的连续数列的最大和
+        int prev = nums[0];
+        int result = nums[0];
+
+        for (int i = 1; i &lt; nums.length; i++) {
+            // 以i结尾的连续数列的最大和，为 两者nums[i] 和 dp[i - 1] + nums[i] 中的较大值
+            prev = Math.max(prev + nums[i], nums[i]);
+            result = Math.max(result, prev);
+        }
+
+        return result;
+    }
+
+</code></pre><h6 id="思路三-4">思路三：</h6>
+<p>分治策略</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 和最大的连续数列，要么在 nums中心的左边，要么在nums中心的右边， 要么包含中心
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 左右两遍的最大值，由递归求出
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 包含mid的最大值，分别计算mid左边 和 右边相加得出
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度 : O(log N)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间复杂度 : O(1)
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// 左闭右开
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxSubArrayRange</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> left <span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> right<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>right <span style="color:#f92672">-</span> left <span style="color:#f92672">&lt;</span> 2<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> nums<span style="color:#f92672">[</span>left<span style="color:#f92672">];</span>
+
+        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>left <span style="color:#f92672">+</span> right<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">// 左边范围的最大值
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> maxSubArrayRange<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span> left<span style="color:#f92672">,</span> mid<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">// 右边范围的最大值
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> maxSubArrayRange<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span> mid<span style="color:#f92672">,</span> right<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">// 包含 mid 元素的最大值
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 包含mid 左边的最大值
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> leftSum <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>mid <span style="color:#f92672">-</span> 1<span style="color:#f92672">];</span>
+        <span style="color:#66d9ef">int</span> leftMax <span style="color:#f92672">=</span> leftSum<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> mid <span style="color:#f92672">-</span> 2<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;=</span> left<span style="color:#f92672">;</span> i<span style="color:#f92672">--)</span> <span style="color:#f92672">{</span>
+            leftSum <span style="color:#f92672">+=</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+            leftMax <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>leftSum<span style="color:#f92672">,</span> leftMax<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#75715e">// 包含mid 右边的最大值
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> rightSum <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>mid<span style="color:#f92672">];</span>
+        <span style="color:#66d9ef">int</span> rightMax <span style="color:#f92672">=</span> rightSum<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> mid <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> right<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            rightSum <span style="color:#f92672">+=</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+            rightMax <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>rightSum<span style="color:#f92672">,</span> rightMax<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>l<span style="color:#f92672">,</span>r<span style="color:#f92672">),</span>leftMax <span style="color:#f92672">+</span> rightMax<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+</code></pre></div><h4 id="面试题-1716-按摩师httpsleetcode-cncomproblemsthe-masseuse-lcci"><a href="https://leetcode-cn.com/problems/the-masseuse-lcci/">面试题 17.16. 按摩师</a></h4>
+<blockquote>
+<p>一个有名的按摩师会收到源源不断的预约请求，每个预约都可以选择接或不接。在每次预约服务之间要有休息时间，因此她不能接受相邻的预约。给定一个预约请求序列，替按摩师找到最优的预约集合（总预约时间最长），返回总的分钟数。</p>
+<p>注意：本题相对原题稍作改动</p>
+<p>示例 1：</p>
+<p>输入： [1,2,3,1]
+输出： 4
+解释： 选择 1 号预约和 3 号预约，总时长 = 1 + 3 = 4。
+示例 2：</p>
+<p>输入： [2,7,9,3,1]
+输出： 12
+解释： 选择 1 号预约、 3 号预约和 5 号预约，总时长 = 2 + 9 + 1 = 12。
+示例 3：</p>
+<p>输入： [2,1,4,5,3,1,1,3]
+输出： 12
+解释： 选择 1 号预约、 3 号预约、 5 号预约和 8 号预约，总时长 = 2 + 4 + 3 + 3 = 12。</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/the-masseuse-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-26">题解：</h5>
+<h6 id="思路一-12">思路一：</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 动态规划
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 跟打家劫舍一模一样
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 定义dp数组，第i为表示，前i次预约能预约的最大时间
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 状态转移方程
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// dp[i] 为 如果抢 i, 则dp[i] 为 dp[i - 2] + nums[i].
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果不抢 i, 则 dp[i] 为dp[i - 1]
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度 : O(N)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间复杂度 : O(N)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">massage</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> nums<span style="color:#f92672">[</span>0<span style="color:#f92672">];</span>
+
+        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">];</span>
+        dp<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>0<span style="color:#f92672">];</span>
+        dp<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>0<span style="color:#f92672">],</span> nums<span style="color:#f92672">[</span>1<span style="color:#f92672">]);</span>
+
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 2<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>i <span style="color:#f92672">-</span> 1<span style="color:#f92672">],</span> dp<span style="color:#f92672">[</span>i <span style="color:#f92672">-</span> 2<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> dp<span style="color:#f92672">[</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">];</span>
+    <span style="color:#f92672">}</span>
+
+</code></pre></div><h6 id="思路二-13">思路二：</h6>
+<p>空间复杂度的优化</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 空间复杂度优化
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 上面的解题过程中，dp数组我们只用到了 i-1 和 i-2两个变量
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 所以我们尝试使用两个变量记录前值，代替数组
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 优化空间复杂度
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 时间复杂度 仍然是 O(N)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 空间复杂度 O(1)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">massage1</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> nums<span style="color:#f92672">[</span>0<span style="color:#f92672">];</span>
+
+        <span style="color:#66d9ef">int</span> first <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>0<span style="color:#f92672">];</span>
+        <span style="color:#66d9ef">int</span> second <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>0<span style="color:#f92672">],</span> nums<span style="color:#f92672">[</span>1<span style="color:#f92672">]);</span>
+
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 2<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>second<span style="color:#f92672">,</span> first <span style="color:#f92672">+</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]);</span>
+            first <span style="color:#f92672">=</span> second<span style="color:#f92672">;</span>
+            second <span style="color:#f92672">=</span> tmp<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> second<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
 </code></pre></div>
     </div>
     <div class="post-footer">
