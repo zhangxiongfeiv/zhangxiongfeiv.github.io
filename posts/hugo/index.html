@@ -10,7 +10,7 @@
         content="张雄飞"/>
 
   
-  <meta name="description" content="Hugo theme zozo example site."/>
+  <meta name="description" content="Mac环境下安装Hugo 第一步：安装hugo mac环境下用homebrew工具安装hugo，一句命令即可 $ brew install hugo 第二步：生成站点 利用brew生成站点，(比如生成在myblog目录下)执行如下命令 $ hugo new"/>
   
 
   
@@ -19,13 +19,11 @@
   
 
   
-  <link rel="canonical" href="https://zhangxiongfeiv.github.io/categories/"/>
+  <link rel="canonical" href="https://zhangxiongfeiv.github.io/posts/hugo/"/>
 
   
-  <link rel="alternate" type="application/rss&#43;xml" href="https://zhangxiongfeiv.github.io/categories/index.xml">
-  
 
-  <title>Categories &middot; 无尽光芒</title>
+  <title>Hugo基本使用 &middot; 无尽光芒</title>
 
   <link rel="shortcut icon" href="https://zhangxiongfeiv.github.io/images/favicon.ico"/>
   <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/animate.min.css"/>
@@ -91,13 +89,52 @@
 </div>
 
   <div class="content">
-    <div class="page_tags">
-      <ul>
-        
-        
-      </ul>
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/hugo/'>Hugo基本使用</a></h2>
+          <span class="date">2017.03.06</span>
+        </div>
+        <div class="post_content markdown"><h3 id="mac环境下安装hugo">Mac环境下安装Hugo</h3>
+<h3 id="第一步安装hugo">第一步：安装hugo</h3>
+<p>mac环境下用homebrew工具安装hugo，一句命令即可</p>
+<pre><code>$ brew install hugo
+</code></pre><h3 id="第二步生成站点">第二步：生成站点</h3>
+<p>利用brew生成站点，(比如生成在myblog目录下)执行如下命令</p>
+<pre><code>$ hugo new site myblog
+</code></pre><h3 id="第三步创建文章">第三步：创建文章</h3>
+<p>创建的文章一般放在post下， 方便之后聚合生成页面。</p>
+<pre><code>$ hugo new post/文章名称.md
+</code></pre><p>文章内容为MArkDown格式，可用vim命令编辑，亦可以其他编辑器如Typora等编辑。</p>
+<h3 id="第四步安装主题">第四步：安装主题</h3>
+<p><a href="https://themes.gohugo.io">去官网</a>找喜欢的主题，<a href="https://themes.gohugo.io/hugo-tailwind-journal/">本文以Tailwind Journal</a>为例。</p>
+<p>找到其github地址，将其克隆到Themes/目录下</p>
+<pre><code>$ cd Themes
+$ git clone https://github.com/ianrodrigues/hugo-tailwind-journal.git
+</code></pre><h3 id="第五步运行站点">第五步：运行站点</h3>
+<p>在myblog目录下，执行一下命令</p>
+<pre><code>$ hugo server -t hugo-tailwind-journal —buildDrafts
+</code></pre><p>运行站点后，可以在本地测试 http://localhost:1313</p>
+<h3 id="第六步部署到github公网">第六步：部署到Github公网</h3>
+<p>1，首先在Github上创建一个仓库， 这里⚠️注意仓库名称需要和Github用户名一致，并拼接上.github.io  后缀。如下图:</p>
+<p><!-- raw HTML omitted --></p>
+<p>2，在站点根目录下，执行命令生成页面。</p>
+<pre><code>$ hugo --theme=hugo-tailwind-journal --baseUrl=&quot;https://zhangxiongfeiv.github.io&quot; --buildDrafts
+</code></pre><p>3, 执行完毕，会生成public文件夹，所有的静态页面存放在此。将public目录下所有文件push到刚刚创建Git仓库master目录下。</p>
+<pre><code>$ cd public
+$ git init
+$ git remote add origin https://github.com/zhangxiongfeiv/zhangxiongfeiv.github.io.git
+$ git add .
+$ git commit -m &quot;&quot;
+$ git push -u origin master
+</code></pre></div>
+        <div class="post_footer">
+          
+        </div>
+      </div>
+      
+      
     </div>
-    <div class="pagination"></div>
   </div>
   <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
 </div>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="张雄飞"/>
+
+  
+  <meta name="description" content="首先看一到leetcode题目:斐波那契数列。 509. 斐波那契数 斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是： F(0) = 0, F(1) = 1 F(N) = F(N - 1)"/>
+  
+
+  
+  
+  <meta name="keywords" content="Hugo, theme, zozo"/>
+  
+
+  
+  <link rel="canonical" href="https://zhangxiongfeiv.github.io/posts/%E5%A4%8D%E6%9D%82%E5%BA%A6/"/>
+
+  
+
+  <title>数据结构学习 --&gt; 算法评判标准 &middot; 无尽光芒</title>
+
+  <link rel="shortcut icon" href="https://zhangxiongfeiv.github.io/images/favicon.ico"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/animate.min.css"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/remixicon.css"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/zozo.css"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/about/">关于</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="https://zhangxiongfeiv.github.io">
+          <span>无尽光芒</span>
+          <img src="https://zhangxiongfeiv.github.io/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title">iOS Developer, 喜欢逆向, 偶尔刷题...</p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/zhangxiongfeiv/" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/%E5%A4%8D%E6%9D%82%E5%BA%A6/'>数据结构学习 --&gt; 算法评判标准</a></h2>
+          <span class="date">2020.04.08</span>
+        </div>
+        <div class="post_content markdown"><p>首先看一到leetcode题目:斐波那契数列。</p>
+<h4 id="509-斐波那契数httpsleetcode-cncomproblemsfibonacci-number"><a href="https://leetcode-cn.com/problems/fibonacci-number/">509. 斐波那契数</a></h4>
+<blockquote>
+<p>斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：</p>
+<p>F(0) = 0,   F(1) = 1
+F(N) = F(N - 1) + F(N - 2), 其中 N &gt; 1.
+给定 N，计算 F(N)。</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/fibonacci-number
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<p>解法一 : 本题非常明显可以通过递归来解决，代码如下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fib</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">){</span>
+		<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;=</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> n<span style="color:#f92672">;</span>
+  	<span style="color:#66d9ef">return</span> fib<span style="color:#f92672">(</span>n<span style="color:#f92672">-</span>1<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> fib<span style="color:#f92672">(</span>n<span style="color:#f92672">-</span>2<span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>但是这种方式在代码提交后，测试用例43超时，而题目给出的要求是[0,100]之内的数字,很明显算法需要优化。算法时间复杂度为O(2 ^ n), 空间复杂度为O(1).</p>
+<p>接下来，我们尝试换一种算法解题</p>
+<p>解法二 : 动态规划思想,利用dp数组存放每一位上斐波那契数列的值。</p>
+<p>步骤： 1，定义初始化状态. dp[0] = 0; dp[1] = 1;</p>
+<p>​			2,  定义状态转移方程,非常容易得出结论. dp[n] = dp[n-1] + dp[n-2];</p>
+<p>代码如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fib</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    	<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;=</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> n<span style="color:#f92672">;</span>
+  		<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>n <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
+	  	dp<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+  		dp<span style="color:#f92672">[</span>1<span style="color:#f92672">]=</span> 1<span style="color:#f92672">;</span>
+  		<span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>2<span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;=</span> n<span style="color:#f92672">;</span> i<span style="color:#f92672">++){</span>
+     	 		dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> dp<span style="color:#f92672">[</span>i<span style="color:#f92672">-</span>2<span style="color:#f92672">])</span> <span style="color:#f92672">%</span> 1000000007<span style="color:#f92672">;</span>
+    	<span style="color:#f92672">}</span>
+    	<span style="color:#66d9ef">return</span> dp<span style="color:#f92672">[</span>n<span style="color:#f92672">];</span>
+ <span style="color:#f92672">}</span>
+</code></pre></div><p>算法时间复杂度为O(n),空间复杂度为O(n).</p>
+<p>解法三 ：优化空间复杂度，观察题目的值，第n位的值，只与第n-1位 和 第n-2位的值有关，所以是不是可以保存两个变量得出最终结果？</p>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">fib</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    	<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;=</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> n<span style="color:#f92672">;</span>
+  		<span style="color:#66d9ef">int</span> first <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+  		<span style="color:#66d9ef">int</span> second <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+  		<span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>2<span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;=</span> n<span style="color:#f92672">;</span> i<span style="color:#f92672">++){</span>
+					<span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> first<span style="color:#f92672">;</span>
+					first <span style="color:#f92672">=</span> second<span style="color:#f92672">;</span>
+					second <span style="color:#f92672">+=</span> tmp<span style="color:#f92672">;</span>
+    	<span style="color:#f92672">}</span>
+    	<span style="color:#66d9ef">return</span> second<span style="color:#f92672">;</span>
+ <span style="color:#f92672">}</span>
+</code></pre></div><p>如上，以两个变量记录前值，算法时间复杂度同为 O(n)，空间复杂度从O(n)降低到 O(1).</p>
+<h3 id="如何评判一个算法的好坏">如何评判一个算法的好坏？</h3>
+<p>从上述三种算法，可见算法的好坏，执行效率上会有很大差距， 所以如何评判一个算法的好坏？</p>
+<p>有以下评判标准，</p>
+<p><!-- raw HTML omitted -->正确性，可读性， 健壮性（对不合理输入的反应能力和处理能力）<!-- raw HTML omitted --></p>
+<p><strong>时间复杂度：估算程序指令的执行次数（执行时间）。</strong></p>
+<p>#大O表示法</p>
+<p>一般用大O表示法来描述复杂度，它表示的是数据规模n对应的复杂度</p>
+<p>忽略常数，系数，低阶 ，一般有 O(1)常数阶, O(logN)对数阶,O(n)线性阶,O(n ^ 2)平芳接,O(n ^ 3)立方阶,O(2 ^ n)指数阶等.</p>
+<p><strong>空间复杂度：估算所需占用的存储空间。</strong></p>
+<h4 id="算法的优化方向">算法的优化方向：</h4>
+<p>1，用尽量少的存储空间</p>
+<p>2，用尽量少的执行步骤（执行时间）</p>
+<p>3，根据情况 可以空间换时间 或者 时间换空间</p>
+</div>
+        <div class="post_footer">
+          
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>我的精神家园</span>
+  </div>
+</footer>
+
+
+
+<script src="https://zhangxiongfeiv.github.io/js/jquery-3.3.1.min.js"></script>
+<script src="https://zhangxiongfeiv.github.io/js/zozo.js"></script>
+<script src="https://zhangxiongfeiv.github.io/js/highlight.pack.js"></script>
+<link  href="https://zhangxiongfeiv.github.io/css/fancybox.min.css" rel="stylesheet">
+<script src="https://zhangxiongfeiv.github.io/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

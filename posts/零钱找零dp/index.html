@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="张雄飞"/>
+
+  
+  <meta name="description" content="零钱兑换 给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。 示例 1: 输入: coins = [1, 2, 5], amount = 11 输出: 3 解释: 11"/>
+  
+
+  
+  
+  <meta name="keywords" content="Hugo, theme, zozo"/>
+  
+
+  
+  <link rel="canonical" href="https://zhangxiongfeiv.github.io/posts/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6dp/"/>
+
+  
+
+  <title>零钱找零DP &middot; 无尽光芒</title>
+
+  <link rel="shortcut icon" href="https://zhangxiongfeiv.github.io/images/favicon.ico"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/animate.min.css"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/remixicon.css"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/zozo.css"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/about/">关于</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="https://zhangxiongfeiv.github.io">
+          <span>无尽光芒</span>
+          <img src="https://zhangxiongfeiv.github.io/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title">iOS Developer, 喜欢逆向, 偶尔刷题...</p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/zhangxiongfeiv/" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6dp/'>零钱找零DP</a></h2>
+          <span class="date">2020.04.27</span>
+        </div>
+        <div class="post_content markdown"><ol start="322">
+<li><a href="https://leetcode-cn.com/problems/coin-change/">零钱兑换</a></li>
+</ol>
+<blockquote>
+<p>给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。</p>
+<p>示例 1:</p>
+<p>输入: coins = [1, 2, 5], amount = 11
+输出: 3
+解释: 11 = 5 + 5 + 1
+示例 2:</p>
+<p>输入: coins = [2], amount = 3
+输出: -1</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/coin-change
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h6 id="思路一暴力递归">思路一：暴力递归</h6>
+<p>假设coins数组中包含1 5 20 25四种硬币，则amout个硬币所需的最小硬币个数为 amount-1, amount - 5, amout - 20, amount - 25中最小硬币个数再 +1。 自顶向下调用，出现了重叠子问题。 代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">coinChange</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">MAX_VALUE</span><span style="color:#f92672">;</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">==</span> 25 <span style="color:#f92672">||</span> n <span style="color:#f92672">==</span> 20 <span style="color:#f92672">||</span> n <span style="color:#f92672">==</span> 5 <span style="color:#f92672">||</span> n <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 1<span style="color:#f92672">;</span>
+		<span style="color:#66d9ef">int</span> min1 <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>coins1<span style="color:#f92672">(</span>n <span style="color:#f92672">-</span> 25<span style="color:#f92672">),</span> coins1<span style="color:#f92672">(</span>n <span style="color:#f92672">-</span> 20<span style="color:#f92672">));</span>
+		<span style="color:#66d9ef">int</span> min2 <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>coins1<span style="color:#f92672">(</span>n <span style="color:#f92672">-</span> 5<span style="color:#f92672">),</span> coins1<span style="color:#f92672">(</span>n <span style="color:#f92672">-</span> 1<span style="color:#f92672">));</span>
+		<span style="color:#66d9ef">return</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>min1<span style="color:#f92672">,</span> min2<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路二记忆化搜索">思路二：记忆化搜索</h6>
+<p>跟上述代码思想类似，自顶向下调用，用dp数组记录计算过的值。 代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">	
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 记忆化搜索（自顶向下的调用）
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">coins2</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+		<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>n <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
+		<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> faces <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>1<span style="color:#f92672">,</span> 5<span style="color:#f92672">,</span> 20<span style="color:#f92672">,</span> 25<span style="color:#f92672">};</span>
+		<span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> face <span style="color:#f92672">:</span> faces<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;</span> face<span style="color:#f92672">)</span> <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+			dp<span style="color:#f92672">[</span>face<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#66d9ef">return</span> coins2<span style="color:#f92672">(</span>n<span style="color:#f92672">,</span> dp<span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+	
+	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">coins2</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> dp<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">MAX_VALUE</span><span style="color:#f92672">;</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>n<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#66d9ef">int</span> min1 <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>coins2<span style="color:#f92672">(</span>n <span style="color:#f92672">-</span> 25<span style="color:#f92672">,</span> dp<span style="color:#f92672">),</span> coins2<span style="color:#f92672">(</span>n <span style="color:#f92672">-</span> 20<span style="color:#f92672">,</span> dp<span style="color:#f92672">));</span>
+			<span style="color:#66d9ef">int</span> min2 <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>coins2<span style="color:#f92672">(</span>n <span style="color:#f92672">-</span> 5<span style="color:#f92672">,</span> dp<span style="color:#f92672">),</span> coins2<span style="color:#f92672">(</span>n <span style="color:#f92672">-</span> 1<span style="color:#f92672">,</span> dp<span style="color:#f92672">));</span>
+			dp<span style="color:#f92672">[</span>n<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>min1<span style="color:#f92672">,</span> min2<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#66d9ef">return</span> dp<span style="color:#f92672">[</span>n<span style="color:#f92672">];</span>
+	<span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路三动态规划">思路三：动态规划</h6>
+<p>采用动态规划，自下向上递推出最终结果。</p>
+<p>定义状态：dp数组中存放，当获取i个数量的零钱时，所需最小的硬币个数。</p>
+<p>定义初始值：最初数组中存放比amout还大的数，用于最终判断如果&gt;amount，说明凑不到零钱，则返回-1。 赋值dp[0] = 0;</p>
+<p>定义状态转移方程：把coins数组遍历，dp[i] 为 dp[i - coints[0]]，dp[i - coints[1]]，dp[i - coints[2]]&hellip;中的最小值 + 1;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">coinChange</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> coins<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> amount<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>amount <span style="color:#f92672">&lt;</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">// 定义状态 凑到 amount 硬币需要的最少硬币个数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>amount <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
+
+        <span style="color:#75715e">// 定义初始值
+</span><span style="color:#75715e"></span>        Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">fill</span><span style="color:#f92672">(</span>dp<span style="color:#f92672">,</span>amount <span style="color:#f92672">+</span> 1<span style="color:#f92672">);</span>
+        dp<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        
+        <span style="color:#75715e">// 定义状态转移方程
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;=</span> amount<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+
+            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> coins<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">&gt;=</span> coins<span style="color:#f92672">[</span>j<span style="color:#f92672">])</span> dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>i <span style="color:#f92672">-</span> coins<span style="color:#f92672">[</span>j<span style="color:#f92672">]]</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">,</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]);</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> dp<span style="color:#f92672">[</span>amount<span style="color:#f92672">]</span> <span style="color:#f92672">&gt;</span> amount <span style="color:#f92672">?</span> <span style="color:#f92672">-</span>1 <span style="color:#f92672">:</span> dp<span style="color:#f92672">[</span>amount<span style="color:#f92672">];</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>时间复杂度： O(N)</p>
+<p>空间复杂度： O(N)</p>
+</div>
+        <div class="post_footer">
+          
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>我的精神家园</span>
+  </div>
+</footer>
+
+
+
+<script src="https://zhangxiongfeiv.github.io/js/jquery-3.3.1.min.js"></script>
+<script src="https://zhangxiongfeiv.github.io/js/zozo.js"></script>
+<script src="https://zhangxiongfeiv.github.io/js/highlight.pack.js"></script>
+<link  href="https://zhangxiongfeiv.github.io/css/fancybox.min.css" rel="stylesheet">
+<script src="https://zhangxiongfeiv.github.io/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

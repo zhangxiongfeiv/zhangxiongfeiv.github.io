@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="张雄飞"/>
+
+  
+  <meta name="description" content="平衡二叉搜索树 (BBST) 二叉搜索树(BST)的缺陷？ 二叉搜索树，在某种情况下会导致极度的不平衡，导致时间复杂度剧增。 如图，如果按照 7 4 9 2 5 8 11 的顺序添加节点 如果按照从小到大的顺序添加节点 二叉树退化成链表 如何"/>
+  
+
+  
+  
+  <meta name="keywords" content="Hugo, theme, zozo"/>
+  
+
+  
+  <link rel="canonical" href="https://zhangxiongfeiv.github.io/posts/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"/>
+
+  
+
+  <title>平衡二叉搜索树 &middot; 无尽光芒</title>
+
+  <link rel="shortcut icon" href="https://zhangxiongfeiv.github.io/images/favicon.ico"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/animate.min.css"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/remixicon.css"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/zozo.css"/>
+  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/about/">关于</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="https://zhangxiongfeiv.github.io">
+          <span>无尽光芒</span>
+          <img src="https://zhangxiongfeiv.github.io/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title">iOS Developer, 喜欢逆向, 偶尔刷题...</p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/zhangxiongfeiv/" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/'>平衡二叉搜索树</a></h2>
+          <span class="date">2020.05.11</span>
+        </div>
+        <div class="post_content markdown"><h2 id="平衡二叉搜索树-bbst">平衡二叉搜索树 (BBST)</h2>
+<h4 id="二叉搜索树bst的缺陷">二叉搜索树(BST)的缺陷？</h4>
+<p>二叉搜索树，在某种情况下会导致极度的不平衡，导致时间复杂度剧增。</p>
+<p>如图，如果按照 7 4 9 2 5 8 11 的顺序添加节点</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geoilxwyrgj30di08iq47.jpg" alt="image-20200511145438192"></p>
+<p>如果按照从小到大的顺序添加节点</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geoimjgqbkj30a609ymy6.jpg" alt="image-20200511145514949"></p>
+<p>二叉树退化成链表</p>
+<h3 id="如何改进bst">如何改进BST？</h3>
+<p>有没有办法防止二叉搜索树退化成链表？</p>
+<p>让添加，删除，搜索的复杂度维持在 O(log N)</p>
+<h3 id="平衡">平衡</h3>
+<p>平衡：当节点数量固定时，左右子树的高度越来越接近，这棵二叉树就越平衡(高度越低).</p>
+<h4 id="理想平衡">理想平衡</h4>
+<p>最理想的平衡，就是像完全二叉树，满二叉树那样，高度是最小的。</p>
+<h4 id="改进">改进</h4>
+<ul>
+<li>首先，节点的添加，删除顺序是无法限制的，可以认为是随机的</li>
+<li>所以改进的方案是，在节点添加，删除操作之后，想办法让二叉搜索树恢复平衡(减小树的高度)</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geoitzsiaoj30pq078gnk.jpg" alt="image-20200511150225219"></p>
+<ul>
+<li>如果接着继续调整节点的位置，完全可以达到理想平衡，但是付出的代价可能会比较大
+<ul>
+<li>比如调整的次数会比较多，反而增加了时间复杂度</li>
+</ul>
+</li>
+<li>总结来说，比较合理的改进方案是：用尽量少的调整次数达到适度的平衡即可。</li>
+<li>一棵达到适度平衡的二叉搜索树，可以称之为平衡二叉搜索树。</li>
+</ul>
+<h4 id="平衡二叉搜索树-balanced-binary-search-tree">平衡二叉搜索树 (Balanced Binary Search Tree)</h4>
+<ul>
+<li>英文简称为: BBST</li>
+<li>经典常见的平衡二叉搜索树
+<ul>
+<li>AVL树 (Windows NT内核广泛应用)</li>
+<li>红黑树
+<ul>
+<li>C++ STL (map , set)</li>
+<li>Java中的TreeMap, TreeSet, HashMap, HashSet</li>
+<li>Linux的进程调度</li>
+<li>Ngix 的 timer 管理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一般也称它们为： 自平衡的二叉搜索树(Self-balancing Binary Search Tree)</li>
+</ul>
+<h4 id="练习题">练习题</h4>
+<h4 id="110-平衡二叉树httpsleetcode-cncomproblemsbalanced-binary-tree"><a href="https://leetcode-cn.com/problems/balanced-binary-tree/">110. 平衡二叉树</a></h4>
+<blockquote>
+<p>给定一个二叉树，判断它是否是高度平衡的二叉树。</p>
+<p>本题中，一棵高度平衡二叉树定义为：</p>
+<p>一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。</p>
+<p>示例 1:</p>
+<p>给定二叉树 [3,9,20,null,null,15,7]</p>
+<p>3
+/<br>
+9  20
+/ <br>
+15   7
+返回 true 。</p>
+<p>示例 2:</p>
+<p>给定二叉树 [1,2,2,3,3,null,null,4,4]</p>
+<pre><code>1
+</code></pre>
+<p>/<br>
+2   2
+/<br>
+3   3
+/<br>
+4   4
+返回 false 。</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/balanced-binary-tree
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解">题解：</h5>
+<h6 id="思路一">思路一：</h6>
+<p>平衡二叉树的概念是，每个节点左右子树的高度相差的绝对值 &lt;= 1 。 故思路很简单，我们遍历二叉树每个节点，并计算其左右子树高度差绝对值，所有都 &lt;=1, 则平衡，其中有绝对值 &gt; 1的，则不平衡。</p>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 计算node节点高度
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 递归
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">(</span>TreeNode node<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">return</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>height<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">),</span>height<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">))</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 计算节点高度
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 迭代
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">height1</span><span style="color:#f92672">(</span>TreeNode node<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> height <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+
+        Queue<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;();</span>
+        queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>node<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>queue<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+            <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>size <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">){</span>
+                TreeNode n <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>n<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">);</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>n<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+
+                size <span style="color:#f92672">--;</span>
+            <span style="color:#f92672">}</span>
+            height <span style="color:#f92672">++;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> height<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isBalanced</span><span style="color:#f92672">(</span>TreeNode node<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>node <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">abs</span><span style="color:#f92672">(</span>height<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">-</span> height<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">))</span> <span style="color:#f92672">&lt;=</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> isBalanced<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> isBalanced<span style="color:#f92672">(</span>node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>计算节点高度有两种方法</p>
+<ul>
+<li>
+<p>递归， 节点的高度等于其左右子树的高度中的最大值 + 1</p>
+</li>
+<li>
+<p>迭代， 利用层序遍历，遍历完一层，height++。 直至遍历完所有节点</p>
+</li>
+</ul>
+<p>上述方法是自顶向下的递归，越深处的子节点，需要经过更多次数的计算，包含大量重复的计算。 下边方法中，我们用自下而上的递归，减少重复计算。</p>
+<p>可以递归计算当前节点子节点的高度，然后根据子节点的高度判断当前节点是否平衡。</p>
+<h6 id="思路二">思路二：</h6>
+<p>从底至顶</p>
+<p>思路是对二叉树前序遍历，从底至顶返回子树的最大高度，若判断某子树不是平衡二叉树则 “剪枝”，直接向上返回。</p>
+<p>算法流程：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">recur<span style="color:#f92672">(</span>root<span style="color:#f92672">):</span>
+</code></pre></div><ul>
+<li>
+<p>递归返回值</p>
+<ul>
+<li>当节点 root 左右子树的高度差 &lt; 2，则返回以节点root为根节点的子树的最大高度，即节点root的左右子树中最大高度 + 1</li>
+<li>当节点root 左右子树高度差 &gt;= 2, 则代表root不平衡，直接返回 -1.</li>
+</ul>
+</li>
+<li>
+<p>递归终止条件</p>
+<ul>
+<li>叶子节点时，返回高度0</li>
+<li>当左(右)子树高度left == -1时，则代表此子树的 左(右)子树 不是平衡树, 因此直接返回 -1.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">isBalance<span style="color:#f92672">(</span>root<span style="color:#f92672">):</span>	
+</code></pre></div><ul>
+<li>返回值：若recur(root) != -1， 则代表是平衡二叉树。</li>
+</ul>
+</li>
+</ul>
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">dfs</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+        List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+
+        Stack<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">&gt;</span> stack <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stack<span style="color:#f92672">&lt;&gt;();</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>stack<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()</span> <span style="color:#f92672">||</span> root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+                stack<span style="color:#f92672">.</span><span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>root<span style="color:#f92672">);</span>
+                
+                root <span style="color:#f92672">=</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">left</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            
+            root <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span><span style="color:#a6e22e">pop</span><span style="color:#f92672">();</span>
+            list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>root<span style="color:#f92672">.</span><span style="color:#a6e22e">val</span><span style="color:#f92672">);</span>
+            root <span style="color:#f92672">=</span> root<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        
+        <span style="color:#66d9ef">return</span> list<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> TreeNode <span style="color:#a6e22e">convertBiNode</span><span style="color:#f92672">(</span>TreeNode root<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+        List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> dfs<span style="color:#f92672">(</span>root<span style="color:#f92672">);</span>
+        
+        TreeNode head <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode<span style="color:#f92672">(-</span>1<span style="color:#f92672">);</span>
+        TreeNode node <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode<span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i<span style="color:#f92672">));</span>
+            node <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        
+        <span style="color:#66d9ef">return</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">right</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div></div>
+        <div class="post_footer">
+          
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>我的精神家园</span>
+  </div>
+</footer>
+
+
+
+<script src="https://zhangxiongfeiv.github.io/js/jquery-3.3.1.min.js"></script>
+<script src="https://zhangxiongfeiv.github.io/js/zozo.js"></script>
+<script src="https://zhangxiongfeiv.github.io/js/highlight.pack.js"></script>
+<link  href="https://zhangxiongfeiv.github.io/css/fancybox.min.css" rel="stylesheet">
+<script src="https://zhangxiongfeiv.github.io/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>
