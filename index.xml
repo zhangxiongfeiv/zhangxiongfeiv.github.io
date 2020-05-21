@@ -12,12 +12,120 @@
     
     
     <item>
-      <title>Tags</title>
-      <link>https://zhangxiongfeiv.github.io/tags/tags/</link>
-      <pubDate>Wed, 20 May 2020 22:59:33 +0800</pubDate>
+      <title>生活</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E7%94%9F%E6%B4%BB/</link>
+      <pubDate>Thu, 21 May 2020 22:04:52 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/tags/tags/</guid>
-      <description>二叉树</description>
+      <guid>https://zhangxiongfeiv.github.io/tags/%E7%94%9F%E6%B4%BB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>王道</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E7%8E%8B%E9%81%93/</link>
+      <pubDate>Thu, 21 May 2020 21:52:47 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/%E7%8E%8B%E9%81%93/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>双指针</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <pubDate>Thu, 21 May 2020 21:52:14 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>字符串</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+      <pubDate>Thu, 21 May 2020 21:52:05 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IOS</title>
+      <link>https://zhangxiongfeiv.github.io/tags/ios/</link>
+      <pubDate>Thu, 21 May 2020 21:51:55 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>队列</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E9%98%9F%E5%88%97/</link>
+      <pubDate>Thu, 21 May 2020 21:51:49 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/%E9%98%9F%E5%88%97/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>计算机组成原理</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Thu, 21 May 2020 21:51:37 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>动态规划</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
+      <pubDate>Thu, 21 May 2020 21:51:24 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>排序</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Thu, 21 May 2020 21:51:09 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/%E6%8E%92%E5%BA%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数组</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Thu, 21 May 2020 21:51:03 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/%E6%95%B0%E7%BB%84/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>栈</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E6%A0%88/</link>
+      <pubDate>Thu, 21 May 2020 21:50:57 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/%E6%A0%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>集合</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E9%9B%86%E5%90%88/</link>
+      <pubDate>Thu, 21 May 2020 21:50:41 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/%E9%9B%86%E5%90%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>二叉树</title>
+      <link>https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+      <pubDate>Thu, 21 May 2020 21:46:02 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
+      <description>二叉搜索树</description>
     </item>
     
     <item>
@@ -189,6 +297,15 @@
       
       <guid>https://zhangxiongfeiv.github.io/posts/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6dp/</guid>
       <description>零钱兑换 给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。 示例 1: 输入: coins = [1, 2, 5], amount = 11 输出: 3 解释: 11</description>
+    </item>
+    
+    <item>
+      <title>一文了解动态规划(Dynamic Programming)</title>
+      <link>https://zhangxiongfeiv.github.io/home/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 27 Apr 2020 10:20:11 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/home/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</guid>
+      <description>动态规划(Dynamic Programming) 简称 DP , 是求解最优化问题的一种常用策略。 来自维基百科的解释： Dynamic Programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once,and storing their solutions. 将复杂的原问题拆解成若干个简单的子问题 每个子问题只解决</description>
     </item>
     
     <item>

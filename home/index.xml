@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homes on 无尽光芒</title>
+    <link>https://zhangxiongfeiv.github.io/home/</link>
+    <description>Recent content in Homes on 无尽光芒</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 27 Apr 2020 10:20:11 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhangxiongfeiv.github.io/home/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一文了解动态规划(Dynamic Programming)</title>
+      <link>https://zhangxiongfeiv.github.io/home/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 27 Apr 2020 10:20:11 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/home/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</guid>
+      <description>动态规划(Dynamic Programming) 简称 DP , 是求解最优化问题的一种常用策略。 来自维基百科的解释： Dynamic Programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once,and storing their solutions. 将复杂的原问题拆解成若干个简单的子问题 每个子问题只解决</description>
+    </item>
+    
+  </channel>
+</rss>
