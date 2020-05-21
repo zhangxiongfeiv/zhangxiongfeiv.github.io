@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 张雄飞</title>
+    <title>Posts on 张雄飞的博客</title>
     <link>https://zhangxiongfeiv.github.io/post/</link>
-    <description>Recent content in Posts on 张雄飞</description>
+    <description>Recent content in Posts on 张雄飞的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-CN</language>
     <lastBuildDate>Tue, 12 May 2020 22:31:36 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
@@ -17,23 +17,16 @@
       <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/leetcode%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E9%94%A6/</guid>
-      <description>leetcode上面试题目集合 面试题 01.01. 判定字符是否唯一  实现一个算法，确定一个字符串 s 的所有字符是否全都不同。
-示例 1：
-输入: s = &amp;ldquo;leetcode&amp;rdquo; 输出: false 示例 2：
-输入: s = &amp;ldquo;abc&amp;rdquo; 输出: true 限制：
-0 &amp;lt;= len(s) &amp;lt;= 100 如果你不使用额外的数据结构，会很加分。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/is-unique-lcci 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解： 思路一：
-// 拿到这道题第一反应是，从头到尾遍历元素，用set存储遍历过的元素  // 继续遍历时，如果set中保存了，说明重复了  // 如果set中没有保存，则将当前元素加入set中  // 遍历完整个字符串，都没重复，说明没有重复  // 算法时间复杂度 O(N)遍历一遍字符串。  // 空间复杂度O(N) 使用了额外的set存储空间  public boolean isUnique1(String astr) { HashSet&amp;lt;Character&amp;gt; set = new HashSet&amp;lt;&amp;gt;(); for (int i = 0; i &amp;lt; astr.</description>
+      <description>leetcode上面试题目集合 面试题 01.01. 判定字符是否唯一 实现一个算法，确定一个字符串 s 的所有字符是否全都不同。 示例 1： 输入: s = &amp;ldquo;leetcode&amp;rdquo; 输出: false 示例 2： 输入: s = &amp;ldquo;abc&amp;rdquo; 输出: true 限制： 0 &amp;lt;= len(s) &amp;lt;= 100 如果你不使用额外的数据结构，会很加分。 来源：力扣（LeetCode） 链接：https://leetc</description>
     </item>
     
     <item>
       <title>AVL树</title>
-      <link>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</link>
+      <link>https://zhangxiongfeiv.github.io/post/AVL%E6%A0%91/</link>
       <pubDate>Mon, 11 May 2020 21:04:44 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</guid>
-      <description>AVL树  平衡因子(Balance Factor): 某节点左右子树的高度差 AVL树的特点  每个节点的平衡因子只可能是1, 0, -1(绝对值 &amp;lt;= 1, 如果超过1，称之为 &amp;ldquo;失衡&amp;rdquo;) 每个节点的左右子树高度差不超过1 搜索， 添加， 删除的时间复杂度是 O(log N)    </description>
+      <guid>https://zhangxiongfeiv.github.io/post/AVL%E6%A0%91/</guid>
+      <description>AVL树 平衡因子(Balance Factor): 某节点左右子树的高度差 AVL树的特点 每个节点的平衡因子只可能是1, 0, -1(绝对值 &amp;lt;= 1, 如果超过1，称之为 &amp;ldquo;失衡&amp;rdquo;) 每个节点的左右子树高度差不超过1 搜索， 添加， 删除的时间复杂度是 O(log N)</description>
     </item>
     
     <item>
@@ -42,15 +35,7 @@
       <pubDate>Mon, 11 May 2020 21:03:47 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
-      <description>平衡二叉搜索树 (BBST) 二叉搜索树(BST)的缺陷？ 二叉搜索树，在某种情况下会导致极度的不平衡，导致时间复杂度剧增。
-如图，如果按照 7 4 9 2 5 8 11 的顺序添加节点
-如果按照从小到大的顺序添加节点
-二叉树退化成链表
-如何改进BST？ 有没有办法防止二叉搜索树退化成链表？
-让添加，删除，搜索的复杂度维持在 O(log N)
-平衡 平衡：当节点数量固定时，左右子树的高度越来越接近，这棵二叉树就越平衡(高度越低).
-理想平衡 最理想的平衡，就是像完全二叉树，满二叉树那样，高度是最小的。
-改进  首先，节点的添加，删除顺序是无法限制的，可以认为是随机的 所以改进的方案是，在节点添加，删除操作之后，想办法让二叉搜索树恢复平衡(减小树的高度)   如果接着继续调整节点的位置，完全可以达到理想平衡，但是付出的代价可能会比较大  比如调整的次数会比较多，反而增加了时间复杂度   总结来说，比较合理的改进方案是：用尽量少的调整次数达到适度的平衡即可。 一棵达到适度平衡的二叉搜索树，可以称之为平衡二叉搜索树。  平衡二叉搜索树 (Balanced Binary Search Tree)  英文简称为: BBST 经典常见的平衡二叉搜索树  AVL树 (Windows NT内核广泛应用) 红黑树  C++ STL (map , set) Java中的TreeMap, TreeSet, HashMap, HashSet Linux的进程调度 Ngix 的 timer 管理     一般也称它们为： 自平衡的二叉搜索树(Self-balancing Binary Search Tree)  练习题 110.</description>
+      <description>平衡二叉搜索树 (BBST) 二叉搜索树(BST)的缺陷？ 二叉搜索树，在某种情况下会导致极度的不平衡，导致时间复杂度剧增。 如图，如果按照 7 4 9 2 5 8 11 的顺序添加节点 如果按照从小到大的顺序添加节点 二叉树退化成链表 如何改进BST？ 有没有办法防止二叉搜索树退化成链表？ 让添加，删除，搜索的复杂度维持在</description>
     </item>
     
     <item>
@@ -59,14 +44,7 @@
       <pubDate>Sat, 09 May 2020 21:40:52 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/</guid>
-      <description>买卖股票的最佳时机  给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
-如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。
-注意：你不能在买入股票前卖出股票。
-示例 1:
-输入: [7,1,5,3,6,4] 输出: 5 解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。 注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。 示例 2:
-输入: [7,6,4,3,1] 输出: 0 解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解 方法一：暴力递归 // 暴力两层循环  private int max1(int[] prices, int end){ int max = 0; for (int i = 1; i &amp;lt;= end; i++) { for (int j = 0; j &amp;lt; i; j++) { if (prices[i] &amp;lt;= prices[j]) continue; max = Math.</description>
+      <description>买卖股票的最佳时机 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。 如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。 注意：你不能在买入股票前卖出股票。 示例 1: 输入: [7,1,5,3,6,4] 输出: 5 解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（</description>
     </item>
     
     <item>
@@ -75,13 +53,7 @@
       <pubDate>Sat, 09 May 2020 21:40:02 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
-      <description>152. 乘积最大子数组  给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字）。
-示例 1:
-输入: [2,3,-2,4] 输出: 6 解释: 子数组 [2,3] 有最大乘积 6。 示例 2:
-输入: [-2,0,-1] 输出: 0 解释: 结果不能为 2, 因为 [-2,-1] 不是子数组。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/maximum-product-subarray 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解 使用动态规划的解题思路，递推出最终结果.
- 遍历数组时计算出最大值，不断更新，递推最终结果 res为最终结果， max为以当前元素结尾的子数组的最大乘积，min为以当前元素结尾的子数组的最小乘积 由于存在负数，所以要维护一个最小值，因为负数乘积可能变为一个最大值。  代码如下： public static int maxProduct(int[] nums) { if (nums.length == 0) return 0; if (nums.length == 1) return nums[0]; // 最终结果  int res = nums[0]; // 以i结尾的子数组的最大乘积  int max = nums[0]; // 以i结尾的子数组的组小乘积  int min = nums[0]; for (int i = 1; i &amp;lt; nums.</description>
+      <description>152. 乘积最大子数组 给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字）。 示例 1: 输入: [2,3,-2,4] 输出: 6 解释: 子数组 [2,3] 有最大乘积 6。 示例 2: 输入: [-2,0,-1] 输出: 0 解释: 结果不能为 2, 因为 [-2,-1] 不是子数组。 来源：力扣（LeetCode） 链接：https://leetcode-</description>
     </item>
     
     <item>
@@ -90,41 +62,16 @@
       <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
-      <description>思考？ 在 n 个动态的整数中搜索某个整数？ (查看其是否存在)
- 假设用动态数组存放元素，从第0个位置开始遍历搜索，平均时间复杂度 O(N) 如果维护一个有序的动态数组，使用二分搜索，最坏时间复杂度 O(log N)  但是添加，删除的平均时间复杂度是 O(N)   针对这个需求， 有没有更好的方案？  使用二叉搜索树，添加/删除/搜索的最坏时间复杂度均可优化至 O(log N)    定义： 二叉搜索树是二叉树的一种，是应用非常广泛的一种二叉树，英文简称 BST ，又被称为：二叉查找树，二叉排序树
- 任意节点的值都 大于 其左子树的节点的值 任意节点的值都 小于 其右子树节点的值 它的左右子树也是一棵二叉搜索树  二叉搜索树可以大大提高搜索数据的效率
-二叉搜索树存储的元素必须具备可比较性
- 比如int , double类型 如果是自定义类型，需要指定比较方式 不允许为 null  练习题： 450. 删除二叉搜索树中的节点  给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。
-一般来说，删除节点可分为两个步骤：
-首先找到需要删除的节点； 如果找到了，删除它。 说明： 要求算法时间复杂度为 O(h)，h 为树的高度。
-示例:
-root = [5,3,6,2,4,null,7] key = 3</description>
+      <description>思考？ 在 n 个动态的整数中搜索某个整数？ (查看其是否存在) 假设用动态数组存放元素，从第0个位置开始遍历搜索，平均时间复杂度 O(N) 如果维护一个有序的动态数组，使用二分搜索，最坏时间复杂度 O(log N) 但是添加，删除的平均时间复杂度是 O(N) 针对这个需求， 有没有更好的方案？ 使用二叉搜索树，添加/删除/搜索</description>
     </item>
     
     <item>
       <title>IOS基于码云创建私有库</title>
-      <link>https://zhangxiongfeiv.github.io/post/ios%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</link>
+      <link>https://zhangxiongfeiv.github.io/post/iOS%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</link>
       <pubDate>Thu, 07 May 2020 20:45:03 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/ios%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</guid>
-      <description>iOS 组件化初试-基于码云创建私有库 iOS组件的实现基本是基于cocoapods，如何利用cocoapod创建我们自己的私有库，是实现组件话的第一步，下边步骤中，我们将利用码云的仓库创建私有库来呈现私有库的创建过程。
-此文使用 码云 做私有库存储，也可以使用公司 自己服务器 存储私有库，步骤是一样的。
-一，创建私有库的索引库 我们需要创建两个库，一个索引库用于存放spec文件的地方，用于索引倒代码的位置。 一个私有库，指的是我们真正放置组件代码的地方。
-索引库 就好比指针，私有库就好比对象，指针中存放了对象的地址，通过地址就可以找到对象。
-点击创建后，创建的仓库如下图：
-二，将创建好的索引库添加到本地cocoapods仓库   cocoapods本地仓库路径
-$ ~/.cocoapods/repos   在本地添加一个自己的远程索引库
-pod repo add CGRepo https://gitee.com/zhang_xiong__fei/CGRepo.git 上边的地址是刚刚我们在码云上创建的索引库的地址。
-  添加完成后，在repos文件夹中，多了一个CGRepo文件夹，如图:
-我们把自己创建的索引库放置在cocoapods管理的仓库下，默认情况下只有一个master, 我们常用的SDWebImage,AFNetworking等的本地索引就放在这个仓库中。
-现在通过码云创建的自己的仓库，所以需要自己创建一个索引仓库， 该仓库只存放各组件的索引文件，不存放代码。
-三，创建模板 在桌面创建一个CGTool文件夹，并在终端中cd到此文件夹目录下,
-执行创建模板的命令
-pod lib create CGTool 通过以上命令，会自动创建一个模板工程,里边包含我们需要的索引文件, 格式为 spec, 接下来通过该模板制作组件。
-四，将组件放入制定目录 我们将组件放入 CGTool/Pods/Development Pods/CGTool文件夹下，如图
-五，将制作好的组件上传至码云 上边说过，我们需要创建两个仓库索引库和私有库，私有库用来存放我们制作的组件，接下来我们就要创建私有库，并把制作的组件上传至私有库中。
-执行下边命令，上传模板文件
-$ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gitee.com/zhang_xiong__fei/CGTool.git $ git push -u origin master 上边几条命令，我们只上传了模板文件，接下来，我们创建自己添加的组件代码</description>
+      <guid>https://zhangxiongfeiv.github.io/post/iOS%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</guid>
+      <description>iOS 组件化初试-基于码云创建私有库 iOS组件的实现基本是基于cocoapods，如何利用cocoapod创建我们自己的私有库，是实现组件话的第一步，下边步骤中，我们将利用码云的仓库创建私有库来呈现私有库的创建过程。 此文使用 码云 做私有库存储，也可以使用公司 自己服务器 存储私有库，步骤是</description>
     </item>
     
     <item>
@@ -133,11 +80,7 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
       <pubDate>Sat, 02 May 2020 18:01:04 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
-      <description>计算机网络的概念 计算机网络:是一个将分散的，具有独立功能的计算机系统，通过通信设备与线路连接起来，由功能完善的软件实现资源共享和信息传递的系统。
-计算机网络是互连的，自治的计算机集合。
-互联是指互相连通，通信链路
-自治是指无主从关系
-计算机网络的功能  数据通信 资源共享 (硬件 如打印机。 软件。 数据) 分布式处理 多台计算机各自承担同一工作任务的不同部分 hadoop平台 提高可靠性 替代机 负载均衡 各个计算机合作  计算机网络的组成  组成部分 硬件，软件，协议 工作方式  边缘部分 用户直接使用 （C / S方式， P / P方式） 核心部分 为边缘部分服务   功能组成  通信子网 实现数据通信 资源子网 实现资源共享/数据处理 （在主机内部进行数据处理，处理完毕交给通信子网传输）    计算机网络的分类  按分布范围分 广域网WAN ： 通常跨度非常大，跨国 城域网MAN ： 一个城市内的网络 局域网WAN ：1km左右 广播技术 个人区域网PAN： 个人 按使用者分  公用网 专用网   按交换技术分  电路交换 报文交换 分组交换   按拓扑结构分 按传输技术分  </description>
+      <description>计算机网络的概念 计算机网络:是一个将分散的，具有独立功能的计算机系统，通过通信设备与线路连接起来，由功能完善的软件实现资源共享和信息传递的系统。 计算机网络是互连的，自治的计算机集合。 互联是指互相连通，通信链路 自治是指无主从关系 计算机网络的功能 数据通信 资源共享 (硬件 如打印机。 软件。</description>
     </item>
     
     <item>
@@ -146,37 +89,7 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
       <pubDate>Sat, 02 May 2020 11:04:13 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
-      <description>操作系统 2020.5.2概念(定义) 操作系统（Operating System, OS）是指控制和管理整个计算机系统的硬件和软件资源，并合理地组织调度计算机的工作和资源的分配，以提供给用户和其它软件方便的接口和环境，它是计算机系统最基本的系统软件。
-功能和目标 补充知识： 进程是一个程序的执行过程。 执行前需要将该程序放到内存中，才能被CPU处理。
-操作系统，作为系统资源的管理者提供处理机管理，存储器管理，文件管理，设备管理的功能。
-操作系统的特征  并发 共享 虚拟 异步  其中并发 和 共享是两个最基本的特征，两者互为存在条件。
-并发 指两个或多个事件在同一时间间隔内发生。 这些事件宏观上是同时发生的， 但围观上是交替发生的。
-常考易混概念，并行：指两个或多个事件在同一时刻同时发生。
-操作系统的并发性指计算机系统中同时存在着多个运行着的程序。
-一个单核处理器(CPU) 同一时刻只能执行一个程序，因此操作系统会负责协调多个程序交替执行(这些程序微观上是交替进行的，单宏观上看起来就像在同时执行)
-事实上，操作系统就是伴随着 &amp;ldquo;多道程序技术&amp;quot;而出现的。因此，操作系统和程序并发是一起诞生的。
-当今计算机，一般都是多核CPU，比如intel的第八代i3处理器就是4核CPU
-这意味着统一时刻可以有4个程序并行执行，但是操作系统的并发性依然必不可少。
-当代人使用计算机绝对有4个以上的程序需要同时工作。
-共享 即资源共享，是指系统中的资源可供内存中多个并发执行的进程共同使用。
-两种共享方式
-  互斥共享方式(系统中的某些资源，虽然可以提供给多个进程使用，但是一个时间段内只允许一个进程访问该资源)
-互斥共享方式例子：
-使用QQ和微信视频。同一时间内摄像头只能分配给其中一个进程。
-  同时共享方式(系统中的某些资源，允许一个时间段内由多个进程同时对它们进行访问) 。所谓的同时，往往是宏观上的，而在微观上，这些进程可能是交替对该资源进行访问的。(即分时共享)
-同时共享方式例子：
-使用QQ发送文件A，同时使用微信发送文件B。宏观上两遍都是同时都去并发送文件，说明两个进程都在访问硬盘资源，从中读取数据。 微观上看，两个进程是交替着访问硬盘的。
-  并发性是指计算机系统中同时存在着多个运行着的程序。
-共享性是指系统中的资源可供内存中多个并发执行的进程共同使用。
-通过上述例子来看并发和共享的关系：
-使用QQ发送文件A，同时使用微信发送文件B。
-  两个进程正在并发执行(并发性)
-如果失去了并发性，则系统中只有一个程序正在运行，则共享性失去存在的意义。
-  需要共享地访问硬盘资源(共享性)
-如果失去共享性，则QQ和微信不能同时访问硬盘资源，就无法实现同时发送文件，也就无法并发。
-  虚拟 是指把一个物理上的实体变为若干个逻辑上的对应物。 物理实体(前者)是实际存在的，而逻辑上对应物(后者)是用户感受到的。
-异步： 在多道程序环境下，允许多个程序并发执行，但由于资源有限，进程的执行不是一贯到底的，而是走走停停，以不可预知的速度向前推进，这就是进程的异步性。
-知识回顾与重要考点 操作系统的发展和分类 操作系统的运行知识和体系结构 指令 , 就是处理器(CPU)能识别，执行的最基本命令。</description>
+      <description>操作系统 2020.5.2概念(定义) 操作系统（Operating System, OS）是指控制和管理整个计算机系统的硬件和软件资源，并合理地组织调度计算机的工作和资源的分配，以提供给用户和其它软件方便的接口和环境，它是计算机系统最基本的系统软件。 功能和目标 补充知识： 进程是一个程序的执行过程。 执</description>
     </item>
     
     <item>
@@ -185,24 +98,7 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
       <pubDate>Sat, 02 May 2020 08:36:02 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</guid>
-      <description>2020.5.2日记录[TOC]
-数据结构在学什么？  如何用程序代码把现实世界的问题信息话 如何用计算机高效的处理这些信息从而创造价值  数据结构的基本概念 数据：数据是信息的载体，是描述客观事物属性的数，字符以及所有能输入到计算机中能被计算机程序识别和处理的符号的集合。 数据时计算机程序加工的原料。二进制 0 1。
-数据元素：是数据的基本单位，通常作为一个整理进行考虑和处理，一个数据元素可由若干个数据项组成
-数据项是构成数据元素的不可分割的最小单位。
-结构 &amp;ndash; 各个元素之间的关系
-数据结构是相互之间存在一种或多种特定关系的数据元素的集合。
-数据对象是具有相同性质的数据元素的集合，是数据的一个子集。
-数据结构的三要素： 一，逻辑结构  集合 各个元素同属一个集合，别无其它关系 线性结构  数据元素之间是一对一的关系。 除了第一个元素，所有元素都有唯一的前驱 除了最后一个元素，所有元素都有唯一后继   树形结构 数据元素之间存在一对多的关系 图结构 数据元素之间存在多对多的关系  二，存储结构   顺序存储
-把逻辑上相邻的元素存储在物理位置上也相邻的存储单元中，元素之间的关系由存储单元的邻接关系来体现。(数组)
-  链式存储 逻辑上相邻的元素在屋里位置上可以不相邻，借助指示元素存储地址的指针来表示元素之间的逻辑关系。（链表）
-  索引存储
-在存储信息的同时，还建立附加的索引表。 索引表中的每项都称为索引项，索引项的一般形式是(关键字，地址)
-  散列存储
-根据元素的关键字直接计算出该元素的存储地址，又称为哈希存储。
-  三，数据的运算 施加在数据上的运算包括运算的定义和实现。
-数据类型，抽象数据类型 数据类型是一个值的集合和定义在此集合上的一组操作的总称。
-抽象数据类型（Abstract Data Type, ADT）是抽象数据组织及与之相关的操作。
- 算法的基本概念 什么是算法？ 算法的特性：  有穷性：一个算法必须总在执行有穷步之后结束，且每一步都可在有穷时间内完成。 确定性：算法中每条指令必须有确切的含义，对于相同的输入只能得到相同的输出。 可行性：算法中描述的操作都可以通过已经实现的基本运算执行有限次来实现。 输入： 一个算法必须有零个或多个输入，这些输入取自于某个特定的对象的集合。 输出：一个素案发有一个或多个输出，这些输出是与输入有着某种特定关系的量。  好算法的特质：  准确性：能够正确的解决求解问题 可读性：良好的可读性，帮助人们理解 健壮性：处理异常情况 高效率和低存储： 时间复杂度低，空间复杂度低  算法的时间复杂度 如何评估算法的时间开销？ 算法时间复杂度</description>
+      <description>2020.5.2日记录[TOC] 数据结构在学什么？ 如何用程序代码把现实世界的问题信息话 如何用计算机高效的处理这些信息从而创造价值 数据结构的基本概念 数据：数据是信息的载体，是描述客观事物属性的数，字符以及所有能输入到计算机中能被计算机程序识别和处理的符号的集合。 数据时计算机程序加工</description>
     </item>
     
     <item>
@@ -211,39 +107,7 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
       <pubDate>Thu, 30 Apr 2020 18:09:56 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/803%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E7%A7%91%E5%9F%BA%E7%A1%80%E7%BB%BC%E5%90%88/</guid>
-      <description>一、 考查目标
-计算机学科基础综合考试涵盖数据结构、计算机组成原理、操作系统和计算机网络等学科专业基础课程。要求考生比较系统地掌握上述专业基础课程的基本概念、基本原理和基本方法，能够综合运用所学的基本原理和基本方法分析、判断和解决有关理论问题和实际问题。
-二、考试形式和试卷结构
-　1、试卷满分及考试时间
-　本试卷满分为150分，考试时间为180分钟。
-　2、答题方式
-　答题方式为闭卷、笔试。
-　3、试卷内容结构
-　数据结构 45分
-　计算机组成原理 45分
-　操作系统 35分
-　计算机网络 25分
-　4、试卷题型结构
-　单项选择题 80分 (40小题，每小题2分)
-综合应用题 70分
-三、考查内容
-　数据结构
-　【考查目标】
-　1、掌握数据结构的基本概念、基本原理和基本方法。
-　2、掌握数据的逻辑结构、存储结构及基本操作的实现，能够对算法进行基本的时间复杂度与空间复杂度的分析。
-　3、能够运用数据结构基本原理和方法进行问题的分析与求解，具备采用C或C++语言设计与实现算法的能力。
-一、线性表
-（一）线性表的定义和基本操作
-　（二）线性表的实现
-1、顺序存储　2、链式存储　3、线性表的应用
-　二、栈、队列和数组
-（一）栈和队列的基本概念　（二）栈和队列的顺序存储结构　（三）栈和队列的链式存储结构
-　（四）栈和队列的应用
-　（五）特殊矩阵的压缩存储
-　三、树与二叉树
-　（一）树的基本概念
-　（二）二叉树
-1、二叉树的定义及其主要特征　2、二叉树的顺序存储结构和链式存储结构　3、二叉树的遍历</description>
+      <description>一、 考查目标 计算机学科基础综合考试涵盖数据结构、计算机组成原理、操作系统和计算机网络等学科专业基础课程。要求考生比较系统地掌握上述专业基础课程的基本概念、基本原理和基本方法，能够综合运用所学的基本原理和基本方法分析、判断和解决有关理论问题和实际问题。 二、考试形式和试卷结构 1、试卷</description>
     </item>
     
     <item>
@@ -252,133 +116,70 @@ $ cd /Users/liuxiaoyong/Desktop/CGTool/CGTool $ git remote add origin https://gi
       <pubDate>Thu, 30 Apr 2020 17:57:19 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</guid>
-      <description>愿北邮成为我邮 琢磨了好几年的考研，因为张清妍的到来，显得更加紧迫了，以后时间越来越少，精力也逐渐不如以前。遂决定，不再拖，今年考研！
-仅以此文鞭挞自己，望能坚持学习，更新学习计划，学习进度。尽人事，而后听天命。
-目标： 北京邮电大学 网络空间安全学院
-考试科目： 101思想政治理论 / 201英语一 / 301数学一 / 803计算机学科基础综合
-学习计划： 说实话，目前还有些迷茫，不知道从何准备起。 昨天加王道论坛的群，得到很多的学习资料，以及B站上王道论坛的视频。 学习计算机基础有了一个大致的方向。
-政治，英语，数学这几科目前是希望报班或者买课学习，具体报哪家，如何学习？ 还不确定。 还需要再调研下再定。
-2020.5.2更
-计算机基础：王道论坛书籍，还有B站王道论坛讲解视频。
-英语：暂时使用恋练有词，知米背单词
-数学：张宇考研高数概率论，李永乐线性代数
-政治：暂时先不开始</description>
+      <description>愿北邮成为我邮 琢磨了好几年的考研，因为张清妍的到来，显得更加紧迫了，以后时间越来越少，精力也逐渐不如以前。遂决定，不再拖，今年考研！ 仅以此文鞭挞自己，望能坚持学习，更新学习计划，学习进度。尽人事，而后听天命。 目标： 北京邮电大学 网络空间安全学院 考试科目： 101思想政治理论 / 201英</description>
     </item>
     
     <item>
       <title>最大子序和DP</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8Cdp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8CDP/</link>
       <pubDate>Tue, 28 Apr 2020 20:56:35 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8Cdp/</guid>
-      <description>53. 最大子序和  给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
-示例:
-输入: [-2,1,-3,4,-1,2,1,-5,4], 输出: 6 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。 进阶:
-如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/maximum-subarray 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解： 思路一： 动态规划：
- 定义dp数组的状态是以i结尾的子序列的最大子序列和(必须包含i). 设置初始状态,dp[0] 就是nums[0]. 当dp[i-1] &amp;gt; 0时，dp[i]为dp[i-1] + nums[i]。 当dp[i - 1] &amp;lt;= 0时,dp[i] 为 nums[i].  代码如下： public int maxSubArray(int[] nums) { // 定义状态 dp[i] 是以i结尾的最大子序列和  int[] dp = new int[nums.length]; // 定义初始值 dp[0] 就是数组的第一个元素  dp[0] = nums[0]; // 用来存储最终的最大值  int maxVal = nums[0]; for (int i = 1; i &amp;lt; nums.</description>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8CDP/</guid>
+      <description>53. 最大子序和 给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 示例: 输入: [-2,1,-3,4,-1,2,1,-5,4], 输出: 6 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。 进阶: 如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。 来源：力扣（LeetCode） 链接：https://</description>
     </item>
     
     <item>
       <title>最长公共子序列DP</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97dp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97DP/</link>
       <pubDate>Tue, 28 Apr 2020 18:10:13 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97dp/</guid>
-      <description>1143. 最长公共子序列  给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。
-一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。 例如，&amp;ldquo;ace&amp;rdquo; 是 &amp;ldquo;abcde&amp;rdquo; 的子序列，但 &amp;ldquo;aec&amp;rdquo; 不是 &amp;ldquo;abcde&amp;rdquo; 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。
-若这两个字符串没有公共子序列，则返回 0。
-示例 1:
-输入：text1 = &amp;ldquo;abcde&amp;rdquo;, text2 = &amp;ldquo;ace&amp;rdquo; 输出：3
-解释：最长公共子序列是 &amp;ldquo;ace&amp;rdquo;，它的长度为 3。 示例 2:
-输入：text1 = &amp;ldquo;abc&amp;rdquo;, text2 = &amp;ldquo;abc&amp;rdquo; 输出：3 解释：最长公共子序列是 &amp;ldquo;abc&amp;rdquo;，它的长度为 3。 示例 3:
-输入：text1 = &amp;ldquo;abc&amp;rdquo;, text2 = &amp;ldquo;def&amp;rdquo; 输出：0 解释：两个字符串没有公共子序列，返回 0。
-提示:
-1 &amp;lt;= text1.length &amp;lt;= 1000 1 &amp;lt;= text2.length &amp;lt;= 1000 输入的字符串只含有小写英文字符。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/longest-common-subsequence 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</description>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97DP/</guid>
+      <description>1143. 最长公共子序列 给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。 一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。 例如，&amp;ldquo;ace&amp;rdquo; 是 &amp;ldquo;abcde&amp;rdquo; 的子序列，</description>
     </item>
     
     <item>
       <title>三角形最小路径和DP</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8CDP/</link>
       <pubDate>Tue, 28 Apr 2020 14:27:19 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/</guid>
-      <description>三角形最小路径和  给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
-例如，给定三角形：
-[ [2], [3,4], [6,5,7], [4,1,8,3] ] 自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。
-说明：
-如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/triangle 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解： 使用动态规划解法，三个步骤：
- 定义状态， dp[i] [j]为第i行，包含第j列的最小三角形路径和。 定义初始值，假设我们dp数组从1 1开始取值，则dp[0] [0] = 0; dp[1] [1]就是 三角形[0] [0],也就是三角形的顶部。 定义动态转移方程，  dp[i] [j] 当 j 是第一列时，则为dp[i - 1] [j] + 三角形[i] [j]. 当 j 为最后一列时, 则dp[i] [j] 为dp[i - 1] [j - 1]. 当j 不是第一列也不是最后一列时， dp[i] [j]为上一行两个相邻列的最小值。    代码如下：</description>
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8CDP/</guid>
+      <description>三角形最小路径和 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。 例如，给定三角形： [ [2], [3,4], [6,5,7], [4,1,8,3] ] 自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。 说明： 如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。 来源</description>
     </item>
     
     <item>
       <title>最长上升子序列DP</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97DP/</link>
       <pubDate>Tue, 28 Apr 2020 11:25:21 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</guid>
-      <description>300. 最长上升子序列  给定一个无序的整数数组，找到其中最长上升子序列的长度。
-示例:
-输入: [10,9,2,5,3,7,101,18] 输出: 4 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。 说明:
-可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。 你算法的时间复杂度应该为 O(n2) 。 进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/longest-increasing-subsequence 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解： 此题使用动态规划解题方法
-  定义状态 dp[i]代表以 第i个元素结尾的序列 的最长上升子序列
-  定义初始值 第一位时, 最长上升子序列为1
-  定义状态转移方程。 计算dp[i] 时, 将其与前边元素比较， 当比前边元素大时，则取出当前对应的dp值+1就是dp[i].
-  用max记录，所有dp数组中的最大值。
-  代码如下： public int lengthOfLIS(int[] nums) { if (nums == null || nums.length == 0) return 0; // 定义状态 dp[i]代表以 第i个元素结尾的序列 的最长上升子序列  int[] dp = new int[nums.</description>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97DP/</guid>
+      <description>300. 最长上升子序列 给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18] 输出: 4 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。 说明: 可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。 你算法的时间复杂度应该为 O(n2) 。 进阶: 你能将算法的时间复杂度降</description>
     </item>
     
     <item>
       <title>打家劫舍DPII</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DDPII/</link>
       <pubDate>Mon, 27 Apr 2020 22:08:29 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</guid>
-      <description>213. 打家劫舍 II  你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
-给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。
-示例 1:
-输入: [2,3,2] 输出: 3 解释: 你不能先偷窃 1 号房屋（金额 = 2），然后偷窃 3 号房屋（金额 = 2）, 因为他们是相邻的。 示例 2:
-输入: [1,2,3,1] 输出: 4 解释: 你可以先偷窃 1 号房屋（金额 = 1），然后偷窃 3 号房屋（金额 = 3）。 偷窃到的最高金额 = 1 + 3 = 4 。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/house-robber-ii 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解： 此题采用动态规划的思想，与198打家劫舍dp类似，不同之处在于本题房屋是围成一个圈，198是一条直线。 所以这道题需要考虑第一个房屋和最后一个房屋不能同时抢劫。
-故用这种思路解题，或者抢劫 0-nums.length-1范围的房屋，或者抢劫 1-nums.length范围的房屋。 两者之间的最大者，就是题目的解。
-代码如下： public static int rob(int[] nums) { if (nums == null || nums.</description>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DDPII/</guid>
+      <description>213. 打家劫舍 II 你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。 给定一个代表每个房屋存放金额的非</description>
     </item>
     
     <item>
       <title>打家劫舍DP</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DDP/</link>
       <pubDate>Mon, 27 Apr 2020 21:06:09 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddp/</guid>
-      <description>198. 打家劫舍  你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
-给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。
-示例 1:
-输入: [1,2,3,1] 输出: 4 解释: 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。 偷窃到的最高金额 = 1 + 3 = 4 。 示例 2:
-输入: [2,7,9,3,1] 输出: 12 解释: 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。 偷窃到的最高金额 = 2 + 9 + 1 = 12 。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/house-robber 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解： 此题目使用动态规划的解题方法，动态规划三步骤分别为：</description>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DDP/</guid>
+      <description>198. 打家劫舍 你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。 给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到</description>
     </item>
     
     <item>
       <title>零钱找零DP</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6dp/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6DP/</link>
       <pubDate>Mon, 27 Apr 2020 17:40:44 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6dp/</guid>
-      <description>零钱兑换   给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。
-示例 1:
-输入: coins = [1, 2, 5], amount = 11 输出: 3 解释: 11 = 5 + 5 + 1 示例 2:
-输入: coins = [2], amount = 3 输出: -1
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/coin-change 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 思路一：暴力递归 假设coins数组中包含1 5 20 25四种硬币，则amout个硬币所需的最小硬币个数为 amount-1, amount - 5, amout - 20, amount - 25中最小硬币个数再 +1。 自顶向下调用，出现了重叠子问题。 代码如下：
-static int coinChange(int n) { if (n &amp;lt; 1) return Integer.</description>
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6DP/</guid>
+      <description>零钱兑换 给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。 示例 1: 输入: coins = [1, 2, 5], amount = 11 输出: 3 解释: 11 = 5 + 5 + 1 示例 2: 输入: coins = [2], amount = 3 输出: -1 来源：力扣（LeetCode） 链接：</description>
     </item>
     
     <item>
@@ -387,34 +188,16 @@ static int coinChange(int n) { if (n &amp;lt; 1) return Integer.</description>
       <pubDate>Mon, 27 Apr 2020 10:20:11 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</guid>
-      <description>动态规划(Dynamic Programming) 简称 DP , 是求解最优化问题的一种常用策略。
-来自维基百科的解释：
- Dynamic Programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once,and storing their solutions.
-  将复杂的原问题拆解成若干个简单的子问题 每个子问题只解决一次，并保存它们的解 最后推导出原问题的解  可以用动态规划来解决的问题，通常具备2个特点  最有子结构（最优化原理）：通过求解子问题的最优解，可以获得原问题的最优解。 无后效行  某阶段的状态一旦确定，则伺候过程的演变不再受此前各状态及决策的影响（未来与过去无关） 在推倒后边阶段的状态时，只关心前面阶段的具体状态值，不关心这个状态怎么一步步推导出来的    动态规划的常规步骤：   定义状态（状态是原问题，子问题的解）比如定义dp[i]的含义
-  设置初始状态（边界） 比如设置dp[0]的值
-  确定状态转移方程 比如确定dp[i] 和 dp[i-1]的关系
-  通用的使用套路（一步步优化）  暴力递归（自顶向下，出现了重复计算） 记忆化搜索（自顶向下） 递推（自底向下）  以下练习题整理转载自 力扣上的 DP 问题分类汇总</description>
+      <description>动态规划(Dynamic Programming) 简称 DP , 是求解最优化问题的一种常用策略。 来自维基百科的解释： Dynamic Programming is a method for solving a complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once,and storing their solutions. 将复杂的原问题拆解成若干个简单的子问题 每个子问题只解决一次，并保存它们的解 最后推导出原问题的解 可以用动态规划来解决的问题，通常具备2个</description>
     </item>
     
     <item>
       <title>Hello,张清妍</title>
-      <link>https://zhangxiongfeiv.github.io/post/hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</link>
+      <link>https://zhangxiongfeiv.github.io/post/Hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</link>
       <pubDate>Sun, 26 Apr 2020 16:15:11 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</guid>
-      <description>Hello, 张清妍 地点：北京天坛医院 2020年4月16日 医生检查我们嘟嘟生长受限，决定提前生产，早上vv做了otc检查，用来判断是否符合顺产的条件，otc顺利通过，下午开始打催产素，然而直到打完，孩他妈仍然没有要生产的感觉，以为着急的嘟嘟下午就要个我们见面，结果可能又要等到今晚或者明天。 妈和倩回家休息，我继续在医院即将临盆的vv和即将到来的小生命。
-晚上的天坛医院，非常安静，我的vv和阿嘟还在病房里输着营养液，等待着。
-心情没有激动，却很紧张，只盼着一件事，vv和阿嘟都要健健康康的，孩子小点不怕，只要身体健康，生出来我们肯定能涨上来。 加油啊，嘟嘟。你爹妈是你坚强的后盾！
-2020.4.17 21:13 我亲爱的嘟嘟出生了，女孩，母女平安。喜得小棉袄，心情非常激动，忍不住要告诉全世界我当爸爸了。于是发朋友圈告诉各位亲朋好友这个喜讯。
-（嘟嘟的第一张照片，拍于天坛医院产科病房）
-晚上睡觉时，也没睡踏实，隔一会尔就想看看嘟嘟照片，心里美滋滋，想着这姑娘更像我，还是更新孩他妈妈呢。 哈哈
-我们嘟嘟37周出生，也比预产期提前3周，体重2260g。比正常孩子轻，开始各种担心，希望我们要健健康康的呀。新生儿科大夫检查时，说孩子一切正常，个头不大，脚丫子不小，一句话让我们放下心来。
-接下来的三天里，我每天往返天坛医院，先是每天两趟后来一趟，给微微带过去汤粥,水果。每天隔着门缝说两句话，不得不说天坛医院不让陪床且不让探视的规定的确让人很不舒服。
-21号，我们出院啦。嘟嘟迎来了人生中第一次坐车，原本三十块钱就能到家的路程，特意给人打了个滴滴豪华车，奔驰E级，花了一百零九. 哈哈哈，考虑到能让微微和阿度坐的舒服一些，还是划得来的。
-北京 - 大红门 21-26日带娃感悟：
-像是在一片空旷的大地上，守护一只蜡烛，你不知道那个方向会突然刮来一阵风，让蜡烛的火苗摇晃几下，你只能用双手和身体紧密围在蜡烛周围，让风晃动蜡烛的可能性更小一些。
-4.29
-今天去医院给张清妍同学，领取了人生第一个证，医学出生证明。</description>
+      <guid>https://zhangxiongfeiv.github.io/post/Hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</guid>
+      <description>Hello, 张清妍 地点：北京天坛医院 2020年4月16日 医生检查我们嘟嘟生长受限，决定提前生产，早上vv做了otc检查，用来判断是否符合顺产的条件，otc顺利通过，下午开始打催产素，然而直到打完，孩他妈仍然没有要生产的感觉，以为着急的嘟嘟下午就要个我们见面，结果可能又要等到今晚或者明天。 妈</description>
     </item>
     
     <item>
@@ -423,23 +206,7 @@ static int coinChange(int n) { if (n &amp;lt; 1) return Integer.</description>
       <pubDate>Sun, 26 Apr 2020 10:15:13 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
-      <description>一 树形结构： 数据结构分为线性结构和树形结构，如下图：
- 线性结构：   树形结构：    生活中的树形结构
-  二 树(Tree)的基本概念   节点，父节点，子节点，跟节点，兄弟节点
-  一棵树可以没有任何节点，成为空树
-  一棵树可以只有一个节点，也就是跟节点
-  子树，左子树，右子树
-  节点的度：子树的个数
-  树的度：所有接点度中的最大值
-  叶子节点leaf：度为0的节点
-  非叶子节点： 度不为0的节点
-  层数：根节点在第一层，根节点的字节点在第二层，以此类推
-  节点的深度：从根节点到当前节点的节点总数
-  节点的高度：从当前节点到最远叶子节点的路径上的节点总数
-  树的深度：所有节点深度中的最大值
-  树的高度：所有节点高度中的最大值
-  树的深度等于树的高度
-  有序树，无序树，森林  有序树：树中任意节点的字节点有顺序关系 无序树：树中任意节点的字节点没有顺序关系，也成为自由树 森林：由m(m &amp;gt;= 0) 棵互不相交的树组成的集合  二叉树（Binary Tree） 二叉树的特点：  每个节点的度最大为2（最多拥有两棵子树） 左子树和右子树是有顺序的 即使某一节点只有一棵树，也要区分左右子树 有序树  二叉树的性质：   非空二叉树，第i层最多有 (2 ^ （i-1）)个节点</description>
+      <description>一 树形结构： 数据结构分为线性结构和树形结构，如下图： 线性结构： 树形结构： 生活中的树形结构 二 树(Tree)的基本概念 节点，父节点，子节点，跟节点，兄弟节点 一棵树可以没有任何节点，成为空树 一棵树可以只有一个节点，也就是跟节点 子树，左子树，右子树 节点的度：子树的个数 树的度：所有接点度中</description>
     </item>
     
     <item>
@@ -448,19 +215,7 @@ static int coinChange(int n) { if (n &amp;lt; 1) return Integer.</description>
       <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
-      <description>队列 一，定义 队列是一种特殊的线性表，只能在头尾两端进行操作
-  队尾(rear) : 只能从队尾添加元素，一般叫做enQueue,入队
-  对头(front) : 只能从对头移除元素，一般叫做deQueue,出队
-  先进先出的原则，First In First Out，FIFO
-  二，内部实现 队列的内部实现是否可以直接利用以前用过的数据结构？
- 动态数组，链表 优先使用双向链表，因为队列主要网头尾操作元素  三，几种特殊队列 双端队列 双端队列是能在头尾两端添加，删除的队列
-英文名Deque, 是double ended queue的简称
-循环队列 其实队列底层也可以用动态数组实现，并且各项接口也可以优化到O(1)的时间复杂度
-这个用数组实现并且优化之后的队列也叫做，循环队列
-循环双端队列：可以进行两端添加，删除操作的循环队列。
-四，题目 225. 用队列实现栈  使用队列实现栈的下列操作：
-push(x) &amp;ndash; 元素 x 入栈 pop() &amp;ndash; 移除栈顶元素 top() &amp;ndash; 获取栈顶元素 empty() &amp;ndash; 返回栈是否为空 注意:
-你只能使用队列的基本操作&amp;ndash; 也就是 push to back, peek/pop from front, size, 和 is empty 这些操作是合法的。 你所使用的语言也许不支持队列。 你可以使用 list 或者 deque（双端队列）来模拟一个队列 , 只要是标准的队列操作即可。 你可以假设所有操作都是有效的（例如, 对一个空的栈不会调用 pop 或者 top 操作）。</description>
+      <description>队列 一，定义 队列是一种特殊的线性表，只能在头尾两端进行操作 队尾(rear) : 只能从队尾添加元素，一般叫做enQueue,入队 对头(front) : 只能从对头移除元素，一般叫做deQueue,出队 先进先出的原则，First In First Out，FIFO 二，内部实现 队列的内部实现是否可以直接利用</description>
     </item>
     
     <item>
@@ -469,24 +224,7 @@ push(x) &amp;ndash; 元素 x 入栈 pop() &amp;ndash; 移除栈顶元素 top() &
       <pubDate>Wed, 15 Apr 2020 22:20:03 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E9%9B%86%E5%90%88/</guid>
-      <description>集合（Set） 集合的定义： 由一个或者多个确定的元素所构成的整体。
-特点： 1，不存在重复元素
-2，一般用于去重（比如一本书中统计词汇，统计访问网站的ip）
-实现： 可使用动态数组，链表，二叉搜索树等实现集合。
-ListSet(使用链表) TreeSet(使用红黑树) HashSet(哈希表)
-复杂度分析： TreeSet： 添加，删除，查找时间复杂度都是 O(logN)
-ListSet ： 添加，删除，查找时间复杂度都是O(logN)
-HashSet: 添加，删除，查找时间复杂度都是O(logN)
-TreeMap局限性： 元素必须具备可比较性，如果没有可比较性， 无法使用TreeMap。因为二叉搜索树中的元素必须具备可比较性。
-练习题 349. 两个数组的交集  给定两个数组，编写一个函数来计算它们的交集。
-示例 1:
-输入: nums1 = [1,2,2,1], nums2 = [2,2] 输出: [2] 示例 2:
-输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4] 输出: [9,4] 说明:
-输出结果中的每个元素一定是唯一的。 我们可以不考虑输出结果的顺序。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/intersection-of-two-arrays 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解： 把第一个数组依次加入firSet去重，第二个数组也依次加入secSet中去重复，遍历secSet如果firSet中包含，则加入结果数组中。
-代码如下:
-public int[] intersection(int[] nums1, int[] nums2){ HashSet set = new HashSet(); for (int i = 0; i &amp;lt; nums1.</description>
+      <description>集合（Set） 集合的定义： 由一个或者多个确定的元素所构成的整体。 特点： 1，不存在重复元素 2，一般用于去重（比如一本书中统计词汇，统计访问网站的ip） 实现： 可使用动态数组，链表，二叉搜索树等实现集合。 ListSet(使用链表) TreeSet(使用红黑树) HashSet(哈希表) 复杂</description>
     </item>
     
     <item>
@@ -495,19 +233,7 @@ public int[] intersection(int[] nums1, int[] nums2){ HashSet set = new HashSet()
       <pubDate>Tue, 14 Apr 2020 20:33:49 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E9%93%BE%E8%A1%A8/</guid>
-      <description>链表(Linked List)
-动态数组有个明显的缺点，可能会造成内存空间浪费。 链表可以做到用多少就申请多少内存。
-链表是一种链式存储的线性表，所有元素的内存地址不一定是连续的。
-练习题 237. 删除链表中的节点  请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
-现有一个链表 &amp;ndash; head = [4,5,1,9]，它可以表示为:
-示例 1:
-输入: head = [4,5,1,9], node = 5 输出: [4,1,9] 解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&amp;gt; 1 -&amp;gt; 9. 示例 2:
-输入: head = [4,5,1,9], node = 1 输出: [4,5,9] 解释: 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -&amp;gt; 5 -&amp;gt; 9.
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/delete-node-in-a-linked-list 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解 删除一个链表中的节点， 最常见的方式是拿到前一个节点prev， 把prev的next指针指向当前元素node的下一个元素。
-此题中，我们拿不到prev，所以把node的val替换为next的val， 并把node的next指向，node.next.next;
-代码如下
-public void deleteNode(ListNode node) { node.</description>
+      <description>链表(Linked List) 动态数组有个明显的缺点，可能会造成内存空间浪费。 链表可以做到用多少就申请多少内存。 链表是一种链式存储的线性表，所有元素的内存地址不一定是连续的。 练习题 237. 删除链表中的节点 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。 现</description>
     </item>
     
     <item>
@@ -516,19 +242,7 @@ public void deleteNode(ListNode node) { node.</description>
       <pubDate>Sat, 11 Apr 2020 11:25:40 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
-      <description>1. 两数之和  给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
-你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
-示例:
-给定 nums = [2, 7, 11, 15], target = 9
-因为 nums[0] + nums[1] = 2 + 7 = 9 所以返回 [0, 1]
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/two-sum 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 解题方法 思路一 ： 暴力法 暴力法非常简单， 从首元素开始依次扫描，记录下此元素与target的差值，往后遍历，之后元素与target一致时，返回元素下标。
-时间复杂度：O（N ^ 2）,空间复杂度(O(1))
-思路二 ：两遍哈希表 二次迭代，第一遍迭代先把index 和 与target的差值存入map， 第二次迭代检查每个元素对应的差值，是否存在map中。有则返回下标。
-时间复杂度：O（N ）,空间复杂度(O(N))
-思路三 ：一遍哈希表 一次迭代，迭代时判断map的key中是否存在nums[i], 如果存在，则返回i 和 map.get[nums[i]], 不存在则把map中存放(target - nums[i], i).
-时间复杂度：O（N ）,空间复杂度(O(N))
-代码如下 public int[] twoSum(int[] nums, int target) { HashMap&amp;lt;Integer,Integer&amp;gt; map = new HashMap&amp;lt;&amp;gt;(); for (int i = 0; i &amp;lt; nums.</description>
+      <description>1. 两数之和 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。 示例: 给定 nums = [2, 7, 11, 15], target = 9 因为 nums[0] + nums[1] = 2 + 7 = 9 所以返回 [0, 1] 来源：力扣（LeetC</description>
     </item>
     
     <item>
@@ -537,21 +251,7 @@ public void deleteNode(ListNode node) { node.</description>
       <pubDate>Sat, 11 Apr 2020 11:25:40 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E6%A0%88/</guid>
-      <description>栈 栈是一种特殊的线性表,只能在一端操作
-往栈中添加元素的操作，一般叫做push，入栈
-从栈中移除元素的操作，一般叫做pop，出栈（只能移除栈顶元素，也叫做弹出栈顶元素）
-后进先出的原则，Last In First Out, LIFO
-练习题 20. 有效的括号  给定一个只包括 &amp;lsquo;(&#39;，&#39;)&#39;，&#39;{&#39;，&#39;}&#39;，&#39;[&#39;，&#39;]&amp;rsquo; 的字符串，判断字符串是否有效。
-有效字符串需满足：
-左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串。
-示例 1:
-输入: &amp;ldquo;()&amp;rdquo; 输出: true
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/valid-parentheses 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解： 这道题使用栈数据结构。
-1，左括号时，入栈，
-2，右括号时，如果栈顶是与其对应的左括号， 则出栈。如果不对应，则返回false。
-3，最终返回结果是栈是否为空
-代码如下： private static HashMap&amp;lt;Character,Character&amp;gt; map = new HashMap&amp;lt;&amp;gt;(); static { map.put(&amp;#39;(&amp;#39;,&amp;#39;)&amp;#39;); map.put(&amp;#39;[&amp;#39;,&amp;#39;]&amp;#39;); map.put(&amp;#39;{&amp;#39;,&amp;#39;}&amp;#39;); } public boolean isValid(String s) { Stack stack = new Stack(); for (int i = 0; i &amp;lt; s.length(); i++) { char c = s.</description>
+      <description>栈 栈是一种特殊的线性表,只能在一端操作 往栈中添加元素的操作，一般叫做push，入栈 从栈中移除元素的操作，一般叫做pop，出栈（只能移除栈顶元素，也叫做弹出栈顶元素） 后进先出的原则，Last In First Out, LIFO 练习题 20. 有效的括号 给定一个只包括 &amp;lsquo;(&#39;，&#39;)&#39;，&#39;{&#39;，&#39;}&#39;，&#39;[&#39;，</description>
     </item>
     
     <item>
@@ -560,15 +260,7 @@ public void deleteNode(ListNode node) { node.</description>
       <pubDate>Wed, 08 Apr 2020 17:33:35 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
-      <description>首先看一到leetcode题目:斐波那契数列。
-509. 斐波那契数  斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
-F(0) = 0, F(1) = 1 F(N) = F(N - 1) + F(N - 2), 其中 N &amp;gt; 1. 给定 N，计算 F(N)。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/fibonacci-number 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 解法一 : 本题非常明显可以通过递归来解决，代码如下
-public int fib(int n){ if(n &amp;lt;= 1) return n; return fib(n-1) + fib(n-2) } 但是这种方式在代码提交后，测试用例43超时，而题目给出的要求是[0,100]之内的数字,很明显算法需要优化。算法时间复杂度为O(2 ^ n), 空间复杂度为O(1).
-接下来，我们尝试换一种算法解题
-解法二 : 动态规划思想,利用dp数组存放每一位上斐波那契数列的值。
-步骤： 1，定义初始化状态. dp[0] = 0; dp[1] = 1;</description>
+      <description>首先看一到leetcode题目:斐波那契数列。 509. 斐波那契数 斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是： F(0) = 0, F(1) = 1 F(N) = F(N - 1) + F(N - 2), 其中 N &amp;gt; 1. 给定 N，计算 F(N)。 来源：力扣（LeetCode） 链接：ht</description>
     </item>
     
     <item>
@@ -577,19 +269,7 @@ public int fib(int n){ if(n &amp;lt;= 1) return n; return fib(n-1) + fib(n-2) } 
       <pubDate>Mon, 06 Apr 2020 21:16:57 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
-      <description>字符串算法之滑动窗口 题目 3. 无重复字符的最长子串  给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
-示例 1:
-输入: &amp;ldquo;abcabcbb&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;abc&amp;rdquo;，所以其长度为 3。 示例 2:
-输入: &amp;ldquo;bbbbb&amp;rdquo; 输出: 1 解释: 因为无重复字符的最长子串是 &amp;ldquo;b&amp;rdquo;，所以其长度为 1。 示例 3:
-输入: &amp;ldquo;pwwkew&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;wke&amp;rdquo;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&amp;ldquo;pwke&amp;rdquo; 是一个子序列，不是子串。
- 解题思路 此题采用滑动窗口解题方法，将一个hashmap作为窗口，map中key，value分别为，字符和字符所在的index。
-两个指针，left指针是便利时不重复字串的起点。 i指针是当前遍历的index。
-max用来存储最终结果，即无重复字串的长度。
-一遍循环，循环时有如下情况：
-1，当map的key中不包含当前遍历的字符时，将其加入窗口中（即加入map中，设置map的key为当前字符，value为当前index）。
-2，当map中的key包含当前遍历的字符时，滑动窗口滑动至包含字符对应value（即index）的下一个,并且需要将left到index之间的key清除掉。 然后其加入窗口中。
-3，上述两种情况都分别计算，当前不重复字串的长度。 max = Math.max(max, i - left + 1);
-代码如下 public static int lengthOfLongestSubstring(String s) { if (s == null || s.</description>
+      <description>字符串算法之滑动窗口 题目 3. 无重复字符的最长子串 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。 示例 1: 输入: &amp;ldquo;abcabcbb&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;abc&amp;rdquo;，所以其长度为 3。 示例 2: 输入: &amp;ldquo;bbbbb&amp;rdquo; 输出: 1 解释: 因为无重复字符的最长子串是 &amp;ldquo;</description>
     </item>
     
     <item>
@@ -598,32 +278,16 @@ max用来存储最终结果，即无重复字串的长度。
       <pubDate>Fri, 05 Apr 2019 20:52:54 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
-      <description>151. 翻转字符串里的单词 题目 给定一个字符串，逐个反转字符串中的每个单词
-示例 1：
-输入: &amp;quot;the sky is blue&amp;quot; 输出: &amp;quot;blue is sky the&amp;quot; 说明：
-无空格字符构成一个单词。 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
-解题思路 1,采取双指针方法, 去除多余的空格
-3,有效字符串整体反转
-4.反转以后， 再逐个反转每个单词
-示例代码 public static String reverseWords(String s) { if (s == null) return s; // cur 指针指向当前重组后的字符串当前的index  int cur = 0; // len 代表重组后的字符串的有效长度  int len = 0; char[] chars = s.toCharArray(); // 上一个是否是空格，如果是空格，则下次进入空格时 cur不加加  boolean prevIsSpace = true; for (int i = 0; i &amp;lt; chars.</description>
+      <description>151. 翻转字符串里的单词 题目 给定一个字符串，逐个反转字符串中的每个单词 示例 1： 输入: &amp;quot;the sky is blue&amp;quot; 输出: &amp;quot;blue is sky the&amp;quot; 说明： 无空格字符构成一个单词。 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。 解题思路 1,采</description>
     </item>
     
     <item>
       <title>NSObject内存结构</title>
-      <link>https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</link>
+      <link>https://zhangxiongfeiv.github.io/post/NSObject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</link>
       <pubDate>Mon, 25 Jun 2018 17:24:50 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</guid>
-      <description>一，Objective-C的本质 我们平时编写的Objective-C代码，底层实现都是C/C++代码。
-所以Objective-C的面向对象，都是通过C/C++的数据结构实现的。
-Objective-C的对象，是用C++中的结构体来实现的。
-二，猜测 接下来我们通过代码来验证下OC对象的本质。OC代码如下：
-#import &amp;lt;Foundation/Foundation.h&amp;gt; int main(int argc, const char * argv[]) { @autoreleasepool { NSObject *objc = [[NSObject alloc] init]; NSLog(@&amp;#34;Hello, World!&amp;#34;); } return 0; } 我们使用命令行工具将一下代码转化为C++代码，命令如下：
-clang -rewrite-objc main.m -o main.cpp 我们可以指定架构，命令如下：
-xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main-arm64.cpp 生成 main-arm64.cpp 接下来，我们在main-arm64.cpp文件中，探索NSObject对象的本质，可以找到NSObject_IMPL(即NSObject对象转化为C++后的实现)
-struct NSObject_IMPL { Class isa; }; // 查看Class本质 typedef struct objc_class *Class; 我们发现Class其实就是一个指针，对象底层实现其实就是这个样子。 通过以上代码，发现NSObject对象转换为结构体后，结构体成员中只有一个isa指针，指针在arm64架构下，大小为8个字节，在32位下是4个字节，也就是说一个NSObject对象在64位所占用的内存空间为8个字节，32位下是4个字节。
-三，验证 1，代码层次： 我们通过class_getInstanceSize()来打印NSObject对象的大小，代码如下：
-#import &amp;lt;Foundation/Foundation.h&amp;gt; #import &amp;lt;objc/runtime.</description>
+      <guid>https://zhangxiongfeiv.github.io/post/NSObject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</guid>
+      <description>一，Objective-C的本质 我们平时编写的Objective-C代码，底层实现都是C/C++代码。 所以Objective-C的面向对象，都是通过C/C++的数据结构实现的。 Objective-C的对象，是用C++中的结构体来实现的。 二，猜测 接下来我们通过代码来验证下OC对象的</description>
     </item>
     
     <item>
@@ -632,18 +296,7 @@ struct NSObject_IMPL { Class isa; }; // 查看Class本质 typedef struct objc_cl
       <pubDate>Mon, 06 Mar 2017 14:04:58 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/hugo/</guid>
-      <description>Mac环境下安装Hugo 第一步：安装hugo mac环境下用homebrew工具安装hugo，一句命令即可
-$ brew install hugo 第二步：生成站点 利用brew生成站点，(比如生成在myblog目录下)执行如下命令
-$ hugo new site myblog 第三步：创建文章 创建的文章一般放在post下， 方便之后聚合生成页面。
-$ hugo new post/文章名称.md 文章内容为MArkDown格式，可用vim命令编辑，亦可以其他编辑器如Typora等编辑。
-第四步：安装主题 去官网找喜欢的主题，本文以Tailwind Journal为例。
-找到其github地址，将其克隆到Themes/目录下
-$ cd Themes $ git clone https://github.com/ianrodrigues/hugo-tailwind-journal.git 第五步：运行站点 在myblog目录下，执行一下命令
-$ hugo server -t hugo-tailwind-journal —buildDrafts 运行站点后，可以在本地测试 http://localhost:1313
-第六步：部署到Github公网 1，首先在Github上创建一个仓库， 这里⚠️注意仓库名称需要和Github用户名一致，并拼接上.github.io 后缀。如下图:
-2，在站点根目录下，执行命令生成页面。
-$ hugo --theme=hugo-tailwind-journal --baseUrl=&amp;quot;https://zhangxiongfeiv.github.io&amp;quot; --buildDrafts 3, 执行完毕，会生成public文件夹，所有的静态页面存放在此。将public目录下所有文件push到刚刚创建Git仓库master目录下。
-$ cd public $ git init $ git remote add origin https://github.com/zhangxiongfeiv/zhangxiongfeiv.github.io.git $ git add .</description>
+      <description>Mac环境下安装Hugo 第一步：安装hugo mac环境下用homebrew工具安装hugo，一句命令即可 $ brew install hugo 第二步：生成站点 利用brew生成站点，(比如生成在myblog目录下)执行如下命令 $ hugo new site myblog 第三步：创建文章 创建的文章一般放在post下， 方便之后聚合生成页面。 $ hugo new p</description>
     </item>
     
   </channel>

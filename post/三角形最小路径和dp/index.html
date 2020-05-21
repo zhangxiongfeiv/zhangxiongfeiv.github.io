@@ -1,74 +1,201 @@
 <!doctype html>
-<html lang="en-us">
-  <head>
-    <title>三角形最小路径和DP // 张雄飞</title>
-    <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.68.3" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="张雄飞" />
-    <meta name="description" content="" />
-    <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/main.min.61bb32028587f24ca28522d8d197970c7ef33284e5fffb45a75fcbbb2dbc4dcb.css" />
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>三角形最小路径和DP | 张雄飞的博客</title>
+    <meta property="og:title" content="三角形最小路径和DP - 张雄飞的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-04-28T14:27:19&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-04-28T14:27:19&#43;08:00'>
+        
+    <meta name="Keywords" content="张雄飞,java,iOS,博客,算法,生活">
+    <meta name="description" content="三角形最小路径和DP">
+        
+    <meta name="author" content="张雄飞">
+    <meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8CDP/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="三角形最小路径和DP"/>
-<meta name="twitter:description" content="三角形最小路径和  给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
-例如，给定三角形：
-[ [2], [3,4], [6,5,7], [4,1,8,3] ] 自顶向下的最小路径和为 11（即，2 &#43; 3 &#43; 5 &#43; 1 = 11）。
-说明：
-如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/triangle 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解： 使用动态规划解法，三个步骤：
- 定义状态， dp[i] [j]为第i行，包含第j列的最小三角形路径和。 定义初始值，假设我们dp数组从1 1开始取值，则dp[0] [0] = 0; dp[1] [1]就是 三角形[0] [0],也就是三角形的顶部。 定义动态转移方程，  dp[i] [j] 当 j 是第一列时，则为dp[i - 1] [j] &#43; 三角形[i] [j]. 当 j 为最后一列时, 则dp[i] [j] 为dp[i - 1] [j - 1]. 当j 不是第一列也不是最后一列时， dp[i] [j]为上一行两个相邻列的最小值。    代码如下："/>
-
-    <meta property="og:title" content="三角形最小路径和DP" />
-<meta property="og:description" content="三角形最小路径和  给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
-例如，给定三角形：
-[ [2], [3,4], [6,5,7], [4,1,8,3] ] 自顶向下的最小路径和为 11（即，2 &#43; 3 &#43; 5 &#43; 1 = 11）。
-说明：
-如果你可以只使用 O(n) 的额外空间（n 为三角形的总行数）来解决这个问题，那么你的算法会很加分。
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/triangle 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 题解： 使用动态规划解法，三个步骤：
- 定义状态， dp[i] [j]为第i行，包含第j列的最小三角形路径和。 定义初始值，假设我们dp数组从1 1开始取值，则dp[0] [0] = 0; dp[1] [1]就是 三角形[0] [0],也就是三角形的顶部。 定义动态转移方程，  dp[i] [j] 当 j 是第一列时，则为dp[i - 1] [j] &#43; 三角形[i] [j]. 当 j 为最后一列时, 则dp[i] [j] 为dp[i - 1] [j - 1]. 当j 不是第一列也不是最后一列时， dp[i] [j]为上一行两个相邻列的最小值。    代码如下：" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/" />
-<meta property="article:published_time" content="2020-04-28T14:27:19+08:00" />
-<meta property="article:modified_time" content="2020-04-28T14:27:19+08:00" />
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-4031353640611810",
+        enable_page_level_ads: true
+    });
+    </script>
+    
 
 
-  </head>
-  <body>
-    <header class="app-header">
-      <a href="https://zhangxiongfeiv.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="张雄飞" /></a>
-      <h1>张雄飞</h1>
-      <p>iOS Developer, 逆向爱好者, 偶尔刷题...</p>
-      <div class="app-header-social">
-        
-      </div>
-    </header>
-    <main class="app-container">
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class ="post-title">三角形最小路径和DP</h1>
-      <div class="post-meta">
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
-  <title>calendar</title>
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-</svg>
-          Apr 28, 2020
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://zhangxiongfeiv.github.io">
+                        张雄飞的博客
+                    </a>
+                
+                <p class="description">iOS Developer, 喜欢逆向, 偶尔刷题...</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://zhangxiongfeiv.github.io">首页</a>
+                    
+                    <a  href="https://zhangxiongfeiv.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://zhangxiongfeiv.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
         </div>
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
-  <title>clock</title>
-  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
-</svg>
-          2 min read
-        </div></div>
-    </header>
-    <div class="post-content">
-      <h2 id="三角形最小路径和httpsleetcode-cncomproblemstriangle"><a href="https://leetcode-cn.com/problems/triangle/">三角形最小路径和</a></h2>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#三角形最小路径和httpsleetcode-cncomproblemstriangle"><a href="https://leetcode-cn.com/problems/triangle/">三角形最小路径和</a></a></li>
+    <li><a href="#题解">题解：</a></li>
+    <li><a href="#优化">优化：</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">三角形最小路径和DP</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月28日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="三角形最小路径和httpsleetcode-cncomproblemstriangle"><a href="https://leetcode-cn.com/problems/triangle/">三角形最小路径和</a></h2>
 <blockquote>
 <p>给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。</p>
 <p>例如，给定三角形：</p>
@@ -99,82 +226,165 @@
 </li>
 </ol>
 <p>代码如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">minimumTotal</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;&gt;</span> triangle<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">minimumTotal</span><span style="color:#000;font-weight:bold">(</span>List<span style="color:#000;font-weight:bold">&lt;</span>List<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;&gt;</span> triangle<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
 
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>triangle <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>triangle <span style="color:#000;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">||</span> triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">==</span> 0<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">return</span> 0<span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">==</span> 1<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">return</span> triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">).</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">);</span>
   
-        <span style="color:#75715e">// 定义状态 dp[i][j] 代表到第 i 行，第 j 列 的最小路径和
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">][</span>triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">).</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
+        <span style="color:#998;font-style:italic">// 定义状态 dp[i][j] 代表到第 i 行，第 j 列 的最小路径和
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[][]</span> dp <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[</span>triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">+</span> 1<span style="color:#000;font-weight:bold">][</span>triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">).</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">+</span> 1<span style="color:#000;font-weight:bold">];</span>
 
-        <span style="color:#75715e">// 初始值
-</span><span style="color:#75715e"></span>        dp<span style="color:#f92672">[</span>0<span style="color:#f92672">][</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-        dp<span style="color:#f92672">[</span>1<span style="color:#f92672">][</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+        <span style="color:#998;font-style:italic">// 初始值
+</span><span style="color:#998;font-style:italic"></span>        dp<span style="color:#000;font-weight:bold">[</span>0<span style="color:#000;font-weight:bold">][</span>0<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> 0<span style="color:#000;font-weight:bold">;</span>
+        dp<span style="color:#000;font-weight:bold">[</span>1<span style="color:#000;font-weight:bold">][</span>1<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">).</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">);</span>
 
-        <span style="color:#75715e">// 状态转移方程
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">MAX_VALUE</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 2<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;=</span> triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            List <span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
+        <span style="color:#998;font-style:italic">// 状态转移方程
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#458;font-weight:bold">int</span> result <span style="color:#000;font-weight:bold">=</span> Integer<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">MAX_VALUE</span><span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> i <span style="color:#000;font-weight:bold">=</span> 2<span style="color:#000;font-weight:bold">;</span> i <span style="color:#000;font-weight:bold">&lt;=</span> triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">();</span> i<span style="color:#000;font-weight:bold">++)</span> <span style="color:#000;font-weight:bold">{</span>
+            List <span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> list <span style="color:#000;font-weight:bold">=</span> triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>i <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">);</span>
 
-            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;=</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">==</span> 1<span style="color:#f92672">){</span>
-                    <span style="color:#75715e">// 最左
-</span><span style="color:#75715e"></span>                    dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> dp<span style="color:#f92672">[</span>i <span style="color:#f92672">-</span> 1<span style="color:#f92672">][</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">==</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()){</span>
-                    <span style="color:#75715e">// 最右
-</span><span style="color:#75715e"></span>                    dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> dp<span style="color:#f92672">[</span>i<span style="color:#f92672">-</span>1<span style="color:#f92672">][</span>j<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>j <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-                    <span style="color:#75715e">// 中间
-</span><span style="color:#75715e"></span>                    dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">-</span>1<span style="color:#f92672">][</span>j<span style="color:#f92672">-</span>1<span style="color:#f92672">],</span> dp<span style="color:#f92672">[</span>i<span style="color:#f92672">-</span>1<span style="color:#f92672">][</span>j<span style="color:#f92672">])</span> <span style="color:#f92672">+</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>j <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span>
+            <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> j <span style="color:#000;font-weight:bold">=</span> 1<span style="color:#000;font-weight:bold">;</span> j <span style="color:#000;font-weight:bold">&lt;=</span> list<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">();</span> j<span style="color:#000;font-weight:bold">++)</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>j <span style="color:#000;font-weight:bold">==</span> 1<span style="color:#000;font-weight:bold">){</span>
+                    <span style="color:#998;font-style:italic">// 最左
+</span><span style="color:#998;font-style:italic"></span>                    dp<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">][</span>j<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> dp<span style="color:#000;font-weight:bold">[</span>i <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">][</span>1<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">+</span> list<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">);</span>
+                <span style="color:#000;font-weight:bold">}</span><span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>j <span style="color:#000;font-weight:bold">==</span> list<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">()){</span>
+                    <span style="color:#998;font-style:italic">// 最右
+</span><span style="color:#998;font-style:italic"></span>                    dp<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">][</span>j<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> dp<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">][</span>j<span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">+</span> list<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>j <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">);</span>
+                <span style="color:#000;font-weight:bold">}</span><span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#998;font-style:italic">// 中间
+</span><span style="color:#998;font-style:italic"></span>                    dp<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">][</span>j<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">min</span><span style="color:#000;font-weight:bold">(</span>dp<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">][</span>j<span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">],</span> dp<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">][</span>j<span style="color:#000;font-weight:bold">])</span> <span style="color:#000;font-weight:bold">+</span> list<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>j <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">);</span>
+                <span style="color:#000;font-weight:bold">}</span>
 
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">==</span> triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-                    result <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>result<span style="color:#f92672">,</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]);</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
+                <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>i <span style="color:#000;font-weight:bold">==</span> triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">())</span> <span style="color:#000;font-weight:bold">{</span>
+                    result <span style="color:#000;font-weight:bold">=</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">min</span><span style="color:#000;font-weight:bold">(</span>result<span style="color:#000;font-weight:bold">,</span>dp<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">][</span>j<span style="color:#000;font-weight:bold">]);</span>
+                <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">}</span>
 
-        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p>时间复杂度 : O(N)</p>
+        <span style="color:#000;font-weight:bold">return</span> result<span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>时间复杂度 : O(N)</p>
 <p>空间复杂度 : O(M * N)  因为用到了额外的二维数组存储元素。 M N分别为三角形的行数和列数。</p>
 <h2 id="优化">优化：</h2>
 <p>上述算法中，我们用到了二维数组， 用来存储矩阵各个点的最小路径， 通过观察发现， 我们计算dp[i] [j] 时，好像只用到了dp[i - 1] [&hellip;]中的数值，是否可以将空间复杂度由之前的 M * N优化至 O(N)呢，下边我们来做此尝试。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">minimumTotal</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;&gt;</span> triangle<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">minimumTotal</span><span style="color:#000;font-weight:bold">(</span>List<span style="color:#000;font-weight:bold">&lt;</span>List<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;&gt;</span> triangle<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
 
-        <span style="color:#75715e">// 定义状态 dp[i] 代表当前行，第 i 列 的最小路径和
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()];</span>
+        <span style="color:#998;font-style:italic">// 定义状态 dp[i] 代表当前行，第 i 列 的最小路径和
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[]</span> dp <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[</span>triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">()];</span>
 
-        <span style="color:#75715e">// 初始值
-</span><span style="color:#75715e"></span>        dp<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-        dp<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+        <span style="color:#998;font-style:italic">// 初始值
+</span><span style="color:#998;font-style:italic"></span>        dp<span style="color:#000;font-weight:bold">[</span>0<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> 0<span style="color:#000;font-weight:bold">;</span>
+        dp<span style="color:#000;font-weight:bold">[</span>1<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">).</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">);</span>
 
-        <span style="color:#75715e">// 状态转移方程
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">MAX_VALUE</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 2<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;=</span> triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            List <span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
+        <span style="color:#998;font-style:italic">// 状态转移方程
+</span><span style="color:#998;font-style:italic"></span>        <span style="color:#458;font-weight:bold">int</span> result <span style="color:#000;font-weight:bold">=</span> Integer<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">MAX_VALUE</span><span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> i <span style="color:#000;font-weight:bold">=</span> 2<span style="color:#000;font-weight:bold">;</span> i <span style="color:#000;font-weight:bold">&lt;=</span> triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">();</span> i<span style="color:#000;font-weight:bold">++)</span> <span style="color:#000;font-weight:bold">{</span>
+            List <span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> list <span style="color:#000;font-weight:bold">=</span> triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>i <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">);</span>
 
-            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span> j <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">;</span> j<span style="color:#f92672">--)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">==</span> 1<span style="color:#f92672">){</span>
-                    <span style="color:#75715e">// 最左
-</span><span style="color:#75715e"></span>                    dp<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> dp<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">==</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()){</span>
-                    <span style="color:#75715e">// 最右
-</span><span style="color:#75715e"></span>                    dp<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> dp<span style="color:#f92672">[</span>j<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>j <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-                    <span style="color:#75715e">// 中间
-</span><span style="color:#75715e"></span>                    dp<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>j<span style="color:#f92672">-</span>1<span style="color:#f92672">],</span> dp<span style="color:#f92672">[</span>j<span style="color:#f92672">])</span> <span style="color:#f92672">+</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>j <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span>
+            <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> j <span style="color:#000;font-weight:bold">=</span> list<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">();</span> j <span style="color:#000;font-weight:bold">&gt;</span> 0<span style="color:#000;font-weight:bold">;</span> j<span style="color:#000;font-weight:bold">--)</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>j <span style="color:#000;font-weight:bold">==</span> 1<span style="color:#000;font-weight:bold">){</span>
+                    <span style="color:#998;font-style:italic">// 最左
+</span><span style="color:#998;font-style:italic"></span>                    dp<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> dp<span style="color:#000;font-weight:bold">[</span>1<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">+</span> list<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">);</span>
+                <span style="color:#000;font-weight:bold">}</span><span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>j <span style="color:#000;font-weight:bold">==</span> list<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">()){</span>
+                    <span style="color:#998;font-style:italic">// 最右
+</span><span style="color:#998;font-style:italic"></span>                    dp<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> dp<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">+</span> list<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>j <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">);</span>
+                <span style="color:#000;font-weight:bold">}</span><span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#998;font-style:italic">// 中间
+</span><span style="color:#998;font-style:italic"></span>                    dp<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">min</span><span style="color:#000;font-weight:bold">(</span>dp<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">],</span> dp<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">])</span> <span style="color:#000;font-weight:bold">+</span> list<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>j <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">);</span>
+                <span style="color:#000;font-weight:bold">}</span>
 
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">==</span> triangle<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-                    result <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>result<span style="color:#f92672">,</span>dp<span style="color:#f92672">[</span>j<span style="color:#f92672">]);</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
+                <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>i <span style="color:#000;font-weight:bold">==</span> triangle<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">size</span><span style="color:#000;font-weight:bold">())</span> <span style="color:#000;font-weight:bold">{</span>
+                    result <span style="color:#000;font-weight:bold">=</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">min</span><span style="color:#000;font-weight:bold">(</span>result<span style="color:#000;font-weight:bold">,</span>dp<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">]);</span>
+                <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">}</span>
 
-        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p>做此优化时 ，内部的遍历需要从后往前遍历，因为从前往后，争取的值会被覆盖掉，如下图：</p>
+        <span style="color:#000;font-weight:bold">return</span> result<span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>做此优化时 ，内部的遍历需要从后往前遍历，因为从前往后，争取的值会被覆盖掉，如下图：</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ge9k77b524j30dk0dkwez.jpg" alt="截屏2020-04-28下午4.23.56"></p>
 <p>最终计算出来的结果是15，导致不正确。</p>
 <p>所以需要从后往前遍历，正确的值不会被覆盖掉，如下图：</p>
@@ -183,12 +393,218 @@
 <p>算法时间复杂度仍然是 : O(N)</p>
 <p>空间复杂度由之前的O(N * M) 降低为 O(N).</p>
 
-    </div>
-    <div class="post-footer">
-      
-    </div>
-  </article>
+        </div>
 
-    </main>
-  </body>
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://zhangxiongfeiv.github.io">张雄飞</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8CDP/">https://zhangxiongfeiv.github.io/post/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8CDP/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97DP/">最长上升子序列DP</a></li>
+        
+        <li><a href="/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DDPII/">打家劫舍DPII</a></li>
+        
+        <li><a href="/post/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DDP/">打家劫舍DP</a></li>
+        
+        <li><a href="/post/%E9%9B%B6%E9%92%B1%E6%89%BE%E9%9B%B6DP/">零钱找零DP</a></li>
+        
+        <li><a href="/post/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/">一文了解动态规划(Dynamic Programming)</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "飞熊" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/zhangxiongfeiv/utterances"
+            issue-term="Comments"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://zhangxiongfeiv.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://zhangxiongfeiv.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/leetcode%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E9%94%A6/" title="Leetcode面试题集锦">Leetcode面试题集锦</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/AVL%E6%A0%91/" title="AVL树">AVL树</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="平衡二叉搜索树">平衡二叉搜索树</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="买卖股票的最佳时机">买卖股票的最佳时机</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/" title="乘积最大子数组">乘积最大子数组</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="二叉搜索树">二叉搜索树</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/iOS%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/" title="IOS基于码云创建私有库">IOS基于码云创建私有库</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="王道计算机网络笔记">王道计算机网络笔记</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="王道操作系统笔记">王道操作系统笔记</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/" title="王道数据结构笔记">王道数据结构笔记</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://github.com/zhangxiongfeiv/" title="张雄飞的Github主页">张雄飞的Github主页</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://leetcode-cn.com/u/zhangxiongfei/" title="张雄飞的LeetCode主页">张雄飞的LeetCode</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://zhangxiongfeiv.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://zhangxiongfeiv.github.io">张雄飞的博客 By 张雄飞</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+</body>
+
 </html>

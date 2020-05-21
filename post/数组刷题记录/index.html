@@ -1,84 +1,204 @@
 <!doctype html>
-<html lang="en-us">
-  <head>
-    <title>数组刷题记录 // 张雄飞</title>
-    <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.68.3" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="张雄飞" />
-    <meta name="description" content="" />
-    <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/main.min.61bb32028587f24ca28522d8d197970c7ef33284e5fffb45a75fcbbb2dbc4dcb.css" />
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>数组刷题记录 | 张雄飞的博客</title>
+    <meta property="og:title" content="数组刷题记录 - 张雄飞的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-04-11T11:25:40&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-04-11T11:25:40&#43;08:00'>
+        
+    <meta name="Keywords" content="张雄飞,java,iOS,博客,算法,生活">
+    <meta name="description" content="数组刷题记录">
+        
+    <meta name="author" content="张雄飞">
+    <meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="数组刷题记录"/>
-<meta name="twitter:description" content="1. 两数之和  给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
-你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
-示例:
-给定 nums = [2, 7, 11, 15], target = 9
-因为 nums[0] &#43; nums[1] = 2 &#43; 7 = 9 所以返回 [0, 1]
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/two-sum 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 解题方法 思路一 ： 暴力法 暴力法非常简单， 从首元素开始依次扫描，记录下此元素与target的差值，往后遍历，之后元素与target一致时，返回元素下标。
-时间复杂度：O（N ^ 2）,空间复杂度(O(1))
-思路二 ：两遍哈希表 二次迭代，第一遍迭代先把index 和 与target的差值存入map， 第二次迭代检查每个元素对应的差值，是否存在map中。有则返回下标。
-时间复杂度：O（N ）,空间复杂度(O(N))
-思路三 ：一遍哈希表 一次迭代，迭代时判断map的key中是否存在nums[i], 如果存在，则返回i 和 map.get[nums[i]], 不存在则把map中存放(target - nums[i], i).
-时间复杂度：O（N ）,空间复杂度(O(N))
-代码如下 public int[] twoSum(int[] nums, int target) { HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums."/>
-
-    <meta property="og:title" content="数组刷题记录" />
-<meta property="og:description" content="1. 两数之和  给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
-你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
-示例:
-给定 nums = [2, 7, 11, 15], target = 9
-因为 nums[0] &#43; nums[1] = 2 &#43; 7 = 9 所以返回 [0, 1]
-来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/two-sum 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- 解题方法 思路一 ： 暴力法 暴力法非常简单， 从首元素开始依次扫描，记录下此元素与target的差值，往后遍历，之后元素与target一致时，返回元素下标。
-时间复杂度：O（N ^ 2）,空间复杂度(O(1))
-思路二 ：两遍哈希表 二次迭代，第一遍迭代先把index 和 与target的差值存入map， 第二次迭代检查每个元素对应的差值，是否存在map中。有则返回下标。
-时间复杂度：O（N ）,空间复杂度(O(N))
-思路三 ：一遍哈希表 一次迭代，迭代时判断map的key中是否存在nums[i], 如果存在，则返回i 和 map.get[nums[i]], 不存在则把map中存放(target - nums[i], i).
-时间复杂度：O（N ）,空间复杂度(O(N))
-代码如下 public int[] twoSum(int[] nums, int target) { HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); for (int i = 0; i &lt; nums." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" />
-<meta property="article:published_time" content="2020-04-11T11:25:40+08:00" />
-<meta property="article:modified_time" content="2020-04-11T11:25:40+08:00" />
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-4031353640611810",
+        enable_page_level_ads: true
+    });
+    </script>
+    
 
 
-  </head>
-  <body>
-    <header class="app-header">
-      <a href="https://zhangxiongfeiv.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="张雄飞" /></a>
-      <h1>张雄飞</h1>
-      <p>iOS Developer, 逆向爱好者, 偶尔刷题...</p>
-      <div class="app-header-social">
-        
-      </div>
-    </header>
-    <main class="app-container">
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class ="post-title">数组刷题记录</h1>
-      <div class="post-meta">
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
-  <title>calendar</title>
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-</svg>
-          Apr 11, 2020
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://zhangxiongfeiv.github.io">
+                        张雄飞的博客
+                    </a>
+                
+                <p class="description">iOS Developer, 喜欢逆向, 偶尔刷题...</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://zhangxiongfeiv.github.io">首页</a>
+                    
+                    <a  href="https://zhangxiongfeiv.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://zhangxiongfeiv.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
         </div>
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
-  <title>clock</title>
-  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
-</svg>
-          4 min read
-        </div></div>
-    </header>
-    <div class="post-content">
-      <h4 id="1-两数之和httpsleetcode-cncomproblemstwo-sum"><a href="https://leetcode-cn.com/problems/two-sum/">1. 两数之和</a></h4>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+        <li><a href="#解题思路">解题思路</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">数组刷题记录</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月11日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h4 id="1-两数之和httpsleetcode-cncomproblemstwo-sum"><a href="https://leetcode-cn.com/problems/two-sum/">1. 两数之和</a></h4>
 <blockquote>
 <p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
 <p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
@@ -101,21 +221,41 @@
 <p>一次迭代，迭代时判断map的key中是否存在nums[i], 如果存在，则返回i 和 map.get[nums[i]], 不存在则把map中存放(target - nums[i], i).</p>
 <p>时间复杂度：O（N ）,空间复杂度(O(N))</p>
 <h4 id="代码如下">代码如下</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">twoSum</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> target<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        HashMap<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span>Integer<span style="color:#f92672">&gt;</span> map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-          <span style="color:#75715e">// 如果map的key中包含，当前元素
-</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">containsKey</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">])){</span>
-              <span style="color:#75715e">// 则map的value ，i就是结果数组
-</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">int</span> <span style="color:#f92672">[]</span> res <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>map<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]),</span>i<span style="color:#f92672">};</span>
-                <span style="color:#66d9ef">return</span> res<span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
-          <span style="color:#75715e">// map的key中不包含当前元素，则把target和当前元素的差值和i存入map
-</span><span style="color:#75715e"></span>            map<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>target <span style="color:#f92672">-</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">],</span>i<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>0<span style="color:#f92672">];</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><h4 id="heading"></h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[]</span> <span style="color:#900;font-weight:bold">twoSum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[]</span> nums<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">int</span> target<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+        HashMap<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">,</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> map <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> HashMap<span style="color:#000;font-weight:bold">&lt;&gt;();</span>
+        <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> i <span style="color:#000;font-weight:bold">=</span> 0<span style="color:#000;font-weight:bold">;</span> i <span style="color:#000;font-weight:bold">&lt;</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span><span style="color:#000;font-weight:bold">;</span> i<span style="color:#000;font-weight:bold">++)</span> <span style="color:#000;font-weight:bold">{</span>
+          <span style="color:#998;font-style:italic">// 如果map的key中包含，当前元素
+</span><span style="color:#998;font-style:italic"></span>            <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>map<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">containsKey</span><span style="color:#000;font-weight:bold">(</span>nums<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">])){</span>
+              <span style="color:#998;font-style:italic">// 则map的value ，i就是结果数组
+</span><span style="color:#998;font-style:italic"></span>                <span style="color:#458;font-weight:bold">int</span> <span style="color:#000;font-weight:bold">[]</span> res <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>map<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span>nums<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">]),</span>i<span style="color:#000;font-weight:bold">};</span>
+                <span style="color:#000;font-weight:bold">return</span> res<span style="color:#000;font-weight:bold">;</span>
+            <span style="color:#000;font-weight:bold">}</span>
+          <span style="color:#998;font-style:italic">// map的key中不包含当前元素，则把target和当前元素的差值和i存入map
+</span><span style="color:#998;font-style:italic"></span>            map<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">put</span><span style="color:#000;font-weight:bold">(</span>target <span style="color:#000;font-weight:bold">-</span> nums<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">],</span>i<span style="color:#000;font-weight:bold">);</span>
+        <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[</span>0<span style="color:#000;font-weight:bold">];</span>
+    <span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="heading"></h4>
 <h4 id="11-盛最多水的容器httpsleetcode-cncomproblemscontainer-with-most-water">11. 盛最多水的容器](<a href="https://leetcode-cn.com/problems/container-with-most-water/">https://leetcode-cn.com/problems/container-with-most-water/</a>)</h4>
 <blockquote>
 <p>给你 n 个非负整数 a1，a2，&hellip;，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
@@ -129,25 +269,53 @@
 </code></pre></blockquote>
 <h3 id="解题思路">解题思路</h3>
 <p>面积为宽 * 高。 宽为数组下标的差值， 高为数组中两个元素较小的元素。假设i,j分别为i，j可盛水的面积， 则得出以下公式</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> area <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">],</span>nums<span style="color:#f92672">[</span>j<span style="color:#f92672">])</span> <span style="color:#f92672">*</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">-</span> i<span style="color:#f92672">);</span>
-</code></pre></div><h4 id="一暴力法">一，暴力法</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#458;font-weight:bold">int</span> area <span style="color:#000;font-weight:bold">=</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">min</span><span style="color:#000;font-weight:bold">(</span>nums<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">],</span>nums<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">])</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">(</span>j <span style="color:#000;font-weight:bold">-</span> i<span style="color:#000;font-weight:bold">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="一暴力法">一，暴力法</h4>
 <p>暴力法是遍历每一种可能性， 思路很容易理解，代码也非常易懂.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 暴力法
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxArea1</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> height<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> height<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// 暴力法
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">maxArea1</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[]</span> height<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#458;font-weight:bold">int</span> len <span style="color:#000;font-weight:bold">=</span> height<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span><span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#458;font-weight:bold">int</span> ans <span style="color:#000;font-weight:bold">=</span> 0<span style="color:#000;font-weight:bold">;</span>
 		
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> len <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> len<span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> i <span style="color:#000;font-weight:bold">=</span> 0<span style="color:#000;font-weight:bold">;</span> i <span style="color:#000;font-weight:bold">&lt;</span> len <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">;</span> i<span style="color:#000;font-weight:bold">++)</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> j <span style="color:#000;font-weight:bold">=</span> i <span style="color:#000;font-weight:bold">+</span> 1<span style="color:#000;font-weight:bold">;</span> j <span style="color:#000;font-weight:bold">&lt;</span> len<span style="color:#000;font-weight:bold">;</span> j<span style="color:#000;font-weight:bold">++)</span> <span style="color:#000;font-weight:bold">{</span>
 
-                <span style="color:#66d9ef">int</span> area <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>height<span style="color:#f92672">[</span>i<span style="color:#f92672">],</span> height<span style="color:#f92672">[</span>j<span style="color:#f92672">])</span> <span style="color:#f92672">*</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">-</span> i<span style="color:#f92672">);</span>
-                ans <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>ans<span style="color:#f92672">,</span> area<span style="color:#f92672">);</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
+                <span style="color:#458;font-weight:bold">int</span> area <span style="color:#000;font-weight:bold">=</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">min</span><span style="color:#000;font-weight:bold">(</span>height<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">],</span> height<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">])</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">(</span>j <span style="color:#000;font-weight:bold">-</span> i<span style="color:#000;font-weight:bold">);</span>
+                ans <span style="color:#000;font-weight:bold">=</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">max</span><span style="color:#000;font-weight:bold">(</span>ans<span style="color:#000;font-weight:bold">,</span> area<span style="color:#000;font-weight:bold">);</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">}</span>
 
-        <span style="color:#66d9ef">return</span> ans<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p>时间复杂度 : O(N ^ 2)</p>
+        <span style="color:#000;font-weight:bold">return</span> ans<span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>时间复杂度 : O(N ^ 2)</p>
 <p>空间复杂度 : O(1)</p>
 <p>毫无疑问，执行时间很长， 如图</p>
 <p><img src="" alt="https://tva1.sinaimg.cn/large/007S8ZIlly1gds4j1d008j30pi06maaz.jpg"></p>
@@ -156,22 +324,43 @@
 <p>思路：面积和宽度高度有关系，分别从数组的宽度最大到宽度为1的最大面积， 取出计算出的最大值即可。</p>
 <p>做法：使用两个指针i,j分别指向数组头部和尾部(j - i为宽)，i，j处较小者为高,计算出面积。 当nums[i] &gt; nums[j] 时, j&ndash;, 再次计算面积， 当nums[i] &lt; nums[j] 时，i++;</p>
 <p>代码如下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxArea2</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">int</span> max <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span>i <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span> j <span style="color:#f92672">=</span> len <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">&lt;</span> j<span style="color:#f92672">){</span>
-            <span style="color:#66d9ef">int</span> area <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">],</span>nums<span style="color:#f92672">[</span>j<span style="color:#f92672">])</span> <span style="color:#f92672">*</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
-            max <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>area<span style="color:#f92672">,</span>max<span style="color:#f92672">);</span>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">maxArea2</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[]</span> nums<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#458;font-weight:bold">int</span> len <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span><span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#458;font-weight:bold">int</span> max <span style="color:#000;font-weight:bold">=</span> 0<span style="color:#000;font-weight:bold">,</span>i <span style="color:#000;font-weight:bold">=</span> 0<span style="color:#000;font-weight:bold">,</span> j <span style="color:#000;font-weight:bold">=</span> len <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">(</span>i <span style="color:#000;font-weight:bold">&lt;</span> j<span style="color:#000;font-weight:bold">){</span>
+            <span style="color:#458;font-weight:bold">int</span> area <span style="color:#000;font-weight:bold">=</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">min</span><span style="color:#000;font-weight:bold">(</span>nums<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">],</span>nums<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">])</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">(</span>j <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">);</span>
+            max <span style="color:#000;font-weight:bold">=</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">max</span><span style="color:#000;font-weight:bold">(</span>area<span style="color:#000;font-weight:bold">,</span>max<span style="color:#000;font-weight:bold">);</span>
 
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">&gt;</span> nums<span style="color:#f92672">[</span>j<span style="color:#f92672">]){</span>
-                j <span style="color:#f92672">--;</span>
-            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
-                i <span style="color:#f92672">++;</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> max<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p>时间复杂度： O（N）</p>
+            <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>nums<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">&gt;</span> nums<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">]){</span>
+                j <span style="color:#000;font-weight:bold">--;</span>
+            <span style="color:#000;font-weight:bold">}</span><span style="color:#000;font-weight:bold">else</span><span style="color:#000;font-weight:bold">{</span>
+                i <span style="color:#000;font-weight:bold">++;</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">return</span> max<span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>时间复杂度： O（N）</p>
 <p>空间复杂度： O（1）</p>
 <p><img src="" alt="https://tva1.sinaimg.cn/large/007S8ZIlly1gds5qzcn6qj30p406odgr.jpg"></p>
 <h4 id="26-删除排序数组中的重复项httpsleetcode-cncomproblemsremove-duplicates-from-sorted-array">26. 删除排序数组中的重复项](<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/</a>)</h4>
@@ -179,17 +368,33 @@
 <p>双指针法，快慢指针(j ,i)，慢指针(i)指向第一个不重复项的值，快指针逐个往下遍历，当nums[i] != nums[j]时，则把nums[i] = nums[j], 且i++,j++；</p>
 <p>当nums[i] == nums[j]时，只需要j ++。</p>
 <h4 id="代码如下-1">代码如下：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">removeDuplicates</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-        		<span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            	<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">!=</span> nums<span style="color:#f92672">[</span>j<span style="color:#f92672">]){</span>
-                i <span style="color:#f92672">++;</span>
-                nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
-            	<span style="color:#f92672">}</span>
-        	<span style="color:#f92672">}</span>
-       		 <span style="color:#66d9ef">return</span> i <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
-      <span style="color:#f92672">}</span>
-</code></pre></div><p>时间复杂度: O(N)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    	<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">removeDuplicates</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[]</span> nums<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#458;font-weight:bold">int</span> i <span style="color:#000;font-weight:bold">=</span> 0<span style="color:#000;font-weight:bold">;</span>
+        		<span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> j <span style="color:#000;font-weight:bold">=</span> 1<span style="color:#000;font-weight:bold">;</span> j <span style="color:#000;font-weight:bold">&lt;</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span><span style="color:#000;font-weight:bold">;</span> j<span style="color:#000;font-weight:bold">++)</span> <span style="color:#000;font-weight:bold">{</span>
+            	<span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>nums<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">!=</span> nums<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">]){</span>
+                i <span style="color:#000;font-weight:bold">++;</span>
+                nums<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">];</span>
+            	<span style="color:#000;font-weight:bold">}</span>
+        	<span style="color:#000;font-weight:bold">}</span>
+       		 <span style="color:#000;font-weight:bold">return</span> i <span style="color:#000;font-weight:bold">+</span> 1<span style="color:#000;font-weight:bold">;</span>
+      <span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>时间复杂度: O(N)</p>
 <p>空间复杂度: O(1)</p>
 <h4 id="27-移除元素httpsleetcode-cncomproblemsremove-element">27. 移除元素](<a href="https://leetcode-cn.com/problems/remove-element/">https://leetcode-cn.com/problems/remove-element/</a>)</h4>
 <blockquote>
@@ -223,35 +428,70 @@ print(nums[i]);
 <h4 id="解题思路-2">解题思路：</h4>
 <p>定义变量记录新数组长度，初始值为数组长度，从后往前，遍历元素， 当遍历的元素 和 所需移除的元素相等时，记录新数组长度的变量&ndash;, 并且用当前元素后的元素往前覆盖。</p>
 <p>代码如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">removeElement1</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> val<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;=</span> 0<span style="color:#f92672">;</span> i<span style="color:#f92672">--)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> val<span style="color:#f92672">){</span>
-                len <span style="color:#f92672">--;</span>
-                <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-                    nums<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>j <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> len<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">   <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">removeElement1</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[]</span> nums<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">int</span> val<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#458;font-weight:bold">int</span> len <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span><span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> i <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span> <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">;</span> i <span style="color:#000;font-weight:bold">&gt;=</span> 0<span style="color:#000;font-weight:bold">;</span> i<span style="color:#000;font-weight:bold">--)</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>nums<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">==</span> val<span style="color:#000;font-weight:bold">){</span>
+                len <span style="color:#000;font-weight:bold">--;</span>
+                <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> j <span style="color:#000;font-weight:bold">=</span> i<span style="color:#000;font-weight:bold">;</span> j <span style="color:#000;font-weight:bold">&lt;</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span> <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">;</span> j<span style="color:#000;font-weight:bold">++)</span> <span style="color:#000;font-weight:bold">{</span>
+                    nums<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">[</span>j <span style="color:#000;font-weight:bold">+</span> 1<span style="color:#000;font-weight:bold">];</span>
+                <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">return</span> len<span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#000;font-weight:bold">}</span>
 
-</code></pre></div><p>最坏时间复杂度 : O(N ^ 2)  可能存在过多重复移动的情况</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>最坏时间复杂度 : O(N ^ 2)  可能存在过多重复移动的情况</p>
 <p>空间复杂度 : O(1)</p>
 <h5 id="方法二双指针法">方法二：双指针法</h5>
 <h6 id="思路">思路</h6>
 <p>i指针指向不新数组的末尾，j遍历原数组，遍历过程中 元素与val一致时，只j++，不做其他事，当不一样时，新数组赋值下标i为 nums[j].</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">removeElements1</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> val<span style="color:#f92672">){</span>
-        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">!=</span> val<span style="color:#f92672">){</span>
-                nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
-                i <span style="color:#f92672">++;</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> i<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p>时间复杂度 ：O(N ^ 2)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">removeElements1</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[]</span> nums<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">int</span> val<span style="color:#000;font-weight:bold">){</span>
+        <span style="color:#458;font-weight:bold">int</span> i <span style="color:#000;font-weight:bold">=</span> 0<span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> j <span style="color:#000;font-weight:bold">=</span> 1<span style="color:#000;font-weight:bold">;</span> j <span style="color:#000;font-weight:bold">&lt;</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span><span style="color:#000;font-weight:bold">;</span> j<span style="color:#000;font-weight:bold">++)</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>nums<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">!=</span> val<span style="color:#000;font-weight:bold">){</span>
+                nums<span style="color:#000;font-weight:bold">[</span>i<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">[</span>j<span style="color:#000;font-weight:bold">];</span>
+                i <span style="color:#000;font-weight:bold">++;</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">return</span> i<span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>时间复杂度 ：O(N ^ 2)</p>
 <p>空间复杂度 ：O(1)</p>
 <h4 id="35-搜索插入位置httpsleetcode-cncomproblemssearch-insert-position"><a href="https://leetcode-cn.com/problems/search-insert-position/">35. 搜索插入位置</a></h4>
 <blockquote>
@@ -267,24 +507,47 @@ print(nums[i]);
 <h4 id="解题思路-3">解题思路：</h4>
 <p>二分查找(Binary Search) ,也叫折半查找，是一种高效的查找方法。 但是二分查找要求线性表必须采取顺序存储结构，而且表中元素按关键字顺序排列。最坏数据复杂度O(logN)</p>
 <p>代码如下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">searchInsert</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> target<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>nums <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>target <span style="color:#f92672">&gt;</span> nums<span style="color:#f92672">[</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">])</span> <span style="color:#66d9ef">return</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">searchInsert</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[]</span> nums<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">int</span> target<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span>nums <span style="color:#000;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">||</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span> <span style="color:#000;font-weight:bold">==</span> 0<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span>target <span style="color:#000;font-weight:bold">&gt;</span> nums<span style="color:#000;font-weight:bold">[</span>nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span> <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">])</span> <span style="color:#000;font-weight:bold">return</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span><span style="color:#000;font-weight:bold">;</span>
 				
-        <span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span> r <span style="color:#f92672">=</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r<span style="color:#f92672">){</span>
-            <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">+</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">;</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>target <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>mid<span style="color:#f92672">]){</span>
-                <span style="color:#66d9ef">return</span> mid<span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>target <span style="color:#f92672">&gt;</span> nums<span style="color:#f92672">[</span>mid<span style="color:#f92672">]){</span>
-                l <span style="color:#f92672">=</span> mid <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-                r <span style="color:#f92672">=</span> mid<span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> l<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><h4 id="88-合并两个有序数组httpsleetcode-cncomproblemsmerge-sorted-array"><a href="https://leetcode-cn.com/problems/merge-sorted-array/">88. 合并两个有序数组</a></h4>
+        <span style="color:#458;font-weight:bold">int</span> l <span style="color:#000;font-weight:bold">=</span> 0<span style="color:#000;font-weight:bold">,</span> r <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span> <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">(</span>l <span style="color:#000;font-weight:bold">&lt;</span> r<span style="color:#000;font-weight:bold">){</span>
+            <span style="color:#458;font-weight:bold">int</span> mid <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">(</span>l <span style="color:#000;font-weight:bold">+</span> r<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">&gt;&gt;</span> 1<span style="color:#000;font-weight:bold">;</span>
+            <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>target <span style="color:#000;font-weight:bold">==</span> nums<span style="color:#000;font-weight:bold">[</span>mid<span style="color:#000;font-weight:bold">]){</span>
+                <span style="color:#000;font-weight:bold">return</span> mid<span style="color:#000;font-weight:bold">;</span>
+            <span style="color:#000;font-weight:bold">}</span><span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>target <span style="color:#000;font-weight:bold">&gt;</span> nums<span style="color:#000;font-weight:bold">[</span>mid<span style="color:#000;font-weight:bold">]){</span>
+                l <span style="color:#000;font-weight:bold">=</span> mid <span style="color:#000;font-weight:bold">+</span> 1<span style="color:#000;font-weight:bold">;</span>
+            <span style="color:#000;font-weight:bold">}</span><span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">{</span>
+                r <span style="color:#000;font-weight:bold">=</span> mid<span style="color:#000;font-weight:bold">;</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">return</span> l<span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="88-合并两个有序数组httpsleetcode-cncomproblemsmerge-sorted-array"><a href="https://leetcode-cn.com/problems/merge-sorted-array/">88. 合并两个有序数组</a></h4>
 <blockquote>
 <p>给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。</p>
 <p>说明:</p>
@@ -302,40 +565,277 @@ nums2 = [2,5,6],       n = 3</p>
 <h4 id="思路-1">思路：</h4>
 <p>nums1 为结果数组且有足够的空间，把nums2的结果逐步插入nums1合适的位置即可，从后往前（从大到小）依次把nums2的元素合并到nums1中即可。</p>
 <h4 id="代码如下-2">代码如下：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums1<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> m<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums2<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> m <span style="color:#f92672">+</span> n <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">int</span> idx1 <span style="color:#f92672">=</span> m <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">int</span> idx2 <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">merge</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[]</span> nums1<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">int</span> m<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">[]</span> nums2<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">int</span> n<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#458;font-weight:bold">int</span> index <span style="color:#000;font-weight:bold">=</span> m <span style="color:#000;font-weight:bold">+</span> n <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#458;font-weight:bold">int</span> idx1 <span style="color:#000;font-weight:bold">=</span> m <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">;</span>
+        <span style="color:#458;font-weight:bold">int</span> idx2 <span style="color:#000;font-weight:bold">=</span> n <span style="color:#000;font-weight:bold">-</span> 1<span style="color:#000;font-weight:bold">;</span>
 
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>idx1 <span style="color:#f92672">&gt;=</span>0 <span style="color:#f92672">||</span> idx2 <span style="color:#f92672">&gt;=</span> 0<span style="color:#f92672">){</span>
+        <span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">(</span>idx1 <span style="color:#000;font-weight:bold">&gt;=</span>0 <span style="color:#000;font-weight:bold">||</span> idx2 <span style="color:#000;font-weight:bold">&gt;=</span> 0<span style="color:#000;font-weight:bold">){</span>
 
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>idx2 <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">){</span>
-                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
+            <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>idx2 <span style="color:#000;font-weight:bold">&lt;</span> 0<span style="color:#000;font-weight:bold">){</span>
+                <span style="color:#000;font-weight:bold">break</span><span style="color:#000;font-weight:bold">;</span>
+            <span style="color:#000;font-weight:bold">}</span>
 
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>idx1 <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">){</span>
-                <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>idx2 <span style="color:#f92672">&gt;=</span> 0<span style="color:#f92672">){</span>
-                    nums1<span style="color:#f92672">[</span>index <span style="color:#f92672">--]</span> <span style="color:#f92672">=</span> nums2<span style="color:#f92672">[</span>idx2 <span style="color:#f92672">--];</span>
-                <span style="color:#f92672">}</span>
-                <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
+            <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>idx1 <span style="color:#000;font-weight:bold">&lt;</span> 0<span style="color:#000;font-weight:bold">){</span>
+                <span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">(</span>idx2 <span style="color:#000;font-weight:bold">&gt;=</span> 0<span style="color:#000;font-weight:bold">){</span>
+                    nums1<span style="color:#000;font-weight:bold">[</span>index <span style="color:#000;font-weight:bold">--]</span> <span style="color:#000;font-weight:bold">=</span> nums2<span style="color:#000;font-weight:bold">[</span>idx2 <span style="color:#000;font-weight:bold">--];</span>
+                <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">continue</span><span style="color:#000;font-weight:bold">;</span>
+            <span style="color:#000;font-weight:bold">}</span>
 
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums1<span style="color:#f92672">[</span>idx1<span style="color:#f92672">]</span> <span style="color:#f92672">&gt;</span> nums2<span style="color:#f92672">[</span>idx2<span style="color:#f92672">]){</span>
-                nums1<span style="color:#f92672">[</span>index <span style="color:#f92672">--]</span> <span style="color:#f92672">=</span> nums1<span style="color:#f92672">[</span>idx1 <span style="color:#f92672">--];</span>
-            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
-                nums1<span style="color:#f92672">[</span>index<span style="color:#f92672">--]</span> <span style="color:#f92672">=</span> nums2<span style="color:#f92672">[</span>idx2<span style="color:#f92672">--];</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p>时间复杂度： O(N ^ 2)</p>
+            <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span>nums1<span style="color:#000;font-weight:bold">[</span>idx1<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">&gt;</span> nums2<span style="color:#000;font-weight:bold">[</span>idx2<span style="color:#000;font-weight:bold">]){</span>
+                nums1<span style="color:#000;font-weight:bold">[</span>index <span style="color:#000;font-weight:bold">--]</span> <span style="color:#000;font-weight:bold">=</span> nums1<span style="color:#000;font-weight:bold">[</span>idx1 <span style="color:#000;font-weight:bold">--];</span>
+            <span style="color:#000;font-weight:bold">}</span><span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">{</span>
+                nums1<span style="color:#000;font-weight:bold">[</span>index<span style="color:#000;font-weight:bold">--]</span> <span style="color:#000;font-weight:bold">=</span> nums2<span style="color:#000;font-weight:bold">[</span>idx2<span style="color:#000;font-weight:bold">--];</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>时间复杂度： O(N ^ 2)</p>
 <p>空间复杂度： O(1)</p>
 
-    </div>
-    <div class="post-footer">
-      
-    </div>
-  </article>
+        </div>
 
-    </main>
-  </body>
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://zhangxiongfeiv.github.io">张雄飞</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/%E6%A0%88/">栈刷题记录</a></li>
+        
+        <li><a href="/post/%E5%A4%8D%E6%9D%82%E5%BA%A6/">数据结构学习 --&gt; 算法评判标准</a></li>
+        
+        <li><a href="/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">字符串常用算法 --&gt; 滑动窗口</a></li>
+        
+        <li><a href="/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/">字符串常用算法 --&gt; 双指针</a></li>
+        
+        <li><a href="/about/">关于</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "飞熊" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/zhangxiongfeiv/utterances"
+            issue-term="Comments"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://zhangxiongfeiv.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://zhangxiongfeiv.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/leetcode%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E9%94%A6/" title="Leetcode面试题集锦">Leetcode面试题集锦</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/AVL%E6%A0%91/" title="AVL树">AVL树</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="平衡二叉搜索树">平衡二叉搜索树</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="买卖股票的最佳时机">买卖股票的最佳时机</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/" title="乘积最大子数组">乘积最大子数组</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="二叉搜索树">二叉搜索树</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/iOS%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/" title="IOS基于码云创建私有库">IOS基于码云创建私有库</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="王道计算机网络笔记">王道计算机网络笔记</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="王道操作系统笔记">王道操作系统笔记</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/" title="王道数据结构笔记">王道数据结构笔记</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://github.com/zhangxiongfeiv/" title="张雄飞的Github主页">张雄飞的Github主页</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://leetcode-cn.com/u/zhangxiongfei/" title="张雄飞的LeetCode主页">张雄飞的LeetCode</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://zhangxiongfeiv.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://zhangxiongfeiv.github.io">张雄飞的博客 By 张雄飞</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+</body>
+
 </html>

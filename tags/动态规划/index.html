@@ -1,154 +1,398 @@
-<!DOCTYPE html>
-<html lang="zh-cn" >
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  
-  <meta name="author"
-        content="张雄飞"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
-  <meta name="description" content=""/>
-  
+    <title>动态规划 | 张雄飞的博客</title>
+    <meta property="og:title" content="动态规划 - 张雄飞的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-05-21T21:51:24&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-05-21T21:51:24&#43;08:00'>
+        
+    <meta name="Keywords" content="张雄飞,java,iOS,博客,算法,生活">
+    <meta name="description" content="动态规划">
+        
+    <meta name="author" content="张雄飞">
+    <meta property="og:url" content="https://zhangxiongfeiv.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-  
-  
-  <meta name="keywords" content="Hugo, iOS, 算法"/>
-  
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-  
-  <link rel="canonical" href="https://zhangxiongfeiv.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-4031353640611810",
+        enable_page_level_ads: true
+    });
+    </script>
+    
 
-  
 
-  <title>动态规划 &middot; 无尽光芒</title>
-
-  <link rel="shortcut icon" href="https://zhangxiongfeiv.github.io/images/favicon.ico"/>
-  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/animate.min.css"/>
-  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/remixicon.css"/>
-  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/zozo.css"/>
-  <link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/highlight.css"/>
-
-  
-  
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
 </head>
 
+
 <body>
-<div class="main animated">
-  <div class="nav_container animated fadeInDown">
-  <div class="site_nav" id="site_nav">
-    <ul>
-      
-      <li>
-        <a href="/posts/">首页</a>
-      </li>
-      
-      <li>
-        <a href="/tags/">标签</a>
-      </li>
-      
-      <li>
-        <a href="/about/">关于</a>
-      </li>
-      
-    </ul>
-  </div>
-  <div class="menu_icon">
-    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
-  </div>
-</div>
-
-  <div class="header animated fadeInDown">
-  <div class="site_title_container">
-    <div class="site_title">
-      <h1>
-        <a href="https://zhangxiongfeiv.github.io">
-          <span>无尽光芒</span>
-          <img src="https://zhangxiongfeiv.github.io/images/logo.svg"/>
-        </a>
-      </h1>
-    </div>
-    <div class="description">
-      <p class="sub_title">iOS Developer, 喜欢逆向, 偶尔刷题...</p>
-      <div class="my_socials">
-        
-        
-        <a href="https://github.com/zhangxiongfeiv/" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
-        
-        
-        <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <div class="content">
-    <div class="post_page">
-      <div class="post animated fadeInDown">
-        <div class="post_title post_detail_title">
-          <h2><a href='/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/'>动态规划</a></h2>
-          <span class="date">2020.05.21</span>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://zhangxiongfeiv.github.io">
+                        张雄飞的博客
+                    </a>
+                
+                <p class="description">iOS Developer, 喜欢逆向, 偶尔刷题...</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://zhangxiongfeiv.github.io">首页</a>
+                    
+                    <a  href="https://zhangxiongfeiv.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://zhangxiongfeiv.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
         </div>
-        <div class="post_content markdown"></div>
-        <div class="post_footer">
-          
-        </div>
-      </div>
-      
-      
-      
-<div class="doc_comments">
-  <div class="comments_block_title">发表评论</div>
-  <div id="vcomments"></div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents"></nav>
+    </div>
 </div>
-
-<link rel="stylesheet" href="https://zhangxiongfeiv.github.io/css/comments.css"/>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-
 <script type="text/javascript">
-new Valine({
-  el: '#vcomments',
-  appId: 'mdfoTVWlbNH5Ni3ijt0EnN8C-gzGzoHsz',
-  appKey: 'IEkV2RiwhrC62jaxf7w3Ft7e',
-  placeholder: '欢迎交流',
-  visitor: 'true',
-})
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
 </script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">动态规划</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年5月21日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            
+        </div>
 
-      
-    </div>
-  </div>
-  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/tags/%E6%8E%92%E5%BA%8F/">排序</a></li>
+        
+        <li><a href="/tags/%E6%95%B0%E7%BB%84/">数组</a></li>
+        
+        <li><a href="/tags/%E6%A0%88/">栈</a></li>
+        
+        <li><a href="/tags/%E9%9B%86%E5%90%88/">集合</a></li>
+        
+        <li><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></li>
+        
+    </ul>
 </div>
-<footer class="footer">
-  <div class="powered_by">
-    <a href="https://zeuk.me">Designed by Zeuk,</a>
-    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
-  </div>
 
-  <div class="footer_slogan">
-    <span>我的精神家园</span>
-  </div>
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "飞熊" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/zhangxiongfeiv/utterances"
+            issue-term="Comments"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://zhangxiongfeiv.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://zhangxiongfeiv.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/leetcode%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E9%94%A6/" title="Leetcode面试题集锦">Leetcode面试题集锦</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/AVL%E6%A0%91/" title="AVL树">AVL树</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="平衡二叉搜索树">平衡二叉搜索树</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="买卖股票的最佳时机">买卖股票的最佳时机</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/" title="乘积最大子数组">乘积最大子数组</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="二叉搜索树">二叉搜索树</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/iOS%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/" title="IOS基于码云创建私有库">IOS基于码云创建私有库</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="王道计算机网络笔记">王道计算机网络笔记</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="王道操作系统笔记">王道操作系统笔记</a>
+    </li>
+    
+    <li>
+        <a href="https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/" title="王道数据结构笔记">王道数据结构笔记</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://github.com/zhangxiongfeiv/" title="张雄飞的Github主页">张雄飞的Github主页</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://leetcode-cn.com/u/zhangxiongfei/" title="张雄飞的LeetCode主页">张雄飞的LeetCode</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://zhangxiongfeiv.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://zhangxiongfeiv.github.io">张雄飞的博客 By 张雄飞</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
 </footer>
 
 
-
-<script src="https://zhangxiongfeiv.github.io/js/jquery-3.3.1.min.js"></script>
-<script src="https://zhangxiongfeiv.github.io/js/zozo.js"></script>
-<script src="https://zhangxiongfeiv.github.io/js/highlight.pack.js"></script>
-<link  href="https://zhangxiongfeiv.github.io/css/fancybox.min.css" rel="stylesheet">
-<script src="https://zhangxiongfeiv.github.io/js/fancybox.min.js"></script>
-
-<script>hljs.initHighlightingOnLoad()</script>
-
-
-
-
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
 
 </body>
+
 </html>
