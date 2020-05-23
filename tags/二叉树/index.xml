@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>二叉树 on 飞熊&#39;s Blogs=&#39;</title>
+    <link>https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+    <description>Recent content in 二叉树 on 飞熊&#39;s Blogs=&#39;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 26 Apr 2020 10:15:13 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>二叉树</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+      <pubDate>Sun, 26 Apr 2020 10:15:13 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
+      <description>一 树形结构： 数据结构分为线性结构和树形结构，如下图： 线性结构： 树形结构： 生活中的树形结构 二 树(Tree)的基本概念 节点，父节点，子节点，跟节</description>
+    </item>
+    
+  </channel>
+</rss>
