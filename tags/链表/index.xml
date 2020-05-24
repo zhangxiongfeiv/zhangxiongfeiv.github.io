@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>链表 on 飞熊&#39;s Blogs=&#39;</title>
+    <link>https://zhangxiongfeiv.github.io/tags/%E9%93%BE%E8%A1%A8/</link>
+    <description>Recent content in 链表 on 飞熊&#39;s Blogs=&#39;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 14 Apr 2020 20:33:49 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E9%93%BE%E8%A1%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>链表刷题记录</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Tue, 14 Apr 2020 20:33:49 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%93%BE%E8%A1%A8/</guid>
+      <description>链表(Linked List) 动态数组有个明显的缺点，可能会造成内存空间浪费。 链表可以做到用多少就申请多少内存。 链表是一种链式存储的线性表，所有元素的</description>
+    </item>
+    
+  </channel>
+</rss>
