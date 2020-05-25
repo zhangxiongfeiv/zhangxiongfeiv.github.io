@@ -30,6 +30,87 @@
     </item>
     
     <item>
+      <title>108.将有序数组转换成二叉搜索树</title>
+      <link>https://zhangxiongfeiv.github.io/post/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <description>108. 将有序数组转换为二叉搜索树 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。 本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左</description>
+    </item>
+    
+    <item>
+      <title>230. 二叉搜索树中第K小的元素</title>
+      <link>https://zhangxiongfeiv.github.io/post/230.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/230.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</guid>
+      <description>230. 二叉搜索树中第K小的元素 题解： 二叉搜索树中序遍历的结果，是升序数组， 所以先中序遍历数组，第k个元素即为第k个小的元素。 思路一： 迭代 代码如下</description>
+    </item>
+    
+    <item>
+      <title>235. 二叉搜索树的最近公共祖先</title>
+      <link>https://zhangxiongfeiv.github.io/post/235.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
+      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/235.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
+      <description>235. 二叉搜索树的最近公共祖先 题解： 思路一： 我们使用 HashMap 来存储，子节点的值 -&amp;gt; 父节点。 dfs二叉树，构建map，保存每个节点对应的父节点 根据map，</description>
+    </item>
+    
+    <item>
+      <title>450.删除二叉搜索树中的节点</title>
+      <link>https://zhangxiongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</link>
+      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</guid>
+      <description>练习题： 450. 删除二叉搜索树中的节点 给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。返回</description>
+    </item>
+    
+    <item>
+      <title>530.二叉树的最小绝对差</title>
+      <link>https://zhangxiongfeiv.github.io/post/530.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/</link>
+      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/530.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/</guid>
+      <description>530. 二叉搜索树的最小绝对差 给你一棵所有节点为非负值的二叉搜索树，请你计算树中任意两节点的差的绝对值的最小值。 题解： 二叉搜索树中序遍历的结果，是</description>
+    </item>
+    
+    <item>
+      <title>700.二叉搜索树中的搜索</title>
+      <link>https://zhangxiongfeiv.github.io/post/700.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2/</link>
+      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/700.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2/</guid>
+      <description>700. 二叉搜索树中的搜索 题解： 思路一： 迭代：题目非常简单，普通的二叉搜索树查找。 代码如下： // 二叉搜索树性质， 左子树的值都比根节点小， 右子树的值都</description>
+    </item>
+    
+    <item>
+      <title>701.二叉搜索树中的插入操作</title>
+      <link>https://zhangxiongfeiv.github.io/post/701.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/701.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C/</guid>
+      <description>701. 二叉搜索树中的插入操作 题解： 二叉搜索树的插入操作非常简单，当val &amp;gt; root.val时，插入root的左子树, 当val &amp;lt; root.val时</description>
+    </item>
+    
+    <item>
+      <title>938. 二叉搜索树的范围和</title>
+      <link>https://zhangxiongfeiv.github.io/post/938.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</link>
+      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/938.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</guid>
+      <description>938. 二叉搜索树的范围和 题解： 二叉树中序遍历， 递加在 [L , R] 范围的元素即可。 思路一： 递归 代码如下： int sum = 0; public int rangeSumBST(TreeNode root, int L, int R){ if (root == null) return 0; rangeSumBST(root.left, L ,R); if (root.val &amp;gt;=</description>
+    </item>
+    
+    <item>
+      <title>98.验证二叉搜索树</title>
+      <link>https://zhangxiongfeiv.github.io/post/98.%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/98.%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <description>98. 验证二叉搜索树 题解： 迭代 和 递归两种方法思路一样， 都是利用二叉树的中序遍历 二叉搜索树的中序遍历结果，是严格升序的， 所以我们中序遍历二叉树 记录</description>
+    </item>
+    
+    <item>
       <title>二叉搜索树</title>
       <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
@@ -108,87 +189,6 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
       <description>二叉树的遍历 有两种遍历树的策略： 深度优先搜索(DFS) 在这个策略中，我们采用深度作为优先级，以便从根开始一直到达某个确定的叶子，然后再返回根</description>
-    </item>
-    
-    <item>
-      <title>145.二叉树的后序遍历</title>
-      <link>https://zhangxiongfeiv.github.io/post/145.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
-      <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/145.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
-      <description>145. 二叉树的后序遍历 给定一个二叉树，返回它的 后序 遍历。 示例: 输入: [1,null,2,3] 1 2 / 3 输出: [3,2,1] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？ 来源：力扣</description>
-    </item>
-    
-    <item>
-      <title>17.12.BiNode</title>
-      <link>https://zhangxiongfeiv.github.io/post/17.12.binode/</link>
-      <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/17.12.binode/</guid>
-      <description>面试题 17.12. BiNode 二叉树数据结构TreeNode可用来表示单向链表（其中left置空，right为下一个链表节点）。实现一个方法，把二叉搜索树转换为</description>
-    </item>
-    
-    <item>
-      <title>222.完全二叉树的节点个数</title>
-      <link>https://zhangxiongfeiv.github.io/post/222.%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%8A%82%E7%82%B9%E4%B8%AA%E6%95%B0/</link>
-      <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/222.%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%8A%82%E7%82%B9%E4%B8%AA%E6%95%B0/</guid>
-      <description>222. 完全二叉树的节点个数 给出一个完全二叉树，求出该树的节点个数。 说明： 完全二叉树的定义如下：在完全二叉树中，除了最底层节点可能没填满外，其余每</description>
-    </item>
-    
-    <item>
-      <title>559.N叉树的最大深度</title>
-      <link>https://zhangxiongfeiv.github.io/post/559.n%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/</link>
-      <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/559.n%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/</guid>
-      <description>559. N叉树的最大深度 题解： 思路一： 递归，非常容易想的思路，父节点的深度，等于其子节点中最大深度再加一。 代码如下： public int maxDepth(Node root) { if (root == null) return 0; int max = 1;</description>
-    </item>
-    
-    <item>
-      <title>589.N叉树的前序遍历</title>
-      <link>https://zhangxiongfeiv.github.io/post/589.n%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
-      <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/589.n%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
-      <description>589. N叉树的前序遍历 题解： 思路一： 递归 代码如下： ArrayList list = new ArrayList(); public List&amp;lt;Integer&amp;gt; preorder(Node root) { if (root == null) return list; Node node = root; list.add(node.val); for (int i = 0; i &amp;lt; root.children.size(); i++){ preorder(node.children.get(i)); } return list; } 思路二： 迭代 , 跟二叉树前</description>
-    </item>
-    
-    <item>
-      <title>590.N叉树的后序遍历</title>
-      <link>https://zhangxiongfeiv.github.io/post/590.n%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
-      <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/590.n%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
-      <description>590. N叉树的后序遍历 给定一个 N 叉树，返回其节点值的后序遍历。 例如，给定一个 3叉树 : 返回其后序遍历: [5,6,3,2,4,1]. 说明: 递归法很简单，你可以使用迭代法完成此</description>
-    </item>
-    
-    <item>
-      <title>662.二叉树最大宽度</title>
-      <link>https://zhangxiongfeiv.github.io/post/662.%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E5%A4%A7%E5%AE%BD%E5%BA%A6/</link>
-      <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/662.%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E5%A4%A7%E5%AE%BD%E5%BA%A6/</guid>
-      <description>662. 二叉树最大宽度 给定一个二叉树，编写一个函数来获取这个树的最大宽度。树的宽度是所有层中的最大宽度。这个二叉树与满二叉树（full binary tree）</description>
-    </item>
-    
-    <item>
-      <title>94.二叉树的中序遍历</title>
-      <link>https://zhangxiongfeiv.github.io/post/94.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
-      <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/94.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
-      <description>二叉树的遍历 有两种遍历树的策略： 深度优先搜索(DFS) 在这个策略中，我们采用深度作为优先级，以便从根开始一直到达某个确定的叶子，然后再返回根</description>
-    </item>
-    
-    <item>
-      <title>面试题55-1.二叉树的深度</title>
-      <link>https://zhangxiongfeiv.github.io/post/55-1.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/</link>
-      <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/55-1.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/</guid>
-      <description>面试题55 - I. 二叉树的深度 输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长</description>
     </item>
     
   </channel>
