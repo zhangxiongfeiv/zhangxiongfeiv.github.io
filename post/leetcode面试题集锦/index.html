@@ -69,7 +69,7 @@
 <meta itemprop="description" content="leetcode上面试题目集合 面试题 01.01. 判定字符是否唯一 实现一个算法，确定一个字符串 s 的所有字符是否全都不同。 示例 1： 输入: s = &ldquo;leetcode&rdquo; 输出: false 示例">
 <meta itemprop="datePublished" content="2020-05-12T22:31:36&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-12T22:31:36&#43;08:00" />
-<meta itemprop="wordCount" content="16950">
+<meta itemprop="wordCount" content="17474">
 
 
 
@@ -2328,6 +2328,64 @@ B = [2,5,6],       n = 3</p>
             second <span style="color:#f92672">=</span> tmp<span style="color:#f92672">;</span>
         <span style="color:#f92672">}</span>
         <span style="color:#66d9ef">return</span> second<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="面试题-0803-魔术索引httpsleetcode-cncomproblemsmagic-index-lcci-1"><a href="https://leetcode-cn.com/problems/magic-index-lcci/">面试题 08.03. 魔术索引</a></h4>
+<blockquote>
+<p>魔术索引。 在数组A[0&hellip;n-1]中，有所谓的魔术索引，满足条件A[i] = i。给定一个有序整数数组，编写一种方法找出魔术索引，若有的话，在数组A中找出一个魔术索引，如果没有，则返回-1。若有多个魔术索引，返回索引值最小的一个。</p>
+<p>示例1:</p>
+<p>输入：nums = [0, 2, 3, 4, 5]
+输出：0
+说明: 0下标的元素为0
+示例2:</p>
+<p>输入：nums = [1, 1, 1]
+输出：1
+提示:</p>
+<p>nums长度在[1, 1000000]之间</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/magic-index-lcci
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h5 id="题解-27">题解：</h5>
+<h6 id="思路一-13">思路一：</h6>
+<p>暴力法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">findMagicIndex1</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">])</span> <span style="color:#66d9ef">return</span> i<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h6 id="思路二-14">思路二：</h6>
+<p>二分搜索</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 二分法
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 先找到mid的下标
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果mid == nums[mid]，res赋值，继续在mid左边查找
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 否则在mid的左边查找结果，如果找不到则在右边查找
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> left <span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> right<span style="color:#f92672">){</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>left <span style="color:#f92672">&gt;=</span> right<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>left <span style="color:#f92672">+</span> right<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>mid<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> mid<span style="color:#f92672">){</span>
+            <span style="color:#75715e">// 找到相同的
+</span><span style="color:#75715e"></span>            res <span style="color:#f92672">=</span> mid<span style="color:#f92672">;</span>
+            <span style="color:#75715e">// 在左边继续找较小的结果
+</span><span style="color:#75715e"></span>            search<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span> left<span style="color:#f92672">,</span> mid<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+            <span style="color:#75715e">// 没有相同的，先找左边
+</span><span style="color:#75715e"></span>            search<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span> left<span style="color:#f92672">,</span> mid<span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>res <span style="color:#f92672">==</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">){</span>
+                <span style="color:#75715e">// 左边没找到，在右边找
+</span><span style="color:#75715e"></span>                search<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span> mid <span style="color:#f92672">+</span> 1<span style="color:#f92672">,</span> right<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 二分查找
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">findMagicIndex</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">){</span>
+
+        search<span style="color:#f92672">(</span>nums<span style="color:#f92672">,</span>0<span style="color:#f92672">,</span>nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> res<span style="color:#f92672">;</span>
     <span style="color:#f92672">}</span>
 </code></pre></div>
     </div>

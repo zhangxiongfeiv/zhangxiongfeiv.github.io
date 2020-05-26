@@ -6,10 +6,46 @@
     <description>Recent content in 双指针 on 飞熊&#39;s Blogs&#39;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Apr 2020 20:33:49 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2020 18:21:27 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>234.回文链表</title>
+      <link>https://zhangxiongfeiv.github.io/post/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Tue, 26 May 2020 18:21:27 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</guid>
+      <description>234. 回文链表 请判断一个链表是否为回文链表。 示例 1: 输入: 1-&amp;gt;2 输出: false 示例 2: 输入: 1-&amp;gt;2-&amp;gt;2-&amp;gt;1 输出: true 进阶： 你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？ 来源：</description>
+    </item>
+    
+    <item>
+      <title>142.环形链表II</title>
+      <link>https://zhangxiongfeiv.github.io/post/142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8ii/</link>
+      <pubDate>Tue, 26 May 2020 18:09:26 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8ii/</guid>
+      <description>142. 环形链表 II 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接</description>
+    </item>
+    
+    <item>
+      <title>141.环形链表</title>
+      <link>https://zhangxiongfeiv.github.io/post/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Tue, 26 May 2020 17:58:30 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</guid>
+      <description>141. 环形链表 给定一个链表，判断链表中是否有环。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -</description>
+    </item>
+    
+    <item>
+      <title>86.分隔链表</title>
+      <link>https://zhangxiongfeiv.github.io/post/86.%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Tue, 26 May 2020 17:09:30 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/86.%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/</guid>
+      <description>86. 分隔链表 给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。 你应当保留两个分区中每个节点的初始相对</description>
+    </item>
     
     <item>
       <title>19.删除链表的倒数第N个节点</title>
