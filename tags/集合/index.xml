@@ -22,10 +22,10 @@
     
     <item>
       <title>349. 两个数组的交集</title>
-      <link>https://zhangxiongfeiv.github.io/post/349.-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</link>
+      <link>https://zhangxiongfeiv.github.io/post/349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</link>
       <pubDate>Wed, 15 Apr 2020 22:20:03 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/349.-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</guid>
       <description>349. 两个数组的交集 给定两个数组，编写一个函数来计算它们的交集。 示例 1: 输入: nums1 = [1,2,2,1], nums2 = [2,2] 输出: [2] 示例 2: 输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4] 输出: [9,4] 说明: 输出结果中</description>
     </item>
     

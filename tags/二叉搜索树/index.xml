@@ -40,19 +40,19 @@
     
     <item>
       <title>230. 二叉搜索树中第K小的元素</title>
-      <link>https://zhangxiongfeiv.github.io/post/230.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</link>
+      <link>https://zhangxiongfeiv.github.io/post/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</link>
       <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/230.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</guid>
       <description>230. 二叉搜索树中第K小的元素 题解： 二叉搜索树中序遍历的结果，是升序数组， 所以先中序遍历数组，第k个元素即为第k个小的元素。 思路一： 迭代 代码如下</description>
     </item>
     
     <item>
       <title>235. 二叉搜索树的最近公共祖先</title>
-      <link>https://zhangxiongfeiv.github.io/post/235.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
+      <link>https://zhangxiongfeiv.github.io/post/235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
       <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/235.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
       <description>235. 二叉搜索树的最近公共祖先 题解： 思路一： 我们使用 HashMap 来存储，子节点的值 -&amp;gt; 父节点。 dfs二叉树，构建map，保存每个节点对应的父节点 根据map，</description>
     </item>
     
@@ -94,10 +94,10 @@
     
     <item>
       <title>938. 二叉搜索树的范围和</title>
-      <link>https://zhangxiongfeiv.github.io/post/938.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</link>
+      <link>https://zhangxiongfeiv.github.io/post/938.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</link>
       <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/938.-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/938.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</guid>
       <description>938. 二叉搜索树的范围和 题解： 二叉树中序遍历， 递加在 [L , R] 范围的元素即可。 思路一： 递归 代码如下： int sum = 0; public int rangeSumBST(TreeNode root, int L, int R){ if (root == null) return 0; rangeSumBST(root.left, L ,R); if (root.val &amp;gt;=</description>
     </item>
     
