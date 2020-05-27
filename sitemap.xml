@@ -44,6 +44,20 @@
   </url>
   
   <url>
+    <loc>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</loc>
+    <lastmod>2020-05-27T14:12:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</loc>
+    <lastmod>2020-05-27T14:12:21+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://zhangxiongfeiv.github.io/categories/</loc>
     <lastmod>2020-05-26T10:49:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -655,20 +669,6 @@
   <url>
     <loc>https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</loc>
     <lastmod>2018-06-25T17:24:50+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</loc>
-    <lastmod>2018-05-27T14:12:36+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</loc>
-    <lastmod>2018-05-27T14:12:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -23,7 +23,7 @@
     <item>
       <title>560.和为K的子数组</title>
       <link>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</link>
-      <pubDate>Sun, 27 May 2018 14:12:36 +0800</pubDate>
+      <pubDate>Wed, 27 May 2020 14:12:36 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
       <description>560. 和为K的子数组 给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。 示例 1 : 输入:nums = [1,1,1], k = 2 输出: 2 , [1,1] 与 [1,1]</description>
@@ -32,7 +32,7 @@
     <item>
       <title>974.和可被K整除的子数组</title>
       <link>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</link>
-      <pubDate>Sun, 27 May 2018 14:12:21 +0800</pubDate>
+      <pubDate>Wed, 27 May 2020 14:12:21 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
       <description>974. 和可被 K 整除的子数组 给定一个整数数组 A，返回其中元素之和可被 K 整除的（连续、非空）子数组的数目。 示例： 输入：A = [4,5,0,-2,-3,1], K = 5 输出：7 解释： 有 7</description>

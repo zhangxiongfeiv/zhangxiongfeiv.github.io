@@ -220,6 +220,260 @@
     </item>
     
     <item>
+      <title>560.和为K的子数组</title>
+      <link>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Wed, 27 May 2020 14:12:36 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      
+        <description>&lt;h4 id=&#34;560-和为k的子数组httpsleetcode-cncomproblemssubarray-sum-equals-k&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/subarray-sum-equals-k/&#34;&gt;560. 和为K的子数组&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。&lt;/p&gt;
+&lt;p&gt;示例 1 :&lt;/p&gt;
+&lt;p&gt;输入:nums = [1,1,1], k = 2
+输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。
+说明 :&lt;/p&gt;
+&lt;p&gt;数组的长度为 [1, 20,000]。
+数组中元素的范围是 [-1000, 1000] ，且整数 k 的范围是 [-1e7, 1e7]。&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/subarray-sum-equals-k
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;题解&#34;&gt;题解：&lt;/h5&gt;
+&lt;h6 id=&#34;思路一&#34;&gt;思路一：&lt;/h6&gt;
+&lt;p&gt;暴力法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;两层循环&lt;/li&gt;
+&lt;li&gt;从头开始遍历，i表示 子数组的开始位置，j表示子数组的结束位置&lt;/li&gt;
+&lt;li&gt;当 和 为 K时，count ++&lt;/li&gt;
+&lt;li&gt;最终返回 result&lt;/li&gt;
+&lt;li&gt;时间复杂度 : O(N ^ 2) ，其中N为数组的长度&lt;/li&gt;
+&lt;li&gt;空间复杂度 : O(1)&lt;/li&gt;
+&lt;li&gt;提交后，算法通过了。但是 用时长，算法设计复杂度高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;代码如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;subarraySum&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; count &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; count&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                num &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                    count &lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; count&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf6zo8d99jj30nm0680ti.jpg&#34; alt=&#34;屏幕快照 2020-05-27 上午11.02.19&#34;&gt;&lt;/p&gt;
+&lt;h6 id=&#34;思路二&#34;&gt;思路二：&lt;/h6&gt;
+&lt;p&gt;利用前序和 ， 哈希表优化&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;前序和，是指从数组第0项，到数组当前项的总和&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果用数组 prefixsum 表示&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;prefixsum[i] 为数组 第0项，到数组第 i 项的总和&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;所以 nums 第 i 项到 第 j 项的总和为 prefixsum[j] - prefixsum[i - 1]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;题目等价交换&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有几种i, j组合，使得 nums[i] 累加到 nums[j] 的总和为 k&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有几种i, j组合，使得 prefixsum[j] - prefixsum[i -1] == k&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;引入哈希表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;哈希表中存放 &amp;lt;前序和 ：出现次数&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当遍历到数组某一位置时，如果其前序和  与 K的差值，在哈希表中存在&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;则次数 += map.get(前序和 - 差值)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;map中赋值当前前序和，如果之前有，则+1, 没有则赋值1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;时间复杂度 O(N)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;空间复杂度 O(N)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;代码如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;subarraySum1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+        HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; map &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+        map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; count &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; prev &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            prev &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;containsKey&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;prev &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;
+                count &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;prev &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+            map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;prev&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getOrDefault&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;prev&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; count&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf6zoj4d5xj30nk0683z9.jpg&#34; alt=&#34;屏幕快照 2020-05-27 下午1.11.51&#34;&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>974.和可被K整除的子数组</title>
+      <link>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Wed, 27 May 2020 14:12:21 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      
+        <description>&lt;h4 id=&#34;974-和可被-k-整除的子数组httpsleetcode-cncomproblemssubarray-sums-divisible-by-k&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/subarray-sums-divisible-by-k/&#34;&gt;974. 和可被 K 整除的子数组&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给定一个整数数组 A，返回其中元素之和可被 K 整除的（连续、非空）子数组的数目。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;p&gt;输入：A = [4,5,0,-2,-3,1], K = 5
+输出：7
+解释：
+有 7 个子数组满足其元素之和可被 K = 5 整除：
+[4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]&lt;/p&gt;
+&lt;p&gt;提示：&lt;/p&gt;
+&lt;p&gt;1 &amp;lt;= A.length &amp;lt;= 30000
+-10000 &amp;lt;= A[i] &amp;lt;= 10000
+2 &amp;lt;= K &amp;lt;= 10000&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/subarray-sums-divisible-by-k
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;题解&#34;&gt;题解：&lt;/h5&gt;
+&lt;h6 id=&#34;思路一&#34;&gt;思路一：&lt;/h6&gt;
+&lt;p&gt;此题目跟 &lt;a href=&#34;./560.%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84&#34;&gt;&lt;strong&gt;560 题&lt;/strong&gt;&lt;/a&gt; 非常类似。 我们同样先采用暴力法两层循环去解决问题。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;// 暴力法&lt;/li&gt;
+&lt;li&gt;// 两层循环&lt;/li&gt;
+&lt;li&gt;// 思路简单，从头开始遍历, i表示 子数组的开始位置，j表示 子数组的结束位置&lt;/li&gt;
+&lt;li&gt;// 当和对 k 取余 == 0, result++&lt;/li&gt;
+&lt;li&gt;// 最终返回 result&lt;/li&gt;
+&lt;li&gt;// 时间复杂度 : O(N ^ 2), 其中N为数组的长度&lt;/li&gt;
+&lt;li&gt;// 空间复杂度 : O(1)&lt;/li&gt;
+&lt;li&gt;// 代码逻辑没问题， 但是提交后， 超时了&lt;/li&gt;
+&lt;li&gt;// 时间复杂度太高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;代码如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;subarraysDivByK1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; A&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; K&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; A&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; A&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;n1 &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; K &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; result&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; A&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; A&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;n1 &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; n2 &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; K &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                    result &lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+                n1 &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; n2&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; result&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf6zttr791j30pi0do0ua.jpg&#34; alt=&#34;屏幕快照 2020-05-27 上午11.02.47&#34;&gt;&lt;/p&gt;
+&lt;p&gt;利用前序和 ， 哈希表优化&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;前序和，是指从数组第0项，到数组当前项的总和&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果用数组 prefixsum 表示&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;prefixsum[i] 为数组 第0项，到数组第 i 项的总和&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;所以 nums 第 i 项到 第 j 项的总和为 prefixsum[j] - prefixsum[i - 1]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;题目等价交换&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有几种i, j组合，使得 nums[i] 累加到 nums[j] 的总和为 k&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有几种i, j组合，使得 prefixsum[j] - prefixsum[i -1] == k&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;引入哈希表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;哈希表中存放 &amp;lt;前序和 ：出现次数&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当遍历到数组某一位置时，如果其前序和  与 K的差值，在哈希表中存在&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;则次数 += map.get(前序和 - 差值)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;map中赋值当前前序和，如果之前有，则+1, 没有则赋值1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;时间复杂度 O(N)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;空间复杂度 O(N)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上述是  题目 560 的解题步骤&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;974 与 560的不同之处在于 取模&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;(P[j] - P[i]) % k == 0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;根据同余定理 P[j] % K == P[i] % K;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;所以本题中，字典存放 &amp;lt;前序和 % K, 出现次数&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;代码如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;subarraysDivByK&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; A&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; K&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; map &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+        map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; prev &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; count &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; A&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            prev &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; A&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+
+            &lt;span style=&#34;color:#75715e&#34;&gt;// 注意 Java 取模的特殊性，当被除数为负数时取模结果为负数，需要纠正
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; modulus &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; prev &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; K&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;containsKey&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;modulus&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;
+                count &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;modulus&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+            map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;modulus&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getOrDefault&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;modulus&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; count&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;时间复杂度 : O(N). 遍历了一遍数组，其中N为数组中元素的个数&lt;/p&gt;
+&lt;p&gt;空间复杂度: O(N). 额外使用了hashmap内存空间&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf701ddckfj30by036t8o.jpg&#34; alt=&#34;image-20200527143420984&#34;&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>一个iOS小需求中对算法的优化</title>
       <link>https://zhangxiongfeiv.github.io/post/%E4%B8%80%E4%B8%AAios%E5%B0%8F%E9%9C%80%E6%B1%82%E4%B8%AD%E5%AF%B9%E7%AE%97%E6%B3%95%E7%9A%84%E4%BC%98%E5%8C%96/</link>
       <pubDate>Tue, 26 May 2020 10:49:40 +0800</pubDate>
@@ -4282,168 +4536,6 @@ target &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;测试&amp;#39;&lt;/sp
 &lt;p&gt;值不会被覆盖，可以得到争取的值 11.&lt;/p&gt;
 &lt;p&gt;算法时间复杂度仍然是 : O(N)&lt;/p&gt;
 &lt;p&gt;空间复杂度由之前的O(N * M) 降低为 O(N).&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>300.最长上升子序列DP</title>
-      <link>https://zhangxiongfeiv.github.io/post/300.%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</link>
-      <pubDate>Tue, 28 Apr 2020 11:25:21 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/300.%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</guid>
-      
-        <description>&lt;h2 id=&#34;300-最长上升子序列httpsleetcode-cncomproblemslongest-increasing-subsequence&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/longest-increasing-subsequence/&#34;&gt;300. 最长上升子序列&lt;/a&gt;&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;给定一个无序的整数数组，找到其中最长上升子序列的长度。&lt;/p&gt;
-&lt;p&gt;示例:&lt;/p&gt;
-&lt;p&gt;输入: [10,9,2,5,3,7,101,18]
-输出: 4
-解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。
-说明:&lt;/p&gt;
-&lt;p&gt;可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。
-你算法的时间复杂度应该为 O(n2) 。
-进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?&lt;/p&gt;
-&lt;p&gt;来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/longest-increasing-subsequence
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
-&lt;p&gt;此题使用动态规划解题方法&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;定义状态 dp[i]代表以 第i个元素结尾的序列 的最长上升子序列&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;定义初始值 第一位时, 最长上升子序列为1&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;定义状态转移方程。 计算dp[i] 时, 将其与前边元素比较， 当比前边元素大时，则取出当前对应的dp值+1就是dp[i].&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;用max记录，所有dp数组中的最大值。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;代码如下&#34;&gt;代码如下：&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lengthOfLIS&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 定义状态 dp[i]代表以 第i个元素结尾的序列 的最长上升子序列
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; dp &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 定义初始状态 第一位时，最长上升子序列为1
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; max &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 定义状态转移方程
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-                dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt;dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-            
-            max &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt;max&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; max&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;时间复杂度： O(N ^ 2)&lt;/p&gt;
-&lt;p&gt;空间复杂度： O(N)&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>213.打家劫舍DPII</title>
-      <link>https://zhangxiongfeiv.github.io/post/213.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</link>
-      <pubDate>Mon, 27 Apr 2020 22:08:29 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/213.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</guid>
-      
-        <description>&lt;h2 id=&#34;213-打家劫舍-iihttpsleetcode-cncomproblemshouse-robber-ii&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/house-robber-ii/&#34;&gt;213. 打家劫舍 II&lt;/a&gt;&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。&lt;/p&gt;
-&lt;p&gt;给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。&lt;/p&gt;
-&lt;p&gt;示例 1:&lt;/p&gt;
-&lt;p&gt;输入: [2,3,2]
-输出: 3
-解释: 你不能先偷窃 1 号房屋（金额 = 2），然后偷窃 3 号房屋（金额 = 2）, 因为他们是相邻的。
-示例 2:&lt;/p&gt;
-&lt;p&gt;输入: [1,2,3,1]
-输出: 4
-解释: 你可以先偷窃 1 号房屋（金额 = 1），然后偷窃 3 号房屋（金额 = 3）。
-偷窃到的最高金额 = 1 + 3 = 4 。&lt;/p&gt;
-&lt;p&gt;来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/house-robber-ii
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;题解&#34;&gt;题解：&lt;/h3&gt;
-&lt;p&gt;此题采用动态规划的思想，与&lt;a href=&#34;../%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddp&#34;&gt;198打家劫舍dp&lt;/a&gt;类似，不同之处在于本题房屋是围成一个圈，198是一条直线。 所以这道题需要考虑第一个房屋和最后一个房屋不能同时抢劫。&lt;/p&gt;
-&lt;p&gt;故用这种思路解题，或者抢劫 0-nums.length-1范围的房屋，或者抢劫 1-nums.length范围的房屋。 两者之间的最大者，就是题目的解。&lt;/p&gt;
-&lt;h3 id=&#34;代码如下&#34;&gt;代码如下：&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;rob&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]);&lt;/span&gt;
-			
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;robRange&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;copyOfRange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;)),&lt;/span&gt;
-                        robRange&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;copyOfRange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)));&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;robRange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 定义状态，dp[i] 代表抢i家 所得的最多总金额
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; dp &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-        
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 设置初始状态
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-        dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]);&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 确定状态转移方程
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;]);&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;时间复杂度 ：O(N)&lt;/p&gt;
-&lt;p&gt;空间复杂度 :  O(N)&lt;/p&gt;
-&lt;h3 id=&#34;优化&#34;&gt;优化：&lt;/h3&gt;
-&lt;p&gt;同样此题可以做相应优化，再动态规划的步骤中，不使用dp数组存储， 而采用同198相同的两个变量记录的方法，优化空间复杂度。&lt;/p&gt;
-&lt;p&gt;优化代码如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;rob&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]);&lt;/span&gt;
-        
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;robRange&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;copyOfRange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;)),&lt;/span&gt;
-                        robRange&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;copyOfRange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)));&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;robRange&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 定义状态 dp数组第i位代表房屋数量i时，可打劫的最高金额
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 初始状态
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; first &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; second &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]);&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; second&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 动态转移方程，即确定dp[i] 与 dp[i - 1]的关系
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;first &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt; second&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-
-            first &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; second&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            second &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; result&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; result&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上代码在空间复杂度上做了优化， 空间复杂度由之前O(N)降低至O(1).&lt;/p&gt;
-&lt;p&gt;时间复杂度 ：O(N)&lt;/p&gt;
-&lt;p&gt;空间复杂度 : O(1)&lt;/p&gt;
 </description>
       
     </item>

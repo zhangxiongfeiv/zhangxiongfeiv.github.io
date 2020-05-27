@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>560.和为K的子数组</title>
+      <link>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Wed, 27 May 2020 14:12:36 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      <description>560. 和为K的子数组 给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。 示例 1 : 输入:nums = [1,1,1], k = 2 输出: 2 , [1,1] 与 [1,1]</description>
+    </item>
+    
+    <item>
+      <title>974.和可被K整除的子数组</title>
+      <link>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Wed, 27 May 2020 14:12:21 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      <description>974. 和可被 K 整除的子数组 给定一个整数数组 A，返回其中元素之和可被 K 整除的（连续、非空）子数组的数目。 示例： 输入：A = [4,5,0,-2,-3,1], K = 5 输出：7 解释： 有 7</description>
+    </item>
+    
+    <item>
       <title>一个iOS小需求中对算法的优化</title>
       <link>https://zhangxiongfeiv.github.io/post/%E4%B8%80%E4%B8%AAios%E5%B0%8F%E9%9C%80%E6%B1%82%E4%B8%AD%E5%AF%B9%E7%AE%97%E6%B3%95%E7%9A%84%E4%BC%98%E5%8C%96/</link>
       <pubDate>Tue, 26 May 2020 10:49:40 +0800</pubDate>
@@ -171,24 +189,6 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/120%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/</guid>
       <description>120. 三角形最小路径和 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。 例如，给定三角形： [ [2], [3,4], [6,5,7], [4,1,8,3] ] 自顶向下的最</description>
-    </item>
-    
-    <item>
-      <title>300.最长上升子序列DP</title>
-      <link>https://zhangxiongfeiv.github.io/post/300.%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</link>
-      <pubDate>Tue, 28 Apr 2020 11:25:21 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/300.%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</guid>
-      <description>300. 最长上升子序列 给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18] 输出: 4 解释: 最长的上升子序列是 [2,3,7,101]，</description>
-    </item>
-    
-    <item>
-      <title>213.打家劫舍DPII</title>
-      <link>https://zhangxiongfeiv.github.io/post/213.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</link>
-      <pubDate>Mon, 27 Apr 2020 22:08:29 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/213.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</guid>
-      <description>213. 打家劫舍 II 你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋</description>
     </item>
     
   </channel>
