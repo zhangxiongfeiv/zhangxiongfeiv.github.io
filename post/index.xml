@@ -21,69 +21,6 @@
     </item>
     
     <item>
-      <title>560.和为K的子数组</title>
-      <link>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</link>
-      <pubDate>Wed, 27 May 2020 14:12:36 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
-      <description>560. 和为K的子数组 给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。 示例 1 : 输入:nums = [1,1,1], k = 2 输出: 2 , [1,1] 与 [1,1]</description>
-    </item>
-    
-    <item>
-      <title>974.和可被K整除的子数组</title>
-      <link>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</link>
-      <pubDate>Wed, 27 May 2020 14:12:21 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
-      <description>974. 和可被 K 整除的子数组 给定一个整数数组 A，返回其中元素之和可被 K 整除的（连续、非空）子数组的数目。 示例： 输入：A = [4,5,0,-2,-3,1], K = 5 输出：7 解释： 有 7</description>
-    </item>
-    
-    <item>
-      <title>234.回文链表</title>
-      <link>https://zhangxiongfeiv.github.io/post/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</link>
-      <pubDate>Tue, 26 May 2020 18:21:27 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</guid>
-      <description>234. 回文链表 请判断一个链表是否为回文链表。 示例 1: 输入: 1-&amp;gt;2 输出: false 示例 2: 输入: 1-&amp;gt;2-&amp;gt;2-&amp;gt;1 输出: true 进阶： 你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？ 来源：</description>
-    </item>
-    
-    <item>
-      <title>142.环形链表II</title>
-      <link>https://zhangxiongfeiv.github.io/post/142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8ii/</link>
-      <pubDate>Tue, 26 May 2020 18:09:26 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8ii/</guid>
-      <description>142. 环形链表 II 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接</description>
-    </item>
-    
-    <item>
-      <title>141.环形链表</title>
-      <link>https://zhangxiongfeiv.github.io/post/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</link>
-      <pubDate>Tue, 26 May 2020 17:58:30 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</guid>
-      <description>141. 环形链表 给定一个链表，判断链表中是否有环。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -</description>
-    </item>
-    
-    <item>
-      <title>86.分隔链表</title>
-      <link>https://zhangxiongfeiv.github.io/post/86.%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/</link>
-      <pubDate>Tue, 26 May 2020 17:09:30 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/86.%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/</guid>
-      <description>86. 分隔链表 给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。 你应当保留两个分区中每个节点的初始相对</description>
-    </item>
-    
-    <item>
-      <title>2.两数相加</title>
-      <link>https://zhangxiongfeiv.github.io/post/2.-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/</link>
-      <pubDate>Tue, 26 May 2020 16:34:46 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/2.-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/</guid>
-      <description>2. 两数相加 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。 如果，我</description>
-    </item>
-    
-    <item>
       <title>一个iOS小需求中对算法的优化</title>
       <link>https://zhangxiongfeiv.github.io/post/%E4%B8%80%E4%B8%AAios%E5%B0%8F%E9%9C%80%E6%B1%82%E4%B8%AD%E5%AF%B9%E7%AE%97%E6%B3%95%E7%9A%84%E4%BC%98%E5%8C%96/</link>
       <pubDate>Tue, 26 May 2020 10:49:40 +0800</pubDate>
@@ -147,48 +84,111 @@
     </item>
     
     <item>
-      <title>152. 乘积最大子数组</title>
-      <link>https://zhangxiongfeiv.github.io/post/152.-%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</link>
-      <pubDate>Sat, 09 May 2020 21:40:02 +0800</pubDate>
+      <title>938. 二叉搜索树的范围和</title>
+      <link>https://zhangxiongfeiv.github.io/post/938.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</link>
+      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/152.-%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
-      <description>152. 乘积最大子数组 给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字）。 示例 1: 输入: [2,3,-2,4] 输出: 6 解释: 子数组 [2,3] 有</description>
+      <guid>https://zhangxiongfeiv.github.io/post/938.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</guid>
+      <description>938. 二叉搜索树的范围和 题解： 二叉树中序遍历， 递加在 [L , R] 范围的元素即可。 思路一： 递归 代码如下： int sum = 0; public int rangeSumBST(TreeNode root, int L, int R){ if (root == null) return 0; rangeSumBST(root.left, L ,R); if (root.val &amp;gt;=</description>
     </item>
     
     <item>
-      <title>108.将有序数组转换成二叉搜索树</title>
-      <link>https://zhangxiongfeiv.github.io/post/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <title>二叉搜索树</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
-      <description>108. 将有序数组转换为二叉搜索树 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。 本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左</description>
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <description>思考？ 在 n 个动态的整数中搜索某个整数？ (查看其是否存在) 假设用动态数组存放元素，从第0个位置开始遍历搜索，平均时间复杂度 O(N) 如果维护一个有序的</description>
     </item>
     
     <item>
-      <title>230. 二叉搜索树中第K小的元素</title>
-      <link>https://zhangxiongfeiv.github.io/post/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</link>
-      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      <title>iOS基于码云创建私有库</title>
+      <link>https://zhangxiongfeiv.github.io/post/ios%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</link>
+      <pubDate>Thu, 07 May 2020 20:45:03 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</guid>
-      <description>230. 二叉搜索树中第K小的元素 题解： 二叉搜索树中序遍历的结果，是升序数组， 所以先中序遍历数组，第k个元素即为第k个小的元素。 思路一： 迭代 代码如下</description>
+      <guid>https://zhangxiongfeiv.github.io/post/ios%E5%9F%BA%E4%BA%8E%E7%A0%81%E4%BA%91%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89%E5%BA%93/</guid>
+      <description>iOS 组件化初试-基于码云创建私有库 iOS组件的实现基本是基于cocoapods，如何利用cocoapod创建我们自己的私有库，是实现组件话的第</description>
     </item>
     
     <item>
-      <title>235. 二叉搜索树的最近公共祖先</title>
-      <link>https://zhangxiongfeiv.github.io/post/235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
-      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      <title>王道计算机网络笔记</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Sat, 02 May 2020 18:01:04 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
-      <description>235. 二叉搜索树的最近公共祖先 题解： 思路一： 我们使用 HashMap 来存储，子节点的值 -&amp;gt; 父节点。 dfs二叉树，构建map，保存每个节点对应的父节点 根据map，</description>
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
+      <description>计算机网络的概念 计算机网络:是一个将分散的，具有独立功能的计算机系统，通过通信设备与线路连接起来，由功能完善的软件实现资源共享和信息传递的系</description>
     </item>
     
     <item>
-      <title>450.删除二叉搜索树中的节点</title>
-      <link>https://zhangxiongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</link>
-      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      <title>王道操作系统笔记</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Sat, 02 May 2020 11:04:13 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</guid>
-      <description>练习题： 450. 删除二叉搜索树中的节点 给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。返回</description>
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <description>操作系统 2020.5.2概念(定义) 操作系统（Operating System, OS）是指控制和管理整个计算机系统的硬件和软件资源，并合理地组织调度计算机</description>
+    </item>
+    
+    <item>
+      <title>王道数据结构笔记</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 02 May 2020 08:36:02 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</guid>
+      <description>2020.5.2日记录[TOC] 数据结构在学什么？ 如何用程序代码把现实世界的问题信息话 如何用计算机高效的处理这些信息从而创造价值 数据结构的基</description>
+    </item>
+    
+    <item>
+      <title>803计算机学科基础综合</title>
+      <link>https://zhangxiongfeiv.github.io/post/803%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E7%A7%91%E5%9F%BA%E7%A1%80%E7%BB%BC%E5%90%88/</link>
+      <pubDate>Thu, 30 Apr 2020 18:09:56 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/803%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E7%A7%91%E5%9F%BA%E7%A1%80%E7%BB%BC%E5%90%88/</guid>
+      <description>一、 考查目标 计算机学科基础综合考试涵盖数据结构、计算机组成原理、操作系统和计算机网络等学科专业基础课程。要求考生比较系统地掌握上述专业基础课</description>
+    </item>
+    
+    <item>
+      <title>愿北邮成为我邮</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</link>
+      <pubDate>Thu, 30 Apr 2020 17:57:19 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</guid>
+      <description>愿北邮成为我邮 琢磨了好几年的考研，因为张清妍的到来，显得更加紧迫了，以后时间越来越少，精力也逐渐不如以前。遂决定，不再拖，今年考研！ 仅以此文</description>
+    </item>
+    
+    <item>
+      <title>1143.最长公共子序列DP</title>
+      <link>https://zhangxiongfeiv.github.io/post/1143.%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97dp/</link>
+      <pubDate>Tue, 28 Apr 2020 18:10:13 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/1143.%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97dp/</guid>
+      <description>1143. 最长公共子序列 给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。 一个字符串的 子序列 是指这样一个新的字符串：它是由原字符</description>
+    </item>
+    
+    <item>
+      <title>120三角形最小路径和DP</title>
+      <link>https://zhangxiongfeiv.github.io/post/120%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/</link>
+      <pubDate>Tue, 28 Apr 2020 14:27:19 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/120%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8Cdp/</guid>
+      <description>120. 三角形最小路径和 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。 例如，给定三角形： [ [2], [3,4], [6,5,7], [4,1,8,3] ] 自顶向下的最</description>
+    </item>
+    
+    <item>
+      <title>300.最长上升子序列DP</title>
+      <link>https://zhangxiongfeiv.github.io/post/300.%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</link>
+      <pubDate>Tue, 28 Apr 2020 11:25:21 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/300.%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97dp/</guid>
+      <description>300. 最长上升子序列 给定一个无序的整数数组，找到其中最长上升子序列的长度。 示例: 输入: [10,9,2,5,3,7,101,18] 输出: 4 解释: 最长的上升子序列是 [2,3,7,101]，</description>
+    </item>
+    
+    <item>
+      <title>213.打家劫舍DPII</title>
+      <link>https://zhangxiongfeiv.github.io/post/213.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</link>
+      <pubDate>Mon, 27 Apr 2020 22:08:29 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/213.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Ddpii/</guid>
+      <description>213. 打家劫舍 II 你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋</description>
     </item>
     
   </channel>
