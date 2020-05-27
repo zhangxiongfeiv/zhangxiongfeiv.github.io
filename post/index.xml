@@ -6,10 +6,37 @@
     <description>Recent content in Posts on 飞熊&#39;s Blogs&#39;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 May 2020 18:21:27 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2020 17:09:19 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>1248.统计优美子数组</title>
+      <link>https://zhangxiongfeiv.github.io/post/1248.%E7%BB%9F%E8%AE%A1%E4%BC%98%E7%BE%8E%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Wed, 27 May 2020 17:09:19 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/1248.%E7%BB%9F%E8%AE%A1%E4%BC%98%E7%BE%8E%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      <description>1248. 统计「优美子数组」 此题同 560, 974解题思路一致，复习时，可以一块看。 标签前序和。一并看懂前序和的问题。 给你一个整数数组 nums 和一个整数 k。 如果某</description>
+    </item>
+    
+    <item>
+      <title>560.和为K的子数组</title>
+      <link>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Wed, 27 May 2020 14:12:36 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      <description>560. 和为K的子数组 给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。 示例 1 : 输入:nums = [1,1,1], k = 2 输出: 2 , [1,1] 与 [1,1]</description>
+    </item>
+    
+    <item>
+      <title>974.和可被K整除的子数组</title>
+      <link>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Wed, 27 May 2020 14:12:21 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/974.%E5%92%8C%E5%8F%AF%E8%A2%ABk%E6%95%B4%E9%99%A4%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      <description>974. 和可被 K 整除的子数组 给定一个整数数组 A，返回其中元素之和可被 K 整除的（连续、非空）子数组的数目。 示例： 输入：A = [4,5,0,-2,-3,1], K = 5 输出：7 解释： 有 7</description>
+    </item>
     
     <item>
       <title>234.回文链表</title>
@@ -162,33 +189,6 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</guid>
       <description>练习题： 450. 删除二叉搜索树中的节点 给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。返回</description>
-    </item>
-    
-    <item>
-      <title>530.二叉树的最小绝对差</title>
-      <link>https://zhangxiongfeiv.github.io/post/530.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/</link>
-      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/530.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/</guid>
-      <description>530. 二叉搜索树的最小绝对差 给你一棵所有节点为非负值的二叉搜索树，请你计算树中任意两节点的差的绝对值的最小值。 题解： 二叉搜索树中序遍历的结果，是</description>
-    </item>
-    
-    <item>
-      <title>700.二叉搜索树中的搜索</title>
-      <link>https://zhangxiongfeiv.github.io/post/700.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2/</link>
-      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/700.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2/</guid>
-      <description>700. 二叉搜索树中的搜索 题解： 思路一： 迭代：题目非常简单，普通的二叉搜索树查找。 代码如下： // 二叉搜索树性质， 左子树的值都比根节点小， 右子树的值都</description>
-    </item>
-    
-    <item>
-      <title>701.二叉搜索树中的插入操作</title>
-      <link>https://zhangxiongfeiv.github.io/post/701.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C/</link>
-      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/701.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C/</guid>
-      <description>701. 二叉搜索树中的插入操作 题解： 二叉搜索树的插入操作非常简单，当val &amp;gt; root.val时，插入root的左子树, 当val &amp;lt; root.val时</description>
     </item>
     
   </channel>
