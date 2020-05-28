@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DFS on 飞熊&#39;s Blogs&#39;</title>
+    <title>DFS on 飞熊&#39;s Blogs</title>
     <link>https://zhangxiongfeiv.github.io/tags/dfs/</link>
-    <description>Recent content in DFS on 飞熊&#39;s Blogs&#39;</description>
+    <description>Recent content in DFS on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 26 Apr 2020 10:15:13 +0800</lastBuildDate>
@@ -18,6 +18,15 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
       <description>一 树形结构： 数据结构分为线性结构和树形结构，如下图： 线性结构： 树形结构： 生活中的树形结构 二 树(Tree)的基本概念 节点，父节点，子节点，跟节</description>
+    </item>
+    
+    <item>
+      <title>144.二叉树的前序遍历</title>
+      <link>https://zhangxiongfeiv.github.io/post/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
+      <pubDate>Thu, 21 Nov 2019 18:25:18 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
+      <description>二叉树的遍历 有两种遍历树的策略： 深度优先搜索(DFS) 在这个策略中，我们采用深度作为优先级，以便从根开始一直到达某个确定的叶子，然后再返回根</description>
     </item>
     
     <item>
@@ -45,15 +54,6 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/114.%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8/</guid>
       <description>114. 二叉树展开为链表 题解： 思路一： 迭代, 可以发现展开的顺序其实就是二叉树前序遍历。 将左子树插入到右子树 将原来的右子树插入到左子树最右边节点 考虑</description>
-    </item>
-    
-    <item>
-      <title>144.二叉树的前序遍历</title>
-      <link>https://zhangxiongfeiv.github.io/post/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
-      <pubDate>Thu, 25 Apr 2019 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
-      <description>二叉树的遍历 有两种遍历树的策略： 深度优先搜索(DFS) 在这个策略中，我们采用深度作为优先级，以便从根开始一直到达某个确定的叶子，然后再返回根</description>
     </item>
     
     <item>

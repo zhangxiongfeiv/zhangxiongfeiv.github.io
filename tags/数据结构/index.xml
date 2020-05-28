@@ -1,194 +1,194 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>数据结构 on 飞熊&#39;s Blogs&#39;</title>
+    <title>数据结构 on 飞熊&#39;s Blogs</title>
     <link>https://zhangxiongfeiv.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
-    <description>Recent content in 数据结构 on 飞熊&#39;s Blogs&#39;</description>
+    <description>Recent content in 数据结构 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 11 May 2020 21:04:44 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2020 22:55:05 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>AVL树</title>
-      <link>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</link>
-      <pubDate>Mon, 11 May 2020 21:04:44 +0800</pubDate>
+      <title>01.08零矩阵</title>
+      <link>https://zhangxiongfeiv.github.io/post/01.08%E9%9B%B6%E7%9F%A9%E9%98%B5/</link>
+      <pubDate>Thu, 28 May 2020 22:55:05 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</guid>
-      <description>AVL树 平衡因子(Balance Factor): 某节点左右子树的高度差 AVL树的特点 每个节点的平衡因子只可能是1, 0, -1(绝对值 &amp;lt;= 1, 如果超过1，称之为 &amp;l</description>
+      <guid>https://zhangxiongfeiv.github.io/post/01.08%E9%9B%B6%E7%9F%A9%E9%98%B5/</guid>
+      <description>面试题 01.08. 零矩阵 编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。 示例 1： 输入： [ [1,1,1], [1,0,1], [1,1,1] ] 输出： [ [1,0,1], [0,0,0], [1,0,1] ] 示例 2： 输入： [ [0,1,2,0], [3,4,5,2],</description>
     </item>
     
     <item>
-      <title>平衡二叉搜索树</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
-      <pubDate>Mon, 11 May 2020 21:03:47 +0800</pubDate>
+      <title>01.06字符串压缩</title>
+      <link>https://zhangxiongfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</link>
+      <pubDate>Thu, 28 May 2020 22:37:48 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
-      <description>平衡二叉搜索树 (BBST) 二叉搜索树(BST)的缺陷？ 二叉搜索树，在某种情况下会导致极度的不平衡，导致时间复杂度剧增。 如图，如果按照 7 4 9 2 5 8 11 的顺</description>
+      <guid>https://zhangxiongfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</guid>
+      <description>面试题 01.06. 字符串压缩 字符串压缩。利用字符重复出现的次数，编写一种方法，实现基本的字符串压缩功能。比如，字符串aabcccccaaa会变为a2b</description>
     </item>
     
     <item>
-      <title>938. 二叉搜索树的范围和</title>
-      <link>https://zhangxiongfeiv.github.io/post/938.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</link>
-      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      <title>01.05一次编辑</title>
+      <link>https://zhangxiongfeiv.github.io/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</link>
+      <pubDate>Thu, 28 May 2020 22:32:11 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/938.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</guid>
-      <description>938. 二叉搜索树的范围和 题解： 二叉树中序遍历， 递加在 [L , R] 范围的元素即可。 思路一： 递归 代码如下： int sum = 0; public int rangeSumBST(TreeNode root, int L, int R){ if (root == null) return 0; rangeSumBST(root.left, L ,R); if (root.val &amp;gt;=</description>
+      <guid>https://zhangxiongfeiv.github.io/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</guid>
+      <description>面试题 01.05. 一次编辑 字符串有三种编辑操作:插入一个字符、删除一个字符或者替换一个字符。 给定两个字符串，编写一个函数判定它们是否只需要一次(或者零</description>
     </item>
     
     <item>
-      <title>二叉搜索树</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
-      <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
+      <title>01.04.回文排列</title>
+      <link>https://zhangxiongfeiv.github.io/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</link>
+      <pubDate>Thu, 28 May 2020 22:27:06 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
-      <description>思考？ 在 n 个动态的整数中搜索某个整数？ (查看其是否存在) 假设用动态数组存放元素，从第0个位置开始遍历搜索，平均时间复杂度 O(N) 如果维护一个有序的</description>
+      <guid>https://zhangxiongfeiv.github.io/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</guid>
+      <description>面试题 01.04. 回文排列 给定一个字符串，编写一个函数判定其是否为某个回文串的排列之一。 回文串是指正反两个方向都一样的单词或短语。排列是指字母的重新排</description>
     </item>
     
     <item>
-      <title>二叉树</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
-      <pubDate>Sun, 26 Apr 2020 10:15:13 +0800</pubDate>
+      <title>01.03URL化</title>
+      <link>https://zhangxiongfeiv.github.io/post/01.03url%E5%8C%96/</link>
+      <pubDate>Thu, 28 May 2020 22:22:18 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
-      <description>一 树形结构： 数据结构分为线性结构和树形结构，如下图： 线性结构： 树形结构： 生活中的树形结构 二 树(Tree)的基本概念 节点，父节点，子节点，跟节</description>
+      <guid>https://zhangxiongfeiv.github.io/post/01.03url%E5%8C%96/</guid>
+      <description>面试题 01.03. URL化 URL化。编写一种方法，将字符串中的空格全部替换为%20。假定该字符串尾部有足够的空间存放新增字符，并且知道字符串的“真实”</description>
     </item>
     
     <item>
-      <title>队列</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97/</link>
-      <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
+      <title>01.02判断是否互为字符重排</title>
+      <link>https://zhangxiongfeiv.github.io/post/01.02%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92/</link>
+      <pubDate>Thu, 28 May 2020 22:18:56 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97/</guid>
-      <description>队列 一，定义 队列是一种特殊的线性表，只能在头尾两端进行操作 队尾(rear) : 只能从队尾添加元素，一般叫做enQueue,入队 对头(front</description>
+      <guid>https://zhangxiongfeiv.github.io/post/01.02%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92/</guid>
+      <description>面试题 01.02. 判定是否互为字符重排 给定两个字符串 s1 和 s2，请编写一个程序，确定其中一个字符串的字符重新排列后，能否变成另一个字符串。 示例 1： 输入:</description>
     </item>
     
     <item>
-      <title>集合</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E9%9B%86%E5%90%88/</link>
-      <pubDate>Wed, 15 Apr 2020 22:20:03 +0800</pubDate>
+      <title>01.01判断字符是否唯一</title>
+      <link>https://zhangxiongfeiv.github.io/post/01.01%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80/</link>
+      <pubDate>Thu, 28 May 2020 22:15:10 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E9%9B%86%E5%90%88/</guid>
-      <description>集合（Set） 集合的定义： 由一个或者多个确定的元素所构成的整体。 特点： 1，不存在重复元素 2，一般用于去重（比如一本书中统计词汇，统计访问网站</description>
+      <guid>https://zhangxiongfeiv.github.io/post/01.01%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80/</guid>
+      <description>面试题 01.01. 判定字符是否唯一 实现一个算法，确定一个字符串 s 的所有字符是否全都不同。 示例 1： 输入: s = &amp;ldquo;leetcode&amp;rdquo; 输出: false 示例 2： 输入: s = &amp;ldquo;abc&amp;rdquo; 输出: true 限制：</description>
     </item>
     
     <item>
-      <title>876. 链表的中间节点</title>
-      <link>https://zhangxiongfeiv.github.io/post/876.%E9%93%BE%E8%A1%A8%E7%9A%84%E4%B8%AD%E9%97%B4%E8%8A%82%E7%82%B9/</link>
-      <pubDate>Tue, 14 Apr 2020 20:33:49 +0800</pubDate>
+      <title>86.分隔链表</title>
+      <link>https://zhangxiongfeiv.github.io/post/86.%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Tue, 26 May 2020 17:09:30 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/876.%E9%93%BE%E8%A1%A8%E7%9A%84%E4%B8%AD%E9%97%B4%E8%8A%82%E7%82%B9/</guid>
-      <description>876. 链表的中间结点 给定一个带有头结点 head 的非空单链表，返回链表的中间结点。 如果有两个中间结点，则返回第二个中间结点。 示例 1： 输入：[1,2,3,</description>
+      <guid>https://zhangxiongfeiv.github.io/post/86.%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/</guid>
+      <description>86. 分隔链表 给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。 你应当保留两个分区中每个节点的初始相对</description>
     </item>
     
     <item>
-      <title>字符串常用算法 --&gt; 滑动窗口</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
-      <pubDate>Mon, 06 Apr 2020 21:16:57 +0800</pubDate>
+      <title>01.09字符串轮转</title>
+      <link>https://zhangxiongfeiv.github.io/post/01.09%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AE%E8%BD%AC/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
-      <description>字符串算法之滑动窗口 题目 3. 无重复字符的最长子串 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。 示例 1: 输入: &amp;ldquo;abcabcbb&amp;rdquo; 输出: 3 解释: 因为无</description>
+      <guid>https://zhangxiongfeiv.github.io/post/01.09%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AE%E8%BD%AC/</guid>
+      <description>面试题 01.09. 字符串轮转 字符串轮转。给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成（比如，waterbottle是erbottle</description>
     </item>
     
     <item>
-      <title>662.二叉树最大宽度</title>
-      <link>https://zhangxiongfeiv.github.io/post/662.%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E5%A4%A7%E5%AE%BD%E5%BA%A6/</link>
-      <pubDate>Sat, 25 Jan 2020 18:25:18 +0800</pubDate>
+      <title>02.01移除重复节点</title>
+      <link>https://zhangxiongfeiv.github.io/post/02.01%E7%A7%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E8%8A%82%E7%82%B9/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/662.%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E5%A4%A7%E5%AE%BD%E5%BA%A6/</guid>
-      <description>662. 二叉树最大宽度 给定一个二叉树，编写一个函数来获取这个树的最大宽度。树的宽度是所有层中的最大宽度。这个二叉树与满二叉树（full binary tree）</description>
+      <guid>https://zhangxiongfeiv.github.io/post/02.01%E7%A7%BB%E9%99%A4%E9%87%8D%E5%A4%8D%E8%8A%82%E7%82%B9/</guid>
+      <description>面试题 02.01. 移除重复节点 编写代码，移除未排序链表中的重复节点。保留最开始出现的节点。 示例1: 输入：[1, 2, 3, 3, 2, 1] 输出：[1, 2, 3] 示例2: 输入：</description>
     </item>
     
     <item>
-      <title>450.删除二叉搜索树中的节点</title>
-      <link>https://zhangxiongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</link>
-      <pubDate>Sat, 09 Nov 2019 21:35:41 +0800</pubDate>
+      <title>02.02链表的倒数第二个节点</title>
+      <link>https://zhangxiongfeiv.github.io/post/02.02%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%AC%E4%BA%8C%E4%B8%AA%E8%8A%82%E7%82%B9/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</guid>
-      <description>练习题： 450. 删除二叉搜索树中的节点 给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。返回</description>
+      <guid>https://zhangxiongfeiv.github.io/post/02.02%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%AC%E4%BA%8C%E4%B8%AA%E8%8A%82%E7%82%B9/</guid>
+      <description>面试题 02.02. 返回倒数第 k 个节点 实现一种算法，找出单向链表中倒数第 k 个节点。返回该节点的值。 注意：本题相对原题稍作改动 示例： 输入： 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5 和 k = 2 输出：</description>
     </item>
     
     <item>
-      <title>108.将有序数组转换成二叉搜索树</title>
-      <link>https://zhangxiongfeiv.github.io/post/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
-      <pubDate>Thu, 09 May 2019 21:35:41 +0800</pubDate>
+      <title>02.03删除中间节点</title>
+      <link>https://zhangxiongfeiv.github.io/post/02.03%E5%88%A0%E9%99%A4%E4%B8%AD%E9%97%B4%E8%8A%82%E7%82%B9/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
-      <description>108. 将有序数组转换为二叉搜索树 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。 本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左</description>
+      <guid>https://zhangxiongfeiv.github.io/post/02.03%E5%88%A0%E9%99%A4%E4%B8%AD%E9%97%B4%E8%8A%82%E7%82%B9/</guid>
+      <description>面试题 02.03. 删除中间节点 实现一种算法，删除单向链表中间的某个节点（除了第一个和最后一个节点，不一定是中间节点），假定你只能访问该节点。 示例： 输入</description>
     </item>
     
     <item>
-      <title>230. 二叉搜索树中第K小的元素</title>
-      <link>https://zhangxiongfeiv.github.io/post/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</link>
-      <pubDate>Thu, 09 May 2019 21:35:41 +0800</pubDate>
+      <title>02.04分割链表</title>
+      <link>https://zhangxiongfeiv.github.io/post/02.04%E5%88%86%E5%89%B2%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</guid>
-      <description>230. 二叉搜索树中第K小的元素 题解： 二叉搜索树中序遍历的结果，是升序数组， 所以先中序遍历数组，第k个元素即为第k个小的元素。 思路一： 迭代 代码如下</description>
+      <guid>https://zhangxiongfeiv.github.io/post/02.04%E5%88%86%E5%89%B2%E9%93%BE%E8%A1%A8/</guid>
+      <description>面试题 02.04. 分割链表 编写程序以 x 为基准分割链表，使得所有小于 x 的节点排在大于或等于 x 的节点之前。如果链表中包含 x，x 只需出现在小于 x 的元素之后(</description>
     </item>
     
     <item>
-      <title>530.二叉树的最小绝对差</title>
-      <link>https://zhangxiongfeiv.github.io/post/530.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/</link>
-      <pubDate>Thu, 09 May 2019 21:35:41 +0800</pubDate>
+      <title>02.05链表求和</title>
+      <link>https://zhangxiongfeiv.github.io/post/02.05%E9%93%BE%E8%A1%A8%E6%B1%82%E5%92%8C/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/530.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/</guid>
-      <description>530. 二叉搜索树的最小绝对差 给你一棵所有节点为非负值的二叉搜索树，请你计算树中任意两节点的差的绝对值的最小值。 题解： 二叉搜索树中序遍历的结果，是</description>
+      <guid>https://zhangxiongfeiv.github.io/post/02.05%E9%93%BE%E8%A1%A8%E6%B1%82%E5%92%8C/</guid>
+      <description>面试题 02.05. 链表求和 给定两个用链表表示的整数，每个节点包含一个数位。 这些数位是反向存放的，也就是个位排在链表首部。 编写函数对这两个整数求和，并用</description>
     </item>
     
     <item>
-      <title>701.二叉搜索树中的插入操作</title>
-      <link>https://zhangxiongfeiv.github.io/post/701.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C/</link>
-      <pubDate>Thu, 09 May 2019 21:35:41 +0800</pubDate>
+      <title>02.08环路检测</title>
+      <link>https://zhangxiongfeiv.github.io/post/02.08%E7%8E%AF%E8%B7%AF%E6%A3%80%E6%B5%8B/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/701.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C/</guid>
-      <description>701. 二叉搜索树中的插入操作 题解： 二叉搜索树的插入操作非常简单，当val &amp;gt; root.val时，插入root的左子树, 当val &amp;lt; root.val时</description>
+      <guid>https://zhangxiongfeiv.github.io/post/02.08%E7%8E%AF%E8%B7%AF%E6%A3%80%E6%B5%8B/</guid>
+      <description>面试题 02.08. 环路检测 给定一个有环链表，实现一个算法返回环路的开头节点。 有环链表的定义：在链表中某个节点的next元素指向在它前面出现过的节点，则</description>
     </item>
     
     <item>
-      <title>98.验证二叉搜索树</title>
-      <link>https://zhangxiongfeiv.github.io/post/98.%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
-      <pubDate>Thu, 09 May 2019 21:35:41 +0800</pubDate>
+      <title>03.02栈的最小值</title>
+      <link>https://zhangxiongfeiv.github.io/post/03.02%E6%A0%88%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/98.%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
-      <description>98. 验证二叉搜索树 题解： 迭代 和 递归两种方法思路一样， 都是利用二叉树的中序遍历 二叉搜索树的中序遍历结果，是严格升序的， 所以我们中序遍历二叉树 记录</description>
+      <guid>https://zhangxiongfeiv.github.io/post/03.02%E6%A0%88%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC/</guid>
+      <description>面试题 03.02. 栈的最小值 请设计一个栈，除了常规栈支持的pop与push函数以外，还支持min函数，该函数返回栈元素中的最小值。执行push、pop</description>
     </item>
     
     <item>
-      <title>226.翻转二叉树</title>
-      <link>https://zhangxiongfeiv.github.io/post/226.%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
-      <pubDate>Fri, 26 Apr 2019 10:15:13 +0800</pubDate>
+      <title>03.04化栈为队</title>
+      <link>https://zhangxiongfeiv.github.io/post/03.04%E5%8C%96%E6%A0%88%E4%B8%BA%E9%98%9F/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/226.%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
-      <description>226. 翻转二叉树 翻转一棵二叉树。 示例： 输入： 4 / 2 7 / \ / 1 3 6 9 输出： 4 / 7 2 / \ / 9 6 3 1 备注: 这个问题是受到 Max Howell 的 原问题 启发的 ： 谷歌：我们</description>
+      <guid>https://zhangxiongfeiv.github.io/post/03.04%E5%8C%96%E6%A0%88%E4%B8%BA%E9%98%9F/</guid>
+      <description>面试题 03.04. 化栈为队 实现一个MyQueue类，该类用两个栈来实现一个队列。 示例： MyQueue queue = new MyQueue(); queue.push(1); queue.push(2); queue.peek(); // 返回 1 queue.pop(); // 返回 1 queue.empty(); // 返回 false 说明： 你只能使用标准</description>
     </item>
     
     <item>
-      <title>102.二叉树的层序遍历</title>
-      <link>https://zhangxiongfeiv.github.io/post/102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
-      <pubDate>Thu, 25 Apr 2019 18:25:18 +0800</pubDate>
+      <title>04.02最小高度树</title>
+      <link>https://zhangxiongfeiv.github.io/post/04.02%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6%E6%A0%91/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
-      <description>102. 二叉树的层序遍历 给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。 示例： 二叉树：[3,9,20,nul</description>
+      <guid>https://zhangxiongfeiv.github.io/post/04.02%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6%E6%A0%91/</guid>
+      <description>面试题 04.02. 最小高度树 给定一个有序整数数组，元素各不相同且按升序排列，编写一个算法，创建一棵高度最小的二叉搜索树。 示例: 给定有序数组: [-10,-3,0,5,9], 一个可能</description>
     </item>
     
     <item>
-      <title>104.二叉树的最大深度</title>
-      <link>https://zhangxiongfeiv.github.io/post/104.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/</link>
-      <pubDate>Thu, 25 Apr 2019 18:25:18 +0800</pubDate>
+      <title>04.03特定深度节点链表</title>
+      <link>https://zhangxiongfeiv.github.io/post/04.03%E7%89%B9%E5%AE%9A%E6%B7%B1%E5%BA%A6%E8%8A%82%E7%82%B9%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/104.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/</guid>
-      <description>104. 二叉树的最大深度 题解： 思路一： 使用递归， node节点的高度等于其 max(node.left, node.right) + 1 左右孩子的高度中的较大者 + 1. 代码如下： public int maxDepth(TreeNode root){ if (root == null) return 0; return Math.max(maxDepth(root.left),maxDepth(root.right)) + 1;</description>
+      <guid>https://zhangxiongfeiv.github.io/post/04.03%E7%89%B9%E5%AE%9A%E6%B7%B1%E5%BA%A6%E8%8A%82%E7%82%B9%E9%93%BE%E8%A1%A8/</guid>
+      <description>面试题 04.03. 特定深度节点链表 给定一棵二叉树，设计一个算法，创建含有某一深度上所有节点的链表（比如，若一棵树的深度为 D，则会创建出 D 个链表）。返回</description>
     </item>
     
     <item>
-      <title>105.从前序与中序遍历序列构造二叉树</title>
-      <link>https://zhangxiongfeiv.github.io/post/105.%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
-      <pubDate>Thu, 25 Apr 2019 18:25:18 +0800</pubDate>
+      <title>04.05合法二叉搜索树</title>
+      <link>https://zhangxiongfeiv.github.io/post/04.05%E5%90%88%E6%B3%95%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/105.%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
-      <description>105. 从前序与中序遍历序列构造二叉树 根据一棵树的前序遍历与中序遍历构造二叉树。 注意: 你可以假设树中没有重复的元素。 例如，给出 前序遍历 preorder = [3,9,20,15,7] 中序遍</description>
+      <guid>https://zhangxiongfeiv.github.io/post/04.05%E5%90%88%E6%B3%95%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <description>面试题 04.05. 合法二叉搜索树 实现一个函数，检查一棵二叉树是否为二叉搜索树。 示例 1: 输入: 2 / 1 3 输出: true 示例 2: 输入: 5 / 1 4 / 3 6 输出: false 解释: 输入</description>
     </item>
     
   </channel>

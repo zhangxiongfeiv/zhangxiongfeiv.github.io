@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>BFS on 飞熊&#39;s Blogs&#39;</title>
+    <title>BFS on 飞熊&#39;s Blogs</title>
     <link>https://zhangxiongfeiv.github.io/tags/bfs/</link>
-    <description>Recent content in BFS on 飞熊&#39;s Blogs&#39;</description>
+    <description>Recent content in BFS on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 26 Apr 2020 10:15:13 +0800</lastBuildDate>
@@ -27,6 +27,33 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/662.%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E5%A4%A7%E5%AE%BD%E5%BA%A6/</guid>
       <description>662. 二叉树最大宽度 给定一个二叉树，编写一个函数来获取这个树的最大宽度。树的宽度是所有层中的最大宽度。这个二叉树与满二叉树（full binary tree）</description>
+    </item>
+    
+    <item>
+      <title>145.二叉树的后序遍历</title>
+      <link>https://zhangxiongfeiv.github.io/post/145.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
+      <pubDate>Mon, 25 Nov 2019 18:25:18 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/145.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
+      <description>145. 二叉树的后序遍历 给定一个二叉树，返回它的 后序 遍历。 示例: 输入: [1,null,2,3] 1 2 / 3 输出: [3,2,1] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？ 来源：力扣</description>
+    </item>
+    
+    <item>
+      <title>144.二叉树的前序遍历</title>
+      <link>https://zhangxiongfeiv.github.io/post/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
+      <pubDate>Thu, 21 Nov 2019 18:25:18 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
+      <description>二叉树的遍历 有两种遍历树的策略： 深度优先搜索(DFS) 在这个策略中，我们采用深度作为优先级，以便从根开始一直到达某个确定的叶子，然后再返回根</description>
+    </item>
+    
+    <item>
+      <title>94.二叉树的中序遍历</title>
+      <link>https://zhangxiongfeiv.github.io/post/94.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
+      <pubDate>Sun, 25 Aug 2019 18:25:18 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/94.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
+      <description>二叉树的遍历 有两种遍历树的策略： 深度优先搜索(DFS) 在这个策略中，我们采用深度作为优先级，以便从根开始一直到达某个确定的叶子，然后再返回根</description>
     </item>
     
     <item>
@@ -75,24 +102,6 @@
     </item>
     
     <item>
-      <title>144.二叉树的前序遍历</title>
-      <link>https://zhangxiongfeiv.github.io/post/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
-      <pubDate>Thu, 25 Apr 2019 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
-      <description>二叉树的遍历 有两种遍历树的策略： 深度优先搜索(DFS) 在这个策略中，我们采用深度作为优先级，以便从根开始一直到达某个确定的叶子，然后再返回根</description>
-    </item>
-    
-    <item>
-      <title>145.二叉树的后序遍历</title>
-      <link>https://zhangxiongfeiv.github.io/post/145.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
-      <pubDate>Thu, 25 Apr 2019 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/145.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
-      <description>145. 二叉树的后序遍历 给定一个二叉树，返回它的 后序 遍历。 示例: 输入: [1,null,2,3] 1 2 / 3 输出: [3,2,1] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？ 来源：力扣</description>
-    </item>
-    
-    <item>
       <title>589.N叉树的前序遍历</title>
       <link>https://zhangxiongfeiv.github.io/post/589.n%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
       <pubDate>Thu, 25 Apr 2019 18:25:18 +0800</pubDate>
@@ -108,15 +117,6 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/590.n%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
       <description>590. N叉树的后序遍历 给定一个 N 叉树，返回其节点值的后序遍历。 例如，给定一个 3叉树 : 返回其后序遍历: [5,6,3,2,4,1]. 说明: 递归法很简单，你可以使用迭代法完成此</description>
-    </item>
-    
-    <item>
-      <title>94.二叉树的中序遍历</title>
-      <link>https://zhangxiongfeiv.github.io/post/94.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
-      <pubDate>Thu, 25 Apr 2019 18:25:18 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/94.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
-      <description>二叉树的遍历 有两种遍历树的策略： 深度优先搜索(DFS) 在这个策略中，我们采用深度作为优先级，以便从根开始一直到达某个确定的叶子，然后再返回根</description>
     </item>
     
   </channel>
