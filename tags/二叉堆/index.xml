@@ -6,10 +6,19 @@
     <description>Recent content in 二叉堆 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2020 17:27:40 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2020 10:15:13 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E5%A0%86/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>团灭丑数问题</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Sat, 30 May 2020 10:15:13 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/</guid>
+      <description>263. 丑数 编写一个程序判断给定的数是否为丑数。 丑数就是只包含质因数 2, 3, 5 的正整数。 示例 1: 输入: 6 输出: true 解释: 6 = 2 × 3 示例 2: 输入: 8 输出: true 解</description>
+    </item>
     
     <item>
       <title>二叉堆</title>
