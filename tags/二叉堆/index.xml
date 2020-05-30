@@ -6,10 +6,19 @@
     <description>Recent content in 二叉堆 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 May 2020 10:15:13 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2020 23:50:40 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E5%A0%86/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>40.最小的k个数</title>
+      <link>https://zhangxiongfeiv.github.io/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/</link>
+      <pubDate>Sat, 30 May 2020 23:50:40 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/</guid>
+      <description>面试题40. 最小的k个数 输入整数数组 arr ，找出其中最小的 k 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、</description>
+    </item>
     
     <item>
       <title>团灭丑数问题</title>
