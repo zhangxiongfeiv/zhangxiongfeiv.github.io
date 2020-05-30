@@ -12,6 +12,195 @@
     
     
     <item>
+      <title>二叉堆</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E5%A0%86/</link>
+      <pubDate>Fri, 29 May 2020 17:27:40 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E5%A0%86/</guid>
+      
+        <description>&lt;h1 id=&#34;二叉堆&#34;&gt;二叉堆&lt;/h1&gt;
+&lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;堆&lt;/strong&gt;是一个可以被看作近似完全二叉树的数组。树上的每一个节点对应数组的一个元素。出了最底层外，该树是完全充满的，而且是从左到右填充哦。 &amp;ndash;《算法导论》&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;堆&lt;/strong&gt;包括最大堆和最小堆&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;最大堆&lt;/strong&gt;的每一个节点(根节点除外)的值，不大于其父节点。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最小堆&lt;/strong&gt;的每一个节点(根节点除外)的值，不小于其父节点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf9gvlqabqj30i406q75l.jpg&#34; alt=&#34;屏幕快照 2020-05-29 下午5.51.23&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;堆的常见操作&#34;&gt;堆的&lt;strong&gt;常见操作&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;heapify 原地建堆： 把一个乱序的数组变成堆结构的数组, 时间复杂度  O(N)&lt;/li&gt;
+&lt;li&gt;add 添加元素: 把一个数值放进已经是堆结构的数组中，并维持堆的结构, 时间复杂度O(log N)&lt;/li&gt;
+&lt;li&gt;remove 删除堆顶元素 : 把堆顶元素删除，并将剩余的数组为堆结构, 时间复杂度 O(log N)&lt;/li&gt;
+&lt;li&gt;get 获取堆顶元素: 获取堆顶元素, 时间复杂度 : O(1)&lt;/li&gt;
+&lt;li&gt;replace 删除堆顶元素的同时插入一个新元素, 时间复杂度 O(log N)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;堆的常见应用&#34;&gt;堆的常见应用&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Java中的优先级队列 (Priority Queue)&lt;/li&gt;
+&lt;li&gt;Top K问题 (获取最大或最小的前 K 个数）&lt;/li&gt;
+&lt;li&gt;堆排序 (时间复杂度 O (N * long N))&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;底层结构&#34;&gt;底层结构&lt;/h2&gt;
+&lt;p&gt;二叉堆的逻辑结构就是一颗完全二叉树, 所以也叫&lt;strong&gt;完全二叉堆&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;鉴于完全二叉树的性质, 二叉堆的底层(物理结构), 一般采用数组即可。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;索引&lt;/strong&gt;  i  的规律 (N 为元素数量)
+&lt;ul&gt;
+&lt;li&gt;如果 i == 0 , 它是根节点 (堆顶)&lt;/li&gt;
+&lt;li&gt;如果 i &amp;gt; 0,  它的父节点索引为 &lt;strong&gt;floor((i - 1) / 2)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;如果 2i + 1 &amp;lt;= N - 1,  则它左子节点的下标为 &lt;strong&gt;2i + 1&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;如果 2i + 1 &amp;gt; N - 1, 则它无左子节点&lt;/li&gt;
+&lt;li&gt;如果 2i + 2 &amp;lt;= N - 1, 则它的右子节点下标为 2i + 2&lt;/li&gt;
+&lt;li&gt;如果 2i + 2 &amp;gt; N - 1,  则它无右子节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;基本接口设计&#34;&gt;基本接口设计&lt;/h2&gt;
+&lt;p&gt;以下所有操作，以&lt;strong&gt;最大堆&lt;/strong&gt;为例&lt;/p&gt;
+&lt;h3 id=&#34;元素的数量&#34;&gt;元素的数量&lt;/h3&gt;
+&lt;p&gt;直接返回元素的size即可&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; size&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;是否为空&#34;&gt;是否为空&lt;/h3&gt;
+&lt;p&gt;size == 0为空，否则不为空&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; size &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;清空&#34;&gt;清空&lt;/h3&gt;
+&lt;p&gt;遍历数组清空， size 置为0 即可&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;clear&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; size&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        size &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;添加元素&#34;&gt;添加元素&lt;/h3&gt;
+&lt;p&gt;// 添加到末尾， 再&lt;strong&gt;上滤&lt;/strong&gt;该元素，直到 &lt;strong&gt;该元素 &amp;lt; 父元素&lt;/strong&gt; 或者 &lt;strong&gt;到达堆顶&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf9hkey26qj30us0eotek.jpg&#34; alt=&#34;image-20200529181526830&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;E element&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        elementNotNullCheck&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;element&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        ensureCapacity&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;size &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+
+        elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;size&lt;span style=&#34;color:#f92672&#34;&gt;++]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; element&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        siftUp&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;size&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;获取堆顶元素&#34;&gt;获取堆顶元素&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; E &lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        emptyCheck&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;删除堆顶元素&#34;&gt;删除堆顶元素&lt;/h3&gt;
+&lt;p&gt;// 用 &lt;strong&gt;末尾元素&lt;/strong&gt; 代替 &lt;strong&gt;堆顶元素&lt;/strong&gt;， 将末尾元素清空，再将新的堆顶元素下滤。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; E &lt;span style=&#34;color:#a6e22e&#34;&gt;remove&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        emptyCheck&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+
+        E root &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; lastIdx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;size&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;lastIdx&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;lastIdx&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+        siftDown&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;替换堆顶元素&#34;&gt;替换堆顶元素&lt;/h3&gt;
+&lt;p&gt;新元素替换堆顶元素， 再将新的堆顶元素下滤&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; E &lt;span style=&#34;color:#a6e22e&#34;&gt;replace&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;E element&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        elementNotNullCheck&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;element&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+
+        E root &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;size &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+            elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; element&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            size &lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            root &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+            elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; element&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            siftDown&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;批量建堆heapify&#34;&gt;批量建堆(Heapify)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;自上而下的上滤&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf9hwhiu3kj30v00fkq8q.jpg&#34; alt=&#34;屏幕快照 2020-05-29 下午6.26.48&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自下而上的下滤&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf9hwmnr06j30u60gidl4.jpg&#34; alt=&#34;屏幕快照 2020-05-29 下午6.26.53&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;效率对比&#34;&gt;效率对比&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf9hx9izhmj30se0ean03.jpg&#34; alt=&#34;image-20200529182748568&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;heapify&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(){&lt;/span&gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 自上而下的上滤
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//        for (int i = 1; i &amp;lt; size; i++) {
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//            siftUp(i);
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//        }
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 自下而上的下滤
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;size &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;--)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            siftDown&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;上滤&#34;&gt;上滤&lt;/h3&gt;
+&lt;p&gt;元素依次与父节点对比, 如果比父节点大，则替换父节点, 继续上滤。 直到&lt;strong&gt;到达堆顶&lt;/strong&gt; 或者 &lt;strong&gt;比父节点小&lt;/strong&gt;为止&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 上滤
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;siftUp&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; index&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+
+        E element &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;index&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;index &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; pIdx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;index &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            E parE &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;pIdx&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;compare&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;element&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;parE&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;index&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; parE&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+            index &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pIdx&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+        elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;index&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; element&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;下滤&#34;&gt;下滤&lt;/h3&gt;
+&lt;p&gt;节点值与其 &lt;strong&gt;左右子节点中的较大者&lt;/strong&gt; 比较, 如果比子节点值小, 则交换，直到&lt;strong&gt;比左右父节点都大&lt;/strong&gt;，或者&lt;strong&gt;成为叶子节点&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 下滤
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;siftDown&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; index&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+        E element &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;index&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 非叶子节点 子节点比较 交换
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// index &amp;lt; 第一个叶子结点的索引
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// index &amp;lt; 非叶子结点的数量
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; half &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; size &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;index &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; half&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// index的结点有两种情况
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 只有左子节点
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 左右子节点都有
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// 默认取出左子节点的值跟element比较
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; childIndex &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;index &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            E child &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;childIndex&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+
+            &lt;span style=&#34;color:#75715e&#34;&gt;// 右子节点
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; rightIndex &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; childIndex &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;rightIndex &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; size &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; compare&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;rightIndex&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt;child&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                child &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;childIndex &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; rightIndex&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// 子节点小
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;compare&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;element&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;child&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// 子结点大 交换
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;index&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; child&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            index &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; childIndex&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        elements&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;index&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; element&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>01.08零矩阵</title>
       <link>https://zhangxiongfeiv.github.io/post/01.08%E9%9B%B6%E7%9F%A9%E9%98%B5/</link>
       <pubDate>Thu, 28 May 2020 22:55:05 +0800</pubDate>
@@ -626,10 +815,10 @@ second = &amp;ldquo;pal&amp;rdquo;
       
       <guid>https://zhangxiongfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</guid>
       
-        <description>&lt;h2 id=&#34;2020527总结&#34;&gt;2020.5.27总结&lt;/h2&gt;
+        <description>&lt;h1 id=&#34;2020527总结&#34;&gt;2020.5.27总结&lt;/h1&gt;
 &lt;p&gt;截止 5.27日，leetcode总刷题数到达200，写一篇文章以回顾，总结。&lt;/p&gt;
-&lt;h2 id=&#34;起因&#34;&gt;起因&lt;/h2&gt;
-&lt;p&gt;非计算机专业出身的程序员, 经历过很多因为数据结构算法能力薄弱, 而错失的机会。&lt;/p&gt;
+&lt;h1 id=&#34;起因&#34;&gt;起因&lt;/h1&gt;
+&lt;p&gt;非计算机专业出身的程序员, 经历过很多因为数据结构算法能力薄弱, 而错失了机会的情况。&lt;/p&gt;
 &lt;p&gt;几个面试遇到算法，一脸懵逼的经历.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -645,7 +834,7 @@ second = &amp;ldquo;pal&amp;rdquo;
 &lt;p&gt;新氧,  &lt;strong&gt;字符串匹配&lt;/strong&gt;只写出了暴力法, 面试官提醒下, 仍然不知道什么是&lt;strong&gt;KMP&lt;/strong&gt;..&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;新东方,  面试官 : 假设你们房天下有海量数据的楼盘数据, 如何选出其中价格最低的 10 条?   我 : &lt;strong&gt;遍历？或者排序？&lt;/strong&gt; 面试官 : 哦, 那可能数据量小时还可以&amp;hellip;&lt;/p&gt;
+&lt;p&gt;新东方,  面试官 : 假设你们房天下有海量数据的楼盘数据, 如何选出其中价格&lt;strong&gt;最低的 10 条&lt;/strong&gt;?   我 : &lt;strong&gt;遍历？或者排序？&lt;/strong&gt; 面试官 : 哦, 那可能数据量小时还可以&amp;hellip;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&amp;hellip;&lt;/p&gt;
@@ -653,26 +842,26 @@ second = &amp;ldquo;pal&amp;rdquo;
 &lt;/ul&gt;
 &lt;p&gt;没有数据结构和算法的基础, 深感技术路线寸步难行。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;遂决定&lt;/strong&gt;,  学习&lt;strong&gt;数据结构与算法&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;学习&#34;&gt;学习&lt;/h2&gt;
+&lt;h1 id=&#34;学习&#34;&gt;学习&lt;/h1&gt;
 &lt;p&gt;可以说是学习, 也可以说是扫盲。 之前确实都是知识盲区。&lt;/p&gt;
-&lt;p&gt;Objective-C用久了, 其中的数据结构非常熟悉, 例如NSArray,NSMutableArray,NSString,NSDictionary, NSMutableDictionary,NSSet 等。&lt;/p&gt;
+&lt;p&gt;Objective-C用久了, 其中的数据结构用的很6, 例如NSArray,NSMutableArray,NSString,NSDictionary, NSMutableDictionary,NSSet 等。&lt;/p&gt;
 &lt;p&gt;但是如果说 NSMutableArray 为什么能实现动态添加/删除元素？NSDictionary 实现原理？ NSSet实现原理？ 真心不懂.&lt;/p&gt;
-&lt;h3 id=&#34;语言环境&#34;&gt;语言环境&lt;/h3&gt;
+&lt;h2 id=&#34;语言环境&#34;&gt;语言环境&lt;/h2&gt;
 &lt;p&gt;学习数据结构使用的&lt;strong&gt;Java&lt;/strong&gt; , 开发工具使用的&lt;strong&gt;IntelliJ IDEA&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;为什么使用Java?&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Java开源, 并且java.util中有各种数据结构的开源代码,例如 ArrayList;LinkedList;TreeSet; TreeMap; HashSet;HashMap;PriorityQueue等, 可以查看自己写的代码跟库代码的差距。&lt;/li&gt;
 &lt;li&gt;leetcode刷题, 使用Java很方便。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;正式开始&#34;&gt;正式开始&lt;/h3&gt;
+&lt;h2 id=&#34;正式开始&#34;&gt;正式开始&lt;/h2&gt;
 &lt;p&gt;在2019.07 正式开始了Java + 数据结构算法的学习之路.&lt;/p&gt;
 &lt;p&gt;从基础的开始, 跟着李明杰的课程将 &lt;strong&gt;动态数组&lt;/strong&gt; , &lt;strong&gt;链表&lt;/strong&gt;, &lt;strong&gt;队列&lt;/strong&gt;, &lt;strong&gt;栈&lt;/strong&gt;, &lt;strong&gt;集合&lt;/strong&gt;, &lt;strong&gt;二叉树&lt;/strong&gt;, &lt;strong&gt;BST&lt;/strong&gt;, &lt;strong&gt;AVLTree&lt;/strong&gt; &lt;strong&gt;RedBlackTree&lt;/strong&gt;, &lt;strong&gt;堆&lt;/strong&gt;等常用数据结构 用Java实现了一遍。&lt;/p&gt;
-&lt;p&gt;在实现完以上各种常见数据结构以后, 开始学习高级一些的数据结构如,图,跳表,并查集。 以及排序, 递归，动态规划，贪心策略，分治，KMP等。&lt;/p&gt;
+&lt;p&gt;在实现完以上各种常见数据结构以后, 开始学习高级一些的数据结构如,&lt;strong&gt;图,跳表,并查集&lt;/strong&gt;。 以及&lt;strong&gt;排序, 递归，动态规划，贪心策略，分治，KMP&lt;/strong&gt;等。&lt;/p&gt;
 &lt;p&gt;学习某种数据结构或者算法时, 同步刷一些leetcode相关题目, 把题解以及逐步优化的思路整理，写到博客上，方便以后复习。&lt;/p&gt;
-&lt;h3 id=&#34;感想&#34;&gt;感想&lt;/h3&gt;
+&lt;h1 id=&#34;感想&#34;&gt;感想&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;解决统一道题目,  使用不同的思路解决, 效率相差又何止数倍.&lt;/p&gt;
+&lt;p&gt;解决同一道题目,  使用不同的思路解决, 效率相差又何止数倍.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;e.g. 求斐波那契数列第N项时，使用&lt;strong&gt;递归&lt;/strong&gt; 和 &lt;strong&gt;递推&lt;/strong&gt;(简单动态规划)在时间复杂度上的差别。&lt;/p&gt;
@@ -688,26 +877,26 @@ second = &amp;ldquo;pal&amp;rdquo;
 &lt;li&gt;
 &lt;p&gt;实现同样的功能,使用不同的数据结构, 效率也是天壤之别.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;e.g. LinkedList / ArrayList在查询是否存在某元素时, 时间复杂度 : O(N).&lt;/li&gt;
-&lt;li&gt;使用二叉搜索树呢？ 因为BST, 因为左子树 &amp;lt; 父节点的值 &amp;lt; 右子树, 可以将时间复杂度降低至 O (log N).&lt;/li&gt;
-&lt;li&gt;BST, 在插入顺序如果为升序时, 有可能退化为链表(只有右子树，无左子树)的情况.&lt;/li&gt;
-&lt;li&gt;所以引入了BBST, 在每次插入/删除元素后, 恢复树的平衡. 来提高检索效率.&lt;/li&gt;
+&lt;li&gt;e.g. &lt;strong&gt;LinkedList / ArrayList&lt;/strong&gt;在查询是否存在某元素时, 时间复杂度 : O(N).&lt;/li&gt;
+&lt;li&gt;使用二叉搜索树呢？ 因为&lt;strong&gt;BST&lt;/strong&gt;, 因为左子树 &amp;lt; 父节点的值 &amp;lt; 右子树, 可以将时间复杂度降低至 &lt;strong&gt;O (log N)&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BST&lt;/strong&gt;, 在极端情况，如插入顺序如果为&lt;strong&gt;升序&lt;/strong&gt;时, 有可能退化为&lt;strong&gt;链表&lt;/strong&gt;(只有右子树，无左子树)的情况.&lt;/li&gt;
+&lt;li&gt;所以引入了&lt;strong&gt;BBST&lt;/strong&gt;, 在每次插入/删除元素后, 恢复树的&lt;strong&gt;平衡&lt;/strong&gt;. 来提高检索效率.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;深深感觉到数据结构和算法在影响程序执行效率的巨大作用.&lt;/p&gt;
+&lt;p&gt;深深感觉到数据结构和算法对程序执行效率的巨大影响.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;以后写业务或者解题过程中, 一定要注重使用最合适的数据结构, 找到最优的算法。&lt;/li&gt;
 &lt;li&gt;多思考, 多学习他人的思路, 有更优的思路记录下来复习, 下次碰到类似的，能活学活用, 转换成自己的东西。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;成果&#34;&gt;成果&lt;/h3&gt;
+&lt;h1 id=&#34;阶段性小成果&#34;&gt;阶段性小成果&lt;/h1&gt;
 &lt;p&gt;现在面试如果被问到以前的知识盲区?  可以轻松的回答出来.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;二叉树反转&lt;/strong&gt; ?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;其实是考的二叉树遍历，可以用递归/迭代的前序遍历/中序遍历， 和迭代的层序遍历写出来.&lt;/p&gt;
+&lt;p&gt;其实是考的二叉树遍历，可以用递归/迭代的前序遍历/中序遍历/后序遍历， 和迭代的层序遍历写出来.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;堆排序&lt;/strong&gt; ?&lt;/li&gt;
 &lt;/ul&gt;
@@ -717,18 +906,13 @@ second = &amp;ldquo;pal&amp;rdquo;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;归并排序&lt;/strong&gt;了解一下, 先&lt;strong&gt;divide&lt;/strong&gt;, 再&lt;strong&gt;merge&lt;/strong&gt;， merge不就是合并两个有序数组吗。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;KMP&lt;/strong&gt;, 即使手写不出next表的构建, 也能大致说出其中原理。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;选出价格最低的10个楼盘?&lt;/p&gt;
-&lt;p&gt;这不是就是Top K问题?&lt;/p&gt;
-&lt;p&gt;排序的话，用最优的快排，平均时间复杂度 : O(N * log N).&lt;/p&gt;
-&lt;p&gt;而使用&lt;strong&gt;二叉堆&lt;/strong&gt;, 新建一个大顶堆，堆的size为10, 海量数据依次进入堆中, 遍历完毕，堆中剩下的元素就是最小的10个元素。 平均时间复杂度 : O(N * logK).&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;KMP&lt;/strong&gt;, 即使手写不出next表的构建, 也能大致说出其中原理。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;选出价格最低的10个楼盘? 这不就是&lt;strong&gt;Top K&lt;/strong&gt;问题?&lt;/p&gt;
+&lt;p&gt;排序的话，用最优的快排，平均时间复杂度 : &lt;strong&gt;O(N * log N)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;而使用&lt;strong&gt;二叉堆&lt;/strong&gt;, 新建一个&lt;strong&gt;大顶堆&lt;/strong&gt;，堆的size为10, 海量数据依次入堆, 遍历完毕，堆中剩下的元素就是最小的10个元素。 平均时间复杂度 : &lt;strong&gt;O(N * logK)&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;&amp;hellip;&lt;/p&gt;
-&lt;h2 id=&#34;leetcode&#34;&gt;LeetCode&lt;/h2&gt;
+&lt;h1 id=&#34;leetcode&#34;&gt;LeetCode&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf84yqssadj30rn0nc0wy.jpg&#34; alt=&#34;屏幕快照 2020-05-28 下午2.13.17&#34;&gt;&lt;/p&gt;
 &lt;p&gt;到昨天为止, 整整200题，其中也有重复的.&lt;/p&gt;
 &lt;ul&gt;
@@ -736,8 +920,8 @@ second = &amp;ldquo;pal&amp;rdquo;
 &lt;li&gt;到独立刷题, 很少能有思路，基本都是去题解看人家的思路，理解了自己再写一遍。&lt;/li&gt;
 &lt;li&gt;再到偶尔碰到一些题，能想到解题思路, 能独立写出来。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;能感受到自己这大半年以来的进步, 但仍然是个小学生。 还有大量的题目等着去刷&lt;/p&gt;
-&lt;h2 id=&#34;后续计划&#34;&gt;后续计划&lt;/h2&gt;
+&lt;p&gt;能感受到自己这大半年以来的进步, 但仍然是个小学生。 还有大量的知识等着去学习, 大量的题目等着去刷&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;后续计划&#34;&gt;后续计划&lt;/h1&gt;
 &lt;p&gt;准备暂时停一停刷新题, 先将之前刷过的题, 分类总结,整理到博客上.  复习巩固之前学习过的知识。&lt;/p&gt;
 &lt;p&gt;学而时习之，不亦说乎?&lt;/p&gt;
 </description>
@@ -2029,36 +2213,6 @@ cache.get(4);       // 返回  4
         &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; slow&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
     &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>02.03删除中间节点</title>
-      <link>https://zhangxiongfeiv.github.io/post/02.03%E5%88%A0%E9%99%A4%E4%B8%AD%E9%97%B4%E8%8A%82%E7%82%B9/</link>
-      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/02.03%E5%88%A0%E9%99%A4%E4%B8%AD%E9%97%B4%E8%8A%82%E7%82%B9/</guid>
-      
-        <description>&lt;h4 id=&#34;heading&#34;&gt;&lt;/h4&gt;
-&lt;h4 id=&#34;面试题-0203-删除中间节点httpsleetcode-cncomproblemsdelete-middle-node-lcci&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/delete-middle-node-lcci/&#34;&gt;面试题 02.03. 删除中间节点&lt;/a&gt;&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;实现一种算法，删除单向链表中间的某个节点（除了第一个和最后一个节点，不一定是中间节点），假定你只能访问该节点。&lt;/p&gt;
-&lt;p&gt;示例：&lt;/p&gt;
-&lt;p&gt;输入：单向链表a-&amp;gt;b-&amp;gt;c-&amp;gt;d-&amp;gt;e-&amp;gt;f中的节点c
-结果：不返回任何数据，但该链表变为a-&amp;gt;b-&amp;gt;d-&amp;gt;e-&amp;gt;f&lt;/p&gt;
-&lt;p&gt;来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/delete-middle-node-lcci
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h5 id=&#34;题解&#34;&gt;题解：&lt;/h5&gt;
-&lt;p&gt;删除当前传入的中间节点(非第一个，和最后一个节点)，我们不知道其前驱元素，所以把当前传入元素的值，置为当前元素下一个元素的值，当前元素的next指向其next.next即可。&lt;/p&gt;
-&lt;p&gt;代码如下:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;deleteNode&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ListNode node&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-        node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;next&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;next&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;next&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;next&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gerwl5m9snj30p2068752.jpg&#34; alt=&#34;屏幕快照 2020-05-14 下午12.47.36&#34;&gt;&lt;/p&gt;
-</description>
       
     </item>
     
