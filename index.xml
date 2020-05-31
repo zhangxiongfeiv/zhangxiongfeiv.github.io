@@ -132,6 +132,91 @@
     </item>
     
     <item>
+      <title>归并排序</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Sun, 31 May 2020 17:42:58 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</guid>
+      
+        <description>&lt;h1 id=&#34;归并排序merge-sort&#34;&gt;归并排序(merge sort)&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;于1945年，由&lt;strong&gt;冯诺伊曼&lt;/strong&gt;提出首次提出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;执行流程&#34;&gt;执行流程&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;不断地将数组平均分割成两个子序列, 直到不能再分割为止(只有一个元素)&lt;/li&gt;
+&lt;li&gt;不断地将2个子序列合并，直到合并成一个有序序列&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfbzm069szj30pg0swacs.jpg&#34; alt=&#34;截屏2020-05-31下午5.25.24&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;divide实现&#34;&gt;divide实现&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;protected&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;sort&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        leftArray &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Integer&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;array&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        sort&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; array&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;/*
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    * 对数组进行分割
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    * 左闭右开 [begain, end)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    * */&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;sort&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; begain&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; end&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;end &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; begain &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; mid &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;begain &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; end&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        sort&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;begain&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; mid&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        sort&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;mid&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; end&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+
+        merge&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;begain&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; mid&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; end&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;merge实现&#34;&gt;&lt;strong&gt;merge实现&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;merge需要注意&lt;/li&gt;
+&lt;li&gt;合并两个有序数组，如果可以利用额外的内存空间，会非常简单。
+&lt;ul&gt;
+&lt;li&gt;初始化一个两个数组大小的结果数组，两个指针分别指向两个数组的开头&lt;/li&gt;
+&lt;li&gt;依次比较两个元素，较小者加入结果数组，且指针后移一位&lt;/li&gt;
+&lt;li&gt;直到两个数组中元素都加入新数组位置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;但是, 这里的归并排序，要merge的两个子数组存在同一个数组中，如图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfbzrl7x2dj31ci0kewjv.jpg&#34; alt=&#34;截屏2020-05-31下午10.16.09&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;所以我们的做法是， 先备份左边数组， 再右边数组和左边数组比较，依次加入当前数组&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;代码如下 :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;merge&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; begain&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; mid&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; end&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+  
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; li &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; le &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; mid &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; begain&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 左边数组 起始/结束位置
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; ri &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; mid&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; re &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; end&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;         &lt;span style=&#34;color:#75715e&#34;&gt;// 右边数组 起始/结束位置
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; ai &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; begain&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// array的索引
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 拷贝左边数组到leftArray
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; li&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; le&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            leftArray&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; array&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;begain &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;li &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; le&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ri &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; re &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; cmpElement&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;array&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;ri&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt; leftArray&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;li&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                array&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;ai &lt;span style=&#34;color:#f92672&#34;&gt;++]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; array&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;ri &lt;span style=&#34;color:#f92672&#34;&gt;++];&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 拷贝右边数组到array
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                array&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;ai &lt;span style=&#34;color:#f92672&#34;&gt;++]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; leftArray&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;li &lt;span style=&#34;color:#f92672&#34;&gt;++];&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 拷贝左边数组到array
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// cmp 位置改为 &amp;lt;= 会失去平衡性
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;复杂度&#34;&gt;复杂度&lt;/h2&gt;
+&lt;p&gt;归并排序时间复杂度 : &lt;strong&gt;O(N * log N)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;空间复杂度 : O(N / 2) + O(log N)   = O(N)。 其中 N / 2是存放左边数组的空间, log N是递归调用的栈空间&lt;/p&gt;
+&lt;h3 id=&#34;稳定性&#34;&gt;稳定性&lt;/h3&gt;
+&lt;p&gt;属于稳定排序 (相同的元素，不会交换位置)&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>40.最小的k个数</title>
       <link>https://zhangxiongfeiv.github.io/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/</link>
       <pubDate>Sat, 30 May 2020 23:50:40 +0800</pubDate>
@@ -196,7 +281,15 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/</guid>
       
-        <description>&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
+        <description>&lt;h2 id=&#34;什么是丑数&#34;&gt;什么是丑数？&lt;/h2&gt;
+&lt;p&gt;先看一下百度百科的解释:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;说法一（ugly number）：把只包含质因子2，3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但7、14不是，因为它们包含质因子7。 习惯上我们把1当做是第一个丑数。&lt;/p&gt;
+&lt;p&gt;说法二(humble number)：对于一给定的素数集合 S = {p1, p2, &amp;hellip;, pK},考虑一个正整数集合，该集合中任一元素的质因数全部属于S。这个正整数集合包括，p1、p1&lt;em&gt;p2、p1&lt;/em&gt;p1、p1&lt;em&gt;p2&lt;/em&gt;p3&amp;hellip;(还有其它)。该集合被称为S集合的“丑数集合”。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;相关题目&#34;&gt;相关题目&lt;/h2&gt;
+&lt;p&gt;leetcode上丑数相关题目有四个, 这篇文章来解决并总结这四道题目的解法.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfbo05jrcxj314207qq46.jpg&#34; alt=&#34;截屏2020-05-31下午3.25.57&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;263-丑数httpsleetcode-cncomproblemsugly-number&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/ugly-number/&#34;&gt;263. 丑数&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;编写一个程序判断给定的数是否为丑数。&lt;/p&gt;
@@ -2384,171 +2477,6 @@ cache.get(4);       // 返回  4
 &lt;p&gt;&lt;strong&gt;空间复杂度&lt;/strong&gt; : O(capacity)，因为哈希表 和 双向链表 最多存储 capacity + 1个元素.&lt;/p&gt;
 &lt;h6 id=&#34;执行流程&#34;&gt;执行流程：&lt;/h6&gt;
 &lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf4rp42h3dj30ea0jzwub.jpg&#34; alt=&#34;image-20200525161805239&#34;&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>01.09字符串轮转</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.09%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AE%E8%BD%AC/</link>
-      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/01.09%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AE%E8%BD%AC/</guid>
-      
-        <description>&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
-&lt;h2 id=&#34;面试题-0109-字符串轮转httpsleetcode-cncomproblemsstring-rotation-lcci&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/string-rotation-lcci/&#34;&gt;面试题 01.09. 字符串轮转&lt;/a&gt;&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;字符串轮转。给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成（比如，waterbottle是erbottlewat旋转后的字符串）。&lt;/p&gt;
-&lt;p&gt;示例1:&lt;/p&gt;
-&lt;p&gt;输入：s1 = &amp;ldquo;waterbottle&amp;rdquo;, s2 = &amp;ldquo;erbottlewat&amp;rdquo;
-输出：True
-示例2:&lt;/p&gt;
-&lt;p&gt;输入：s1 = &amp;ldquo;aa&amp;rdquo;, &amp;ldquo;aba&amp;rdquo;
-输出：False
-提示：&lt;/p&gt;
-&lt;p&gt;字符串长度在[0, 100000]范围内。
-说明:&lt;/p&gt;
-&lt;p&gt;你能只调用一次检查子串的方法吗？&lt;/p&gt;
-&lt;p&gt;来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/string-rotation-lcci
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;题解&#34;&gt;题解：&lt;/h3&gt;
-&lt;h4 id=&#34;思路一&#34;&gt;思路一：&lt;/h4&gt;
-&lt;p&gt;暴力法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果s2是由s1旋转而来  则从头到尾开始旋转s1&lt;/li&gt;
-&lt;li&gt;遍历旋转0位(原串)， 1位&amp;hellip;直至最后&lt;/li&gt;
-&lt;li&gt;如果遍历构成中，有跟s2相同的字符串，则return true&lt;/li&gt;
-&lt;li&gt;遍历一遍完后，都没有相同字符串，则return false&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Java&#34; data-lang=&#34;Java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 暴力法
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 如果 s2 是由 s1 旋转而来 则从头到位开始旋转s1
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 遍历旋转0位(原字串)， 1位... 直到旋转到倒数第二位
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 如果遍历过程中，有跟s2相同的字符串， 则return true
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 遍历一遍完后，都没有相同字符串， 则return false
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;isFlipedString1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;String s1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String s2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;((&lt;/span&gt;s1 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; s2 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; s2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; s2 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; s2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        StringBuilder sb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; StringBuilder&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()){&lt;/span&gt;
-
-            sb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;delete&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;sb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;());&lt;/span&gt;
-            sb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;substring&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()));&lt;/span&gt;
-            sb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;substring&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;));&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;sb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;toString&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;equals&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s2&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            i&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1geqqvnvv6zj30o606k0ti.jpg&#34; alt=&#34;image-20200513131156369&#34;&gt;&lt;/p&gt;
-&lt;p&gt;此方法执行时间38ms， 有大量的拼接，比较操作。&lt;/p&gt;
-&lt;h4 id=&#34;思路二&#34;&gt;思路二：&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;题目中有说明， 你能只调用一次检查子串的方法吗？&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;显然上述解题，不符合检查一次字串的要求。拼接了N次字串，比较了N次字串&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;上述方法时间复杂度 : O(N ^ 2)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;空间复杂度 : O(1)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;时间复杂度非常高，算法虽过了，但是用时很长&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;接下来，我们尝试做时间复杂度的优化&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;思路是 裁剪字串成两个子串&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;从头到位比较,当字串s1 i位置， 与字串s2的0位置，字符相同时，根据i分割两个字串&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;如果s1 和 s2 分割后，两部分分别都相同，说明是旋转字串&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;如果不相同， 则往下遍历下一个与 s2 0位置相同的元素。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;i遍历完， 即与s2 0号位置相同的字符又两部分分别相同的字串。 则return false&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;我们的时间复杂度有了大幅度的提升，截图中可以看出，由之前的40ms左右，提高到1ms左右。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;时间复杂度 : O(N)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;空间复杂度 : O(1)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1geqqz7nri2j30qa0620tl.jpg&#34; alt=&#34;屏幕快照 2020-05-13 下午12.55.01&#34;&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// 题目中有说明， 你能只调用一次检查子串的方法吗？
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 显然上述解题，不符合检查一次字串的要求。拼接了N次字串，比较了N次字串
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 上述方法时间复杂度 : O(N ^ 2)
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 空间复杂度 : O(1)
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 时间复杂度非常高，算法虽过了，但是用时很长
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 接下来，我们尝试做时间复杂度的优化
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-    &lt;span style=&#34;color:#75715e&#34;&gt;// 思路是 裁剪字串成两个子串
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 从头到位比较,当字串s1 i位置， 与字串s2的0位置，字符相同时，根据i分割两个字串
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 如果s1 和 s2 分割后，两部分分别都相同，说明是旋转字串
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 如果不相同， 则往下遍历下一个与 s2 0位置相同的元素。
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// i遍历完， 即与s2 0号位置相同的字符又两部分分别相同的字串。 则return false
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-    &lt;span style=&#34;color:#75715e&#34;&gt;// 我们的时间复杂度有了大幅度的提升，截图中可以看出，由之前的40ms左右，提高到1ms左右。
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 时间复杂度 : O(N)
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 空间复杂度 : O(1)
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;isFlipedString2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;String s1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String s2&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;((&lt;/span&gt;s1 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; s2 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; s2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; s2 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; s2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;len &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;((&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; len&lt;span style=&#34;color:#f92672&#34;&gt;)){&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;charAt&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; s2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;charAt&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;)){&lt;/span&gt;
-                i &lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
-                &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-            String l_s1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;substring&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-            String r_s1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;substring&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;len&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-
-            String l_s2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;substring&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;len &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-            String r_s2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;substring&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;len &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;len&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l_s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;equals&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;r_s2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; r_s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;equals&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l_s2&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            i&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;思路三&#34;&gt;思路三：&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;以下为leetcode大神解题思路&lt;/li&gt;
-&lt;li&gt;如果 s2 是由 s1旋转而来，则 s1 + s1 必然包含 s2 ⚠️⚠️⚠️&lt;/li&gt;
-&lt;li&gt;想到了字符串拼接可能能解决问题，没想到这种思路&lt;/li&gt;
-&lt;li&gt;感觉费半天劲，牛逼的思路一行代码搞定了，差距非常大啊😓😓😓&lt;/li&gt;
-&lt;li&gt;非常6，双百操作。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;isFlipedString&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;String s1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; String s2&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;((&lt;/span&gt;s1 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; s2 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; s2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; s2 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; s1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; s2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s1 &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; s1&lt;span style=&#34;color:#f92672&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;contains&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;s2&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1geqr3gck8qj30s406c0tl.jpg&#34; alt=&#34;屏幕快照 2020-05-13 下午1.07.44&#34;&gt;&lt;/p&gt;
 </description>
       
     </item>

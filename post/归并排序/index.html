@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>40.最小的k个数 - 飞熊&#39;s Blogs</title>
+  <title>归并排序 - 飞熊&#39;s Blogs</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="飞熊" />
-  <meta name="description" content="面试题40. 最小的k个数 输入整数数组 arr ，找出其中最小的 k 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、" />
+  <meta name="description" content="归并排序(merge sort) 于1945年，由冯诺伊曼提出首次提出 执行流程 不断地将数组平均分割成两个子序列, 直到不能再分割为止(只有一个元素) 不断地" />
 
   <meta name="keywords" content="Hugo, iOS, arithmetic" />
 
@@ -35,7 +35,7 @@
 <meta name="generator" content="Hugo 0.68.3" />
 
 
-<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/" />
+<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" />
 
 
 
@@ -59,23 +59,23 @@
 
 
 
-<meta property="og:title" content="40.最小的k个数" />
-<meta property="og:description" content="面试题40. 最小的k个数 输入整数数组 arr ，找出其中最小的 k 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、" />
+<meta property="og:title" content="归并排序" />
+<meta property="og:description" content="归并排序(merge sort) 于1945年，由冯诺伊曼提出首次提出 执行流程 不断地将数组平均分割成两个子序列, 直到不能再分割为止(只有一个元素) 不断地" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/" />
-<meta property="article:published_time" content="2020-05-30T23:50:40+08:00" />
-<meta property="article:modified_time" content="2020-05-30T23:50:40+08:00" />
-<meta itemprop="name" content="40.最小的k个数">
-<meta itemprop="description" content="面试题40. 最小的k个数 输入整数数组 arr ，找出其中最小的 k 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、">
-<meta itemprop="datePublished" content="2020-05-30T23:50:40&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-30T23:50:40&#43;08:00" />
-<meta itemprop="wordCount" content="474">
+<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" />
+<meta property="article:published_time" content="2020-05-31T17:42:58+08:00" />
+<meta property="article:modified_time" content="2020-05-31T17:42:58+08:00" />
+<meta itemprop="name" content="归并排序">
+<meta itemprop="description" content="归并排序(merge sort) 于1945年，由冯诺伊曼提出首次提出 执行流程 不断地将数组平均分割成两个子序列, 直到不能再分割为止(只有一个元素) 不断地">
+<meta itemprop="datePublished" content="2020-05-31T17:42:58&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-31T17:42:58&#43;08:00" />
+<meta itemprop="wordCount" content="600">
 
 
 
-<meta itemprop="keywords" content="数据结构,二叉堆," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="40.最小的k个数"/>
-<meta name="twitter:description" content="面试题40. 最小的k个数 输入整数数组 arr ，找出其中最小的 k 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、"/>
+<meta itemprop="keywords" content="算法,排序," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="归并排序"/>
+<meta name="twitter:description" content="归并排序(merge sort) 于1945年，由冯诺伊曼提出首次提出 执行流程 不断地将数组平均分割成两个子序列, 直到不能再分割为止(只有一个元素) 不断地"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -295,11 +295,11 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">40.最小的k个数</h1>
+      <h1 class="post-title">归并排序</h1>
       
       <div class="post-meta">
-        <time datetime="2020-05-30" class="post-time">
-          May 30
+        <time datetime="2020-05-31" class="post-time">
+          May 31
         </time>
         
         
@@ -319,9 +319,15 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#面试题40-最小的k个数httpsleetcode-cncomproblemszui-xiao-de-kge-shu-lcof"><a href="https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/">面试题40. 最小的k个数</a></a>
+    <li><a href="#执行流程">执行流程</a>
       <ul>
-        <li><a href="#题解">题解：</a></li>
+        <li><a href="#divide实现">divide实现</a></li>
+        <li><a href="#merge实现"><strong>merge实现</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#复杂度">复杂度</a>
+      <ul>
+        <li><a href="#稳定性">稳定性</a></li>
       </ul>
     </li>
   </ul>
@@ -331,54 +337,81 @@
 
     
     <div class="post-content">
-      <h2 id="面试题40-最小的k个数httpsleetcode-cncomproblemszui-xiao-de-kge-shu-lcof"><a href="https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/">面试题40. 最小的k个数</a></h2>
-<blockquote>
-<p>输入整数数组 arr ，找出其中最小的 k 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。</p>
-<p>示例 1：</p>
-<p>输入：arr = [3,2,1], k = 2
-输出：[1,2] 或者 [2,1]
-示例 2：</p>
-<p>输入：arr = [0,1,2,1], k = 1
-输出：[0]</p>
-<p>限制：</p>
-<p>0 &lt;= k &lt;= arr.length &lt;= 10000
-0 &lt;= arr[i] &lt;= 10000</p>
-<p>来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-</blockquote>
-<h3 id="题解">题解：</h3>
-<p>经典的<strong>最大K问题</strong>, 一般做法是采用二叉堆</p>
+      <h1 id="归并排序merge-sort">归并排序(merge sort)</h1>
 <ul>
-<li>求最小的k个数时, 使用大顶堆</li>
-<li>Java中的优先级队列 PriorityQueue 底层机构是，二叉堆， 且是小顶堆</li>
-<li>把 PriorityQueue 用作大顶堆时, 需要在PriorityQueue初始化时，传一个比较器进去.</li>
-<li>把数组中元素一次加入 大顶堆</li>
-<li>当大顶堆中的元素个数 &gt; k 时， 把堆顶元素弹出</li>
-<li>遍历完数组后， 大顶堆中剩余的元素为 前 k 个小的元素</li>
+<li>于1945年，由<strong>冯诺伊曼</strong>提出首次提出</li>
 </ul>
-<p>代码如下:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">getLeastNumbers</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> arr<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> k<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        PriorityQueue<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PriorityQueue<span style="color:#f92672">&lt;&gt;(</span><span style="color:#66d9ef">new</span> Comparator<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
-            <span style="color:#a6e22e">@Override</span>
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compare</span><span style="color:#f92672">(</span>Integer o1<span style="color:#f92672">,</span> Integer o2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">return</span> o2 <span style="color:#f92672">-</span> o1<span style="color:#f92672">;</span>
-            <span style="color:#f92672">}</span>
-        <span style="color:#f92672">});</span>
-
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> arr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>arr<span style="color:#f92672">[</span>i<span style="color:#f92672">]);</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>queue<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">&gt;</span> k<span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-
-        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> res <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>queue<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()];</span>
-        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>queue<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
-            res<span style="color:#f92672">[</span>i <span style="color:#f92672">++]</span> <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> res<span style="color:#f92672">;</span>
+<h2 id="执行流程">执行流程</h2>
+<ul>
+<li>不断地将数组平均分割成两个子序列, 直到不能再分割为止(只有一个元素)</li>
+<li>不断地将2个子序列合并，直到合并成一个有序序列</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfbzm069szj30pg0swacs.jpg" alt="截屏2020-05-31下午5.25.24"></p>
+<h3 id="divide实现">divide实现</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        leftArray <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Integer<span style="color:#f92672">[</span>array<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">];</span>
+        sort<span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> array<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">);</span>
     <span style="color:#f92672">}</span>
-</code></pre></div>
+
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">    * 对数组进行分割
+</span><span style="color:#75715e">    * 左闭右开 [begain, end)
+</span><span style="color:#75715e">    * */</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> begain<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>end <span style="color:#f92672">-</span> begain <span style="color:#f92672">&lt;</span> 2<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>begain <span style="color:#f92672">+</span> end<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">;</span>
+        sort<span style="color:#f92672">(</span>begain<span style="color:#f92672">,</span> mid<span style="color:#f92672">);</span>
+        sort<span style="color:#f92672">(</span>mid<span style="color:#f92672">,</span> end<span style="color:#f92672">);</span>
+
+        merge<span style="color:#f92672">(</span>begain<span style="color:#f92672">,</span> mid<span style="color:#f92672">,</span> end<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>   
+</code></pre></div><h3 id="merge实现"><strong>merge实现</strong></h3>
+<ul>
+<li>merge需要注意</li>
+<li>合并两个有序数组，如果可以利用额外的内存空间，会非常简单。
+<ul>
+<li>初始化一个两个数组大小的结果数组，两个指针分别指向两个数组的开头</li>
+<li>依次比较两个元素，较小者加入结果数组，且指针后移一位</li>
+<li>直到两个数组中元素都加入新数组位置</li>
+</ul>
+</li>
+<li>但是, 这里的归并排序，要merge的两个子数组存在同一个数组中，如图</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfbzrl7x2dj31ci0kewjv.jpg" alt="截屏2020-05-31下午10.16.09"></p>
+<ul>
+<li>
+<p>所以我们的做法是， 先备份左边数组， 再右边数组和左边数组比较，依次加入当前数组</p>
+</li>
+<li>
+<p>代码如下 :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> begain<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> mid<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">){</span>
+  
+        <span style="color:#66d9ef">int</span> li <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span> le <span style="color:#f92672">=</span> mid <span style="color:#f92672">-</span> begain<span style="color:#f92672">;</span>  <span style="color:#75715e">// 左边数组 起始/结束位置
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> ri <span style="color:#f92672">=</span> mid<span style="color:#f92672">,</span> re <span style="color:#f92672">=</span> end<span style="color:#f92672">;</span>         <span style="color:#75715e">// 右边数组 起始/结束位置
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> ai <span style="color:#f92672">=</span> begain<span style="color:#f92672">;</span>                <span style="color:#75715e">// array的索引
+</span><span style="color:#75715e"></span>  
+        <span style="color:#75715e">// 拷贝左边数组到leftArray
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> li<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> le<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            leftArray<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> array<span style="color:#f92672">[</span>begain <span style="color:#f92672">+</span> i<span style="color:#f92672">];</span>
+        <span style="color:#f92672">}</span>
+  
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>li <span style="color:#f92672">&lt;</span> le<span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ri <span style="color:#f92672">&lt;</span> re <span style="color:#f92672">&amp;&amp;</span> cmpElement<span style="color:#f92672">(</span>array<span style="color:#f92672">[</span>ri<span style="color:#f92672">],</span> leftArray<span style="color:#f92672">[</span>li<span style="color:#f92672">])</span> <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">){</span>
+                array<span style="color:#f92672">[</span>ai <span style="color:#f92672">++]</span> <span style="color:#f92672">=</span> array<span style="color:#f92672">[</span>ri <span style="color:#f92672">++];</span>    <span style="color:#75715e">// 拷贝右边数组到array
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                array<span style="color:#f92672">[</span>ai <span style="color:#f92672">++]</span> <span style="color:#f92672">=</span> leftArray<span style="color:#f92672">[</span>li <span style="color:#f92672">++];</span><span style="color:#75715e">// 拷贝左边数组到array
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span><span style="color:#75715e">// cmp 位置改为 &lt;= 会失去平衡性
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+</code></pre></div></li>
+</ul>
+<h2 id="复杂度">复杂度</h2>
+<p>归并排序时间复杂度 : <strong>O(N * log N)</strong></p>
+<p>空间复杂度 : O(N / 2) + O(log N)   = O(N)。 其中 N / 2是存放左边数组的空间, log N是递归调用的栈空间</p>
+<h3 id="稳定性">稳定性</h3>
+<p>属于稳定排序 (相同的元素，不会交换位置)</p>
+
     </div>
 
     
@@ -391,7 +424,7 @@
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      May 30
+      May 31
       
     </span>
   </p>
@@ -408,15 +441,15 @@
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://zhangxiongfeiv.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-          <a href="https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E5%A0%86/">二叉堆</a>
+          <a href="https://zhangxiongfeiv.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          <a href="https://zhangxiongfeiv.github.io/tags/%E6%8E%92%E5%BA%8F/">排序</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
+          <a class="prev" href="/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/">
             
             <i class="iconfont">
               <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -426,12 +459,12 @@
 </svg>
 
             </i>
-            <span class="prev-text nav-default">归并排序</span>
+            <span class="prev-text nav-default">leetcode200题回顾与总结</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/">
-            <span class="next-text nav-default">团灭丑数问题</span>
+          <a class="next" href="/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/">
+            <span class="next-text nav-default">40.最小的k个数</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">

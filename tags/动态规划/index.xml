@@ -17,7 +17,7 @@
       <pubDate>Sat, 30 May 2020 10:15:13 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/</guid>
-      <description>263. 丑数 编写一个程序判断给定的数是否为丑数。 丑数就是只包含质因数 2, 3, 5 的正整数。 示例 1: 输入: 6 输出: true 解释: 6 = 2 × 3 示例 2: 输入: 8 输出: true 解</description>
+      <description>什么是丑数？ 先看一下百度百科的解释: 说法一（ugly number）：把只包含质因子2，3和5的数称作丑数（Ugly Number）。例如6、8</description>
     </item>
     
     <item>

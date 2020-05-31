@@ -6,7 +6,7 @@
     <description>Recent content in 算法 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 May 2020 10:15:13 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2020 17:42:58 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
@@ -21,12 +21,21 @@
     </item>
     
     <item>
+      <title>归并排序</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Sun, 31 May 2020 17:42:58 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</guid>
+      <description>归并排序(merge sort) 于1945年，由冯诺伊曼提出首次提出 执行流程 不断地将数组平均分割成两个子序列, 直到不能再分割为止(只有一个元素) 不断地</description>
+    </item>
+    
+    <item>
       <title>团灭丑数问题</title>
       <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sat, 30 May 2020 10:15:13 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/</guid>
-      <description>263. 丑数 编写一个程序判断给定的数是否为丑数。 丑数就是只包含质因数 2, 3, 5 的正整数。 示例 1: 输入: 6 输出: true 解释: 6 = 2 × 3 示例 2: 输入: 8 输出: true 解</description>
+      <description>什么是丑数？ 先看一下百度百科的解释: 说法一（ugly number）：把只包含质因子2，3和5的数称作丑数（Ugly Number）。例如6、8</description>
     </item>
     
     <item>
@@ -180,15 +189,6 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/%E5%A0%86%E6%8E%92%E5%BA%8Fheap-sort/</guid>
       <description>堆排序(Heap Sort) 堆排序可以认为是选择排序的一种优化。 选择排序每一轮都在选择最大值 而选择最大值，最优的数据结构是堆 故用堆排序 优化 选择排序 执行</description>
-    </item>
-    
-    <item>
-      <title>快速排序(Quick Sort)</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%BF%AB%E6%8E%92/</link>
-      <pubDate>Sun, 26 Apr 2020 10:15:13 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%BF%AB%E6%8E%92/</guid>
-      <description>快速排序(Quick Sort) 快速排序(Quick Sort) 1960年由 查尔斯.安东尼.理查德.霍尔提出。 执行流程 随机选择一个为数列的轴点元素 遍历数组，把小</description>
     </item>
     
   </channel>
