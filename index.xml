@@ -132,6 +132,18 @@
     </item>
     
     <item>
+      <title>Mac通过SSH连接iOS设备</title>
+      <link>https://zhangxiongfeiv.github.io/post/mac%E9%80%9A%E8%BF%87ssh%E8%BF%9E%E6%8E%A5ios%E8%AE%BE%E5%A4%87/</link>
+      <pubDate>Mon, 01 Jun 2020 23:21:26 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/mac%E9%80%9A%E8%BF%87ssh%E8%BF%9E%E6%8E%A5ios%E8%AE%BE%E5%A4%87/</guid>
+      
+        <description>&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfd81xbcpcj30vy0gi0x9.jpg&#34; alt=&#34;截屏2020-06-01下午11.28.54&#34;&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>_415_字符串相加</title>
       <link>https://zhangxiongfeiv.github.io/post/_415_%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</link>
       <pubDate>Mon, 01 Jun 2020 22:23:54 +0800</pubDate>
@@ -2202,147 +2214,6 @@ second = &amp;ldquo;pal&amp;rdquo;
     &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;时间复杂度 : O(N) 遍历了链表，其中N是链表长度&lt;/p&gt;
 &lt;p&gt;空间复杂度 : O(1)  没有申请新的内存空间&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>一个iOS小需求中对算法的优化</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E4%B8%80%E4%B8%AAios%E5%B0%8F%E9%9C%80%E6%B1%82%E4%B8%AD%E5%AF%B9%E7%AE%97%E6%B3%95%E7%9A%84%E4%BC%98%E5%8C%96/</link>
-      <pubDate>Tue, 26 May 2020 10:49:40 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E4%B8%80%E4%B8%AAios%E5%B0%8F%E9%9C%80%E6%B1%82%E4%B8%AD%E5%AF%B9%E7%AE%97%E6%B3%95%E7%9A%84%E4%BC%98%E5%8C%96/</guid>
-      
-        <description>&lt;h3 id=&#34;需求&#34;&gt;需求&lt;/h3&gt;
-&lt;p&gt;最近接到一个小需求, 在一个feed流里, 展示商品列表，商品列表中数据都是一样的，只是展示上有主推的商品，需要大图展示, 其余商品小图展示。&lt;/p&gt;
-&lt;p&gt;产品给出了排列顺序 1 - 2 - 1 - 4 - 1 - 2 - 1 -4&amp;hellip;&lt;/p&gt;
-&lt;p&gt;也就是数组下标第 0 3 8 11 16 19 24&amp;hellip;&lt;/p&gt;
-&lt;p&gt;观察发现,  dp[1] = dp[0] + 3; dp[2] = dp[1] + 5; dp[3] = dp[2] + 3;&amp;hellip;&lt;/p&gt;
-&lt;p&gt;依次 +3, +5, +3, +5 &amp;hellip;&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf5vwqqxegj304e0y20zo.jpg&#34; alt=&#34;屏幕快照 2020-05-26 下午3.29.16&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;思路&#34;&gt;思路&lt;/h3&gt;
-&lt;p&gt;在后端看来，所有的商品都是一个样的，需要前端来判断，数组中哪些下标的商品，需要展示大图。&lt;/p&gt;
-&lt;p&gt;所以我们需要计算出，所有大图的位置。&lt;/p&gt;
-&lt;p&gt;初步想法，整体用collectionview，先判断出大图的下标，下标为大图时，用一个格式的cell。 小图时，用另一种格式的cell。&lt;/p&gt;
-&lt;p&gt;那么我们就需要知道，某个下标是大图？还是小图？&lt;/p&gt;
-&lt;p&gt;所以我们需要一个算法，此算法传入index代表当前cell的下标， 返回boolean代表是否是大图。&lt;/p&gt;
-&lt;h4 id=&#34;方法一&#34;&gt;方法一：&lt;/h4&gt;
-&lt;p&gt;递归&lt;/p&gt;
-&lt;p&gt;如果当前index是大图， 则index - 8位置定是大图， 且 index - 3 或 index - 5位置为大图。满足以上条件，则此下标是大图。 否则是小图&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 递归
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;isright&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; index&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;index &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 3 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; index &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;index &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0 &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; index &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 3&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; isright&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;index&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 8&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;isright&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;index &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 3&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; isright&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;index &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 5&lt;span style=&#34;color:#f92672&#34;&gt;));&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但是递归，就像 &lt;strong&gt;斐波那契数列&lt;/strong&gt; 一样，存在大量重复的调用。&lt;/p&gt;
-&lt;p&gt;时间复杂度为指数级别， 时间复杂度特别高。 经过使用时间测试，当传入的index 为 195时，函数消耗时间就会达到 87.424s。 明显不能用, 当我们商品量稍微大一些时，计算会卡死。 甚至商品量足够大时， 直接会 &lt;strong&gt;stackoverflow&lt;/strong&gt; 栈溢出。&lt;/p&gt;
-&lt;p&gt;测试时间代码如下:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;        TimeTool&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;check&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;递归&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; TimeTool&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;execute&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-                isright&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;195&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最终输出结果:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;【&lt;/span&gt;递归&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;】&lt;/span&gt;
-开始&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;13&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;36&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;34&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;258&lt;/span&gt;
-结束&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;13&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;38&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;01&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;689&lt;/span&gt;
-耗时&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;87&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;424秒&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;方法二&#34;&gt;方法二：&lt;/h4&gt;
-&lt;p&gt;迭代：&lt;/p&gt;
-&lt;p&gt;上边分析我们得出，只要知道上一个元素，以及 +3 ,还是+5，就能&lt;strong&gt;递推&lt;/strong&gt;出当前元素. 所以我们使用flag变量记录是 +3 还是 +5. prev变量记录上一个元素的值。&lt;/p&gt;
-&lt;p&gt;代码如下:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 迭代
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;isright1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 3 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0 &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 3&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; prev &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 8&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; flag &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;prev &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-
-            prev &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; flag &lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt; 3 &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; 5&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            flag &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;flag&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; prev &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上边&lt;strong&gt;递推&lt;/strong&gt;过程，有一遍while循环, 时间复杂度为 O(N)。 时间复杂度为 O(1). 就比&lt;strong&gt;递归&lt;/strong&gt;算法优秀很多了。经测试，也说明了这个问题。&lt;/p&gt;
-&lt;p&gt;测试代码如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;       &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; 2000000000&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        TimeTool&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;check&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;迭代&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; TimeTool&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;execute&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-                isright1&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;测试结果如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;【&lt;/span&gt;迭代&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;】&lt;/span&gt;
-开始&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;16&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;05&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;57&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;510&lt;/span&gt;
-结束&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;16&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;05&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;58&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;344&lt;/span&gt;
-耗时&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;828秒&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可看出，当我们的计算值 达到 2000000000时，耗时 0.828s。相比递归195都要计算一分多钟，确实优秀了很多。&lt;/p&gt;
-&lt;h4 id=&#34;思路三&#34;&gt;思路三：&lt;/h4&gt;
-&lt;p&gt;观察数组发现，0，3，8，11，16，19，24，27&amp;hellip;&lt;/p&gt;
-&lt;p&gt;数组中元素，要么能被8整除，要么除8余3.  所以想到第三种算法: 传入数字对8取余, 余数为0，或者3. 则为大图，否则为小图.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 取余
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;isright2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;8 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0 &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;8 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 3&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果思路二算法计算过程比较优秀，那第三种就是瞬间完成，非常优秀了。&lt;/p&gt;
-&lt;p&gt;时间复杂度 : O(1)&lt;/p&gt;
-&lt;p&gt;空间复杂度: O(1)&lt;/p&gt;
-&lt;p&gt;经测试，也说明了，我们这个问题.&lt;/p&gt;
-&lt;p&gt;测试代码如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; 2000000000&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        TimeTool&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;check&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;取余&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; TimeTool&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;execute&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-                isright2&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;测试结果 ：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Java&#34; data-lang=&#34;Java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;【&lt;/span&gt;取余&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;】&lt;/span&gt;
-开始&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;16&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;05&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;58&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;358&lt;/span&gt;
-结束&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;16&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;05&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;58&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;358&lt;/span&gt;
-耗时&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;0秒&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;解决&#34;&gt;解决&lt;/h3&gt;
-&lt;p&gt;所以此需求，最终的解决方案是，一个函数用来判断是否是大图。此函数，用上述方法中第三个，O(1)时间复杂度的算法。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;isMajorGoods&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;long&lt;/span&gt; index){
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; index&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; index&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;计算出是否是大图的bool值， 在&lt;strong&gt;UICollectionView&lt;/strong&gt; 代理方法中, 判断cell的size，以及那一种cell。以下是伪代码:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-objective-c&#34; data-lang=&#34;objective-c&#34;&gt;- (CGSize)&lt;span style=&#34;color:#a6e22e&#34;&gt;collectionView:&lt;/span&gt;(UICollectionView &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;)collectionView &lt;span style=&#34;color:#a6e22e&#34;&gt;layout:&lt;/span&gt;(UICollectionViewLayout&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;)collectionViewLayout &lt;span style=&#34;color:#a6e22e&#34;&gt;sizeForItemAtIndexPath:&lt;/span&gt;(NSIndexPath &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;)indexPath {
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (isMajorGoods(indexPath.row)) {
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;大图&lt;/span&gt;size;
-    }
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;小图&lt;/span&gt;size;
-}
-
-- (__kindof UICollectionViewCell &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;)&lt;span style=&#34;color:#a6e22e&#34;&gt;collectionView:&lt;/span&gt;(UICollectionView &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;)collectionView &lt;span style=&#34;color:#a6e22e&#34;&gt;cellForItemAtIndexPath:&lt;/span&gt;(NSIndexPath &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;)indexPath{
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (isMajorGoods(indexPath.row)) {
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;大图&lt;/span&gt;cell;
-    }
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;小图&lt;/span&gt;cell;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;彩蛋&#34;&gt;彩蛋&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;动态规划&lt;/strong&gt;, &lt;strong&gt;丑数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;看到这想到&lt;strong&gt;丑数&lt;/strong&gt;动态规划的计算流程，三个指针指向起始位置指向0, 比较三个指针指向的元素 * 指针的值, 较小者就是下一个丑数。&lt;/p&gt;
-&lt;p&gt;但是这种规律貌似比丑数简单很多？ 确实是，只要知道上一个元素以及当前是+3还是+5就能解决问题。&lt;/p&gt;
-&lt;p&gt;所以想到计算数组中哪一位是数组时，使用动态规划。&lt;/p&gt;
-&lt;p&gt;动态规划，计算前N个大图的index. 代码如下 :&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 动态规划
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;getIndex&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; dp &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;num&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; flag &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;flag &lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt; 3 &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; 5&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-            flag &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;flag&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;经过计算过后，dp数组中存储的就是，前num-1个，大图的下标。&lt;/p&gt;
 </description>
       
     </item>
