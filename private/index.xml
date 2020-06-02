@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Privates on 飞熊&#39;s Blogs</title>
-    <link>https://zhangxiongngfeiv.github.io/private/</link>
+    <link>https://zhangxiongfeiv.github.io/private/</link>
     <description>Recent content in Privates on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 02 May 2020 18:01:04 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongngfeiv.github.io/private/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.github.io/private/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>王道计算机网络笔记</title>
-      <link>https://zhangxiongngfeiv.github.io/private/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
+      <link>https://zhangxiongfeiv.github.io/private/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
       <pubDate>Sat, 02 May 2020 18:01:04 +0800</pubDate>
       
-      <guid>https://zhangxiongngfeiv.github.io/private/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
+      <guid>https://zhangxiongfeiv.github.io/private/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
       <description>计算机网络的概念 计算机网络:是一个将分散的，具有独立功能的计算机系统，通过通信设备与线路连接起来，由功能完善的软件实现资源共享和信息传递的系</description>
     </item>
     
     <item>
       <title>王道操作系统笔记</title>
-      <link>https://zhangxiongngfeiv.github.io/private/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://zhangxiongfeiv.github.io/private/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sat, 02 May 2020 11:04:13 +0800</pubDate>
       
-      <guid>https://zhangxiongngfeiv.github.io/private/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://zhangxiongfeiv.github.io/private/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
       <description>操作系统 2020.5.2概念(定义) 操作系统（Operating System, OS）是指控制和管理整个计算机系统的硬件和软件资源，并合理地组织调度计算机</description>
     </item>
     
     <item>
       <title>王道数据结构笔记</title>
-      <link>https://zhangxiongngfeiv.github.io/private/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</link>
+      <link>https://zhangxiongfeiv.github.io/private/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sat, 02 May 2020 08:36:02 +0800</pubDate>
       
-      <guid>https://zhangxiongngfeiv.github.io/private/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://zhangxiongfeiv.github.io/private/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</guid>
       <description>2020.5.2日记录[TOC] 数据结构在学什么？ 如何用程序代码把现实世界的问题信息话 如何用计算机高效的处理这些信息从而创造价值 数据结构的基</description>
     </item>
     
     <item>
       <title>愿北邮成为我邮</title>
-      <link>https://zhangxiongngfeiv.github.io/private/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</link>
+      <link>https://zhangxiongfeiv.github.io/private/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</link>
       <pubDate>Thu, 30 Apr 2020 17:57:19 +0800</pubDate>
       
-      <guid>https://zhangxiongngfeiv.github.io/private/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</guid>
+      <guid>https://zhangxiongfeiv.github.io/private/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</guid>
       <description>愿北邮成为我邮 琢磨了好几年的考研，因为张清妍的到来，显得更加紧迫了，以后时间越来越少，精力也逐渐不如以前。遂决定，不再拖，今年考研！ 仅以此文</description>
     </item>
     

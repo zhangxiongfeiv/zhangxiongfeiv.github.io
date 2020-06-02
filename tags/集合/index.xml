@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>集合 on 飞熊&#39;s Blogs</title>
-    <link>https://zhangxiongngfeiv.github.io/tags/%E9%9B%86%E5%90%88/</link>
+    <link>https://zhangxiongfeiv.github.io/tags/%E9%9B%86%E5%90%88/</link>
     <description>Recent content in 集合 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 15 Apr 2020 22:20:03 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongngfeiv.github.io/tags/%E9%9B%86%E5%90%88/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E9%9B%86%E5%90%88/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>集合</title>
-      <link>https://zhangxiongngfeiv.github.io/post/%E9%9B%86%E5%90%88/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%9B%86%E5%90%88/</link>
       <pubDate>Wed, 15 Apr 2020 22:20:03 +0800</pubDate>
       
-      <guid>https://zhangxiongngfeiv.github.io/post/%E9%9B%86%E5%90%88/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%9B%86%E5%90%88/</guid>
       <description>集合（Set） 集合的定义： 由一个或者多个确定的元素所构成的整体。 特点： 1，不存在重复元素 2，一般用于去重（比如一本书中统计词汇，统计访问网站</description>
     </item>
     
     <item>
       <title>349. 两个数组的交集</title>
-      <link>https://zhangxiongngfeiv.github.io/post/349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</link>
+      <link>https://zhangxiongfeiv.github.io/post/349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</link>
       <pubDate>Tue, 15 Oct 2019 22:20:03 +0800</pubDate>
       
-      <guid>https://zhangxiongngfeiv.github.io/post/349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</guid>
       <description>349. 两个数组的交集 给定两个数组，编写一个函数来计算它们的交集。 示例 1: 输入: nums1 = [1,2,2,1], nums2 = [2,2] 输出: [2] 示例 2: 输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4] 输出: [9,4] 说明: 输出结果中</description>
     </item>
     
     <item>
       <title>202.快乐数</title>
-      <link>https://zhangxiongngfeiv.github.io/post/202.%E5%BF%AB%E4%B9%90%E6%95%B0/</link>
+      <link>https://zhangxiongfeiv.github.io/post/202.%E5%BF%AB%E4%B9%90%E6%95%B0/</link>
       <pubDate>Mon, 15 Apr 2019 22:20:03 +0800</pubDate>
       
-      <guid>https://zhangxiongngfeiv.github.io/post/202.%E5%BF%AB%E4%B9%90%E6%95%B0/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/202.%E5%BF%AB%E4%B9%90%E6%95%B0/</guid>
       <description>202. 快乐数 编写一个算法来判断一个数 n 是不是快乐数。 「快乐数」定义为：对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和，然后重复这个</description>
     </item>
     
