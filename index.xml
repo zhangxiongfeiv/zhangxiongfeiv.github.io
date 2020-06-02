@@ -576,18 +576,6 @@ p、q 为不同节点且均存在于给定的二叉搜索树中。&lt;/p&gt;
     </item>
     
     <item>
-      <title>Mac通过SSH连接iOS设备</title>
-      <link>https://zhangxiongfeiv.github.io/post/mac%E9%80%9A%E8%BF%87ssh%E8%BF%9E%E6%8E%A5ios%E8%AE%BE%E5%A4%87/</link>
-      <pubDate>Mon, 01 Jun 2020 23:21:26 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/mac%E9%80%9A%E8%BF%87ssh%E8%BF%9E%E6%8E%A5ios%E8%AE%BE%E5%A4%87/</guid>
-      
-        <description>&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfd81xbcpcj30vy0gi0x9.jpg&#34; alt=&#34;截屏2020-06-01下午11.28.54&#34;&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
       <title>415.字符串相加</title>
       <link>https://zhangxiongfeiv.github.io/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</link>
       <pubDate>Mon, 01 Jun 2020 22:23:54 +0800</pubDate>
@@ -2345,6 +2333,121 @@ second = &amp;ldquo;pal&amp;rdquo;
         &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
     &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf76bnwztcj30oe06gdgl.jpg&#34; alt=&#34;屏幕快照 2020-05-27 下午6.14.11&#34;&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>560.和为K的子数组</title>
+      <link>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Wed, 27 May 2020 14:12:36 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/560.%E5%92%8C%E4%B8%BAk%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      
+        <description>&lt;h4 id=&#34;560-和为k的子数组httpsleetcode-cncomproblemssubarray-sum-equals-k&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/subarray-sum-equals-k/&#34;&gt;560. 和为K的子数组&lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。&lt;/p&gt;
+&lt;p&gt;示例 1 :&lt;/p&gt;
+&lt;p&gt;输入:nums = [1,1,1], k = 2
+输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。
+说明 :&lt;/p&gt;
+&lt;p&gt;数组的长度为 [1, 20,000]。
+数组中元素的范围是 [-1000, 1000] ，且整数 k 的范围是 [-1e7, 1e7]。&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/subarray-sum-equals-k
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;题解&#34;&gt;题解：&lt;/h5&gt;
+&lt;h6 id=&#34;思路一&#34;&gt;思路一：&lt;/h6&gt;
+&lt;p&gt;暴力法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;两层循环&lt;/li&gt;
+&lt;li&gt;从头开始遍历，i表示 子数组的开始位置，j表示子数组的结束位置&lt;/li&gt;
+&lt;li&gt;当 和 为 K时，count ++&lt;/li&gt;
+&lt;li&gt;最终返回 result&lt;/li&gt;
+&lt;li&gt;时间复杂度 : O(N ^ 2) ，其中N为数组的长度&lt;/li&gt;
+&lt;li&gt;空间复杂度 : O(1)&lt;/li&gt;
+&lt;li&gt;提交后，算法通过了。但是 用时长，算法设计复杂度高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;代码如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;subarraySum&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; count &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; count&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                num &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                    count &lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; count&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf6zo8d99jj30nm0680ti.jpg&#34; alt=&#34;屏幕快照 2020-05-27 上午11.02.19&#34;&gt;&lt;/p&gt;
+&lt;h6 id=&#34;思路二&#34;&gt;思路二：&lt;/h6&gt;
+&lt;p&gt;利用前序和 ， 哈希表优化&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;前序和，是指从数组第0项，到数组当前项的总和&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果用数组 prefixsum 表示&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;prefixsum[i] 为数组 第0项，到数组第 i 项的总和&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;所以 nums 第 i 项到 第 j 项的总和为 prefixsum[j] - prefixsum[i - 1]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;题目等价交换&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有几种i, j组合，使得 nums[i] 累加到 nums[j] 的总和为 k&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有几种i, j组合，使得 prefixsum[j] - prefixsum[i -1] == k&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;引入哈希表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;哈希表中存放 &amp;lt;前序和 ：出现次数&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当遍历到数组某一位置时，如果其前序和  与 K的差值，在哈希表中存在&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;则次数 += map.get(前序和 - 差值)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;map中赋值当前前序和，如果之前有，则+1, 没有则赋值1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;时间复杂度 O(N)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;空间复杂度 O(N)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;代码如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;subarraySum1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+        HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; map &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+        map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; count &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; prev &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            prev &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;containsKey&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;prev &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;
+                count &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;prev &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+            map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;prev&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getOrDefault&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;prev&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; count&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gf6zoj4d5xj30nk0683z9.jpg&#34; alt=&#34;屏幕快照 2020-05-27 下午1.11.51&#34;&gt;&lt;/p&gt;
 </description>
       
     </item>

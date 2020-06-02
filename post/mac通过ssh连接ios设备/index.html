@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mac通过SSH连接iOS设备 - 飞熊&#39;s Blogs</title>
+  <title>Mac通过SSH登录iOS设备 - 飞熊&#39;s Blogs</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="飞熊" />
-  <meta name="description" content="" />
+  <meta name="description" content="本文非原创， 是在学习李明杰课程后的知识整理，方便自己复习，也给正好需要的伙伴提供方便。 基础概念 SSH 在学习Mac通过SSH登录iOS设备之前，我" />
 
   <meta name="keywords" content="Hugo, iOS, arithmetic" />
 
@@ -59,23 +59,23 @@
 
 
 
-<meta property="og:title" content="Mac通过SSH连接iOS设备" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="Mac通过SSH登录iOS设备" />
+<meta property="og:description" content="本文非原创， 是在学习李明杰课程后的知识整理，方便自己复习，也给正好需要的伙伴提供方便。 基础概念 SSH 在学习Mac通过SSH登录iOS设备之前，我" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zhangxiongfeiv.github.io/post/mac%E9%80%9A%E8%BF%87ssh%E8%BF%9E%E6%8E%A5ios%E8%AE%BE%E5%A4%87/" />
-<meta property="article:published_time" content="2020-06-01T23:21:26+08:00" />
-<meta property="article:modified_time" content="2020-06-01T23:21:26+08:00" />
-<meta itemprop="name" content="Mac通过SSH连接iOS设备">
-<meta itemprop="description" content="">
-<meta itemprop="datePublished" content="2020-06-01T23:21:26&#43;08:00" />
-<meta itemprop="dateModified" content="2020-06-01T23:21:26&#43;08:00" />
-<meta itemprop="wordCount" content="0">
+<meta property="article:published_time" content="2018-06-01T23:21:26+08:00" />
+<meta property="article:modified_time" content="2018-06-01T23:21:26+08:00" />
+<meta itemprop="name" content="Mac通过SSH登录iOS设备">
+<meta itemprop="description" content="本文非原创， 是在学习李明杰课程后的知识整理，方便自己复习，也给正好需要的伙伴提供方便。 基础概念 SSH 在学习Mac通过SSH登录iOS设备之前，我">
+<meta itemprop="datePublished" content="2018-06-01T23:21:26&#43;08:00" />
+<meta itemprop="dateModified" content="2018-06-01T23:21:26&#43;08:00" />
+<meta itemprop="wordCount" content="4067">
 
 
 
 <meta itemprop="keywords" content="iOS,iOS逆向," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Mac通过SSH连接iOS设备"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Mac通过SSH登录iOS设备"/>
+<meta name="twitter:description" content="本文非原创， 是在学习李明杰课程后的知识整理，方便自己复习，也给正好需要的伙伴提供方便。 基础概念 SSH 在学习Mac通过SSH登录iOS设备之前，我"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -295,10 +295,10 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">Mac通过SSH连接iOS设备</h1>
+      <h1 class="post-title">Mac通过SSH登录iOS设备</h1>
       
       <div class="post-meta">
-        <time datetime="2020-06-01" class="post-time">
+        <time datetime="2018-06-01" class="post-time">
           Jun 01
         </time>
         
@@ -317,13 +317,336 @@
 <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基础概念">基础概念</a></li>
+    <li><a href="#ssh">SSH</a>
+      <ul>
+        <li><a href="#ssh-功能">SSH 功能</a></li>
+        <li><a href="#ssh验证">SSH验证</a></li>
+        <li><a href="#第一种级别-基于口令的安全验证">第一种级别 (基于口令的安全验证)</a></li>
+        <li><a href="#第二种级别-基于密钥的安全验证">第二种级别 (基于密钥的安全验证)</a></li>
+      </ul>
+    </li>
+    <li><a href="#openssh">OpenSSH</a>
+      <ul>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#服务">服务</a></li>
+      </ul>
+    </li>
+    <li><a href="#ssl">SSL</a>
+      <ul>
+        <li><a href="#简介-1">简介：</a></li>
+        <li><a href="#提供服务">提供服务</a></li>
+      </ul>
+    </li>
+    <li><a href="#openssl">OpenSSL</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#连接流程">连接流程</a></li>
+    <li><a href="#root-和-mobile">root 和 mobile</a></li>
+    <li><a href="#ssh通信过程">SSH通信过程</a>
+      <ul>
+        <li><a href="#建立安全连接">建立安全连接</a></li>
+        <li><a href="#heading"></a></li>
+        <li><a href="#客户端认证">客户端认证</a></li>
+      </ul>
+    </li>
+    <li><a href="#22端口">22端口</a></li>
+    <li><a href="#通过usb进行ssh登录">通过USB进行SSH登录</a>
+      <ul>
+        <li><a href="#usbmuxd的使用">usbmuxd的使用</a></li>
+        <li><a href="#sh脚本文件">sh脚本文件</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfd81xbcpcj30vy0gi0x9.jpg" alt="截屏2020-06-01下午11.28.54"></p>
+      <p>本文<strong>非原创</strong>， 是在学习<strong>李明杰</strong>课程后的知识整理，方便自己复习，也给正好需要的伙伴提供方便。</p>
+<h2 id="基础概念">基础概念</h2>
+<h2 id="ssh">SSH</h2>
+<p>在学习Mac通过SSH登录iOS设备之前，我们先学习一下，SSH是什么？</p>
+<p>以下解释来自百度百科：</p>
+<blockquote>
+<p>SSH 为 [Secure Shell](<a href="https://baike.baidu.com/item/Secure">https://baike.baidu.com/item/Secure</a> Shell) 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是较可靠，专为<a href="https://baike.baidu.com/item/%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/1071998">远程登录</a>会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。SSH最初是UNIX系统上的一个程序，后来又迅速扩展到其他操作平台。SSH在正确使用时可弥补网络中的漏洞。SSH客户端适用于多种平台。几乎所有UNIX平台—包括<a href="https://baike.baidu.com/item/HP-UX">HP-UX</a>、<a href="https://baike.baidu.com/item/Linux">Linux</a>、<a href="https://baike.baidu.com/item/AIX">AIX</a>、<a href="https://baike.baidu.com/item/Solaris/3517">Solaris</a>、<a href="https://baike.baidu.com/item/Digital">Digital</a> <a href="https://baike.baidu.com/item/UNIX">UNIX</a>、<a href="https://baike.baidu.com/item/Irix">Irix</a>，以及其他平台，都可运行SSH。</p>
+</blockquote>
+<h3 id="ssh-功能">SSH 功能</h3>
+<blockquote>
+<p>传统的网络服务程序，如：fpt, pop，telenet在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，别有用心的人会非常容易截获这些口令和数据。 而且，这些服务程序的安全验证方式也是有其弱点的，就是很容易收到 <strong>中间人攻击</strong> (man-in-the-middle) 这种方式的攻击。</p>
+<p>所谓的 <strong>中间人</strong> 的攻击方式， 就是中间人冒充真正的服务器接收你传给服务器的数据，然后再冒充你把数据传输给真正的服务器。 服务器和你之间的数据传输被 <strong>中间人</strong> 一转手做了手脚之后，就会出现严重的问题。</p>
+<p>通过<strong>SSH</strong>，你可以把所有传输的数据进行<strong>加密</strong>，这样 <strong>中间人</strong>这种攻击方式就不可能实现了，而且也能够防止<strong>DNS欺骗，IP欺骗</strong>， 使用SSH，还有一个额外的好处就是传输的数据是经过压缩的，所以可以<strong>加快传输的速度</strong>。</p>
+</blockquote>
+<h3 id="ssh验证">SSH验证</h3>
+<blockquote>
+<p>从客户端来看，SSH提供两种级别的安全验证。</p>
+<h3 id="第一种级别-基于口令的安全验证">第一种级别 (基于口令的安全验证)</h3>
+<p>只要你知道自己的账号和口令，就可以登录到远程主机。 所有传输的数据都会被加密，但是不能保证你正在连接的服务器就是你想连接的服务区。 可能会有别的服务器冒充真正的服务器，也就是受到 <strong>中间人攻击</strong>。</p>
+<h3 id="第二种级别-基于密钥的安全验证">第二种级别 (基于密钥的安全验证)</h3>
+<p>需要依靠<strong>密钥</strong>，也就是你必须为自己创建一堆密钥，并把<strong>公用密钥</strong>放在需要访问的服务器上。</p>
+<p>如果你要连接在SSH服务器上，客户端软件就会向服务器发出请求，请求时用你的<strong>密钥</strong>进行安全验证。服务器收到请求之后，先在该服务器上你的主目录下寻找你的公有密钥，然后把它和你发送过来的<strong>公用密钥</strong>进行比较。</p>
+<p>如果两个密钥一致，服务器就用<strong>公用密钥</strong>加密<strong>质询</strong>并把它发送给客户端软件。客户端收到 <strong>质询</strong>之后就可以用你的<strong>私钥</strong>解密再把它发送给服务器。</p>
+<p>用这种方式，你必须知道自己密钥的口令。 但是，与第一种级别相比，第二种级别不需要在网络上传送口令。</p>
+<p>第二种级别不仅加密所有传送的数据，而且 <strong>中间人</strong> 这种攻击方式也是不可能的（因为它没有你的私钥）。 但是整个登录过程可能需要10秒。</p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfectyarvij30p20fsamg.jpg" alt="截屏2020-06-02下午11.19.24"></p>
+<h2 id="openssh">OpenSSH</h2>
+<blockquote>
+<p>OpenSSH 是 <a href="https://baike.baidu.com/item/SSH">SSH</a> （Secure <a href="https://baike.baidu.com/item/SHell">SHell</a>） 协议的免费开源实现。SSH协议族可以用来进行远程控制， 或在计算机之间传送文件。而实现此功能的传统方式，如telnet(<a href="https://baike.baidu.com/item/%E7%BB%88%E7%AB%AF%E4%BB%BF%E7%9C%9F/3441931">终端仿真</a>协议)、 rcp ftp、 rlogin、rsh都是极为不安全的，并且会使用明文传送密码。OpenSSH提供了服务端后台程序和客户端工具，用来加密远程控制和文件传输过程中的数据，并由此来代替原来的类似服务</p>
+</blockquote>
+<h3 id="简介">简介</h3>
+<blockquote>
+<p>OpenSSH是使用SSH透过计算机网络加密通讯的实现。它是取代由SSH Communications Security所提供的商用版本的开放源代码方案。目前OpenSSH是OpenBSD的子计划。</p>
+<p>OpenSSH常常被误认以为与OpenSSL有关联，但实际上这两个计划的有不同的目的，不同的发展团队，名称相近只是因为两者有同样的软件发展目标──提供开放源代码的加密通讯软件。</p>
+</blockquote>
+<h3 id="服务">服务</h3>
+<blockquote>
+<p>OpenSSH服务，sshd，是一个典型的独立<a href="https://baike.baidu.com/item/%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B">守护进程</a>(standalone daemon)，但也可以根据需要通过网络守护进</p>
+<p><a href="https://baike.baidu.com/pic/OpenSSH/1137789/0/cdfe7281d4505bcfbc3e1ed6?fr=lemma&amp;ct=single"><img src="https://bkimg.cdn.bcebos.com/pic/8d5494eef01f3a2979afa2e99925bc315c607cb5?x-bce-process=image/resize,m_lfit,w_220,h_220,limit_1" alt="openSSH的河豚标志"></a>openSSH的河豚标志</p>
+<p>程(Internet Daemon)-inetd(注3)或Ineternet Daemon&rsquo;s more modern-xinted加载。OpenSSH服务可以通过/etc/ssh/sshd_config文件进行配置</p>
+</blockquote>
+<h2 id="ssl">SSL</h2>
+<blockquote>
+<p>SSL(Secure Sockets Layer <a href="https://baike.baidu.com/item/%E5%AE%89%E5%85%A8%E5%A5%97%E6%8E%A5%E5%AD%97%E5%8D%8F%E8%AE%AE">安全套接字协议</a>),及其继任者<a href="https://baike.baidu.com/item/%E4%BC%A0%E8%BE%93%E5%B1%82%E5%AE%89%E5%85%A8">传输层安全</a>（Transport Layer Security，TLS）是为<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/9636548">网络通信</a>提供安全及<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E6%80%A7/110071">数据完整性</a>的一种安全协议。TLS与SSL在<a href="https://baike.baidu.com/item/%E4%BC%A0%E8%BE%93%E5%B1%82/4329536">传输层</a>与应用层之间对网络连接进行加密。</p>
+</blockquote>
+<h3 id="简介-1">简介：</h3>
+<blockquote>
+<p>SSL协议位于<a href="https://baike.baidu.com/item/TCP%2FIP%E5%8D%8F%E8%AE%AE">TCP/IP协议</a>与各种<a href="https://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E5%B1%82">应用层</a>协议之间，为<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E9%80%9A%E8%AE%AF">数据通讯</a>提供安全支持。SSL协议可分为两层： SSL记录协议（SSL Record Protocol）：它建立在可靠的<a href="https://baike.baidu.com/item/%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE">传输协议</a>（如TCP）之上，为高层协议提供<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%B0%81%E8%A3%85">数据封装</a>、压缩、加密等基本功能的支持。 SSL<a href="https://baike.baidu.com/item/%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE">握手协议</a>（SSL Handshake Protocol）：它建立在SSL记录协议之上，用于在实际的数据传输开始前，通讯双方进行<a href="https://baike.baidu.com/item/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81">身份认证</a>、协商<a href="https://baike.baidu.com/item/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">加密算法</a>、交换加密<a href="https://baike.baidu.com/item/%E5%AF%86%E9%92%A5">密钥</a>等。</p>
+</blockquote>
+<h3 id="提供服务">提供服务</h3>
+<blockquote>
+<p>1）认证用户和服务器，确保数据发送到正确的<a href="https://baike.baidu.com/item/%E5%AE%A2%E6%88%B7%E6%9C%BA">客户机</a>和<a href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器</a>；</p>
+<p>2）加密数据以防止数据中途被窃取；</p>
+<p>3）维护数据的完整性，确保数据在传输过程中不被改变。</p>
+</blockquote>
+<h2 id="openssl">OpenSSL</h2>
+<blockquote>
+<p>在<a href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>上，<strong>OpenSSL</strong>是一个<a href="https://baike.baidu.com/item/%E5%BC%80%E6%94%BE%E6%BA%90%E4%BB%A3%E7%A0%81">开放源代码</a>的<a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6">软件</a><a href="https://baike.baidu.com/item/%E5%BA%93">库</a>包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。</p>
+</blockquote>
+<h1 id="mac通过ssh登录ios设备">Mac通过SSH登录iOS设备</h1>
+<h2 id="连接流程">连接流程</h2>
+<ul>
+<li>我们经常在Mac的终端上，通过敲一些命令来完成一些操作</li>
+<li>iOS  和 Mac OS X 都是基于 Darwin (苹果的一个基于Unix的开源系统内核)， 所以iOS同样支持终端的命令行操作。
+<ul>
+<li>在逆向工程中，我们经常会通过命令行来操纵iPhone</li>
+</ul>
+</li>
+<li>为了能够让mac终端中的命令行能够作用在iPhone上，首先等让 Mac 和 iPhone建立连接
+<ul>
+<li>通过Mac 远程登录到 iPhone的方式建立连接</li>
+</ul>
+</li>
+</ul>
+<p>​	<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfec0drfi8j30mm04kmxe.jpg" alt="截屏2020-06-02下午10.50.55"></p>
+<p>本文上部分引用了百度百科中对 SSH, OpenSSH, SSL, OpenSSL的简介。</p>
+<p>Mac就可以通过 SSH 的方式 登录到 iOS设备。步骤如下:</p>
+<ul>
+<li>
+<p>在iPhone上通过 Cydia 安装 OpenSSH工具</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfed95stdnj30bg04uq2z.jpg" alt="截屏2020-06-02下午11.34.01"></p>
+</li>
+<li>
+<p>SSH是通过TCP协议通信，所以要确保Mac 和 iPhone在同一局域网下，比如连接着同一个wifi</p>
+<ul>
+<li>在Mac的终端输入指令 <strong>ssh 账户名@服务器主机地址</strong>
+<ul>
+<li>比如 ssh <a href="mailto:root@192.168.0.104">root@192.168.0.104</a> (这里的服务器是手机)</li>
+</ul>
+</li>
+<li>初始密码 alpine</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfd81xbcpcj30vy0gi0x9.jpg" alt="截屏2020-06-01下午11.28.54"></p>
+</li>
+<li>
+<p>登录成功后，就可以使用终端命令来操作iPhone</p>
+</li>
+<li>
+<p>退出命令是<strong>exit</strong></p>
+</li>
+</ul>
+<h2 id="root-和-mobile">root 和 mobile</h2>
+<ul>
+<li>iOS下有2个常用账户 ： root 和 mobile</li>
+<li><strong>root</strong>: 最高权限的账户, $HOME是 /var/root</li>
+<li><strong>mobile</strong>: 普通权限账户，只能操作一些普通文件，不能操作系统级别的文件。$HOME是/var/mobile
+<ul>
+<li>登录mobile账户时命令： root mobile@服务器地址</li>
+<li>root 和 mobile 用户的初始登录密码都是 alpine</li>
+</ul>
+</li>
+</ul>
+<h2 id="ssh通信过程">SSH通信过程</h2>
+<h3 id="建立安全连接">建立安全连接</h3>
+<ul>
+<li>在建立安全连接中，服务器会提供自己的身份证明
+<ul>
+<li>服务器发送公钥等信息给客户端</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfedkecrw2j30x609840w.jpg" alt="截屏2020-06-02下午11.44.51"></p>
+<ul>
+<li>如果客户端并无服务器端的公钥信息， 就会询问是否连接此服务器</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfedl89fkuj30ps03cmy6.jpg" alt="截屏2020-06-02下午11.45.32"></p>
+<h3 id="heading"></h3>
+<h3 id="客户端认证">客户端认证</h3>
+<ul>
+<li>
+<h4 id="ssh-2-提供了两种常用的客户端认证方式">SSH-2 提供了两种常用的客户端认证方式</h4>
+<ul>
+<li>基于密码的客户端认证
+<ul>
+<li>使用密码和账户可认证</li>
+</ul>
+</li>
+<li>基于密钥的客户端认证
+<ul>
+<li>免密码认证</li>
+<li>最安全的一种认证方式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>SSH-2会默认优先尝试  <strong>密钥认证</strong>, 如果认证失败，才会尝试 <strong>密码认证</strong></p>
+</li>
+</ul>
+<p>SSH - 基于密钥的客户端认证</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfedp3sh94j30xo09mjsr.jpg" alt="截屏2020-06-02下午11.49.04"></p>
+<ul>
+<li>在客户端生成一堆相关联的密钥(Key Pair) : 一个<strong>公钥(Public key)</strong>, 一个<strong>私钥(Private key)</strong>
+<ul>
+<li>ssh-keygen
+<ul>
+<li>一路 <strong>enter</strong> 即可</li>
+<li>OpenSSH默认生成的是RSA密钥，可以通过 -t 参数指定密钥类型</li>
+<li>生成的公钥  : ~/.ssh/id_rsa.pub</li>
+<li>生成的私钥  : ~/.ssh/id_rsa</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>把客户端的公钥内容追加到服务器的授权文件 (~/.ssh/authorized_keys) 尾部
+<ul>
+<li><strong>ssh-copy-id root@服务器地址</strong></li>
+<li>需要输入root用户的登录密码</li>
+<li>ssh-copy-id会将客户端<strong>~/.ssh/id_rsa.pub</strong>的内容自动追加到服务器的<strong>~/.ssh/authorized_keys</strong>尾部</li>
+</ul>
+</li>
+</ul>
+<h2 id="22端口">22端口</h2>
+<ul>
+<li>
+<p><strong>端口</strong>就是设备<strong>对外提供服务的窗口</strong>，每个端口都有个端口号（范围是0~65535，共2^16个）</p>
+</li>
+<li>
+<p>有些端口号是<strong>保留</strong>的，已经规定了用途，比如</p>
+</li>
+<li>
+<p><strong>21端口</strong>提供<strong>FTP服务</strong></p>
+</li>
+<li>
+<p><strong>80端口</strong>提供<strong>HTTP服务</strong></p>
+</li>
+<li>
+<p><strong>22端口</strong>提供<strong>SSH服务</strong>（可以查看/etc/ssh/sshd_config的Port字段）</p>
+</li>
+<li>
+<p>更多保留端口号： <a href="https://baike.baidu.com/item/%E7%AB%AF%E5%8F%A3%E5%8F%B7/10883658#4_3">https://baike.baidu.com/item/%E7%AB%AF%E5%8F%A3%E5%8F%B7/10883658#4_3</a></p>
+</li>
+<li>
+<p>iPhone默认是使用22端口进行SSH通信，采用的是TCP协议</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfedw733q2j30lg03it90.jpg" alt="截屏2020-06-02下午11.56.11"></p>
+</li>
+</ul>
+<h2 id="通过usb进行ssh登录">通过USB进行SSH登录</h2>
+<ul>
+<li>
+<p>默认情况下，由于SSH走的是TCP协议，Mac是通过网络连接的方式SSH登录到iPhone，要求iPhone连接WiFi</p>
+</li>
+<li>
+<p>为了加快传输速度，也可以通过USB连接的方式进行SSH登录</p>
+</li>
+<li>
+<p>Mac上有个服务程序usbmuxd（它会开机自动启动），可以将Mac的数据通过USB传输到iPhone</p>
+</li>
+<li>
+<p>/System/Library/PrivateFrameworks/MobileDevice.framework/Resources/usbmuxd<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfedz1n81cj30m804c74p.jpg" alt="截屏2020-06-02下午11.58.55"></p>
+</li>
+</ul>
+<h3 id="usbmuxd的使用">usbmuxd的使用</h3>
+<ul>
+<li>
+<p>下载usbmuxd工具包（下载v1.0.8版本，主要用到里面的一个python脚本：tcprelay.py）</p>
+</li>
+<li>
+<p><a href="https://cgit.sukimashita.com/usbmuxd.git/snapshot/usbmuxd-1.0.8.tar.gz">https://cgit.sukimashita.com/usbmuxd.git/snapshot/usbmuxd-1.0.8.tar.gz</a></p>
+</li>
+<li>
+<p>将iPhone的22端口（SSH端口）映射到Mac本地的10010端口</p>
+<ul>
+<li>cd ~/Documents/usbmuxd-1.0.8/python-client</li>
+<li>python tcprelay.py -t 22:10010</li>
+</ul>
+</li>
+<li>
+<p>加上-t参数是为了能够同时支持多个SSH连接</p>
+</li>
+<li>
+<p>注意：要想保持端口映射状态，不能终止此命令行（如果要执行其他终端命令行，请新开一个终端界面）</p>
+</li>
+<li>
+<p>不一定非要10010端口，只要不是保留端口就行</p>
+</li>
+<li>
+<p>端口映射完毕后，以后如果想跟iPhone的22端口通信，直接跟Mac本地的10010端口通信就可以了</p>
+<ul>
+<li>新开一个终端界面，SSH登录到Mac本地的10010端口（以下方式2选1）</li>
+<li>ssh root@localhost -p 10010</li>
+<li>ssh <a href="mailto:root@127.0.0.1">root@127.0.0.1</a> -p 10010</li>
+<li>localhost是一个域名，指向的IP地址是127.0.0.1，本机虚拟网卡的IP地址</li>
+</ul>
+</li>
+<li>
+<p>usbmuxd会将Mac本地10010端口的TCP协议数据，通过USB连接转发到iPhone的22端口</p>
+<ul>
+<li>远程拷贝文件也可以直接跟Mac本地的10010端口通信</li>
+<li>scp -P 10010 ~/Desktop/1.txt root@localhost:~/test</li>
+<li>将Mac上的~/Desktop/1.txt文件，拷贝到iPhone上的~/test路径</li>
+<li>注意：scp的端口号参数是大写的-P</li>
+</ul>
+</li>
+</ul>
+<h3 id="sh脚本文件">sh脚本文件</h3>
+<ul>
+<li>
+<p>我们可以将经常执行的一系列终端命令行放到sh脚本文件中（shell），然后执行脚本文件</p>
+</li>
+<li>
+<p>可以通过sh、bash、source命令来执行sh脚本文件</p>
+<ul>
+<li>sh、bash
+<ul>
+<li>当前shell环境会启动一个子进程来执行脚本文件，执行后返回到父进程的shell环境</li>
+<li>执行cd时，在子进程中会进入到cd的目录，但是在父进程中环境并没有改变，也就是说目录没有改变</li>
+</ul>
+</li>
+<li>source
+<ul>
+<li>在当前的shell环境下执行脚本文件</li>
+<li>执行cd后会跳转到cd的目录</li>
+<li>source可以用一个点”.”来替代，比如”. test.sh”</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
     </div>
 
@@ -362,7 +685,7 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/">
+          <a class="prev" href="/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/">
             
             <i class="iconfont">
               <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -372,12 +695,12 @@
 </svg>
 
             </i>
-            <span class="prev-text nav-default">剑指offer.68.二叉树的最近公共祖先</span>
+            <span class="prev-text nav-default">NSObject内存结构</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/">
-            <span class="next-text nav-default">415.字符串相加</span>
+          <a class="next" href="/post/hugo/">
+            <span class="next-text nav-default">Hugo基本使用</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">
