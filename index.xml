@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>飞熊&#39;s Blogs</title>
-    <link>https://zhangxiongfeiv.github.io/</link>
+    <link>https://zhangxiongngfeiv.github.io/</link>
     <description>Recent content on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 29 Dec 2018 20:24:28 +0800</lastBuildDate>
     
-        <atom:link href="https://zhangxiongfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://zhangxiongngfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>leetcode200题回顾与总结</title>
-      <link>https://zhangxiongfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</link>
       <pubDate>Thu, 28 May 2020 10:09:44 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</guid>
       
         <description>&lt;h1 id=&#34;2020527总结&#34;&gt;2020.5.27总结&lt;/h1&gt;
 &lt;p&gt;截止 5.27日，leetcode总刷题数到达200，写一篇文章以回顾，总结。&lt;/p&gt;
@@ -133,43 +133,32 @@
     
     <item>
       <title>_剑指offer_68_二叉树的最近公共祖先</title>
-      <link>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_68_%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_68_%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
       <pubDate>Tue, 02 Jun 2020 16:38:37 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_68_%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_68_%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
       
         <description>&lt;h1 id=&#34;面试题68---i-二叉搜索树的最近公共祖先httpsleetcode-cncomproblemser-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/&#34;&gt;面试题68 - I. 二叉搜索树的最近公共祖先&lt;/a&gt;&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;给定一个二叉搜索树&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 找到该树中两个指定节点的最近公共祖先&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
-
-百度百科中最近公共祖先的定义为&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：“&lt;/span&gt;对于有根树 T 的两个结点 p&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;、&lt;/span&gt;q&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;最近公共祖先表示为一个结点 x&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;满足 x 是 p&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;、&lt;/span&gt;q 的祖先且 x 的深度尽可能大&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;（&lt;/span&gt;一个节点也可以是它自己的祖先&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;）。”&lt;/span&gt;
-
-例如&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;给定如下二叉搜索树&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;  root &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;6&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;2&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;8&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;4&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;7&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;9&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;3&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;5&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-
-
-
- 
-
-示例 1&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-
-输入: root &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;6&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;2&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;8&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;4&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;7&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;9&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;3&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;5&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt; p &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; q &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 8
-输出: 6 
-解释: 节点 2 和节点 8 的最近公共祖先是 6&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
-示例 2&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-
-输入: root &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;6&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;2&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;8&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;4&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;7&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;9&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;3&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;5&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt; p &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; q &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 4
+&lt;blockquote&gt;
+&lt;p&gt;给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。&lt;/p&gt;
+&lt;p&gt;百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”&lt;/p&gt;
+&lt;p&gt;例如，给定如下二叉搜索树:  root = [6,2,8,0,4,7,9,null,null,3,5]&lt;/p&gt;
+&lt;p&gt;示例 1:&lt;/p&gt;
+&lt;p&gt;输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+输出: 6
+解释: 节点 2 和节点 8 的最近公共祖先是 6。
+示例 2:&lt;/p&gt;
+&lt;p&gt;输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
 输出: 2
-解释: 节点 2 和节点 4 的最近公共祖先是 2&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 因为根据定义最近公共祖先节点可以为节点本身&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
- 
-
-说明:
-
-所有节点的值都是唯一的&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
-p&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;、&lt;/span&gt;q 为不同节点且均存在于给定的二叉搜索树中&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
-
-来源&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;力扣&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;（&lt;/span&gt;LeetCode&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;）&lt;/span&gt;
-链接&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;https&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;著作权归领扣网络所有&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;商业转载请联系官方授权&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;非商业转载请注明出处&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
+解释: 节点 2 和节点 4 的最近公共祖先是 2, 因为根据定义最近公共祖先节点可以为节点本身。&lt;/p&gt;
+&lt;p&gt;说明:&lt;/p&gt;
+&lt;p&gt;所有节点的值都是唯一的。
+p、q 为不同节点且均存在于给定的二叉搜索树中。&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
 &lt;h3 id=&#34;思路一&#34;&gt;思路一：&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;构建 &lt;!-- raw HTML omitted --&gt;字典
@@ -298,10 +287,10 @@ p&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;、&lt;/span
     
     <item>
       <title>_剑指offer_52_两个链表的第一个公共节点</title>
-      <link>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_52_%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_52_%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</link>
       <pubDate>Tue, 02 Jun 2020 15:08:04 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_52_%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_52_%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</guid>
       
         <description>&lt;h1 id=&#34;面试题52-两个链表的第一个公共节点httpsleetcode-cncomproblemsliang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/&#34;&gt;面试题52. 两个链表的第一个公共节点&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -414,10 +403,10 @@ p&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;、&lt;/span
     
     <item>
       <title>_剑指offer_60_n个骰子的点数</title>
-      <link>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_60_n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_60_n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</link>
       <pubDate>Tue, 02 Jun 2020 15:08:04 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_60_n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_60_n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</guid>
       
         <description>&lt;h1 id=&#34;面试题60-n个骰子的点数httpsleetcode-cncomproblemsnge-tou-zi-de-dian-shu-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/&#34;&gt;面试题60. n个骰子的点数&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -589,10 +578,10 @@ p&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;、&lt;/span
     
     <item>
       <title>Mac通过SSH连接iOS设备</title>
-      <link>https://zhangxiongfeiv.github.io/post/mac%E9%80%9A%E8%BF%87ssh%E8%BF%9E%E6%8E%A5ios%E8%AE%BE%E5%A4%87/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/mac%E9%80%9A%E8%BF%87ssh%E8%BF%9E%E6%8E%A5ios%E8%AE%BE%E5%A4%87/</link>
       <pubDate>Mon, 01 Jun 2020 23:21:26 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/mac%E9%80%9A%E8%BF%87ssh%E8%BF%9E%E6%8E%A5ios%E8%AE%BE%E5%A4%87/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/mac%E9%80%9A%E8%BF%87ssh%E8%BF%9E%E6%8E%A5ios%E8%AE%BE%E5%A4%87/</guid>
       
         <description>&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfd81xbcpcj30vy0gi0x9.jpg&#34; alt=&#34;截屏2020-06-01下午11.28.54&#34;&gt;&lt;/p&gt;
 </description>
@@ -601,10 +590,10 @@ p&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;、&lt;/span
     
     <item>
       <title>_415_字符串相加</title>
-      <link>https://zhangxiongfeiv.github.io/post/_415_%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/_415_%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</link>
       <pubDate>Mon, 01 Jun 2020 22:23:54 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/_415_%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/_415_%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</guid>
       
         <description>&lt;h1 id=&#34;415-字符串相加httpsleetcode-cncomproblemsadd-strings&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/add-strings/&#34;&gt;415. 字符串相加&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -731,10 +720,10 @@ num1 和num2 都不包含任何前导零。
     
     <item>
       <title>儿童节快乐-来自leetcode友好的祝福</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%84%BF%E7%AB%A5%E8%8A%82%E5%BF%AB%E4%B9%90-%E6%9D%A5%E8%87%AAleetcode%E5%8F%8B%E5%A5%BD%E7%9A%84%E7%A5%9D%E7%A6%8F/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/%E5%84%BF%E7%AB%A5%E8%8A%82%E5%BF%AB%E4%B9%90-%E6%9D%A5%E8%87%AAleetcode%E5%8F%8B%E5%A5%BD%E7%9A%84%E7%A5%9D%E7%A6%8F/</link>
       <pubDate>Mon, 01 Jun 2020 17:47:30 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%84%BF%E7%AB%A5%E8%8A%82%E5%BF%AB%E4%B9%90-%E6%9D%A5%E8%87%AAleetcode%E5%8F%8B%E5%A5%BD%E7%9A%84%E7%A5%9D%E7%A6%8F/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/%E5%84%BF%E7%AB%A5%E8%8A%82%E5%BF%AB%E4%B9%90-%E6%9D%A5%E8%87%AAleetcode%E5%8F%8B%E5%A5%BD%E7%9A%84%E7%A5%9D%E7%A6%8F/</guid>
       
         <description>&lt;h1 id=&#34;61儿童节&#34;&gt;6.1儿童节&lt;/h1&gt;
 &lt;p&gt;今天是6.1儿童节, 今日份 &lt;strong&gt;leetcode 每日一题&lt;/strong&gt;非常友好 , 可以说是儿童节福利题.&lt;/p&gt;
@@ -795,10 +784,10 @@ num1 和num2 都不包含任何前导零。
     
     <item>
       <title>归并排序</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</link>
       <pubDate>Sun, 31 May 2020 17:42:58 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</guid>
       
         <description>&lt;h1 id=&#34;归并排序merge-sort&#34;&gt;归并排序(merge sort)&lt;/h1&gt;
 &lt;ul&gt;
@@ -880,10 +869,10 @@ num1 和num2 都不包含任何前导零。
     
     <item>
       <title>40.最小的k个数</title>
-      <link>https://zhangxiongfeiv.github.io/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/</link>
       <pubDate>Sat, 30 May 2020 23:50:40 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/</guid>
       
         <description>&lt;h2 id=&#34;面试题40-最小的k个数httpsleetcode-cncomproblemszui-xiao-de-kge-shu-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/&#34;&gt;面试题40. 最小的k个数&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -938,10 +927,10 @@ num1 和num2 都不包含任何前导零。
     
     <item>
       <title>团灭丑数问题</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sat, 30 May 2020 10:15:13 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/</guid>
       
         <description>&lt;h2 id=&#34;什么是丑数&#34;&gt;什么是丑数？&lt;/h2&gt;
 &lt;p&gt;先看一下百度百科的解释:&lt;/p&gt;
@@ -1358,10 +1347,10 @@ n 不超过1690。&lt;/p&gt;
     
     <item>
       <title>二叉堆</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E5%A0%86/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E5%A0%86/</link>
       <pubDate>Fri, 29 May 2020 17:27:40 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E5%A0%86/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E5%A0%86/</guid>
       
         <description>&lt;h1 id=&#34;二叉堆&#34;&gt;二叉堆&lt;/h1&gt;
 &lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
@@ -1547,10 +1536,10 @@ n 不超过1690。&lt;/p&gt;
     
     <item>
       <title>01.08零矩阵</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.08%E9%9B%B6%E7%9F%A9%E9%98%B5/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/01.08%E9%9B%B6%E7%9F%A9%E9%98%B5/</link>
       <pubDate>Thu, 28 May 2020 22:55:05 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.08%E9%9B%B6%E7%9F%A9%E9%98%B5/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/01.08%E9%9B%B6%E7%9F%A9%E9%98%B5/</guid>
       
         <description>&lt;h2 id=&#34;面试题-0108-零矩阵httpsleetcode-cncomproblemszero-matrix-lcci&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/zero-matrix-lcci/&#34;&gt;面试题 01.08. 零矩阵&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -1636,10 +1625,10 @@ n 不超过1690。&lt;/p&gt;
     
     <item>
       <title>01.07旋转矩阵</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.07%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/01.07%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5/</link>
       <pubDate>Thu, 28 May 2020 22:52:33 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.07%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/01.07%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5/</guid>
       
         <description>&lt;h4 id=&#34;面试题-0107-旋转矩阵httpsleetcode-cncomproblemsrotate-matrix-lcci&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/rotate-matrix-lcci/&#34;&gt;面试题 01.07. 旋转矩阵&lt;/a&gt;&lt;/h4&gt;
 &lt;blockquote&gt;
@@ -1708,10 +1697,10 @@ n 不超过1690。&lt;/p&gt;
     
     <item>
       <title>01.06字符串压缩</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</link>
       <pubDate>Thu, 28 May 2020 22:37:48 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</guid>
       
         <description>&lt;h2 id=&#34;面试题-0106-字符串压缩httpsleetcode-cncomproblemscompress-string-lcci&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/compress-string-lcci/&#34;&gt;面试题 01.06. 字符串压缩&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -1767,10 +1756,10 @@ n 不超过1690。&lt;/p&gt;
     
     <item>
       <title>01.05一次编辑</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</link>
       <pubDate>Thu, 28 May 2020 22:32:11 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</guid>
       
         <description>&lt;h2 id=&#34;面试题-0105-一次编辑httpsleetcode-cncomproblemsone-away-lcci&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/one-away-lcci/&#34;&gt;面试题 01.05. 一次编辑&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -1855,10 +1844,10 @@ second = &amp;ldquo;pal&amp;rdquo;
     
     <item>
       <title>01.04.回文排列</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</link>
       <pubDate>Thu, 28 May 2020 22:27:06 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</guid>
       
         <description>&lt;h2 id=&#34;面试题-0104-回文排列httpsleetcode-cncomproblemspalindrome-permutation-lcci&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/palindrome-permutation-lcci/&#34;&gt;面试题 01.04. 回文排列&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -1911,10 +1900,10 @@ second = &amp;ldquo;pal&amp;rdquo;
     
     <item>
       <title>01.03URL化</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.03url%E5%8C%96/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/01.03url%E5%8C%96/</link>
       <pubDate>Thu, 28 May 2020 22:22:18 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.03url%E5%8C%96/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/01.03url%E5%8C%96/</guid>
       
         <description>&lt;h2 id=&#34;面试题-0103-url化httpsleetcode-cncomproblemsstring-to-url-lcci&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/string-to-url-lcci/&#34;&gt;面试题 01.03. URL化&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -1983,10 +1972,10 @@ second = &amp;ldquo;pal&amp;rdquo;
     
     <item>
       <title>01.02判断是否互为字符重排</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.02%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/01.02%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92/</link>
       <pubDate>Thu, 28 May 2020 22:18:56 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.02%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/01.02%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92/</guid>
       
         <description>&lt;h2 id=&#34;面试题-0102-判定是否互为字符重排httpsleetcode-cncomproblemscheck-permutation-lcci&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/check-permutation-lcci/&#34;&gt;面试题 01.02. 判定是否互为字符重排&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -2056,10 +2045,10 @@ second = &amp;ldquo;pal&amp;rdquo;
     
     <item>
       <title>01.01判断字符是否唯一</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.01%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/01.01%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80/</link>
       <pubDate>Thu, 28 May 2020 22:15:10 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.01%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/01.01%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80/</guid>
       
         <description>&lt;h2 id=&#34;面试题-0101-判定字符是否唯一httpsleetcode-cncomproblemsis-unique-lcci&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/is-unique-lcci/&#34;&gt;面试题 01.01. 判定字符是否唯一&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -2155,10 +2144,10 @@ second = &amp;ldquo;pal&amp;rdquo;
     
     <item>
       <title>1248.统计优美子数组</title>
-      <link>https://zhangxiongfeiv.github.io/post/1248.%E7%BB%9F%E8%AE%A1%E4%BC%98%E7%BE%8E%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <link>https://zhangxiongngfeiv.github.io/post/1248.%E7%BB%9F%E8%AE%A1%E4%BC%98%E7%BE%8E%E5%AD%90%E6%95%B0%E7%BB%84/</link>
       <pubDate>Wed, 27 May 2020 17:09:19 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/1248.%E7%BB%9F%E8%AE%A1%E4%BC%98%E7%BE%8E%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      <guid>https://zhangxiongngfeiv.github.io/post/1248.%E7%BB%9F%E8%AE%A1%E4%BC%98%E7%BE%8E%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
       
         <description>&lt;h4 id=&#34;1248-统计优美子数组httpsleetcode-cncomproblemscount-number-of-nice-subarrays&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/count-number-of-nice-subarrays/&#34;&gt;1248. 统计「优美子数组」&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;此题同 560, 974解题思路一致，复习时，可以一块看。 标签前序和。一并看懂前序和的问题。&lt;/strong&gt;&lt;/p&gt;
