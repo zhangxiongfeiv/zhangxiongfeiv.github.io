@@ -22,28 +22,28 @@
     
     <item>
       <title>_剑指offer_52_两个链表的第一个公共节点</title>
-      <link>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_52_%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.52.%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</link>
       <pubDate>Tue, 02 Jun 2020 21:54:04 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_52_%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.52.%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</guid>
       <description>面试题52. 两个链表的第一个公共节点 输入两个链表，找出它们的第一个公共节点。 如下面的两个链表： 在节点 c1 开始相交。 示例 1： 输入：interse</description>
     </item>
     
     <item>
       <title>_剑指offer_60_n个骰子的点数</title>
-      <link>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_60_n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.60.n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</link>
       <pubDate>Tue, 02 Jun 2020 21:52:35 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_60_n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.60.n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</guid>
       <description>面试题60. n个骰子的点数 把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。 你需要用一个浮点数数</description>
     </item>
     
     <item>
       <title>_剑指offer_68_二叉树的最近公共祖先</title>
-      <link>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_68_%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
       <pubDate>Tue, 02 Jun 2020 21:51:04 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/_%E5%89%91%E6%8C%87offer_68_%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
       <description>面试题68 - I. 二叉搜索树的最近公共祖先 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树</description>
     </item>
     
@@ -58,10 +58,10 @@
     
     <item>
       <title>_415_字符串相加</title>
-      <link>https://zhangxiongfeiv.github.io/post/_415_%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</link>
+      <link>https://zhangxiongfeiv.github.io/post/415_%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</link>
       <pubDate>Mon, 01 Jun 2020 22:23:54 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/_415_%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/415_%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</guid>
       <description>415. 字符串相加 给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。 注意： num1 和num2 的长度都小于 5100. num1 和num2 都只包含数字 0-9. num1 和num2 都</description>
     </item>
     
