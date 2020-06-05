@@ -6,7 +6,7 @@
     <description>Recent content in Posts on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 05 Jun 2020 02:17:24 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2020 23:26:21 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -23,10 +23,28 @@
     <item>
       <title>iOS签名机制</title>
       <link>https://zhangxiongfeiv.github.io/post/ios%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6/</link>
-      <pubDate>Fri, 05 Jun 2020 02:17:24 +0800</pubDate>
+      <pubDate>Fri, 05 Jun 2020 23:26:21 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/ios%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6/</guid>
-      <description></description>
+      <description>iOS签名机制 iOS签名机制的作用 保证安装到用户手机上的APP都是经过Apple官方允许的 不管是真机调试，还是发布APP，开发者都需要经过一</description>
+    </item>
+    
+    <item>
+      <title>剑指offer53.0-n-1中缺失的数字</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer53.%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Fri, 05 Jun 2020 15:45:25 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer53.%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
+      <description>面试题53 - II. 0～n-1中缺失的数字 一个长度为n-1的递增排序数组中的所有数字都是唯一的，并且每个数字都在范围0～n-1之内。在范围0～n-</description>
+    </item>
+    
+    <item>
+      <title>278.寻找重复数</title>
+      <link>https://zhangxiongfeiv.github.io/post/278.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</link>
+      <pubDate>Fri, 05 Jun 2020 12:55:09 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/278.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</guid>
+      <description>287. 寻找重复数 给定一个包含 n + 1 个整数的数组 nums，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设只有一个重复的整数，</description>
     </item>
     
     <item>
@@ -171,24 +189,6 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</guid>
       <description>面试题 01.06. 字符串压缩 字符串压缩。利用字符重复出现的次数，编写一种方法，实现基本的字符串压缩功能。比如，字符串aabcccccaaa会变为a2b</description>
-    </item>
-    
-    <item>
-      <title>01.05一次编辑</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</link>
-      <pubDate>Thu, 28 May 2020 22:32:11 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</guid>
-      <description>面试题 01.05. 一次编辑 字符串有三种编辑操作:插入一个字符、删除一个字符或者替换一个字符。 给定两个字符串，编写一个函数判定它们是否只需要一次(或者零</description>
-    </item>
-    
-    <item>
-      <title>01.04.回文排列</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</link>
-      <pubDate>Thu, 28 May 2020 22:27:06 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</guid>
-      <description>面试题 01.04. 回文排列 给定一个字符串，编写一个函数判定其是否为某个回文串的排列之一。 回文串是指正反两个方向都一样的单词或短语。排列是指字母的重新排</description>
     </item>
     
   </channel>

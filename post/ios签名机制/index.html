@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="飞熊" />
-  <meta name="description" content="" />
+  <meta name="description" content="iOS签名机制 iOS签名机制的作用 保证安装到用户手机上的APP都是经过Apple官方允许的 不管是真机调试，还是发布APP，开发者都需要经过一" />
 
   <meta name="keywords" content="Hugo, iOS, arithmetic" />
 
@@ -60,22 +60,22 @@
 
 
 <meta property="og:title" content="iOS签名机制" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="iOS签名机制 iOS签名机制的作用 保证安装到用户手机上的APP都是经过Apple官方允许的 不管是真机调试，还是发布APP，开发者都需要经过一" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zhangxiongfeiv.github.io/post/ios%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6/" />
-<meta property="article:published_time" content="2020-06-05T02:17:24+08:00" />
-<meta property="article:modified_time" content="2020-06-05T02:17:24+08:00" />
+<meta property="article:published_time" content="2020-06-05T23:26:21+08:00" />
+<meta property="article:modified_time" content="2020-06-05T23:26:21+08:00" />
 <meta itemprop="name" content="iOS签名机制">
-<meta itemprop="description" content="">
-<meta itemprop="datePublished" content="2020-06-05T02:17:24&#43;08:00" />
-<meta itemprop="dateModified" content="2020-06-05T02:17:24&#43;08:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="description" content="iOS签名机制 iOS签名机制的作用 保证安装到用户手机上的APP都是经过Apple官方允许的 不管是真机调试，还是发布APP，开发者都需要经过一">
+<meta itemprop="datePublished" content="2020-06-05T23:26:21&#43;08:00" />
+<meta itemprop="dateModified" content="2020-06-05T23:26:21&#43;08:00" />
+<meta itemprop="wordCount" content="1583">
 
 
 
-<meta itemprop="keywords" content="iOS签名机制,安全," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="iOS,iOS签名机制,安全," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="iOS签名机制"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="iOS签名机制 iOS签名机制的作用 保证安装到用户手机上的APP都是经过Apple官方允许的 不管是真机调试，还是发布APP，开发者都需要经过一"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -317,13 +317,165 @@
 <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#签名流程">签名流程</a></li>
+    <li><a href="#总结">总结：</a></li>
+    <li><a href="#appstore下载的app">AppStore下载的App</a></li>
+  </ul>
+</nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
+      <h1 id="ios签名机制">iOS签名机制</h1>
+<ul>
+<li>
+<p>iOS签名机制的作用</p>
+<ul>
+<li>保证安装到用户手机上的APP都是经过Apple官方允许的</li>
+</ul>
+</li>
+<li>
+<p>不管是真机调试，还是发布APP，开发者都需要经过一系列复杂的步骤</p>
+<ul>
+<li>生成CertificateSigningRequest.certSigningRequest文件</li>
+<li>获得ios_development.cer\ios_distribution.cer证书文件</li>
+<li>注册device、添加App ID</li>
+<li>获得*.mobileprovision文件</li>
+</ul>
+</li>
+<li>
+<p>对于真机调试，现在的Xcode已经自动帮开发者做了以上操作</p>
+</li>
+<li>
+<p>思考</p>
+<ul>
+<li>每一步的作用是什么？</li>
+<li>.certSigningRequest、.cer、.mobileprovision文件究竟里面包含了什么？有何用处？</li>
+</ul>
+</li>
+</ul>
+<h2 id="签名流程">签名流程</h2>
+<ul>
+<li>
+<p>首先我们需要三个角色，<strong>Mac设备</strong> ，<strong>苹果后台</strong>， <strong>iOS设备</strong></p>
+<ul>
+<li>Mac设备要生成一对<strong>公钥私钥</strong></li>
+<li>苹果后台也有一对公钥私钥，<strong>私钥保存在苹果后台</strong></li>
+<li>每一台iOS设备上，都有<strong>苹果的公钥</strong></li>
+</ul>
+</li>
+<li>
+<p>Mac对App打包时，要对App包进行签名(用Mac的私钥签名)。 签名后生成:</p>
+<ul>
+<li><strong>App包</strong></li>
+<li><strong>对App包的散列值签名的签名文件</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Mac的公钥</strong>上传至<strong>苹果后台</strong>后，苹果会用自己的<strong>私钥</strong>对Mac的公钥进行签名， 签名后生成：</p>
+<ul>
+<li>用<strong>苹果私钥</strong>对<strong>Mac公钥</strong>签名的签名文件 (.cer 文件)</li>
+</ul>
+</li>
+<li>
+<p>接着苹果后台，会使用其<strong>私钥</strong>对包括 <strong>.cer文件，devices，Appid， Entitlements</strong>在内文件再次数字签名，并生成</p>
+<ul>
+<li>.mobileprovision 文件
+<ul>
+<li>文件包含 <strong>Mac公钥的数字签名</strong>，devices，Appid， Entitlements**</li>
+<li>以及对以上文件，苹果私钥签名后的数字签名</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>在App 安装进<strong>iOS设备</strong>时, iOS设备首先会用<strong>苹果的公钥</strong>对.mobileprovision 文件进行解密</p>
+<ul>
+<li>如果签名验证通过, 则能接触 <strong>Mac公钥签名</strong>， <strong>devices， AppId， Entitlements</strong>等信息</li>
+<li>如果验证失败， 则会安装失败</li>
+</ul>
+</li>
+<li>
+<p>接下来，还是需要 <strong>苹果的公钥</strong> 对 <strong>Mac的公钥签名信息</strong>进行解密</p>
+<ul>
+<li>如果签名验证通过， 则能拿到可以确保没有问题的<strong>Mac的公钥信息</strong></li>
+<li>如果验证失败， 则会安装失败</li>
+</ul>
+</li>
+<li>
+<p>接下来一步，就是利用 <strong>Mac的公钥信息</strong>验证安装包中的签名(因为Mac打包App时，是使用的自己的<strong>私钥</strong>进行加密的)</p>
+<ul>
+<li>如果签名验证通过， 则可以解出App 的 <strong>mach-o文件，资源文件</strong>等</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfhtbt30lbj31aa0lqwjr.jpg" alt="截屏2020-06-05下午11.06.50"></p>
+<ul>
+<li>
+<p>Mac生成证书操作</p>
+<ul>
+<li>
+<p>先回忆一下，Alice 和 Bob通信过程中，发送公钥经过CA机构签名的过程</p>
+<ul>
+<li>证书生成过程，是Bob在向Alice，发送公钥时，为了避免 <strong>中间人攻击</strong>， 而向<strong>CA认证机构</strong>注册公钥。</li>
+<li><strong>CA认证机构</strong> 用<strong>自己的私钥</strong>施加数字签名，并生成证书</li>
+<li>Alice，在<strong>CA认证机构</strong>处，得到带有Bob方公钥的数字签名</li>
+<li>Alice，使用CA机构的公钥，验证数字签名是否有效，确保Bob公钥的合法性</li>
+<li>Alice，使用接收方的公钥加密，发送消息</li>
+</ul>
+</li>
+<li>
+<p>在Mac 生成证书过程中</p>
+<ul>
+<li>苹果就充当<strong>CA认证机构</strong></li>
+<li>第一步，mac生成 .certSignRequest 文件，其实就是 <strong>Mac 的公钥</strong></li>
+<li>第二步，上传.certSignRequest 文件， 就是<strong>苹果后台用自己的私钥</strong>，对Mac的公钥进行数字签名</li>
+<li>第三步，生成**.cer文件**， 也就是**苹果后台用自己的私钥**，对**Mac的公钥签名**后的**证书**文件</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfhsp4wznej310k0eqh7v.jpg" alt="截屏2020-06-05下午10.44.19"></p>
+<ul>
+<li>
+<p>.mobileprovision文件</p>
+<ul>
+<li>生成.mobileprovision文件的过程，就是选择完 <strong>AppID, .cer文件 , devices</strong>之后，苹果后台又一次对上述文件用<strong>自己的私钥</strong>，进行<strong>签名</strong>的过程，签名之后生成.mobileprovision文件</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfhtgm60ywj319c0jmn52.jpg" alt="截屏2020-06-05下午11.11.16"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfhtgryr0dj314g0kq0xj.jpg" alt="截屏2020-06-05下午11.11.20"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结">总结：</h2>
+<ul>
+<li><strong>.certSigningRequest文件</strong>
+<ul>
+<li><strong>Mac的公钥</strong></li>
+</ul>
+</li>
+<li><strong>.cer文件</strong></li>
+<li>利用<strong>苹果的私钥(CA)</strong>, 对<strong>Mac的公钥</strong>签名，生成的数字签名证书</li>
+<li><strong>.mobileprovision文件</strong>
+<ul>
+<li>利用<strong>苹果私钥</strong>， 对【<strong>.cer + devices + AppID + entitlements</strong>】进行数字签名，生成的文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="appstore下载的app">AppStore下载的App</h2>
+<ul>
+<li>
+<p>如果APP是从AppStore下载安装的，你会发现里面是没有mobileprovision文件的</p>
+</li>
+<li>
+<p>它的验证流程会简单很多，大概如下所示</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfhtqjyz4gj30z60cejt3.jpg" alt="截屏2020-06-05下午11.21.03"></p>
+</li>
+</ul>
+
     </div>
 
     
@@ -353,6 +505,7 @@
 
     <footer class="post-footer">
       <div class="post-tags">
+          <a href="https://zhangxiongfeiv.github.io/tags/ios/">iOS</a>
           <a href="https://zhangxiongfeiv.github.io/tags/ios%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6/">iOS签名机制</a>
           <a href="https://zhangxiongfeiv.github.io/tags/%E5%AE%89%E5%85%A8/">安全</a>
           
@@ -375,8 +528,8 @@
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
-          <a class="next" href="/post/ca%E8%AF%81%E4%B9%A6/">
-            <span class="next-text nav-default">CA证书</span>
+          <a class="next" href="/post/%E5%89%91%E6%8C%87offer53.%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/">
+            <span class="next-text nav-default">剑指offer53.0-n-1中缺失的数字</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">

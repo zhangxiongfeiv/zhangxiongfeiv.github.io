@@ -6,10 +6,28 @@
     <description>Recent content in 数组 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 28 May 2020 22:55:05 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2020 15:45:25 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E6%95%B0%E7%BB%84/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>剑指offer53.0-n-1中缺失的数字</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer53.%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</link>
+      <pubDate>Fri, 05 Jun 2020 15:45:25 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer53.%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
+      <description>面试题53 - II. 0～n-1中缺失的数字 一个长度为n-1的递增排序数组中的所有数字都是唯一的，并且每个数字都在范围0～n-1之内。在范围0～n-</description>
+    </item>
+    
+    <item>
+      <title>278.寻找重复数</title>
+      <link>https://zhangxiongfeiv.github.io/post/278.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</link>
+      <pubDate>Fri, 05 Jun 2020 12:55:09 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/278.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</guid>
+      <description>287. 寻找重复数 给定一个包含 n + 1 个整数的数组 nums，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设只有一个重复的整数，</description>
+    </item>
     
     <item>
       <title>01.08零矩阵</title>
