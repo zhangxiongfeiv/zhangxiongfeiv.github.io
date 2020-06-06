@@ -6,10 +6,19 @@
     <description>Recent content in 双指针 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Jun 2020 11:13:38 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2020 21:31:33 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>剑指offe21.调整数组顺序使奇数位于偶数前面</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offe21.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</link>
+      <pubDate>Sat, 06 Jun 2020 21:31:33 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offe21.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</guid>
+      <description>面试题21. 调整数组顺序使奇数位于偶数前面 输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位</description>
+    </item>
     
     <item>
       <title>团灭两数之和问题</title>
