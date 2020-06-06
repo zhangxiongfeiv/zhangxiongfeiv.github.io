@@ -132,6 +132,235 @@
     </item>
     
     <item>
+      <title>团灭两数之和问题</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Sat, 06 Jun 2020 11:13:38 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98/</guid>
+      
+        <description>&lt;h1 id=&#34;1-两数之和httpsleetcode-cncomproblemstwo-sum&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/two-sum/&#34;&gt;1. 两数之和&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。&lt;/p&gt;
+&lt;p&gt;你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。&lt;/p&gt;
+&lt;p&gt;示例:&lt;/p&gt;
+&lt;p&gt;给定 nums = [2, 7, 11, 15], target = 9&lt;/p&gt;
+&lt;p&gt;因为 nums[0] + nums[1] = 2 + 7 = 9
+所以返回 [0, 1]&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/two-sum
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
+&lt;h3 id=&#34;思路一&#34;&gt;思路一：&lt;/h3&gt;
+&lt;p&gt;暴力法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;两遍for循环，从头开始遍历元素与后边元素依次相加和target比较&lt;/li&gt;
+&lt;li&gt;当和target相等时， 则为最终结果&lt;/li&gt;
+&lt;li&gt;遍历到尾部都不同时，开始第二轮循环&lt;/li&gt;
+&lt;li&gt;第二个元素执行上述操作&lt;/li&gt;
+&lt;li&gt;&amp;hellip;.&lt;/li&gt;
+&lt;li&gt;循环到末尾仍然没有元素之和 == target时，return null&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 暴力法 - 两层循环
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;twoSum&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; m &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;m &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;m&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;};&lt;/span&gt;
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析:&lt;/p&gt;
+&lt;p&gt;时间复杂度 : O(N ^ 2)&lt;/p&gt;
+&lt;p&gt;空间复杂度: O(1)&lt;/p&gt;
+&lt;p&gt;暴力破解虽然 &lt;strong&gt;ac&lt;/strong&gt;，但是执行用时特别长，&lt;/p&gt;
+&lt;h3 id=&#34;思路二&#34;&gt;思路二：&lt;/h3&gt;
+&lt;p&gt;HashMap&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;以空间换时间的思想&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用HashMap存储 &amp;lt;差值 : index&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;遍历数组， 如果map的key中包含当前元素的值。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;说明当前元素的值 + map中取出的下标处指向的值和为 target&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果map的key中不包含当前元素的值&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;则将 target 与 当前元素的差值 : 当前元素下标 存入字典&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;遍历完毕，如果没有找到一对元素和为target， 则return null&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 利用hashmap减少查询时间
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/*
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;* HashMap中保存{差值 ：index}
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;* 遍历， 如果map的key包含 取到的值。则取出i和 key对应的value
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;* */&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;twoSum1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+    HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; map &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; m &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;containsKey&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;m&lt;span style=&#34;color:#f92672&#34;&gt;)){&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;m&lt;span style=&#34;color:#f92672&#34;&gt;),&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;};&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;target &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; m&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析 ：&lt;/p&gt;
+&lt;p&gt;时间复杂度 : O(N)  遍历一遍数组&lt;/p&gt;
+&lt;p&gt;空间复杂度 : O(N)  利用了额外的字典存储空间&lt;/p&gt;
+&lt;h1 id=&#34;题目进阶&#34;&gt;题目进阶：&lt;/h1&gt;
+&lt;h1 id=&#34;167-两数之和-ii---输入有序数组httpsleetcode-cncomproblemstwo-sum-ii-input-array-is-sorted&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/&#34;&gt;167. 两数之和 II - 输入有序数组&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。&lt;/p&gt;
+&lt;p&gt;函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。&lt;/p&gt;
+&lt;p&gt;说明:&lt;/p&gt;
+&lt;p&gt;返回的下标值（index1 和 index2）不是从零开始的。
+你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。
+示例:&lt;/p&gt;
+&lt;p&gt;输入: numbers = [2, 7, 11, 15], target = 9
+输出: [1,2]
+解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;题解-1&#34;&gt;题解：&lt;/h2&gt;
+&lt;p&gt;此题目与上边的题目非常类似, 唯一区别之处在于，本题中的&lt;strong&gt;数组是有序的&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;仍然可以用上题中，两种解法解决。&lt;/p&gt;
+&lt;h3 id=&#34;思路一-1&#34;&gt;思路一：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 暴力法，两层循环
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 时间复杂度 : O(N ^ 2)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 空间复杂度 : O(1)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 代码逻辑简单，粗暴
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * */&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;twoSum&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; m &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;m &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;m &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;n &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;};&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfietf8pgpj30oq06mjs5.jpg&#34; alt=&#34;暴力法&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;思路二-1&#34;&gt;思路二：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 字典存储遍历过的值
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 用map 存储 &amp;lt;target - num, num&amp;gt;. 遍历下一个元素时，如果 map的key中包含。说明和为target。
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 遍历完毕，没找到，则返回空
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 时间复杂度 : O(N)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 空间复杂度 : O(N)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * */&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;twoSum1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; map &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;containsKey&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num&lt;span style=&#34;color:#f92672&#34;&gt;),&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;};&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;target&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;numbers&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfifqi4jiqj30ng06c3z9.jpg&#34; alt=&#34;哈希表&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;思路三&#34;&gt;思路三：&lt;/h3&gt;
+&lt;p&gt;以上两种解法中，我们完全没有用到&lt;strong&gt;有序数组&lt;/strong&gt;这个条件。&lt;/p&gt;
+&lt;p&gt;那么，如何利用&lt;strong&gt;有序&lt;/strong&gt;这个条件呢？&lt;/p&gt;
+&lt;p&gt;看到&lt;strong&gt;有序&lt;/strong&gt;，首先想到的是不是可以用二分查找？&lt;/p&gt;
+&lt;p&gt;用二分查找进行了尝试，发现不太好实现。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;因为一个最小的数字和一个最大的数字，和有可能刚好为target&lt;/li&gt;
+&lt;li&gt;二分方貌似不能缩小范围。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以，我们利用本题中的&lt;strong&gt;双指针法&lt;/strong&gt;解决问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先用两个指针 begian = 1, end = nums.length - 1; 分别指向数组的开头和末尾&lt;/li&gt;
+&lt;li&gt;while循环(循环条件 begain &amp;lt; end)，计算两个指针指向元素的和&lt;strong&gt;sum&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;当&lt;strong&gt;sum&lt;/strong&gt; == target时，begain 和 end 即为最终结果&lt;/li&gt;
+&lt;li&gt;当&lt;strong&gt;sum&lt;/strong&gt; &amp;gt; target时, end &amp;ndash;&lt;/li&gt;
+&lt;li&gt;当sum &amp;lt; target时, end ++&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;循环过程中，一直没有 sum == target 的情况，则返回null&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 因为我们完全没有用到升序数组这个条件
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 因为时有序数组，所以想到使用二分的思想解决问题
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 但是试着写了一会代码，发现二分的思想貌似不能用
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 因为一个最小的数字 + 一个最大的数字。 有可能和刚好为 target
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 所以二分没办法缩小查找范围。不能用
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 所以我们利用，双指针法解决
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 两个指针分别指向数组的开头begain和结尾end
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 依次计算两个指针指向元素的和
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *   如果刚好等于 target 则为最终结果
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *   如果 大于 target。 则 end --； 继续循环
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *   如果 小于 target。 则 begain ++； 继续循环
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *   循环条件 begian &amp;lt; end
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; */&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;twoSum2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; begain &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; end &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;begain &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; end&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;begain&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numbers&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;end&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num1 &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; num2 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;begain&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; end&lt;span style=&#34;color:#f92672&#34;&gt;};&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num1 &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; num2 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+            end &lt;span style=&#34;color:#f92672&#34;&gt;--;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
+            begain &lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfig15lnitj30no06sdgl.jpg&#34; alt=&#34;双指针&#34;&gt;&lt;/p&gt;
+&lt;p&gt;复杂度分析 :&lt;/p&gt;
+&lt;p&gt;时间复杂度 : O(N)&lt;/p&gt;
+&lt;p&gt;空间复杂度 : O(1)&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>404.左叶子和</title>
       <link>https://zhangxiongfeiv.github.io/post/404.%E5%B7%A6%E5%8F%B6%E5%AD%90%E5%92%8C/</link>
       <pubDate>Sat, 06 Jun 2020 01:06:51 +0800</pubDate>
@@ -2719,78 +2948,6 @@ n 不超过1690。&lt;/p&gt;
     &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;时间复杂度: O(M * N)&lt;/p&gt;
 &lt;p&gt;空间复杂度: O(M + N)&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>01.07旋转矩阵</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.07%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5/</link>
-      <pubDate>Thu, 28 May 2020 22:52:33 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/01.07%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5/</guid>
-      
-        <description>&lt;h4 id=&#34;面试题-0107-旋转矩阵httpsleetcode-cncomproblemsrotate-matrix-lcci&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/rotate-matrix-lcci/&#34;&gt;面试题 01.07. 旋转矩阵&lt;/a&gt;&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;给你一幅由 N × N 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。&lt;/p&gt;
-&lt;p&gt;不占用额外内存空间能否做到？&lt;/p&gt;
-&lt;p&gt;示例 1:&lt;/p&gt;
-&lt;p&gt;给定 matrix =
-[
-[1,2,3],
-[4,5,6],
-[7,8,9]
-],&lt;/p&gt;
-&lt;p&gt;原地旋转输入矩阵，使其变为:
-[
-[7,4,1],
-[8,5,2],
-[9,6,3]
-]
-示例 2:&lt;/p&gt;
-&lt;p&gt;给定 matrix =
-[
-[ 5, 1, 9,11],
-[ 2, 4, 8,10],
-[13, 3, 6, 7],
-[15,14,12,16]
-],&lt;/p&gt;
-&lt;p&gt;原地旋转输入矩阵，使其变为:
-[
-[15,13, 2, 5],
-[14, 3, 4, 1],
-[12, 6, 8, 9],
-[16, 7,10,11]
-]&lt;/p&gt;
-&lt;p&gt;来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/rotate-matrix-lcci
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/*
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;            0,0 -&amp;gt; 0,3 -&amp;gt; 3,3 -&amp;gt; 3,0 -&amp;gt; 0,0
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;            0,1 -&amp;gt; 1,3 -&amp;gt; 3,2 -&amp;gt; 2,0 -&amp;gt; 0,1
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;            0,2 -&amp;gt; 2,3 -&amp;gt; 3,1 -&amp;gt; 1,0 -&amp;gt; 0,2
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;            0,3 -&amp;gt; 3,3 -&amp;gt; 3,0 -&amp;gt; 0,0 -&amp;gt; 0,3
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     */&lt;/span&gt;
-
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;rotate&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[][]&lt;/span&gt; matrix&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; matrix&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; matrix&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1 &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-                &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; tmp &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-                matrix&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-                matrix&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-                matrix&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-                matrix&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tmp&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;时间复杂度 ：O(N ^ 2)&lt;/p&gt;
-&lt;p&gt;空间复杂度 : O(1)&lt;/p&gt;
-&lt;h4 id=&#34;heading&#34;&gt;&lt;/h4&gt;
 </description>
       
     </item>
