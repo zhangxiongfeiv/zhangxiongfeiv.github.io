@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>队列 on 飞熊&#39;s Blogs</title>
-    <link>https://zhangxiongfeiv.github.io/tags/%E9%98%9F%E5%88%97/</link>
+    <link>httpsps://zhangxiongfeiv.github.io/tags/%E9%98%9F%E5%88%97/</link>
     <description>Recent content in 队列 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 25 Apr 2020 18:25:18 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E9%98%9F%E5%88%97/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="httpsps://zhangxiongfeiv.github.io/tags/%E9%98%9F%E5%88%97/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>队列</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97/</link>
+      <link>httpsps://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97/</link>
       <pubDate>Sat, 25 Apr 2020 18:25:18 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97/</guid>
+      <guid>httpsps://zhangxiongfeiv.github.io/post/%E9%98%9F%E5%88%97/</guid>
       <description>队列 一，定义 队列是一种特殊的线性表，只能在头尾两端进行操作 队尾(rear) : 只能从队尾添加元素，一般叫做enQueue,入队 对头(front</description>
     </item>
     
     <item>
       <title>225.用队列实现栈</title>
-      <link>https://zhangxiongfeiv.github.io/post/225.%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88/</link>
+      <link>httpsps://zhangxiongfeiv.github.io/post/225.%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88/</link>
       <pubDate>Thu, 25 Apr 2019 18:25:18 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/225.%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88/</guid>
+      <guid>httpsps://zhangxiongfeiv.github.io/post/225.%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88/</guid>
       <description>225. 用队列实现栈 使用队列实现栈的下列操作： push(x) &amp;ndash; 元素 x 入栈 pop() &amp;ndash; 移除栈顶元素 top() &amp;ndash; 获取栈顶元素 empty() &amp;ndash; 返回栈是否为空 注意: 你只能使用队列的基本操作&amp;nd</description>
     </item>
     
