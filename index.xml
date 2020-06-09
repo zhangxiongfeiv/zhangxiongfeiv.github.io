@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>飞熊&#39;s Blogs</title>
-    <link>httpsps://zhangxiongfeiv.github.io/</link>
+    <link>https://zhangxiongfeiv.github.io/</link>
     <description>Recent content on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 29 Dec 2018 20:24:28 +0800</lastBuildDate>
     
-        <atom:link href="httpsps://zhangxiongfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://zhangxiongfeiv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>leetcode200题回顾与总结</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</link>
+      <link>https://zhangxiongfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</link>
       <pubDate>Thu, 28 May 2020 10:09:44 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</guid>
       
         <description>&lt;h1 id=&#34;2020527总结&#34;&gt;2020.5.27总结&lt;/h1&gt;
 &lt;p&gt;截止 5.27日，leetcode总刷题数到达200，写一篇文章以回顾，总结。&lt;/p&gt;
@@ -132,11 +132,223 @@
     </item>
     
     <item>
+      <title>Charles为什么能抓https?</title>
+      <link>https://zhangxiongfeiv.github.io/post/charles%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E6%8A%93https/</link>
+      <pubDate>Tue, 09 Jun 2020 10:36:04 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/charles%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E6%8A%93https/</guid>
+      
+        <description>&lt;h1 id=&#34;经历&#34;&gt;经历&lt;/h1&gt;
+&lt;p&gt;曾经去某公司ms, 公司名称就不透露了， 面试官问到，&lt;strong&gt;Charles为什么能抓https?&lt;/strong&gt; 当时没回答上来。一年半以后，终于把有关https &lt;strong&gt;加密/数字签名/证书,&lt;/strong&gt; 以及&lt;strong&gt;Charles抓https原理&lt;/strong&gt;等整理了一遍。&lt;/p&gt;
+&lt;h1 id=&#34;姐妹篇&#34;&gt;姐妹篇&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86&#34;&gt;简单了解对称和非对称加密&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhangxiongfeiv.github.io/post/%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0&#34;&gt;单向散列函数&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhangxiongfeiv.github.io/post/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D&#34;&gt;数字签名&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhangxiongfeiv.github.io/post/ca%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6&#34;&gt;CA数字证书&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;安全的https&#34;&gt;安全的https&lt;/h1&gt;
+&lt;p&gt;我们都知道，https通过一系列的 &lt;strong&gt;加密，单项散列函数, 数字签名，数字证书&lt;/strong&gt;等操作来避免以下不安全的情况&lt;/p&gt;
+&lt;p&gt;(消息发送者以下简称 &lt;strong&gt;sender&lt;/strong&gt;，消息接收者一下简称 &lt;strong&gt;receiver&lt;/strong&gt;)&lt;/p&gt;
+&lt;h2 id=&#34;明文传输被窃听&#34;&gt;明文传输被窃听&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;SSL，TSL中的混合密码加密
+&lt;ul&gt;
+&lt;li&gt;对称密码加密(DES,3DES,AES等)无法解决&lt;strong&gt;密钥配送&lt;/strong&gt;问题&lt;/li&gt;
+&lt;li&gt;公钥密码加密(公钥加密，私钥解密) 解决了&lt;strong&gt;密钥配送&lt;/strong&gt;问题，但是效率低&lt;/li&gt;
+&lt;li&gt;所以采用 &lt;strong&gt;混合密码加密&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;receiver&lt;/strong&gt;生成一对 &lt;strong&gt;公钥，私钥&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;recerver&lt;/strong&gt; 将生成的&lt;strong&gt;公钥&lt;/strong&gt;发送给&lt;strong&gt;sender&lt;/strong&gt;，私钥自己保存&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sender&lt;/strong&gt;随机生成 &lt;strong&gt;会话密钥&lt;/strong&gt;(对称加密的密钥)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sender&lt;/strong&gt;使用&lt;strong&gt;receiver&lt;/strong&gt;的公钥，加密随机密钥&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sender&lt;/strong&gt;使用 &lt;strong&gt;公钥加密过的随机密钥&lt;/strong&gt; &lt;strong&gt;对称机密&lt;/strong&gt; &lt;strong&gt;要发送的消息&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sender&lt;/strong&gt;把&lt;strong&gt;加密后的随机密钥&lt;/strong&gt; 和 &lt;strong&gt;对称机密过的消息体&lt;/strong&gt; 都发送给&lt;strong&gt;receiver&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;receiver&lt;/strong&gt;在接收到消息时，先使用自己&lt;strong&gt;私钥&lt;/strong&gt; 解密出 &lt;strong&gt;随机密钥&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;再使用&lt;strong&gt;随机密钥&lt;/strong&gt;, 解密出消息体&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;信息防篡改&#34;&gt;&lt;strong&gt;信息防篡改&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;但是使用过上述&lt;strong&gt;加解密&lt;/strong&gt;方法后，依然会存在信息&lt;strong&gt;被篡改&lt;/strong&gt;的风险
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;sender&lt;/strong&gt; 发送的内容可能会被&lt;strong&gt;篡改&lt;/strong&gt;，或者有人&lt;strong&gt;伪装&lt;/strong&gt;发送消息&lt;/li&gt;
+&lt;li&gt;问题来了，如何确定&lt;strong&gt;消息的真实性&lt;/strong&gt;？防止&lt;strong&gt;被篡改&lt;/strong&gt;，&lt;strong&gt;伪装，否认&lt;/strong&gt;？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;解决方法 : &lt;strong&gt;数字签名&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;sender&lt;/strong&gt; 使用 自己的&lt;strong&gt;私钥&lt;/strong&gt; 加密消息(签名)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;receiver&lt;/strong&gt; 使用 &lt;strong&gt;sender的公钥&lt;/strong&gt; 解密消息&lt;/li&gt;
+&lt;li&gt;可以看出来，&lt;strong&gt;数字签名 ，其实就是将消息加密反过来使用&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;消息发送过程就变成这样：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;sender&lt;/strong&gt; 将 &lt;strong&gt;加密后的消息&lt;/strong&gt;发送给&lt;strong&gt;receiver&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;并且，用&lt;strong&gt;自己的私钥加密&lt;/strong&gt; &lt;strong&gt;消息体的散列值&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;将&lt;strong&gt;加密后的消息&lt;/strong&gt;，以及&lt;strong&gt;数字签名&lt;/strong&gt;一块发送给&lt;strong&gt;receiver&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;reveiver&lt;/strong&gt; 解密出消息后，对消息进行&lt;strong&gt;单向散列函数&lt;/strong&gt;计算出散列值,并解密出&lt;strong&gt;数字签名&lt;/strong&gt;中的&lt;strong&gt;散列值&lt;/strong&gt;，如果一致，说明不是被篡改。 否则消息被篡改。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数字签名&lt;/strong&gt;解决的问题
+&lt;ul&gt;
+&lt;li&gt;确认消息的&lt;strong&gt;完整性&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;识别消息是否&lt;strong&gt;被篡改&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;防止消息发送者&lt;strong&gt;抵赖&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;防伪装&#34;&gt;&lt;strong&gt;防伪装&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数字签名&lt;/strong&gt;无法解决的问题？
+&lt;ul&gt;
+&lt;li&gt;要使用 &lt;strong&gt;数字签名&lt;/strong&gt;， 前提得保证 用于验证签名的&lt;strong&gt;公钥&lt;/strong&gt;，&lt;strong&gt;必须是真正的发送者的。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;如果遇到了&lt;strong&gt;中间人攻击&lt;/strong&gt;(&lt;strong&gt;Man-In-MiddleAttack)(MITM)&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;中间人伪装再 &lt;strong&gt;sender&lt;/strong&gt; 和 &lt;strong&gt;receiver&lt;/strong&gt;之间, 发送伪造的&lt;strong&gt;公钥&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;那么，数字签名，就是去了q签名的效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;所以要&lt;strong&gt;保证数字签名有效&lt;/strong&gt;， 首先得验证&lt;strong&gt;公钥的合法性&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;如何保证&lt;strong&gt;公钥的合法性&lt;/strong&gt;呢?&lt;/li&gt;
+&lt;li&gt;答案是： &lt;strong&gt;证书&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;证书&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;也叫&lt;strong&gt;公钥证书&lt;/strong&gt;, (Public-key Certificate，PKC)
+&lt;ul&gt;
+&lt;li&gt;其中包含&lt;strong&gt;姓名，邮箱&lt;/strong&gt;等个人信息，以及此人的&lt;strong&gt;公钥&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;并由 认证机构 (Certificate Authoriry, CA机构)施加&lt;strong&gt;数字签名&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CA&lt;/strong&gt;就是能证明&lt;strong&gt;公钥却属此人&lt;/strong&gt;，且能够&lt;strong&gt;生成数字签名&lt;/strong&gt;的组织
+&lt;ul&gt;
+&lt;li&gt;有国际性组织，政府设立的组织&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;证书&lt;/strong&gt;如何使用？
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;receiver&lt;/strong&gt; 生成 &lt;strong&gt;密钥对&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;receiver&lt;/strong&gt; 在&lt;strong&gt;认证机构&lt;/strong&gt; 注册自己的&lt;strong&gt;公钥&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;认证机构&lt;/strong&gt;用自己的私钥对&lt;strong&gt;receiver&lt;/strong&gt;的公钥进行&lt;strong&gt;数字签名&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sender&lt;/strong&gt;得到带有&lt;strong&gt;数字签名&lt;/strong&gt;的 &lt;strong&gt;receiver&lt;/strong&gt; 公钥(也就是&lt;strong&gt;证书&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;receiver&lt;/strong&gt;使用&lt;strong&gt;认证机构的公钥&lt;/strong&gt;验证签名，验证&lt;strong&gt;公钥的合法性&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sender&lt;/strong&gt; 开始用 &lt;strong&gt;receiver&lt;/strong&gt; 的公钥加密消息并开始通信&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;综合以上&lt;/strong&gt;, &lt;strong&gt;https&lt;/strong&gt; 可以做到了 &lt;strong&gt;防窃听，防止信息被篡改， 防伪装&lt;/strong&gt;， 确保了通信过程的安全。&lt;/p&gt;
+&lt;h1 id=&#34;为何-charles-能抓包-https&#34;&gt;为何 Charles 能抓包 https?&lt;/h1&gt;
+&lt;p&gt;既然&lt;strong&gt;Https&lt;/strong&gt;使用了上述一系列的能保证 &lt;strong&gt;防止窃听，防止信息被篡改，防止伪装&lt;/strong&gt;，那么为什么 Charles 还能抓 &lt;strong&gt;Https&lt;/strong&gt;请求呢？&lt;/p&gt;
+&lt;p&gt;这是不是和 &lt;strong&gt;Https&lt;/strong&gt; 的初衷相悖？&lt;/p&gt;
+&lt;p&gt;下边我们来看一下，&lt;strong&gt;Chales官网&lt;/strong&gt;给出的&lt;strong&gt;SSL代理&lt;/strong&gt;的解释&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;ssl-proxying&#34;&gt;SSL Proxying&lt;/h3&gt;
+&lt;p&gt;Charles can be used as a man-in-the-middle HTTPS proxy, enabling you to view in plain text the communication between web browser and SSL web server.&lt;/p&gt;
+&lt;p&gt;Charles does this by becoming a man-in-the-middle. Instead of your browser seeing the server’s certificate, Charles dynamically generates a certificate for the server and signs it with its own root certificate (the Charles CA Certificate). Charles receives the server’s certificate, while your browser receives Charles’s certificate. Therefore you will see a security warning, indicating that the root authority is not trusted. If you add the Charles CA Certificate to your trusted certificates you will no longer see any warnings – see below for how to do this.&lt;/p&gt;
+&lt;p&gt;Charles still communicates via SSL to the web server. The communication is SSL (encrypted) from web browser to Charles and also SSL (encrypted) from Charles to the web server.&lt;/p&gt;
+&lt;p&gt;This functionality is essential for debugging secure (SSL) web applications.&lt;/p&gt;
+&lt;p&gt;You may turn on or off this SSL proxying in the Proxy Preferences. With SSL proxying turned off Charles just forwards all SSL traffic directly to the target web server.&lt;/p&gt;
+&lt;h4 id=&#34;choosing-hosts-to-ssl-proxy&#34;&gt;Choosing hosts to SSL Proxy&lt;/h4&gt;
+&lt;p&gt;You must specifically identify the host names you want to enable SSL Proxying on. The list is in the Proxy Settings, SSL tab. You can also right-click on a host name in the structure view and turn on or off SSL Proxying.&lt;/p&gt;
+&lt;p&gt;After adding a host name to the SSL Proxying list you may need to restart Charles for existing browser sessions to change.&lt;/p&gt;
+&lt;p&gt;If you want to SSL Proxy all host names then enter * into the host names list in the SSL Proxying Settings.&lt;/p&gt;
+&lt;h4 id=&#34;trusting-charless-ssl-certificates&#34;&gt;Trusting Charles&amp;rsquo;s SSL Certificates&lt;/h4&gt;
+&lt;p&gt;Charles generates its own certificates for sites, which it signs using a Charles Root Certificate. You will see a warning in your browser, or other application, when it receives that certificate because the Charles Root Certificate is not in your list of trusted root certificates. See &lt;a href=&#34;https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/&#34;&gt;SSL Certificates&lt;/a&gt; for instructions for trusting Charles’s Root Certificate.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;英语翻译水平比较差，配合欧路词典的的翻译，试着翻译了一下:&lt;/p&gt;
+&lt;h2 id=&#34;ssl代理&#34;&gt;SSL代理&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Charles可以作为中间人https代理，让你可以能够以纯文本的方式查看Web浏览器 和 SSL Web服务器之间的通信。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Charles通过成为中间人来做到这一点。 Charles不会让你的浏览器看到服务器的证书，而是动态地为服务器生成了一个证书，并且用Charles的根证书(Charles CA证书)对其进行签名。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Charles收到服务器的证书，而浏览器会收到Charles的证书。因此你将看到一个安全警告，表明根证书不被信任。如果你将Charles的CA证书添加到你手信任的证书中，你将再看不到任何的警告⚠️。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Charles仍然通过SSL与服务器通信。从Web浏览器到Charles的通信是SSL(加密)， 从Charles到服务器通信仍然是SSL(加密).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;此功能对于调试安全(SSL) Web应用程序至关重要。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;你可以在“代理选项”中打开或者关闭SSL代理。 禁用SSL代理后，Charles会将所有的SSL流量直接转发到目标Web服务器。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;选择主机使用ssl代理&#34;&gt;选择主机使用SSL代理&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;你必须明确标识要启用SSL代理的主机名。改列表位于”代理设置”的”SSL” 选项卡中。您也可以在结构视图中右键单击主机名，然后打开或关闭SSL代理。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将主机名添加到SSL代理列表后，你可能需要重新启动Charles以更改现有的浏览器会话。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果对所有主机名进行SSL代理，则在SSL代理设置中的主机名列表输入 “*”。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;信任charles-的-ssl证书&#34;&gt;信任Charles 的 SSL证书&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Charles会为站点生成自己的证书， 并使用Charles 根证书进行签名。 当浏览器或其他应用程序收到改证书时，您会看到警告，因为 Charles根证书不在您的受信任列表中。有关信任Charles的根证书说明，请参阅SSL证书。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结：&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;以下为引用网上大神的总结&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;客户端向服务器发起HTTPS请求&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Charles拦截客户端的请求，伪装成客户端向服务器进行请求&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;服务器向“客户端”（实际上是Charles）返回服务器的CA证书&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Charles拦截服务器的响应，获取服务器证书公钥，然后自己制作一张证书，将服务器证书替换后发送给客户端。（这一步，Charles拿到了服务器证书的公钥）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;客户端接收到“服务器”（实际上是Charles）的证书后，生成一个对称密钥，用Charles的公钥加密，发送给“服务器”（Charles）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Charles拦截客户端的响应，用自己的私钥解密对称密钥，然后用服务器证书公钥加密，发送给服务器。（这一步，Charles拿到了对称密钥）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;服务器用自己的私钥解密对称密钥，向“客户端”（Charles）发送响应&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Charles拦截服务器的响应，替换成自己的证书后发送给客户端&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;至此，连接建立，Charles拿到了 服务器证书的公钥 和 客户端与服务器协商的对称密钥，之后就可以解密或者修改加密的报文了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;简单来说，就是Charles作为“中间人代理”，拿到了 &lt;strong&gt;服务器证书公钥&lt;/strong&gt; 和 HTTPS连接的&lt;strong&gt;对称密钥&lt;/strong&gt;，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;前提是客户端选择&lt;strong&gt;信任并安装Charles的CA证书&lt;/strong&gt;，否则客户端就会“报警”并中止连接。这样看来，HTTPS还是很安全的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfm0slm1fsj31420qmtgb.jpg&#34; alt=&#34;image-20200609142726710&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>Https为什么是安全的？</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/https%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%89%E5%85%A8%E7%9A%84/</link>
+      <link>https://zhangxiongfeiv.github.io/post/https%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%89%E5%85%A8%E7%9A%84/</link>
       <pubDate>Mon, 08 Jun 2020 15:50:47 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/https%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%89%E5%85%A8%E7%9A%84/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/https%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%89%E5%85%A8%E7%9A%84/</guid>
       
         <description>&lt;p&gt;姐妹篇&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;../%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86&#34;&gt;简单了解对称和非对称加密&lt;/a&gt;&lt;/p&gt;
@@ -212,10 +424,10 @@
     
     <item>
       <title>简单了解并查集</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%B9%B6%E6%9F%A5%E9%9B%86/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%B9%B6%E6%9F%A5%E9%9B%86/</link>
       <pubDate>Mon, 08 Jun 2020 13:55:31 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%B9%B6%E6%9F%A5%E9%9B%86/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%B9%B6%E6%9F%A5%E9%9B%86/</guid>
       
         <description>&lt;h1 id=&#34;需求分析&#34;&gt;需求分析&lt;/h1&gt;
 &lt;ul&gt;
@@ -569,10 +781,10 @@
     
     <item>
       <title>剑指offe21.调整数组顺序使奇数位于偶数前面</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offe21.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offe21.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</link>
       <pubDate>Sat, 06 Jun 2020 21:31:33 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offe21.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offe21.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</guid>
       
         <description>&lt;h1 id=&#34;面试题21-调整数组顺序使奇数位于偶数前面httpsleetcode-cncomproblemsdiao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/&#34;&gt;面试题21. 调整数组顺序使奇数位于偶数前面&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -733,10 +945,10 @@
     
     <item>
       <title>团灭两数之和问题</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sat, 06 Jun 2020 11:13:38 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98/</guid>
       
         <description>&lt;h1 id=&#34;1-两数之和httpsleetcode-cncomproblemstwo-sum&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/two-sum/&#34;&gt;1. 两数之和&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -962,10 +1174,10 @@
     
     <item>
       <title>404.左叶子和</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/404.%E5%B7%A6%E5%8F%B6%E5%AD%90%E5%92%8C/</link>
+      <link>https://zhangxiongfeiv.github.io/post/404.%E5%B7%A6%E5%8F%B6%E5%AD%90%E5%92%8C/</link>
       <pubDate>Sat, 06 Jun 2020 01:06:51 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/404.%E5%B7%A6%E5%8F%B6%E5%AD%90%E5%92%8C/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/404.%E5%B7%A6%E5%8F%B6%E5%AD%90%E5%92%8C/</guid>
       
         <description>&lt;h1 id=&#34;404-左叶子之和httpsleetcode-cncomproblemssum-of-left-leaves&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/sum-of-left-leaves/&#34;&gt;404. 左叶子之和&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -1109,10 +1321,10 @@
     
     <item>
       <title>iOS签名机制</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/ios%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6/</link>
+      <link>https://zhangxiongfeiv.github.io/post/ios%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6/</link>
       <pubDate>Fri, 05 Jun 2020 23:26:21 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/ios%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/ios%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6/</guid>
       
         <description>&lt;p&gt;姐妹篇&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;../%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86&#34;&gt;简单了解对称和非对称加密&lt;/a&gt;&lt;/p&gt;
@@ -1271,10 +1483,10 @@
     
     <item>
       <title>剑指offer53.0-n-1中缺失的数字</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer53.%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer53.%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</link>
       <pubDate>Fri, 05 Jun 2020 15:45:25 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer53.%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer53.%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/</guid>
       
         <description>&lt;h1 id=&#34;面试题53---ii-0n-1中缺失的数字httpsleetcode-cncomproblemsque-shi-de-shu-zi-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof/&#34;&gt;面试题53 - II. 0～n-1中缺失的数字&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -1386,10 +1598,10 @@
     
     <item>
       <title>278.寻找重复数</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/278.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</link>
+      <link>https://zhangxiongfeiv.github.io/post/278.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</link>
       <pubDate>Fri, 05 Jun 2020 12:55:09 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/278.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/278.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</guid>
       
         <description>&lt;h2 id=&#34;287-寻找重复数httpsleetcode-cncomproblemsfind-the-duplicate-number&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/find-the-duplicate-number/&#34;&gt;287. 寻找重复数&lt;/a&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -1505,10 +1717,10 @@
     
     <item>
       <title>CA数字证书</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/ca%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6/</link>
+      <link>https://zhangxiongfeiv.github.io/post/ca%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6/</link>
       <pubDate>Fri, 05 Jun 2020 01:51:42 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/ca%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/ca%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6/</guid>
       
         <description>&lt;h1 id=&#34;证书&#34;&gt;证书&lt;/h1&gt;
 &lt;ul&gt;
@@ -1581,10 +1793,10 @@
     
     <item>
       <title>数字签名</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</link>
       <pubDate>Fri, 05 Jun 2020 01:01:20 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</guid>
       
         <description>&lt;p&gt;想象以下场景&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgr9fnnw9j30ma06a0sy.jpg&#34; alt=&#34;截屏2020-06-05上午1.09.51&#34;&gt;&lt;/p&gt;
@@ -1704,10 +1916,10 @@
     
     <item>
       <title>单向散列函数</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</link>
       <pubDate>Thu, 04 Jun 2020 23:42:03 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</guid>
       
         <description>&lt;h1 id=&#34;单向散列函数one-way-hash-function&#34;&gt;单向散列函数(One-way hash function)&lt;/h1&gt;
 &lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
@@ -1834,10 +2046,10 @@
     
     <item>
       <title>简单了解对称和非对称加密</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</link>
       <pubDate>Thu, 04 Jun 2020 13:46:26 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</guid>
       
         <description>&lt;h1 id=&#34;学前须知&#34;&gt;学前须知&lt;/h1&gt;
 &lt;p&gt;学习对称/非对称加密的主要目的是，学习&lt;strong&gt;iOS的签名机制&lt;/strong&gt;. 我们简单的掌握一下，对称/非对称加密，常用算法，以及其原理，有助于我们理解&lt;strong&gt;签名机制&lt;/strong&gt;。&lt;/p&gt;
@@ -2080,10 +2292,10 @@
     
     <item>
       <title>剑指offer.52.两个链表的第一个公共节点</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.52.%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.52.%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</link>
       <pubDate>Tue, 02 Jun 2020 21:54:04 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.52.%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.52.%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</guid>
       
         <description>&lt;h1 id=&#34;面试题52-两个链表的第一个公共节点httpsleetcode-cncomproblemsliang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/&#34;&gt;面试题52. 两个链表的第一个公共节点&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -2196,10 +2408,10 @@
     
     <item>
       <title>剑指offer.60.n个骰子的点数</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.60.n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.60.n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</link>
       <pubDate>Tue, 02 Jun 2020 21:52:35 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.60.n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.60.n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</guid>
       
         <description>&lt;h1 id=&#34;面试题60-n个骰子的点数httpsleetcode-cncomproblemsnge-tou-zi-de-dian-shu-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/&#34;&gt;面试题60. n个骰子的点数&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -2370,10 +2582,10 @@
     
     <item>
       <title>剑指offer.68.二叉树的最近公共祖先</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
       <pubDate>Tue, 02 Jun 2020 21:51:04 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
       
         <description>&lt;h1 id=&#34;面试题68---i-二叉搜索树的最近公共祖先httpsleetcode-cncomproblemser-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/&#34;&gt;面试题68 - I. 二叉搜索树的最近公共祖先&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -2524,10 +2736,10 @@ p、q 为不同节点且均存在于给定的二叉搜索树中。&lt;/p&gt;
     
     <item>
       <title>415.字符串相加</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</link>
+      <link>https://zhangxiongfeiv.github.io/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</link>
       <pubDate>Mon, 01 Jun 2020 22:23:54 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</guid>
       
         <description>&lt;h1 id=&#34;415-字符串相加httpsleetcode-cncomproblemsadd-strings&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/add-strings/&#34;&gt;415. 字符串相加&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -2654,10 +2866,10 @@ num1 和num2 都不包含任何前导零。
     
     <item>
       <title>儿童节快乐-来自leetcode友好的祝福</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E5%84%BF%E7%AB%A5%E8%8A%82%E5%BF%AB%E4%B9%90-%E6%9D%A5%E8%87%AAleetcode%E5%8F%8B%E5%A5%BD%E7%9A%84%E7%A5%9D%E7%A6%8F/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%84%BF%E7%AB%A5%E8%8A%82%E5%BF%AB%E4%B9%90-%E6%9D%A5%E8%87%AAleetcode%E5%8F%8B%E5%A5%BD%E7%9A%84%E7%A5%9D%E7%A6%8F/</link>
       <pubDate>Mon, 01 Jun 2020 17:47:30 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E5%84%BF%E7%AB%A5%E8%8A%82%E5%BF%AB%E4%B9%90-%E6%9D%A5%E8%87%AAleetcode%E5%8F%8B%E5%A5%BD%E7%9A%84%E7%A5%9D%E7%A6%8F/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%84%BF%E7%AB%A5%E8%8A%82%E5%BF%AB%E4%B9%90-%E6%9D%A5%E8%87%AAleetcode%E5%8F%8B%E5%A5%BD%E7%9A%84%E7%A5%9D%E7%A6%8F/</guid>
       
         <description>&lt;h1 id=&#34;61儿童节&#34;&gt;6.1儿童节&lt;/h1&gt;
 &lt;p&gt;今天是6.1儿童节, 今日份 &lt;strong&gt;leetcode 每日一题&lt;/strong&gt;非常友好 , 可以说是儿童节福利题.&lt;/p&gt;
@@ -2718,10 +2930,10 @@ num1 和num2 都不包含任何前导零。
     
     <item>
       <title>归并排序</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</link>
       <pubDate>Sun, 31 May 2020 17:42:58 +0800</pubDate>
       
-      <guid>httpsps://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</guid>
       
         <description>&lt;h1 id=&#34;归并排序merge-sort&#34;&gt;归并排序(merge sort)&lt;/h1&gt;
 &lt;ul&gt;
@@ -2798,64 +3010,6 @@ num1 和num2 都不包含任何前导零。
 &lt;h3 id=&#34;稳定性&#34;&gt;稳定性&lt;/h3&gt;
 &lt;p&gt;属于稳定排序 (相同的元素，不会交换位置)&lt;/p&gt;
 </description>
-      
-    </item>
-    
-    <item>
-      <title>40.最小的k个数</title>
-      <link>httpsps://zhangxiongfeiv.github.io/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/</link>
-      <pubDate>Sat, 30 May 2020 23:50:40 +0800</pubDate>
-      
-      <guid>httpsps://zhangxiongfeiv.github.io/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/</guid>
-      
-        <description>&lt;h2 id=&#34;面试题40-最小的k个数httpsleetcode-cncomproblemszui-xiao-de-kge-shu-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/&#34;&gt;面试题40. 最小的k个数&lt;/a&gt;&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;输入整数数组 arr ，找出其中最小的 k 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。&lt;/p&gt;
-&lt;p&gt;示例 1：&lt;/p&gt;
-&lt;p&gt;输入：arr = [3,2,1], k = 2
-输出：[1,2] 或者 [2,1]
-示例 2：&lt;/p&gt;
-&lt;p&gt;输入：arr = [0,1,2,1], k = 1
-输出：[0]&lt;/p&gt;
-&lt;p&gt;限制：&lt;/p&gt;
-&lt;p&gt;0 &amp;lt;= k &amp;lt;= arr.length &amp;lt;= 10000
-0 &amp;lt;= arr[i] &amp;lt;= 10000&lt;/p&gt;
-&lt;p&gt;来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;题解&#34;&gt;题解：&lt;/h3&gt;
-&lt;p&gt;经典的&lt;strong&gt;最大K问题&lt;/strong&gt;, 一般做法是采用二叉堆&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;求最小的k个数时, 使用大顶堆&lt;/li&gt;
-&lt;li&gt;Java中的优先级队列 PriorityQueue 底层机构是，二叉堆， 且是小顶堆&lt;/li&gt;
-&lt;li&gt;把 PriorityQueue 用作大顶堆时, 需要在PriorityQueue初始化时，传一个比较器进去.&lt;/li&gt;
-&lt;li&gt;把数组中元素一次加入 大顶堆&lt;/li&gt;
-&lt;li&gt;当大顶堆中的元素个数 &amp;gt; k 时， 把堆顶元素弹出&lt;/li&gt;
-&lt;li&gt;遍历完数组后， 大顶堆中剩余的元素为 前 k 个小的元素&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;代码如下:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;getLeastNumbers&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; arr&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-        PriorityQueue&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; queue &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; PriorityQueue&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Comparator&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;compare&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Integer o1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; Integer o2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; o2 &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; o1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;});&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; arr&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            queue&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;arr&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]);&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;queue&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; queue&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;remove&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;queue&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()];&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(!&lt;/span&gt;queue&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()){&lt;/span&gt;
-            res&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;++]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; queue&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;remove&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
       
     </item>
     
