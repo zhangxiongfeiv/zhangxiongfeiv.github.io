@@ -6,7 +6,7 @@
     <description>Recent content in Posts on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 09 Jun 2020 10:36:04 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2020 16:40:17 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,33 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</guid>
       <description>2020.5.27总结 截止 5.27日，leetcode总刷题数到达200，写一篇文章以回顾，总结。 起因 非计算机专业出身的程序员, 经历过很多因</description>
+    </item>
+    
+    <item>
+      <title>递归-汉诺塔问题</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%80%92%E5%BD%92-%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 10 Jun 2020 16:40:17 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%80%92%E5%BD%92-%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/</guid>
+      <description>面试题 08.06. 汉诺塔问题 在经典汉诺塔问题中，有 3 根柱子及 N 个不同大小的穿孔圆盘，盘子可以滑入任意一根柱子。一开始，所有盘子自上而下按升序依次套在第</description>
+    </item>
+    
+    <item>
+      <title>简单了解递归</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E9%80%92%E5%BD%92/</link>
+      <pubDate>Wed, 10 Jun 2020 12:26:51 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E9%80%92%E5%BD%92/</guid>
+      <description>递归(Recursion) 定义： 函数自身直接或间接调用自身，是一种常用的变成技巧。 生活中的递归现象： 从前有座山，山里有座庙，庙里有个老和尚，</description>
+    </item>
+    
+    <item>
+      <title>面试题46.把数字翻译成字符串</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%9D%A2%E8%AF%95%E9%A2%9846.%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+      <pubDate>Tue, 09 Jun 2020 23:01:15 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%9D%A2%E8%AF%95%E9%A2%9846.%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
+      <description>面试题46.把数字翻译成字符串 给定一个数字，我们按照如下规则把它翻译为字符串：0 翻译成 “a” ，1 翻译成 “b”，……，11 翻译成 “l”，……，</description>
     </item>
     
     <item>
@@ -162,33 +189,6 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
       <description>面试题68 - I. 二叉搜索树的最近公共祖先 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树</description>
-    </item>
-    
-    <item>
-      <title>415.字符串相加</title>
-      <link>https://zhangxiongfeiv.github.io/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</link>
-      <pubDate>Mon, 01 Jun 2020 22:23:54 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</guid>
-      <description>415. 字符串相加 给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。 注意： num1 和num2 的长度都小于 5100. num1 和num2 都只包含数字 0-9. num1 和num2 都</description>
-    </item>
-    
-    <item>
-      <title>儿童节快乐-来自leetcode友好的祝福</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%84%BF%E7%AB%A5%E8%8A%82%E5%BF%AB%E4%B9%90-%E6%9D%A5%E8%87%AAleetcode%E5%8F%8B%E5%A5%BD%E7%9A%84%E7%A5%9D%E7%A6%8F/</link>
-      <pubDate>Mon, 01 Jun 2020 17:47:30 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%84%BF%E7%AB%A5%E8%8A%82%E5%BF%AB%E4%B9%90-%E6%9D%A5%E8%87%AAleetcode%E5%8F%8B%E5%A5%BD%E7%9A%84%E7%A5%9D%E7%A6%8F/</guid>
-      <description>6.1儿童节 今天是6.1儿童节, 今日份 leetcode 每日一题非常友好 , 可以说是儿童节福利题. 1431. 拥有最多糖果的孩子 给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第</description>
-    </item>
-    
-    <item>
-      <title>归并排序</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</link>
-      <pubDate>Sun, 31 May 2020 17:42:58 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</guid>
-      <description>归并排序(merge sort) 于1945年，由冯诺伊曼提出首次提出 执行流程 不断地将数组平均分割成两个子序列, 直到不能再分割为止(只有一个元素) 不断地</description>
     </item>
     
   </channel>

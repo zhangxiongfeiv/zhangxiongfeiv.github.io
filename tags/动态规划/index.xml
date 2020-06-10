@@ -6,10 +6,19 @@
     <description>Recent content in 动态规划 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 02 Jun 2020 21:52:35 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2020 23:01:15 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>面试题46.把数字翻译成字符串</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%9D%A2%E8%AF%95%E9%A2%9846.%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+      <pubDate>Tue, 09 Jun 2020 23:01:15 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%9D%A2%E8%AF%95%E9%A2%9846.%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
+      <description>面试题46.把数字翻译成字符串 给定一个数字，我们按照如下规则把它翻译为字符串：0 翻译成 “a” ，1 翻译成 “b”，……，11 翻译成 “l”，……，</description>
+    </item>
     
     <item>
       <title>剑指offer.60.n个骰子的点数</title>
