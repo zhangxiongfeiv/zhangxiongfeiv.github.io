@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>单调栈 · 飞熊&#39;s Blogs</title>
+  <title>单调栈解决Next Great Element问题 - 飞熊&#39;s Blogs</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="飞熊" />
-  <meta name="description" content="飞熊&#39;s Blog&#39;" />
+  <meta name="description" content="单调栈 栈(stack) 是一种特殊的线性表，只能在一端进行操作。 往栈中添加元素，叫做push，入栈 从栈中移除元素，叫做pop，出栈 后进先出的原" />
+
   <meta name="keywords" content="Hugo, iOS, arithmetic" />
 
 
@@ -34,8 +35,8 @@
 <meta name="generator" content="Hugo 0.68.3" />
 
 
-<link rel="canonical" href="https://zhangxiongfeiv.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" />
-<link href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/index.xml" rel="alternate" type="application/rss+xml" title="飞熊&#39;s Blogs" />
+<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3nextgreatelement%E9%97%AE%E9%A2%98/" />
+
 
 
 
@@ -58,15 +59,23 @@
 
 
 
-<meta property="og:title" content="单调栈" />
-<meta property="og:description" content="飞熊&#39;s Blog&#39;" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://zhangxiongfeiv.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" />
-<meta property="og:updated_time" content="2020-06-11T17:47:03+08:00" />
-<meta itemprop="name" content="单调栈">
-<meta itemprop="description" content="飞熊&#39;s Blog&#39;"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="单调栈"/>
-<meta name="twitter:description" content="飞熊&#39;s Blog&#39;"/>
+<meta property="og:title" content="单调栈解决Next Great Element问题" />
+<meta property="og:description" content="单调栈 栈(stack) 是一种特殊的线性表，只能在一端进行操作。 往栈中添加元素，叫做push，入栈 从栈中移除元素，叫做pop，出栈 后进先出的原" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3nextgreatelement%E9%97%AE%E9%A2%98/" />
+<meta property="article:published_time" content="2020-06-11T17:03:20+08:00" />
+<meta property="article:modified_time" content="2020-06-11T17:03:20+08:00" />
+<meta itemprop="name" content="单调栈解决Next Great Element问题">
+<meta itemprop="description" content="单调栈 栈(stack) 是一种特殊的线性表，只能在一端进行操作。 往栈中添加元素，叫做push，入栈 从栈中移除元素，叫做pop，出栈 后进先出的原">
+<meta itemprop="datePublished" content="2020-06-11T17:03:20&#43;08:00" />
+<meta itemprop="dateModified" content="2020-06-11T17:03:20&#43;08:00" />
+<meta itemprop="wordCount" content="190">
+
+
+
+<meta itemprop="keywords" content="栈,单调栈," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="单调栈解决Next Great Element问题"/>
+<meta name="twitter:description" content="单调栈 栈(stack) 是一种特殊的线性表，只能在一端进行操作。 往栈中添加元素，叫做push，入栈 从栈中移除元素，叫做pop，出栈 后进先出的原"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -283,88 +292,151 @@
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-
-<section id="archive" class="archive">
-  
+          <article class="post bg-white">
     
-      <div class="archive-title tag">
-        <h2 class="archive-name">Tag: 单调栈</h2>
+    <header class="post-header">
+      <h1 class="post-title">单调栈解决Next Great Element问题</h1>
+      
+      <div class="post-meta">
+        <time datetime="2020-06-11" class="post-time">
+          Jun 11
+        </time>
+        
+        
+
+        
+        
+
+        
+        
       </div>
+    </header>
+
     
-  
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading"></a></li>
+    <li><a href="#单调栈题目集合">单调栈题目集合</a>
+      <ul>
+        <li><a href="#739-每日温度httpszhangxiongfeivgithubiopost739每日温度"><a href="https://zhangxiongfeiv.github.io/post/739.%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/">739. 每日温度</a></a></li>
+        <li><a href="#496-下一个更大元素-ihttpszhangxiongfeivgithubiopost496下一个更大元素i"><a href="https://zhangxiongfeiv.github.io/post/496.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0i/">496. 下一个更大元素 I</a></a></li>
+        <li><a href="#503-下一个更大元素-iihttpszhangxiongfeivgithubiopost503下一个更大元素ii"><a href="https://zhangxiongfeiv.github.io/post/503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/">503. 下一个更大元素 II</a></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
 
-  
-    <div class="archive-post">
-      <time datetime="2020-06-11" class="archive-post-time">
-        Jun 11
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/" class="archive-post-link">
-          503.下一个更大元素II
-        </a>
-      </span>
+    
+    <div class="post-content">
+      <h1 id="单调栈">单调栈</h1>
+<p><strong>栈(stack)</strong> 是一种特殊的线性表，只能在一端进行操作。</p>
+<ul>
+<li>往栈中添加元素，叫做push，入栈</li>
+<li>从栈中移除元素，叫做pop，出栈</li>
+<li>后进先出的原则，Last In First Out (<strong>LIFO</strong>)</li>
+</ul>
+<h2 id="heading"></h2>
+<p><strong>单调栈</strong>实际上就是栈， 只是给<strong>栈做了一些限制</strong>, 使得每次新添加元素后，栈内的元素都保持有序(<strong>单调递增</strong> 或者 <strong>单调递减</strong>)</p>
+<p><strong>单调栈</strong>用途不太广泛，只处理一种典型的问题， 叫做 <strong>Next Greater Element</strong>.</p>
+<h2 id="单调栈题目集合">单调栈题目集合</h2>
+<h3 id="739-每日温度httpszhangxiongfeivgithubiopost739每日温度"><a href="https://zhangxiongfeiv.github.io/post/739.%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/">739. 每日温度</a></h3>
+<h3 id="496-下一个更大元素-ihttpszhangxiongfeivgithubiopost496下一个更大元素i"><a href="https://zhangxiongfeiv.github.io/post/496.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0i/">496. 下一个更大元素 I</a></h3>
+<h3 id="503-下一个更大元素-iihttpszhangxiongfeivgithubiopost503下一个更大元素ii"><a href="https://zhangxiongfeiv.github.io/post/503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/">503. 下一个更大元素 II</a></h3>
+
     </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+      Jun 11
+      
+    </span>
+  </p>
   
-    <div class="archive-post">
-      <time datetime="2020-06-11" class="archive-post-time">
-        Jun 11
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3nextgreatelement%E9%97%AE%E9%A2%98/" class="archive-post-link">
-          单调栈解决Next Great Element问题
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2020-06-11" class="archive-post-time">
-        Jun 11
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/496.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0i/" class="archive-post-link">
-          496.下一个更大元素I
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2020-06-11" class="archive-post-time">
-        Jun 11
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/739.%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/" class="archive-post-link">
-          739.每日温度
-        </a>
-      </span>
-    </div>
-  
-</section>
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
 
 
+    
+    
 
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://zhangxiongfeiv.github.io/tags/%E6%A0%88/">栈</a>
+          <a href="https://zhangxiongfeiv.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/">单调栈</a>
+          
+        </div>
 
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/">
+            
+            <i class="iconfont">
+              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
 
+            </i>
+            <span class="prev-text nav-default">503.下一个更大元素II</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/496.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0i/">
+            <span class="next-text nav-default">496.下一个更大元素I</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
 
   
   
+
+  
+  
+
   
 
   
   
 
   
-  
 
   
-  
 
   
+
+    
+
   
-
-
-
-
 
         </div>
       </div>

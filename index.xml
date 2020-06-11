@@ -227,10 +227,10 @@
     
     <item>
       <title>单调栈解决Next Great Element问题</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3next-great-element%E9%97%AE%E9%A2%98/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3nextgreatelement%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 11 Jun 2020 17:03:20 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3next-great-element%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3nextgreatelement%E9%97%AE%E9%A2%98/</guid>
       
         <description>&lt;h1 id=&#34;单调栈&#34;&gt;单调栈&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;栈(stack)&lt;/strong&gt; 是一种特殊的线性表，只能在一端进行操作。&lt;/p&gt;
