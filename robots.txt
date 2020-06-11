@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://zhangxiongfeiv.github.io/sitemap.xml
+Sitemap: https://zhangxiongfgfeiv.github.io/sitemap.xml
