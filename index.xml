@@ -132,6 +132,415 @@
     </item>
     
     <item>
+      <title>503.下一个更大元素II</title>
+      <link>https://zhangxiongfeiv.github.io/post/503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/</link>
+      <pubDate>Thu, 11 Jun 2020 17:47:03 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/</guid>
+      
+        <description>&lt;h1 id=&#34;503-下一个更大元素-iihttpsleetcode-cncomproblemsnext-greater-element-ii&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/next-greater-element-ii/&#34;&gt;503. 下一个更大元素 II&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给定一个循环数组（最后一个元素的下一个元素是数组的第一个元素），输出每个元素的下一个更大元素。数字 x 的下一个更大的元素是按数组遍历顺序，这个数字之后的第一个比它更大的数，这意味着你应该循环地搜索它的下一个更大的数。如果不存在，则输出 -1。&lt;/p&gt;
+&lt;p&gt;示例 1:&lt;/p&gt;
+&lt;p&gt;输入: [1,2,1]
+输出: [2,-1,2]
+解释: 第一个 1 的下一个更大的数是 2；
+数字 2 找不到下一个更大的数；
+第二个 1 的下一个最大的数需要循环搜索，结果也是 2。
+注意: 输入数组的长度不会超过 10000。&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/next-greater-element-ii
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;此题目是 739.每日温度的进阶版&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不同之处在于 ，本题是&lt;strong&gt;循环数组&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最重要的思路依然是 &lt;strong&gt;单调栈&lt;/strong&gt;, 所以这里我们先说一下 &lt;strong&gt;单调栈的使用&lt;/strong&gt;，明白了单调栈的使用再看如何解决循环问题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;初始化一个栈，并在栈添加元素过程中，严格遵守从栈底到栈顶，不递增(元素 &amp;gt;= 其上部元素(即靠近栈顶的元素))&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;遍历数组&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当栈不为空，并且 当前元素 &amp;gt; 栈顶元素时，我们就找到了 比 栈顶元素 大的 元素
+&lt;ul&gt;
+&lt;li&gt;这时，需要把结果数组中存储 res[栈顶元素] = 当前元素&lt;/li&gt;
+&lt;li&gt;并且，将栈顶元素出栈，继续拿当前元素 和 新的栈顶元素比较&lt;/li&gt;
+&lt;li&gt;直到栈为空 或者 当前元素 &amp;lt;= 栈顶元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;当栈为空，或者 当前元素 &amp;lt;= 栈顶元素时
+&lt;ul&gt;
+&lt;li&gt;当前元素的下标直接入栈&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;处理循环问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;由于这道题的数组时循环的，我们把数组循环两遍&lt;/li&gt;
+&lt;li&gt;用 % 模拟循环的情况&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nextGreaterElements&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 先将结果数组全部填充为 -1
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;fill&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;res&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 初始化一个 栈 ，并在添加过程中，维护其单调不递增的性质
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; stack &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// 如果栈不为空 且 当前数字 &amp;gt; 栈顶元素
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 我们就找到了 第一个比 栈顶元素 大的 数字
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// res结果数组赋值，栈顶元素弹出
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 当前元素 继续和 新的栈顶元素比较
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(!&lt;/span&gt;stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;peek&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                res&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;pop&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// 栈为空 或者 当前元素 &amp;lt;= 栈顶元素时
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 直接入栈即可
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;push&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析 :&lt;/p&gt;
+&lt;p&gt;时间复杂度 : O(N)&lt;/p&gt;
+&lt;p&gt;空间复杂度 : O(N)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfojhbsvftj30q206k0ti.jpg&#34; alt=&#34;屏幕快照 2020-06-11 下午6.44.55&#34;&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>单调栈解决Next Great Element问题</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3next-great-element%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 11 Jun 2020 17:03:20 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%8D%95%E8%B0%83%E6%A0%88%E8%A7%A3%E5%86%B3next-great-element%E9%97%AE%E9%A2%98/</guid>
+      
+        <description>&lt;h1 id=&#34;单调栈&#34;&gt;单调栈&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;栈(stack)&lt;/strong&gt; 是一种特殊的线性表，只能在一端进行操作。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;往栈中添加元素，叫做push，入栈&lt;/li&gt;
+&lt;li&gt;从栈中移除元素，叫做pop，出栈&lt;/li&gt;
+&lt;li&gt;后进先出的原则，Last In First Out (&lt;strong&gt;LIFO&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;单调栈&lt;/strong&gt;实际上就是栈， 只是给&lt;strong&gt;栈做了一些限制&lt;/strong&gt;, 使得每次新添加元素后，栈内的元素都保持有序(&lt;strong&gt;单调递增&lt;/strong&gt; 或者 &lt;strong&gt;单调递减&lt;/strong&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;单调栈&lt;/strong&gt;用途不太广泛，只处理一种典型的问题， 叫做 &lt;strong&gt;Next Greater Element&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;单调栈题目集合&#34;&gt;单调栈题目集合&lt;/h2&gt;
+&lt;h3 id=&#34;739-每日温度httpszhangxiongfeivgithubiopost739每日温度&#34;&gt;&lt;a href=&#34;https://zhangxiongfeiv.github.io/post/739.%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/&#34;&gt;739. 每日温度&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;496-下一个更大元素-ihttpszhangxiongfeivgithubiopost496下一个更大元素i&#34;&gt;&lt;a href=&#34;https://zhangxiongfeiv.github.io/post/496.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0I/&#34;&gt;496. 下一个更大元素 I&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;503-下一个更大元素-iihttpszhangxiongfeivgithubiopost503下一个更大元素ii&#34;&gt;&lt;a href=&#34;https://zhangxiongfeiv.github.io/post/503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0II/&#34;&gt;503. 下一个更大元素 II&lt;/a&gt;&lt;/h3&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>496.下一个更大元素I</title>
+      <link>https://zhangxiongfeiv.github.io/post/496.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0i/</link>
+      <pubDate>Thu, 11 Jun 2020 17:00:52 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/496.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0i/</guid>
+      
+        <description>&lt;h1 id=&#34;496-下一个更大元素-ihttpsleetcode-cncomproblemsnext-greater-element-i&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/next-greater-element-i/&#34;&gt;496. 下一个更大元素 I&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给定两个 没有重复元素 的数组 nums1 和 nums2 ，其中nums1 是 nums2 的子集。找到 nums1 中每个元素在 nums2 中的下一个比其大的值。&lt;/p&gt;
+&lt;p&gt;nums1 中数字 x 的下一个更大元素是指 x 在 nums2 中对应位置的右边的第一个比 x 大的元素。如果不存在，对应位置输出 -1 。&lt;/p&gt;
+&lt;p&gt;示例 1:&lt;/p&gt;
+&lt;p&gt;输入: nums1 = [4,1,2], nums2 = [1,3,4,2].
+输出: [-1,3,-1]
+解释:
+对于num1中的数字4，你无法在第二个数组中找到下一个更大的数字，因此输出 -1。
+对于num1中的数字1，第二个数组中数字1右边的下一个较大数字是 3。
+对于num1中的数字2，第二个数组中没有下一个更大的数字，因此输出 -1。
+示例 2:&lt;/p&gt;
+&lt;p&gt;输入: nums1 = [2,4], nums2 = [1,2,3,4].
+输出: [3,-1]
+解释:
+对于 num1 中的数字 2 ，第二个数组中的下一个较大数字是 3 。
+对于 num1 中的数字 4 ，第二个数组中没有下一个更大的数字，因此输出 -1 。&lt;/p&gt;
+&lt;p&gt;提示：&lt;/p&gt;
+&lt;p&gt;nums1和nums2中所有元素是唯一的。
+nums1和nums2 的数组大小都不超过1000。&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/next-greater-element-i
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;题解&#34;&gt;题解:&lt;/h2&gt;
+&lt;p&gt;仔细一想，右边第一个大的值， 这不是跟 &lt;strong&gt;每日温度&lt;/strong&gt; 一模一样吗，这道题的确是&lt;strong&gt;每日温度的变形&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;只不过用了两个数组， 需要一个 &lt;strong&gt;哈希表&lt;/strong&gt;来存储遍历过完整数组的结果， 取值即可。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;此题目使用&lt;strong&gt;单调栈&lt;/strong&gt; + &lt;strong&gt;哈希表&lt;/strong&gt;解决&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;因为nums1 包含于 nums2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;遍历 nums2，找到nums2中每个元素，的右边并且比其大的元素，并存入字典中&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;找到 nums2 中每个元素，右边比其大的元素可以使用 &lt;strong&gt;单调栈&lt;/strong&gt;(此题目使用&lt;strong&gt;单调递减栈&lt;/strong&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;依次遍历nums2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;while(stack不为空 并且 当前数字 &amp;gt; 栈顶数字){&lt;/p&gt;
+&lt;p&gt;​	 则 当前数字 就是栈顶数字 右边的第一个比其大的元素&lt;/p&gt;
+&lt;p&gt;​    map.put(stack.pop(), 当前数字)&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;跳出while循环后, 一定会满足 两个条件中的一个 (stack 为 空， 或者当前数字 &amp;lt; 栈顶数字)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;则将 当前数字入栈&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;遍历完毕后， 则 nums2 中所有的元素， 其后边第一个大值都找到了&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;而 nums1 包含与  nums2， 所以根据 map 就可以取出 nums1 在 nums2中 下一个比其大的值。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 单调栈 + 哈希表
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 利用单调递减队列
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 初始化一个 stack， 一个map&amp;lt;数字 : 右边第一个比其大的数字&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 遍历nums2
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *    while（当stack 不为空 并且 当前数字 &amp;gt; 栈顶数字)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *          则当前数字就是栈顶数字右边第一个比其大的元素
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *          map.put(stack.pop(), 当前数字);
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *    当stack 为空   或者 当前数字 &amp;lt; 栈顶数字时(无重复数组，故没有 ==),  将当前数组入栈
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *  遍历完毕后， 则nums2中所有的元素，其后边第一个值都找到了
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *  而nums1 包含于 nums2. 所以根据map就可以取出 nums1在nums2中所有比其大的第一个元素
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * */&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nextGreaterElement&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; map &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+    Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; stack &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums2&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(!&lt;/span&gt;stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;peek&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()){&lt;/span&gt;
+            map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;pop&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(),&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;push&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;nums1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        res&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;keySet&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;contains&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums1&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;])){&lt;/span&gt;
+            res&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums1&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]);&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析 ：&lt;/p&gt;
+&lt;p&gt;时间复杂度 : O(m + n) (其中 m 为nums1的长度， n为num2的长度)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;遍历了nums1 和 nums2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;空间复杂度 : O(n)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用了 跟 nums2容量一致的 map&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;推导过程&#34;&gt;推导过程&lt;/h2&gt;
+&lt;p&gt;纸上模拟过程，有助于理解&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfohcpn1rwj31600u00z0.jpg&#34; alt=&#34;WechatIMG347&#34;&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>739.每日温度</title>
+      <link>https://zhangxiongfeiv.github.io/post/739.%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/</link>
+      <pubDate>Thu, 11 Jun 2020 13:14:14 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/739.%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/</guid>
+      
+        <description>&lt;h1 id=&#34;739-每日温度httpsleetcode-cncomproblemsdaily-temperatures&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/daily-temperatures/&#34;&gt;739. 每日温度&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;根据每日 气温 列表，请重新生成一个列表，对应位置的输出是需要再等待多久温度才会升高超过该日的天数。如果之后都不会升高，请在该位置用 0 来代替。&lt;/p&gt;
+&lt;p&gt;例如，给定一个列表 temperatures = [73, 74, 75, 71, 69, 72, 76, 73]，你的输出应该是 [1, 1, 4, 2, 1, 1, 0, 0]。&lt;/p&gt;
+&lt;p&gt;提示：气温 列表长度的范围是 [1, 30000]。每个气温的值的均为华氏度，都是在 [30, 100] 范围内的整数。&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/daily-temperatures
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;题目解析&#34;&gt;题目解析：&lt;/h2&gt;
+&lt;p&gt;给定列表 temperatures = [73, 74, 75, 71, 69, 72, 76, 73]，为啥输出就是 [1, 1, 4, 2, 1, 1, 0, 0] ？&lt;/p&gt;
+&lt;p&gt;下面来一个个进行解释。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于输入 73，它需要 经过一天 才能等到温度的升高，也就是在第二天的时候，温度升高到 74 ，所以对应的结果是 &lt;strong&gt;1&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;对于输入 74，它需要 经过一天 才能等到温度的升高，也就是在第三天的时候，温度升高到 75 ，所以对应的结果是 1。&lt;/li&gt;
+&lt;li&gt;对于输入 75，它经过 1 天后发现温度是 71，没有超过它，继续等，一直 等了四天，在第七天才等到温度的升高，温度升高到 76 ，所以对应的结果是 4 。&lt;/li&gt;
+&lt;li&gt;对于输入 71，它经过 1 天后发现温度是 69，没有超过它，继续等，一直 等了两天，在第六天才等到温度的升高，温度升高到 72 ，所以对应的结果是 2。&lt;/li&gt;
+&lt;li&gt;对于输入 69，它 经过一天 后发现温度是 72，已经超过它，所以对应的结果是 1 。&lt;/li&gt;
+&lt;li&gt;对于输入 72，它 经过一天 后发现温度是 76，已经超过它，所以对应的结果是 1 。&lt;/li&gt;
+&lt;li&gt;对于输入 76，后续 没有温度 可以超过它，所以对应的结果是 0 。对于输入 73，后续 没有温度 可以超过它，所以对应的结果是 0 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
+&lt;p&gt;理解了题目，我们开始解题&lt;/p&gt;
+&lt;h3 id=&#34;思路一暴力法&#34;&gt;思路一：暴力法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;从头到位遍历元素，取到当前元素与其后边元素挨个比较
+&lt;ul&gt;
+&lt;li&gt;当后边元素 &amp;lt;= 当前元素时，继续向后遍历&lt;/li&gt;
+&lt;li&gt;当 后边元素 &amp;gt; 当前元素时，当前元素升高需要 j - i天 (j , i分别代表后边元素 和 当前元素的下标)&lt;/li&gt;
+&lt;li&gt;遍历到最后，一只没有比当前元素大的温度，则其为0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;代码如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dailyTemperatures&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; n1&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                res&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析&lt;/p&gt;
+&lt;p&gt;时间复杂度 : O(N ^ 2)&lt;/p&gt;
+&lt;p&gt;空间复杂度 : O(1)&lt;/p&gt;
+&lt;p&gt;提交后， 虽然ac了，但是耗时很长，见截图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfoad6xfr3j30ps062js6.jpg&#34; alt=&#34;屏幕快照 2020-06-11 下午1.21.31&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;思路二-单调递减栈&#34;&gt;思路二： 单调递减栈&lt;/h3&gt;
+&lt;p&gt;题目的标签是栈，那么我们是否可以利用栈来解决问题呢？答案是可以的，利用&lt;strong&gt;单调递减栈&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;初始化一个&lt;strong&gt;栈&lt;/strong&gt;，并且维护此栈的元素&lt;strong&gt;从栈底到栈顶单调递减&lt;/strong&gt;，栈中存放元素的下标&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从头到尾遍历元素&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;while循环执行条件： &lt;strong&gt;栈为空 并且 元素 大于 栈顶元素&lt;/strong&gt; 时
+&lt;ul&gt;
+&lt;li&gt;res[stack.peek()] = i - stack.pop();&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;while执行完毕，则一定满足 &lt;strong&gt;栈&lt;/strong&gt;为空，或者&lt;strong&gt;元素小于等于栈顶元素时&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;这时，将元素的下标直接入栈&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下边我在纸上模拟了一遍，第一个测试用例 &lt;strong&gt;使用单调递减栈&lt;/strong&gt; 的执行流程，如图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfoajyr5qmj315h0u0dnk.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dailyTemperatures&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 单调递减栈, 存放元素下标
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; stack &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 栈不为空 且 当前元素 &amp;gt; 栈顶元素
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(!&lt;/span&gt;stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;peek&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]){&lt;/span&gt;
+            res&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;peek&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;pop&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        
+        &lt;span style=&#34;color:#75715e&#34;&gt;// while循环执行完毕，一定满足 两个条件:栈为空 或者 当前元素 &amp;lt;= 栈顶元素 两者之一
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// 直接把当前元素的 下标 入栈
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;push&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析 :&lt;/p&gt;
+&lt;p&gt;时间复杂度 : O(N)&lt;/p&gt;
+&lt;p&gt;空间复杂度 : O(N)&lt;/p&gt;
+&lt;p&gt;此解法，就比暴力法 优秀很多了.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfoaonxhk9j30p006mt9h.jpg&#34; alt=&#34;屏幕快照 2020-06-11 下午1.40.28&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;思路三从后往前-动态规划&#34;&gt;思路三：从后往前 动态规划&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;根据题意，从最后一天推到第一天，会简单很多。第一天显然没有升高的可能，结果为0.&lt;/li&gt;
+&lt;li&gt;再看倒数第二天，如果比倒数第一天低， 则为1。如果比倒数第一天高，则也为0&lt;/li&gt;
+&lt;li&gt;由此可见。 求第 i 天的天数时
+&lt;ul&gt;
+&lt;li&gt;如果 T[i + 1] &amp;gt; T[i], 则 res[i] = 1&lt;/li&gt;
+&lt;li&gt;如果 T[i + 1] &amp;lt; T[i]
+&lt;ul&gt;
+&lt;li&gt;如果 res[i + 1] == 0, 则表明 i + 1 以后不会再升高。 所以 res[i] = 0&lt;/li&gt;
+&lt;li&gt;如果 res[i + 1] != 0, 那么就比较 T[i] 和 T[i + i + res[i + 1]] (也就是比较 第 i 天的温度 和 比 i+1 天 温度高的那天的温度)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * - 根据题意，从最后一天推到第一天，会简单很多。第一天显然没有升高的可能，结果为0.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * - 再看倒数第二天，如果比倒数第一天低， 则为1。如果比倒数第一天高，则也为0
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * - 由此可见。 求第 i 天的天数时
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *   - 如果 T[i + 1] &amp;gt; T[i], 则 res[i] = 1
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *   - 如果 T[i + 1] &amp;lt; T[i]
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *     - 如果 res[i + 1] == 0, 则表明 i + 1 以后不会再升高。 所以 res[i] = 0
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *     - 如果 res[i + 1] != 0, 那么就比较 T[i] 和 T[i + i + res[i + 1]] (也就是比较 第 i 天的温度 和 比 i+1 天 温度高的那天的温度)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * */&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dailyTemperatures1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 存放结果的数组
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; dp &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 倒是第一天，肯定不会升高， 为0。 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// 可以省略这句，因为int[] 在 java中每个元素初始值就是 0
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 从倒数第二天开始计算升高的天数
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;--)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                &lt;span style=&#34;color:#75715e&#34;&gt;// 如果 i + 1天 &amp;gt; i天。 则res[i] 为 i
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]){&lt;/span&gt;
+                    dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                    &lt;span style=&#34;color:#75715e&#34;&gt;// 如果 i + 1天 &amp;lt;= i天。
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    &lt;span style=&#34;color:#75715e&#34;&gt;// 并且 res[i + 1] == 0， 说明i + 1以后不会升高。 所以 res[i] = 0
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                    &lt;span style=&#34;color:#75715e&#34;&gt;// 否则，while循环继续比较 i + 1 + res[i + 1] 位置 和 i位置的大小 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    j &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfobnbs54fj30os066js5.jpg&#34; alt=&#34;屏幕快照 2020-06-11 下午2.01.43&#34;&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>递归-汉诺塔问题</title>
       <link>https://zhangxiongfeiv.github.io/post/%E9%80%92%E5%BD%92-%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 10 Jun 2020 16:40:17 +0800</pubDate>
@@ -2456,696 +2865,6 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgqhqdj86j31500dydhk.jpg&#34; alt=&#34;截屏2020-06-05上午12.42.56&#34;&gt;&lt;/p&gt;
 &lt;p&gt;以上便是我们需要大致了解的关于&lt;strong&gt;单向散列函数&lt;/strong&gt;的内容，我们离学习完成&lt;strong&gt;iOS签名机制&lt;/strong&gt;的路上又近了一步。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>简单了解对称和非对称加密</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</link>
-      <pubDate>Thu, 04 Jun 2020 13:46:26 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</guid>
-      
-        <description>&lt;h1 id=&#34;学前须知&#34;&gt;学前须知&lt;/h1&gt;
-&lt;p&gt;学习对称/非对称加密的主要目的是，学习&lt;strong&gt;iOS的签名机制&lt;/strong&gt;. 我们简单的掌握一下，对称/非对称加密，常用算法，以及其原理，有助于我们理解&lt;strong&gt;签名机制&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;为了方便学习，设计4个虚拟人物&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Alice , Bob互相通信&lt;/li&gt;
-&lt;li&gt;Eve ：窃听者&lt;/li&gt;
-&lt;li&gt;Mallory : 主动攻击者&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;如图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgnbhbn5gj30n00bkjt2.jpg&#34; alt=&#34;截屏2020-06-04下午10.53.16&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgnblujvuj30l60jo414.jpg&#34; alt=&#34;截屏2020-06-04下午10.53.20&#34;&gt;&lt;/p&gt;
-&lt;p&gt;在Alice 和 Bob通信的过程中，可能会被 Eve 窃听， 甚至有可能把信息篡改。&lt;/p&gt;
-&lt;h1 id=&#34;如何防止被窃听&#34;&gt;如何防止被窃听？&lt;/h1&gt;
-&lt;p&gt;这就引入了加密机制？&lt;/p&gt;
-&lt;p&gt;Alice在发送消息时, 将消息 &lt;strong&gt;加密&lt;/strong&gt; , Bob收到消息时，将消息 &lt;strong&gt;解密&lt;/strong&gt;， 这时，Eve只能窃听到&lt;strong&gt;密闻&lt;/strong&gt;，信息不会被泄漏。&lt;/p&gt;
-&lt;p&gt;如图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgnlz8052j317g0kygsl.jpg&#34; alt=&#34;截屏2020-06-04下午11.03.29&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;如何加密解密&#34;&gt;如何加密解密？&lt;/h1&gt;
-&lt;p&gt;使用只有Alice 和 Bob知道的特殊的密钥，只有Alice 和 Bob能加解密。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgnpafjk7j30lg0jswfp.jpg&#34; alt=&#34;截屏2020-06-04下午11.06.38&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;密码的类型&#34;&gt;密码的类型&lt;/h2&gt;
-&lt;p&gt;根据密钥的使用方法，可以将密码分为两种&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;对称密码&lt;/p&gt;
-&lt;p&gt;对称密码中，加密的密钥和解密的密钥是相同的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgntu0cgjj30ro08ut9h.jpg&#34; alt=&#34;截屏2020-06-04下午11.09.17&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;公钥密码(非对称密码)&lt;/p&gt;
-&lt;p&gt;公钥密码中，加密用的密钥和解密用的密钥是不同的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgnt2h3dzj30rc07cn0f.jpg&#34; alt=&#34;截屏2020-06-04下午11.10.16&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;对称密码&#34;&gt;对称密码&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;在对称机密中，加密解密时使用的是同一个密码&lt;/li&gt;
-&lt;li&gt;常用的对称加密算法有
-&lt;ul&gt;
-&lt;li&gt;DES&lt;/li&gt;
-&lt;li&gt;3DES&lt;/li&gt;
-&lt;li&gt;AES&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgnw0zwbkj30pq0bw0ut.jpg&#34; alt=&#34;截屏2020-06-04下午11.13.08&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;des&#34;&gt;DES&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;DES是一种将64bit明文加密成64bit密文的对称密码算法，密钥长度是56bit&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;规格上来说，密钥长度是64big，但每隔7个big会设置一个用于错误检查的big，因此密钥长度实质是56bit&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;由于DES每次只能加密64bit的数据，遇到比较大的数据，需要对DES加密进行迭代&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;目前已经可以在短时间内被破解，所以不建议使用&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgnz1n0ezj30wq0860uk.jpg&#34; alt=&#34;截屏2020-06-04下午11.16.04&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;3des&#34;&gt;3DES&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;3DES,将DES重复3次所得到的一种密码算法，也叫做3重DES&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;目前还被一些银行机构使用，但处理速度不高，安全性逐渐暴露出问题&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgo0gszvfj30wa0fgaeg.jpg&#34; alt=&#34;截屏2020-06-04下午11.17.25&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;如果所有密钥都是同一个，则结果与普通的DES是等价的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgo29bvtpj30fm0fa0u6.jpg&#34; alt=&#34;截屏2020-06-04下午11.18.56&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;如果密钥1，密钥3相同，密钥2不同，称为 DES-EDE2&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgo2ck7naj30f60fgtb2.jpg&#34; alt=&#34;截屏2020-06-04下午11.19.00&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;aes-advanced-encryption-standard&#34;&gt;AES (Advanced Encryption Standard)&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;取代DES成为新标准的一种对称密码算法&lt;/li&gt;
-&lt;li&gt;AES的密钥长度为128，192，256bit三种&lt;/li&gt;
-&lt;li&gt;在2000年选择Rijinedael算法作为AES的实现&lt;/li&gt;
-&lt;li&gt;目前AES， 已经逐步取代DES, 3DES成为首选的对称密码算法&lt;/li&gt;
-&lt;li&gt;一般来说，我们也不应该去使用任何自制的密码算法，而是应该使用AES，它经过了全世界密码学家所进行的高品质验证工作&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;密钥配送问题&#34;&gt;密钥配送问题&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;在使用对称密码时，一定会遇到密钥配送问题&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;假设，Alice将使用&lt;strong&gt;对称密码加密过的消息&lt;/strong&gt;发给了Bob&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;只有&lt;strong&gt;将密钥发送给Bo&lt;/strong&gt;b，Bob才能完成解密&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;在发送密钥过程中，可能会被Eve窃取密钥，最后Eve也能完成解密&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgo728a2xj30m00qkgq8.jpg&#34; alt=&#34;截屏2020-06-04下午11.23.45&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;如何解决密钥配送问题&#34;&gt;如何解决密钥配送问题？&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;事先共享密钥&lt;/li&gt;
-&lt;li&gt;密钥分配中心&lt;/li&gt;
-&lt;li&gt;Diffe-Hellman密钥交换&lt;/li&gt;
-&lt;li&gt;公钥密码&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;公钥密码public-key-cryptography&#34;&gt;公钥密码(Public-key Cryptography)&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;公钥密码中，密钥分为 &lt;strong&gt;加密密钥，解密密钥&lt;/strong&gt; 2种，它们并不是同一个密钥&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;公钥密码也被成文&lt;strong&gt;非对称密码&lt;/strong&gt; (Asymmestric Cryptographt)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;在公钥密码中&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;加密密钥，一般是公开的，因此该密钥称为&lt;strong&gt;公钥（public key）&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;解密密钥，由消息接收者自己保管的，不能公开，因此也称为&lt;strong&gt;私钥（private key）&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;公钥和私钥是一 一对应的，是不能单独生成的，一对公钥和密钥统称为&lt;strong&gt;密钥对（key pair）&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;由公钥加密的密文，必须使用与该公钥对应的私钥才能解密&lt;/li&gt;
-&lt;li&gt;由私钥加密的密文，必须使用与该私钥对应的公钥才能解密&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgobcnfunj30ji08q0sz.jpg&#34; alt=&#34;截屏2020-06-04下午11.27.47&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;解决密钥配送问题&#34;&gt;解决密钥配送问题&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;由消息的接受者，生成一对公钥，私钥&lt;/li&gt;
-&lt;li&gt;将公钥发给消息的发送者&lt;/li&gt;
-&lt;li&gt;消息的发送者使用公钥加密消息&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgocr524dj30n00o0gms.jpg&#34; alt=&#34;截屏2020-06-04下午11.29.08&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;rsa&#34;&gt;RSA&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;目前使用最广泛的公钥密码算法是 RSA&lt;/li&gt;
-&lt;li&gt;RSA的名字，由它的3位开发者，即Ron Rivest、Adi Shamir、Leonard Adleman的姓氏首字母组成&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;混合密码系统hybrid-cryptosystem&#34;&gt;混合密码系统(Hybrid Cryptosystem)&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;对称密码的缺点&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;不能很好地解决密钥配送问题&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;公钥密码的确定&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;加密解密速度比较慢&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;混合密码系统&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;是将对称密码和公钥密码的优势相结合的方法&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;解决了公钥密码速度慢的问题&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;并通过公钥密码解决了对称密码的密钥配送问题&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;网络上的密码通信所用的SSL/TLS都运用了混合密码系统&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;混合密码加密&#34;&gt;混合密码加密&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;会话密钥（session key）&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;为本次通信随机生成的临时密钥&lt;/li&gt;
-&lt;li&gt;作为对称密码的密钥，用于加密消息，提高速度&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;加密步骤（发送消息）&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;首先，消息发送者要拥有消息接收者的公钥&lt;/li&gt;
-&lt;li&gt;生成会话密钥，作为对称密码的密钥，加密消息&lt;/li&gt;
-&lt;li&gt;用消息接收者的公钥，加密会话密钥&lt;/li&gt;
-&lt;li&gt;将前2步生成的加密结果，一并发给消息接收者&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;发送出去的内容包括&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;用会话密钥加密的消息（加密方法：对称密码）&lt;/li&gt;
-&lt;li&gt;用公钥加密的会话密钥（加密方法：公钥密码）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgoih8p3cj30u011ck0u.jpg&#34; alt=&#34;截屏2020-06-04下午11.34.36&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;混合密码解密&#34;&gt;混合密码解密&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;解密步骤（收到消息）
-&lt;ul&gt;
-&lt;li&gt;消息接收者用自己的私钥解密出会话密钥&lt;/li&gt;
-&lt;li&gt;再用第1步解密出来的会话密钥，解密消息&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgojm1131j30u00x976h.jpg&#34; alt=&#34;截屏2020-06-04下午11.35.44&#34;&gt;&lt;/p&gt;
-&lt;h4 id=&#34;混合密码加密---解密的流程&#34;&gt;混合密码加密 - 解密的流程&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;Alice &amp;raquo;&amp;raquo;&amp;gt; Bob
-&lt;ul&gt;
-&lt;li&gt;发送过程，加密过程
-&lt;ul&gt;
-&lt;li&gt;1.Bob先生成一对公钥、私钥&lt;/li&gt;
-&lt;li&gt;2.Bob把公钥共享给Alice&lt;/li&gt;
-&lt;li&gt;3.Alice随机生成一个会话密钥（临时密钥）&lt;/li&gt;
-&lt;li&gt;4.Alice用会话密钥加密需要发送的消息（使用的是对称密码加密）&lt;/li&gt;
-&lt;li&gt;5.Alice用Bob的公钥加密会话密钥（使用的是公钥密码加密，也就是非对称密码加密）&lt;/li&gt;
-&lt;li&gt;6.Alice把第4、5步的加密结果，一并发送给Bob&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;接收过程，解密过程
-&lt;ul&gt;
-&lt;li&gt;1.Bob利用自己的私钥解密会话密钥（使用的是公钥密码解密，也就是非对称密码解密）&lt;/li&gt;
-&lt;li&gt;2.Bob利用会话密钥解密发送过来的消息（使用的是对称密码解密）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>剑指offer.52.两个链表的第一个公共节点</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.52.%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</link>
-      <pubDate>Tue, 02 Jun 2020 21:54:04 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.52.%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9/</guid>
-      
-        <description>&lt;h1 id=&#34;面试题52-两个链表的第一个公共节点httpsleetcode-cncomproblemsliang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/&#34;&gt;面试题52. 两个链表的第一个公共节点&lt;/a&gt;&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;输入两个链表，找出它们的第一个公共节点。&lt;/p&gt;
-&lt;p&gt;如下面的两个链表：&lt;/p&gt;
-&lt;p&gt;在节点 c1 开始相交。&lt;/p&gt;
-&lt;p&gt;示例 1：&lt;/p&gt;
-&lt;p&gt;输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3
-输出：Reference of the node with value = 8
-输入解释：相交节点的值为 8 （注意，如果两个列表相交则不能为 0）。从各自的表头开始算起，链表 A 为 [4,1,8,4,5]，链表 B 为 [5,0,1,8,4,5]。在 A 中，相交节点前有 2 个节点；在 B 中，相交节点前有 3 个节点。&lt;/p&gt;
-&lt;p&gt;示例 2：&lt;/p&gt;
-&lt;p&gt;输入：intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
-输出：Reference of the node with value = 2
-输入解释：相交节点的值为 2 （注意，如果两个列表相交则不能为 0）。从各自的表头开始算起，链表 A 为 [0,9,1,2,4]，链表 B 为 [3,2,4]。在 A 中，相交节点前有 3 个节点；在 B 中，相交节点前有 1 个节点。&lt;/p&gt;
-&lt;p&gt;示例 3：&lt;/p&gt;
-&lt;p&gt;输入：intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
-输出：null
-输入解释：从各自的表头开始算起，链表 A 为 [2,6,4]，链表 B 为 [1,5]。由于这两个链表不相交，所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。
-解释：这两个链表不相交，因此返回 null。&lt;/p&gt;
-&lt;p&gt;注意：&lt;/p&gt;
-&lt;p&gt;如果两个链表没有交点，返回 null.
-在返回结果后，两个链表仍须保持原有的结构。
-可假定整个链表结构中没有循环。
-程序尽量满足 O(n) 时间复杂度，且仅用 O(1) 内存。
-本题与主站 160 题相同：https://leetcode-cn.com/problems/intersection-of-two-linked-lists/&lt;/p&gt;
-&lt;p&gt;来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
-&lt;h3 id=&#34;思路一-暴力法&#34;&gt;思路一: 暴力法&lt;/h3&gt;
-&lt;p&gt;简单粗暴，思路简单不多做解释了。&lt;/p&gt;
-&lt;p&gt;代码如下:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; ListNode &lt;span style=&#34;color:#a6e22e&#34;&gt;getIntersectionNode&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ListNode headA&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; ListNode headB&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;headA &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-
-            ListNode nodeB &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; headB&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nodeB &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;headA &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nodeB&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nodeB&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-                nodeB &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nodeB&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;next&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-            headA &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; headA&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;next&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析:&lt;/p&gt;
-&lt;p&gt;时间复杂度: O(m * n)&lt;/p&gt;
-&lt;p&gt;空间复杂度: O(1) 没有用到额外的空间复杂度&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfdzd81rk1j30o006kdgm.jpg&#34; alt=&#34;屏幕快照 2020-06-02 下午3.30.32&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;思路二-set存储&#34;&gt;思路二： Set存储&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;拿到这个题目，第一反应是， 遍历一个链表，用set存储，遍历过的节点&lt;/li&gt;
-&lt;li&gt;再次遍历第二个链表，遍历过程中，如果set中包含， 则为相交的第一个节点，直接返回即可&lt;/li&gt;
-&lt;li&gt;遍历到末尾，一直不包含时， 返回null.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;代码如下:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; ListNode &lt;span style=&#34;color:#a6e22e&#34;&gt;getIntersectionNode&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ListNode headA&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; ListNode headB&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-        HashSet&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;ListNode&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; set &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashSet&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;headA &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-            set&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;headA&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-            headA &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; headA&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;next&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;headB &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;set&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;contains&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;headB&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; headB&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            headB &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; headA&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;next&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析:&lt;/p&gt;
-&lt;p&gt;时间复杂度 : O(m + n)&lt;/p&gt;
-&lt;p&gt;空间复杂度 : O(m)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfdz5ihyxpj30ns062gmc.jpg&#34; alt=&#34;屏幕快照 2020-06-02 下午3.07.24&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;思路三-双指针&#34;&gt;思路三： 双指针&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;但是发现此解法一个问题&lt;/strong&gt;, 如果链表A特别长, 而相交节点，在很靠前的位置， 遍历了一整遍链表是不是有点耗时太长了？&lt;/p&gt;
-&lt;p&gt;能不能再做一些优化？&lt;/p&gt;
-&lt;p&gt;接下来，我们是这优化一下。&lt;/p&gt;
-&lt;p&gt;具体思路如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfdzun5i5kj30u0199gqi.jpg&#34; alt=&#34;WechatIMG343&#34;&gt;&lt;/p&gt;
-&lt;p&gt;代码如下:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; ListNode &lt;span style=&#34;color:#a6e22e&#34;&gt;getIntersectionNode&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;ListNode headA&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; ListNode headB&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;headA &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; headB&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; headA&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        
-        ListNode nodeA &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; headA&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        ListNode nodeB &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; headB&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nodeA &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nodeB &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-            
-            nodeA &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nodeA &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt; headB &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; nodeA&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;next&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            nodeB &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nodeB &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt; headA &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; nodeB&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;next&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nodeA &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nodeB&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nodeA&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfe00wpbwqj30n206aaas.jpg&#34; alt=&#34;image-20200602155622127&#34;&gt;&lt;/p&gt;
-&lt;p&gt;复杂度分析 :&lt;/p&gt;
-&lt;p&gt;时间复杂度 : O(m + n)&lt;/p&gt;
-&lt;p&gt;空间复杂度 : O(1)&lt;/p&gt;
-&lt;h2 id=&#34;常用思路&#34;&gt;常用思路&lt;/h2&gt;
-&lt;p&gt;链表题解中，总有一些非常神奇的思路, &lt;strong&gt;求链表的中间节点，判断链表是否有环，找出环形链表入环的节点, 链表倒数第K个节点&lt;/strong&gt;等用到的&lt;strong&gt;快慢指针&lt;/strong&gt;, 本题 &lt;strong&gt;两个链表的第一个公共节点&lt;/strong&gt; 的双指针.&lt;/p&gt;
-&lt;p&gt;说实话，第一次接触这种题目，不容易想到这种思路, 总是会最先想到暴力法 和 set存储等非最优解。 看到最优解时，觉着非常神奇。 哇，原来这种方法轻松解决问题。&lt;/p&gt;
-&lt;p&gt;从暴力解法 直到最优解的探索过程中，体会着一些清奇的思路, 打开以后做题的思路。&lt;/p&gt;
-&lt;p&gt;这种感觉不错～&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>剑指offer.60.n个骰子的点数</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.60.n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</link>
-      <pubDate>Tue, 02 Jun 2020 21:52:35 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.60.n%E4%B8%AA%E9%AA%B0%E5%AD%90%E7%9A%84%E7%82%B9%E6%95%B0/</guid>
-      
-        <description>&lt;h1 id=&#34;面试题60-n个骰子的点数httpsleetcode-cncomproblemsnge-tou-zi-de-dian-shu-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/&#34;&gt;面试题60. n个骰子的点数&lt;/a&gt;&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。&lt;/p&gt;
-&lt;p&gt;你需要用一个浮点数数组返回答案，其中第 i 个元素代表这 n 个骰子所能掷出的点数集合中第 i 小的那个的概率。&lt;/p&gt;
-&lt;p&gt;示例 1:&lt;/p&gt;
-&lt;p&gt;输入: 1
-输出: [0.16667,0.16667,0.16667,0.16667,0.16667,0.16667]
-示例 2:&lt;/p&gt;
-&lt;p&gt;输入: 2
-输出: [0.02778,0.05556,0.08333,0.11111,0.13889,0.16667,0.13889,0.11111,0.08333,0.05556,0.02778]&lt;/p&gt;
-&lt;p&gt;来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
-&lt;p&gt;这道题在leetcode上评级为&lt;strong&gt;简单&lt;/strong&gt;, 然而&lt;strong&gt;dp&lt;/strong&gt;的题目，我以为的简单，就是&lt;strong&gt;斐波那契，爬楼梯，打家劫舍&lt;/strong&gt;这种档次的。&lt;/p&gt;
-&lt;p&gt;此题动态转移方程挺不好想的，所以我认为这道题评级应该在 &lt;strong&gt;中等&lt;/strong&gt;。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;题目要求返回所有可能的点数，从小到大的可能出现的概率&lt;/li&gt;
-&lt;li&gt;点数出现的概率为： &lt;strong&gt;点数出现的次数 / 可能出现的总次数&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;总次数好计算： 6 ^ n.  Java中也就是 &lt;strong&gt;Math.pow(6, n)&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;所以现在的问题转换为, &lt;strong&gt;求所有可能的点数出现的次数&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;这道题使用&lt;strong&gt;动态规划&lt;/strong&gt;解题
-&lt;ul&gt;
-&lt;li&gt;动态规划一般步骤
-&lt;ol&gt;
-&lt;li&gt;定义dp数组的含义&lt;/li&gt;
-&lt;li&gt;确定初始值&lt;/li&gt;
-&lt;li&gt;找出状态转移方程(难点)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;解法一-二维数组dp&#34;&gt;解法一： 二维数组dp&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;定义dp数组的含义&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;初始化二维数组 dp, 其含义为 dp[i][j] 表示 投掷 &lt;strong&gt;i&lt;/strong&gt; 个骰子，总点数为 &lt;strong&gt;j&lt;/strong&gt; 的出现次数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;确定初始值&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;初始为 1 个骰子, 1&amp;hellip;6出现的次数都为 1;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;所以dp数组初始值为：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;       &lt;span style=&#34;color:#75715e&#34;&gt;// 第一阶段 ： 一枚骰子, 出现1...6的次数 都是1
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; 6&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;确定状态转移方程&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;首先再回忆一下， dp[i][j] 的含义表示 &lt;strong&gt;i 个骰子，掷出 j 个点数的次数&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;而 &lt;strong&gt;第 i 个骰子的点数,  都是由 i-1个骰子，再加上 1&amp;hellip;6 和为 j时&lt;/strong&gt;得来.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;所以状态转移方程为,(其中 k 为 [1, 6] 中的数字)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;        dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;j &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;代码如下&#34;&gt;代码如下：&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 动态规划
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;double&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;twoSum&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// dp[i][j] 就表示 投掷i次骰子后，点数j出现的次数
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[][]&lt;/span&gt; dp &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;n &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;6 &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 第一阶段 ： 一枚骰子, 出现1...6的次数 都是1
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; 6&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 外层循环表示 i 个骰子
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#75715e&#34;&gt;// 内层循环表示总点数。i个骰子总点数至少为i，所以循环从i开始. i个骰子最大全是6 * i, 所以最大到 6 * i
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; 6 &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-                &lt;span style=&#34;color:#75715e&#34;&gt;// dp[i][j] 表示投掷 i 个骰子， 投掷出 j 点数的组合个数
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 而 i 个骰子点数 j, 可以由 i - 1个骰子，再加上一个骰子得来
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// dp[i][j] = dp[i - 1][j - k] + dp[i - 1][j - 2] + ... + dp[i - 1][j - 6]
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 换成for循环， 则如下代码
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-                &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; k &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; k &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; 6&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-                    &lt;span style=&#34;color:#75715e&#34;&gt;// k &amp;gt;= j时，表示 没有 dp[i - 1] + 1...6可组成 dp[i][j]. 直接break 退出循环
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;k &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-
-                    dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;j &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;double&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;double&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;5 &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; index &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;].&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            result&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;index &lt;span style=&#34;color:#f92672&#34;&gt;++]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;][&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;pow&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;6&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; result&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfdxkiu08ej30pe06uaat.jpg&#34; alt=&#34;image-20200602143118510&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;优化-一维数组&#34;&gt;优化： 一维数组&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;上述解题过程中，我们发现，&lt;strong&gt;i 个骰子的值 都是由 i-1个骰子组成的值，再加上[1, 6]中某一个数字得来&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;跟 i - 2, i - 3 个骰子，数字出现次数没有关系&lt;/li&gt;
-&lt;li&gt;所以我们可以将 dp数组优化为一位数组，只保留 i - 1个骰子时, 出现的值即可。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 空间复杂度的优化
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 以上题解我们看出
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 计算 i 个骰子投掷出的点数， 只能由 i - 1个骰子投出的点数，再加上当前骰子的1...6某个值确定
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 我们只用到了上一次投掷骰子的总点数
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 所以可以优化为一维数组来存储旧值
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;double&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;twoSum1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// dp[i] n个骰子，点数 i 出现的次数
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; dp &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;6 &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 第一阶段 ： 一枚骰子, 出现1...6的次数 都是1
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; 6&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 外层循环表示 i 个骰子
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#75715e&#34;&gt;// 内层循环表示总点数。i个骰子总点数至少为i，所以循环从i开始. i个骰子最大全是6 * i, 所以最大到 6 * i
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 6 &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;--)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-                dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-
-                &lt;span style=&#34;color:#75715e&#34;&gt;// dp[i][j] 表示投掷 i 个骰子， 投掷出 j 点数的组合个数
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 而 i 个骰子点数 j, 可以由 i - 1个骰子，再加上一个骰子得来
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// dp[i][j] = dp[i - 1][j - k] + dp[i - 1][j - 2] + ... + dp[i - 1][j - 6]
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 换成for循环， 则如下代码
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-                &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; k &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; k &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; 6&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-                    &lt;span style=&#34;color:#75715e&#34;&gt;// k &amp;gt;= j时，表示 没有 dp[i - 1] + 1...6可组成 dp[i][j]. 直接break 退出循环
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;j &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; k &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-
-                    dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; k&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;double&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;double&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;5 &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; index &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            result&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;index &lt;span style=&#34;color:#f92672&#34;&gt;++]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; dp&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;pow&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;6&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; result&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>剑指offer.68.二叉树的最近公共祖先</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
-      <pubDate>Tue, 02 Jun 2020 21:51:04 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
-      
-        <description>&lt;h1 id=&#34;面试题68---i-二叉搜索树的最近公共祖先httpsleetcode-cncomproblemser-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/&#34;&gt;面试题68 - I. 二叉搜索树的最近公共祖先&lt;/a&gt;&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。&lt;/p&gt;
-&lt;p&gt;百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”&lt;/p&gt;
-&lt;p&gt;例如，给定如下二叉搜索树:  root = [6,2,8,0,4,7,9,null,null,3,5]&lt;/p&gt;
-&lt;p&gt;示例 1:&lt;/p&gt;
-&lt;p&gt;输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
-输出: 6
-解释: 节点 2 和节点 8 的最近公共祖先是 6。
-示例 2:&lt;/p&gt;
-&lt;p&gt;输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
-输出: 2
-解释: 节点 2 和节点 4 的最近公共祖先是 2, 因为根据定义最近公共祖先节点可以为节点本身。&lt;/p&gt;
-&lt;p&gt;说明:&lt;/p&gt;
-&lt;p&gt;所有节点的值都是唯一的。
-p、q 为不同节点且均存在于给定的二叉搜索树中。&lt;/p&gt;
-&lt;p&gt;来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
-&lt;h3 id=&#34;思路一&#34;&gt;思路一：&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;构建 &lt;!-- raw HTML omitted --&gt;字典
-&lt;ul&gt;
-&lt;li&gt;dfs 二叉树,  构建每个节点&amp;lt;节点 : 父节点&amp;gt;字典&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;分别记录, p 和 q节点的祖先节点，用list存储
-&lt;ul&gt;
-&lt;li&gt;getParents方法用来求出节点的所有祖先节点&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;两个祖先节点的list，最近的相交元素即为最近祖先节点&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;代码如下:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/*
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    *  dfs二叉树， 字典中保存 &amp;lt;节点 : 父节点&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    *  每一个节点，都可以在字典中取出其父节点
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    *  getParents方法，用来获取某一节点的所有父节点
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    *  分别获取 p 和 q 的父节点数组
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    *  取两个数组第一个相交的元素 即为最近公共祖先
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    * */&lt;/span&gt;
-    HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;TreeNode&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; TreeNode&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; map &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dfs&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;TreeNode node&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; TreeNode parent&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-
-        map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;parent&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-
-        dfs&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; node&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-        dfs&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; node&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; List &lt;span style=&#34;color:#a6e22e&#34;&gt;getParents&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;TreeNode node&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-
-        List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;TreeNode&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; list &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
-
-        list&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-        TreeNode parent &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;parent &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-            map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; parent&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-
-            node &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; parent&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            parent &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; map&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-
-            list&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; list&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; TreeNode &lt;span style=&#34;color:#a6e22e&#34;&gt;lowestCommonAncestor&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;TreeNode root&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; TreeNode p&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; TreeNode q&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 构建父节点字典
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        dfs&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 获取 p 节点，祖先节点数组
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;TreeNode&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; l1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; getParents&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;p&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 获取 q 节点，祖先节点数组
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;TreeNode&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; l2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; getParents&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;q&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-
-        &lt;span style=&#34;color:#75715e&#34;&gt;// 找到两个数组中 第一个相交元素
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        HashSet&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;TreeNode&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; set &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashSet&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; l2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            TreeNode node &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; l2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;set&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;contains&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; node&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析 :&lt;/p&gt;
-&lt;p&gt;时间复杂度 : O(N)&lt;/p&gt;
-&lt;p&gt;空间复杂度 : O(N)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfe1pp5ur4j30pa06e3za.jpg&#34; alt=&#34;屏幕快照 2020-06-02 下午4.28.47&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;二叉搜索树&lt;/strong&gt;?&lt;/p&gt;
-&lt;p&gt;貌似我们上述题解中，完全没有用到二叉搜索树的性质，就是按照普通的二叉树的求解的。&lt;/p&gt;
-&lt;p&gt;所以一定有更优的算法来解题。&lt;/p&gt;
-&lt;h3 id=&#34;思路二&#34;&gt;思路二：&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;二叉搜索树的性质：左子树的值 &amp;lt; 根节点 &amp;lt; 右子树的值。&lt;/li&gt;
-&lt;li&gt;所以当 root的值 比 p 和 q的值都大时, 则最近公共祖先一定根节点的左边&lt;/li&gt;
-&lt;li&gt;当root的值 比 p 和 q的值都小时， 则最近公共祖先一定在跟节点右边&lt;/li&gt;
-&lt;li&gt;否砸，root就是最近公共祖先节点&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;代码如下:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; TreeNode &lt;span style=&#34;color:#a6e22e&#34;&gt;lowestCommonAncestor1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;TreeNode root&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; TreeNode p&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; TreeNode q&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; p &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; q &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; q&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; lowestCommonAncestor1&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; p&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; q&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; q&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; lowestCommonAncestor1&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; p&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; q&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析 :&lt;/p&gt;
-&lt;p&gt;时间复杂度 : O(log N)&lt;/p&gt;
-&lt;p&gt;空间复杂度 : O(log N) 递归调用深度为 log N层， 占用的栈空间&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfe1yczlzxj30oe06cmxw.jpg&#34; alt=&#34;屏幕快照 2020-06-02 下午5.01.38&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;思路三&#34;&gt;思路三：&lt;/h3&gt;
-&lt;p&gt;同上述思路，&lt;strong&gt;迭代法&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; TreeNode &lt;span style=&#34;color:#a6e22e&#34;&gt;lowestCommonAncestor2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;TreeNode root&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; TreeNode p&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; TreeNode q&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; p &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; q &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; q&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-                root &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-                &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; q&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
-                root &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-                &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfe22it38cj30nu05wmxv.jpg&#34; alt=&#34;屏幕快照 2020-06-02 下午5.06.16&#34;&gt;&lt;/p&gt;
 </description>
       
     </item>
