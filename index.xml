@@ -132,6 +132,98 @@
     </item>
     
     <item>
+      <title>Git操作指南转载</title>
+      <link>https://zhangxiongfeiv.github.io/post/git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97%E8%BD%AC%E8%BD%BD/</link>
+      <pubDate>Fri, 12 Jun 2020 10:49:43 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97%E8%BD%AC%E8%BD%BD/</guid>
+      
+        <description>&lt;h1 id=&#34;git---简易指南&#34;&gt;git - 简易指南&lt;/h1&gt;
+&lt;p&gt;转载自&lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.html&#34;&gt;&lt;strong&gt;原文地址&lt;/strong&gt;&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;助你开始使用 git 的简易指南，木有高深内容，;)。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/share&#34;&gt;Tweet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;作者：&lt;a href=&#34;http://www.twitter.com/rogerdudler&#34;&gt;罗杰·杜德勒&lt;/a&gt;
+感谢：&lt;a href=&#34;http://www.twitter.com/tfnico&#34;&gt;@tfnico&lt;/a&gt;, &lt;a href=&#34;http://www.twitter.com/fhd&#34;&gt;@fhd&lt;/a&gt; and &lt;a href=&#34;http://www.namics.com/&#34;&gt;Namics&lt;/a&gt;
+其他语言 &lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.html&#34;&gt;english&lt;/a&gt;, &lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.de.html&#34;&gt;deutsch&lt;/a&gt;, &lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.es.html&#34;&gt;español&lt;/a&gt;, &lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.fr.html&#34;&gt;français&lt;/a&gt;, &lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.it.html&#34;&gt;italiano&lt;/a&gt;, &lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.nl.html&#34;&gt;nederlands&lt;/a&gt;, &lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.pt_BR.html&#34;&gt;português&lt;/a&gt;, &lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.ru.html&#34;&gt;русский&lt;/a&gt;, &lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.tr.html&#34;&gt;türkçe&lt;/a&gt;,
+&lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.my.html&#34;&gt;မြန်မာ&lt;/a&gt;, &lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.ja.html&#34;&gt;日本語&lt;/a&gt;, &lt;a href=&#34;https://www.bootcss.com/p/git-guide/index.ko.html&#34;&gt;한국어&lt;/a&gt;
+如有纰漏，请到 &lt;a href=&#34;https://github.com/rogerdudler/git-guide/issues&#34;&gt;github&lt;/a&gt; 填报&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.bootcss.com/p/git-guide/img/arrow.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/git-osx-installer/downloads/list?can=3&#34;&gt;下载 git OSX 版&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/msysgit/downloads/list?can=3&#34;&gt;下载 git Windows 版&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://book.git-scm.com/2_installing_git.html&#34;&gt;下载 git Linux 版&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;创建新仓库&#34;&gt;创建新仓库&lt;/h2&gt;
+&lt;p&gt;创建新文件夹，打开，然后执行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以创建新的 git 仓库。&lt;/p&gt;
+&lt;h2 id=&#34;检出仓库&#34;&gt;检出仓库&lt;/h2&gt;
+&lt;p&gt;执行如下命令以创建一个本地仓库的克隆版本：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;`git clone /path/to/repository` 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果是远端服务器上的仓库，你的命令会是这个样子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;`git clone username@host:/path/to/repository`
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;工作流&#34;&gt;工作流&lt;/h2&gt;
+&lt;p&gt;你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 &lt;code&gt;工作目录&lt;/code&gt;，它持有实际文件；第二个是 &lt;code&gt;缓存区（Index）&lt;/code&gt;，它像个缓存区域，临时保存你的改动；最后是 &lt;code&gt;HEAD&lt;/code&gt;，指向你最近一次提交后的结果。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.bootcss.com/p/git-guide/img/trees.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;添加与提交&#34;&gt;添加与提交&lt;/h2&gt;
+&lt;p&gt;你可以计划改动（把它们添加到缓存区），使用如下命令：&lt;/p&gt;
+&lt;p&gt;这是 git 基本工作流程的第一步；使用如下命令以实际提交改动：
+&lt;code&gt;git commit -m &amp;quot;代码提交信息&amp;quot;&lt;/code&gt;
+现在，你的改动已经提交到了 &lt;strong&gt;HEAD&lt;/strong&gt;，但是还没到你的远端仓库。&lt;/p&gt;
+&lt;h2 id=&#34;推送改动&#34;&gt;推送改动&lt;/h2&gt;
+&lt;p&gt;你的改动现在已经在本地仓库的 &lt;strong&gt;HEAD&lt;/strong&gt; 中了。执行如下命令以将这些改动提交到远端仓库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以把 &lt;em&gt;master&lt;/em&gt; 换成你想要推送的任何分支。&lt;/p&gt;
+&lt;p&gt;如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git remote add origin &amp;lt;server&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如此你就能够将你的改动推送到所添加的服务器上去了。&lt;/p&gt;
+&lt;h2 id=&#34;分支&#34;&gt;分支&lt;/h2&gt;
+&lt;p&gt;分支是用来将特性开发绝缘开来的。在你创建仓库的时候，&lt;em&gt;master&lt;/em&gt; 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.bootcss.com/p/git-guide/img/branches.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;创建一个叫做“feature_x”的分支，并切换过去：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout -b feature_x
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;切换回主分支：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;再把新建的分支删掉：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git branch -d feature_x
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;除非你将分支推送到远端仓库，不然该分支就是 &lt;em&gt;不为他人所见的&lt;/em&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git push origin &amp;lt;branch&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;更新与合并&#34;&gt;更新与合并&lt;/h2&gt;
+&lt;p&gt;要更新你的本地仓库至最新改动，执行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git pull
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以在你的工作目录中 &lt;em&gt;获取（fetch）&lt;/em&gt; 并 &lt;em&gt;合并（merge）&lt;/em&gt; 远端的改动。
+要合并其他分支到你的当前分支（例如 master），执行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git merge &amp;lt;branch&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 &lt;em&gt;冲突（conflicts）&lt;/em&gt;。 这时候就需要你修改这些文件来人肉合并这些 &lt;em&gt;冲突（conflicts）&lt;/em&gt; 了。改完之后，你需要执行如下命令以将它们标记为合并成功：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git add &amp;lt;filename&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在合并改动之前，也可以使用如下命令查看：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git diff &amp;lt;source_branch&amp;gt; &amp;lt;target_branch&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;标签&#34;&gt;标签&lt;/h2&gt;
+&lt;p&gt;在软件发布时创建标签，是被推荐的。这是个旧有概念，在 SVN 中也有。可以执行如下命令以创建一个叫做 &lt;em&gt;1.0.0&lt;/em&gt; 的标签：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git tag 1.0.0 1b2e1d63ff
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;em&gt;1b2e1d63ff&lt;/em&gt; 是你想要标记的提交 ID 的前 10 位字符。使用如下命令获取提交 ID：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git log
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你也可以用该提交 ID 的少一些的前几位，只要它是唯一的。&lt;/p&gt;
+&lt;h2 id=&#34;替换本地改动&#34;&gt;替换本地改动&lt;/h2&gt;
+&lt;p&gt;假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout -- &amp;lt;filename&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。&lt;/p&gt;
+&lt;p&gt;假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git fetch origin
+git reset --hard origin/master
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;有用的贴士&#34;&gt;有用的贴士&lt;/h2&gt;
+&lt;p&gt;内建的图形化 git：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gitk
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;彩色的 git 输出：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config color.ui true
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;显示历史记录时，只显示一行注释信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config format.pretty oneline
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;交互地添加文件至缓存区：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git add -i
+&lt;/code&gt;&lt;/pre&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>503.下一个更大元素II</title>
       <link>https://zhangxiongfeiv.github.io/post/503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0ii/</link>
       <pubDate>Thu, 11 Jun 2020 17:47:03 +0800</pubDate>
@@ -1993,6 +2085,175 @@ nums1和nums2 的数组大小都不超过1000。&lt;/p&gt;
 &lt;p&gt;复杂度分析 :&lt;/p&gt;
 &lt;p&gt;时间复杂度 : O(N)&lt;/p&gt;
 &lt;p&gt;空间复杂度 : O(1)&lt;/p&gt;
+&lt;h1 id=&#34;进阶-三数之和&#34;&gt;进阶-三数之和&lt;/h1&gt;
+&lt;h1 id=&#34;15-三数之和httpsleetcode-cncomproblems3sum&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/3sum/&#34;&gt;15. 三数之和&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。&lt;/p&gt;
+&lt;p&gt;注意：答案中不可以包含重复的三元组。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;p&gt;给定数组 nums = [-1, 0, 1, 2, -1, -4]，&lt;/p&gt;
+&lt;p&gt;满足要求的三元组集合为：
+[
+[-1, 0, 1],
+[-1, -1, 2]
+]&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/3sum
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;题解-2&#34;&gt;题解：&lt;/h2&gt;
+&lt;h3 id=&#34;思路一暴力法&#34;&gt;思路一：暴力法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;最容易想到的方法-&lt;strong&gt;暴力法&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;三层循环，找到每一种不同数字可能的组合&lt;/li&gt;
+&lt;li&gt;当三个数字和为0时，添加到结果数组&lt;/li&gt;
+&lt;li&gt;时间复杂度 : O(N ^ 3)&lt;/li&gt;
+&lt;li&gt;空间复杂度 : O(1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;思路二排序--双指针&#34;&gt;思路二：排序 + 双指针&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;先排序&lt;/li&gt;
+&lt;li&gt;排序后，两层循环数组&lt;/li&gt;
+&lt;li&gt;取到最外层某个数字num
+&lt;ul&gt;
+&lt;li&gt;开始计算其后边 n-1个元素的和 为 -num 的组合&lt;/li&gt;
+&lt;li&gt;因为已排序，所以可以用 &lt;strong&gt;头尾双指针法&lt;/strong&gt;  计算后边 n-1个元素的和&lt;/li&gt;
+&lt;li&gt;头尾双指针 begain， end
+&lt;ul&gt;
+&lt;li&gt;当和 == -num时， 加入结果数组&lt;/li&gt;
+&lt;li&gt;当和 &amp;lt; -num时， begain++&lt;/li&gt;
+&lt;li&gt;当和 &amp;gt; -num时， end &amp;ndash;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;❗️❗️❗️&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在确定此题目 &lt;strong&gt;排序 + 双指针&lt;/strong&gt; 的解题思路后&lt;/li&gt;
+&lt;li&gt;本题&lt;strong&gt;难点&lt;/strong&gt;在于，如何去除&lt;strong&gt;重复解&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;我没写好，copy的评论区的代码😅😅😅&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt; &lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * 先排序
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * 排序后，数组两层循环
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * 取到最外层某个数num
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *    开始计算其后边 n - 1个元素的和为 -num 的组合
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *    后边的操作 类似 排序版本 的两数之和
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *    头尾双指针begain, end，
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *      当和 == -num时, 加入结果数组
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *      当和 &amp;lt; -num时, begain ++
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *      当和 &amp;gt; -num时, end --
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * */&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;threeSum&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 先排序
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sort&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ls &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 排序以后的操作 跟 排序后的两数之和一样
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0 &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 0 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;]))&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 跳过可能重复的答案
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; l &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; sum &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0 &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; r&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                        ls&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;asList&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;]));&lt;/span&gt;
+                        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; l&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+                        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; r&lt;span style=&#34;color:#f92672&#34;&gt;--;&lt;/span&gt;
+                        l&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+                        r&lt;span style=&#34;color:#f92672&#34;&gt;--;&lt;/span&gt;
+                    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; l&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// 跳过重复值
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                        l&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+                    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; r&lt;span style=&#34;color:#f92672&#34;&gt;--;&lt;/span&gt;
+                        r&lt;span style=&#34;color:#f92672&#34;&gt;--;&lt;/span&gt;
+                    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; ls&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析 :&lt;/p&gt;
+&lt;p&gt;时间复杂度 : Arrays.sort() 最优的快排，时间复杂度为  O(N * log N) 。 后边的两层循环 : O(N ^ 2)&lt;/p&gt;
+&lt;p&gt;所以整体时间复杂度 : O(N * logN) + O(N ^ 2) = O(N ^ 2)&lt;/p&gt;
+&lt;p&gt;空间复杂度 : 除结果数组以外，没有用到额外的存储空间，所以为 O(1)&lt;/p&gt;
+&lt;h1 id=&#34;18-四数之和httpsleetcode-cncomproblems4sum&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/4sum/&#34;&gt;18. 四数之和&lt;/a&gt;&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;给定一个包含 n 个整数的数组 nums 和一个目标值 target&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;判断 nums 中是否存在四个元素 a&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;b&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;c 和 d &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;使得 a &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; b &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; c &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; d 的值与 target 相等&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;？&lt;/span&gt;找出所有满足条件且不重复的四元组&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
+
+注意&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;
+
+答案中不可以包含重复的四元组&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
+
+示例&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;
+
+给定数组 nums &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;2&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;和 target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
+
+满足要求的四元组集合为&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;[-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;  0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;[-&lt;/span&gt;2&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;[-&lt;/span&gt;2&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;  0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+
+来源&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;力扣&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;（&lt;/span&gt;LeetCode&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;）&lt;/span&gt;
+链接&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;https&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//leetcode-cn.com/problems/4sum
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;著作权归领扣网络所有&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;商业转载请联系官方授权&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;非商业转载请注明出处&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;题解-3&#34;&gt;题解：&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;leetcode&lt;/strong&gt; 也是挺有意思，&lt;strong&gt;两数之和，两数之和I，两数之和II, 三数之和&lt;/strong&gt;&amp;hellip;现在又来一个&lt;strong&gt;四数之和&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;让我想起了 &lt;strong&gt;丑数I, 丑数II, 丑数III, 超级丑数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;以后会来一个 &lt;strong&gt;N数之和&lt;/strong&gt;  或者 &lt;strong&gt;超级N数之和&lt;/strong&gt;的吧.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;其实跟三数之和相比， 也没啥新意&lt;/li&gt;
+&lt;li&gt;一样的套路，先排序，后循环&lt;/li&gt;
+&lt;li&gt;无非是内部三层循环，还是两层循环的问题&lt;/li&gt;
+&lt;li&gt;但是做过三数之和的同学都知道，&lt;strong&gt;去重复&lt;/strong&gt;的恶心&amp;hellip;&lt;/li&gt;
+&lt;li&gt;去重复去的想吐..&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fourSum&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 先排序
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sort&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ls &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 排序以后的操作 跟 排序后的两数之和一样
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 3&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 0 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; j&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; l &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; sum &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; r&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                        ls&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;asList&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;j&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l&lt;span style=&#34;color:#f92672&#34;&gt;],&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;]));&lt;/span&gt;
+                        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; l&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+                        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; r&lt;span style=&#34;color:#f92672&#34;&gt;--;&lt;/span&gt;
+                        l&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+                        r&lt;span style=&#34;color:#f92672&#34;&gt;--;&lt;/span&gt;
+                    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; l&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// 跳过重复值
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                        l&lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+                    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;l &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; r &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;r &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; r&lt;span style=&#34;color:#f92672&#34;&gt;--;&lt;/span&gt;
+                        r&lt;span style=&#34;color:#f92672&#34;&gt;--;&lt;/span&gt;
+                    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; ls&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;时间复杂度 : O(N ^ 3)&lt;/p&gt;
+&lt;p&gt;空间复杂度 : O(1)&lt;/p&gt;
 </description>
       
     </item>
@@ -2735,136 +2996,6 @@ nums1和nums2 的数组大小都不超过1000。&lt;/p&gt;
 &lt;p&gt;随着计算机通信网技术的不断发展，MITM攻击也越来越多样化。最初，攻击者只要将网卡设为混杂模式，伪装成&lt;a href=&#34;https://baike.baidu.com/item/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8&#34;&gt;代理服务器&lt;/a&gt;监听特定的流量就可以实现攻击，这是因为很多通信协议都是以明文来进行传输的，如HTTP、FTP、Telnet等。后来，随着&lt;a href=&#34;https://baike.baidu.com/item/%E4%BA%A4%E6%8D%A2%E6%9C%BA&#34;&gt;交换机&lt;/a&gt;代替&lt;a href=&#34;https://baike.baidu.com/item/%E9%9B%86%E7%BA%BF%E5%99%A8&#34;&gt;集线器&lt;/a&gt;，简单的嗅探攻击已经不能成功，必须先进行ARP欺骗才行。如今，越来越多的服务商（网上银行，邮箱登陆）开始采用加密通信，SSL(Secure Sockets Layer &lt;a href=&#34;https://baike.baidu.com/item/%E5%AE%89%E5%85%A8%E5%A5%97%E6%8E%A5%E5%B1%82&#34;&gt;安全套接层&lt;/a&gt;)是一种广泛使用的技术，HTTPS、FTPS等都是建立在其基础上的。 [1]&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;接下来，我们来学习，**证书(Certificate)**相关知识，学习完证书相关， 就可以正式把iOS签名机制串起来学习啦～&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>单向散列函数</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</link>
-      <pubDate>Thu, 04 Jun 2020 23:42:03 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/</guid>
-      
-        <description>&lt;h1 id=&#34;单向散列函数one-way-hash-function&#34;&gt;单向散列函数(One-way hash function)&lt;/h1&gt;
-&lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;单向散列函数，又被称为消息摘要函数（message digest function），哈希函数&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;输出的散列值，也被称为消息摘要（message digest）、指纹（fingerprint）&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;特点&#34;&gt;特点&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;根据任意长度的消息，计算出固定长度的散列值&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;散列值长度和消息长度无挂&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;无论消息是1bit、10M、100G，单向散列函数都会计算出固定长度的散列值&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgpx0bhr5j30p60eidk8.jpg&#34; alt=&#34;截屏2020-06-05上午12.23.18&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;计算速度快，能快速计算出散列值&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;消息不同，散列值也不同&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;哪怕是 1bit的不同，散列值也会完全不同&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgpyjb20ej310m0u0ax8.jpg&#34; alt=&#34;截屏2020-06-05上午12.24.19&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;具备单向性&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgpzd6akej30yw0jcwhs.jpg&#34; alt=&#34;截屏2020-06-05上午12.25.33&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;常用单向散列函数&#34;&gt;常用单向散列函数&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;常见的几种单向散列函数
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;MD4、MD5&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;产生128bit的散列值，MD就是Message Digest的缩写，目前已经不安全&lt;/li&gt;
-&lt;li&gt;Mac终端上默认可以使用md5命令&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;SHA-1&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;产生160bit的散列值，目前已经不安全&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;SHA-2&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;SHA-256、SHA-384、SHA-512，散列值长度分别是256bit、384bit、512bit&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;SHA-3&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;全新标准&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;应用&#34;&gt;应用&lt;/h2&gt;
-&lt;h3 id=&#34;防止数据被篡改&#34;&gt;防止数据被篡改&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;比如，你昨天编写了一个.md文档，今天再看时，如何防止数据被篡改呢？&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果对比一遍所有.md文档的内容，内容多的话就会非常费劲&lt;/li&gt;
-&lt;li&gt;这时，使用单向散列函数，对昨天的.md文档计算出一个&lt;strong&gt;散列值&lt;/strong&gt;，再对今天的.md文档计算出一个&lt;strong&gt;散列值&lt;/strong&gt;，只要对比两个散列值是否一致就可以确定文档是否被修改过。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgq7cpi0wj30qs0z47a2.jpg&#34; alt=&#34;截屏2020-06-05上午12.33.13&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;再比如，某些网站上，下载应用时，网站会给出这个应用的用某种&lt;strong&gt;单向散列函数&lt;/strong&gt;计算出的散列值&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;这时，如果我们没有在官网上下载应用，而是在某个镜像源网站上下载的应用&lt;/li&gt;
-&lt;li&gt;当下载完应用后，我们使用同样的 &lt;strong&gt;单向散列函数&lt;/strong&gt; 计算下载应用的散列值&lt;/li&gt;
-&lt;li&gt;如果计算出的散列值 和 官网给出的散列值一致， 则为正版软件&lt;/li&gt;
-&lt;li&gt;否则为盗版软件&lt;/li&gt;
-&lt;li&gt;这时 单向散列函数 也起到了防止数据被篡改的作用&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgqbj05avj314q0nedlc.jpg&#34; alt=&#34;截屏2020-06-05上午12.34.08&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;另一种应用---口令加密&#34;&gt;另一种应用 - 口令加密&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;比如，某app的登录功能，需要用户输入账号，密码登录。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;这时，客户端如果直接传&lt;strong&gt;密码明文&lt;/strong&gt;给服务器端，服务端来存储，就会非常不安全，&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;可能在通信过程中被&lt;strong&gt;中间人攻击&lt;/strong&gt;窃取密码&lt;/li&gt;
-&lt;li&gt;也可能，服务器被黑客攻破时，导致大量用户账户密码泄露&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;怎么会更安全呢？&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;单向散列函数出马&lt;/li&gt;
-&lt;li&gt;客户端在向服务端传送数据时，使用&lt;strong&gt;单向散列函数加密密码&lt;/strong&gt;，传输密文&lt;/li&gt;
-&lt;li&gt;服务端存储密文，当下次用户验证时，直接拿密文与服务器保存密文做对比就可以&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgqhqdj86j31500dydhk.jpg&#34; alt=&#34;截屏2020-06-05上午12.42.56&#34;&gt;&lt;/p&gt;
-&lt;p&gt;以上便是我们需要大致了解的关于&lt;strong&gt;单向散列函数&lt;/strong&gt;的内容，我们离学习完成&lt;strong&gt;iOS签名机制&lt;/strong&gt;的路上又近了一步。&lt;/p&gt;
 </description>
       
     </item>

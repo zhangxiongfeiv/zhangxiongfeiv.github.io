@@ -69,7 +69,7 @@
 <meta itemprop="description" content="1. 两数之和 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会">
 <meta itemprop="datePublished" content="2020-06-06T11:13:38&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-06T11:13:38&#43;08:00" />
-<meta itemprop="wordCount" content="1965">
+<meta itemprop="wordCount" content="3481">
 
 
 
@@ -336,6 +336,19 @@
       </ul>
     </li>
   </ul>
+
+  <ul>
+    <li><a href="#题解-2">题解：</a>
+      <ul>
+        <li><a href="#思路一暴力法">思路一：暴力法</a></li>
+        <li><a href="#思路二排序--双指针">思路二：排序 + 双指针</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#题解-3">题解：</a></li>
+  </ul>
 </nav>
   </div>
 </div>
@@ -559,6 +572,175 @@
 </code></pre></div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfig15lnitj30no06sdgl.jpg" alt="双指针"></p>
 <p>复杂度分析 :</p>
 <p>时间复杂度 : O(N)</p>
+<p>空间复杂度 : O(1)</p>
+<h1 id="进阶-三数之和">进阶-三数之和</h1>
+<h1 id="15-三数之和httpsleetcode-cncomproblems3sum"><a href="https://leetcode-cn.com/problems/3sum/">15. 三数之和</a></h1>
+<blockquote>
+<p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。</p>
+<p>注意：答案中不可以包含重复的三元组。</p>
+<p>示例：</p>
+<p>给定数组 nums = [-1, 0, 1, 2, -1, -4]，</p>
+<p>满足要求的三元组集合为：
+[
+[-1, 0, 1],
+[-1, -1, 2]
+]</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/3sum
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h2 id="题解-2">题解：</h2>
+<h3 id="思路一暴力法">思路一：暴力法</h3>
+<ul>
+<li>最容易想到的方法-<strong>暴力法</strong></li>
+<li>三层循环，找到每一种不同数字可能的组合</li>
+<li>当三个数字和为0时，添加到结果数组</li>
+<li>时间复杂度 : O(N ^ 3)</li>
+<li>空间复杂度 : O(1)</li>
+</ul>
+<h3 id="思路二排序--双指针">思路二：排序 + 双指针</h3>
+<ul>
+<li>先排序</li>
+<li>排序后，两层循环数组</li>
+<li>取到最外层某个数字num
+<ul>
+<li>开始计算其后边 n-1个元素的和 为 -num 的组合</li>
+<li>因为已排序，所以可以用 <strong>头尾双指针法</strong>  计算后边 n-1个元素的和</li>
+<li>头尾双指针 begain， end
+<ul>
+<li>当和 == -num时， 加入结果数组</li>
+<li>当和 &lt; -num时， begain++</li>
+<li>当和 &gt; -num时， end &ndash;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>❗️❗️❗️</p>
+<ul>
+<li>在确定此题目 <strong>排序 + 双指针</strong> 的解题思路后</li>
+<li>本题<strong>难点</strong>在于，如何去除<strong>重复解</strong></li>
+<li>我没写好，copy的评论区的代码😅😅😅</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#75715e">/**
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * 先排序
+</span><span style="color:#75715e">     * 排序后，数组两层循环
+</span><span style="color:#75715e">     * 取到最外层某个数num
+</span><span style="color:#75715e">     *    开始计算其后边 n - 1个元素的和为 -num 的组合
+</span><span style="color:#75715e">     *    后边的操作 类似 排序版本 的两数之和
+</span><span style="color:#75715e">     *    头尾双指针begain, end，
+</span><span style="color:#75715e">     *      当和 == -num时, 加入结果数组
+</span><span style="color:#75715e">     *      当和 &lt; -num时, begain ++
+</span><span style="color:#75715e">     *      当和 &gt; -num时, end --
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;&gt;</span> <span style="color:#a6e22e">threeSum</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#75715e">// 先排序
+</span><span style="color:#75715e"></span>        Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">);</span>
+        List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;&gt;</span> ls <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+
+        <span style="color:#75715e">// 排序以后的操作 跟 排序后的两数之和一样
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 2<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">==</span> 0 <span style="color:#f92672">||</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">&amp;&amp;</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">!=</span> nums<span style="color:#f92672">[</span>i <span style="color:#f92672">-</span> 1<span style="color:#f92672">]))</span> <span style="color:#f92672">{</span>  <span style="color:#75715e">// 跳过可能重复的答案
+</span><span style="color:#75715e"></span>
+                <span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> 1<span style="color:#f92672">,</span> r <span style="color:#f92672">=</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">,</span> sum <span style="color:#f92672">=</span> 0 <span style="color:#f92672">-</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+                <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>l<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> nums<span style="color:#f92672">[</span>r<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> sum<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        ls<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">],</span> nums<span style="color:#f92672">[</span>l<span style="color:#f92672">],</span> nums<span style="color:#f92672">[</span>r<span style="color:#f92672">]));</span>
+                        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r <span style="color:#f92672">&amp;&amp;</span> nums<span style="color:#f92672">[</span>l<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>l <span style="color:#f92672">+</span> 1<span style="color:#f92672">])</span> l<span style="color:#f92672">++;</span>
+                        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r <span style="color:#f92672">&amp;&amp;</span> nums<span style="color:#f92672">[</span>r<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>r <span style="color:#f92672">-</span> 1<span style="color:#f92672">])</span> r<span style="color:#f92672">--;</span>
+                        l<span style="color:#f92672">++;</span>
+                        r<span style="color:#f92672">--;</span>
+                    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>l<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> nums<span style="color:#f92672">[</span>r<span style="color:#f92672">]</span> <span style="color:#f92672">&lt;</span> sum<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r <span style="color:#f92672">&amp;&amp;</span> nums<span style="color:#f92672">[</span>l<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>l <span style="color:#f92672">+</span> 1<span style="color:#f92672">])</span> l<span style="color:#f92672">++;</span>   <span style="color:#75715e">// 跳过重复值
+</span><span style="color:#75715e"></span>                        l<span style="color:#f92672">++;</span>
+                    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r <span style="color:#f92672">&amp;&amp;</span> nums<span style="color:#f92672">[</span>r<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>r <span style="color:#f92672">-</span> 1<span style="color:#f92672">])</span> r<span style="color:#f92672">--;</span>
+                        r<span style="color:#f92672">--;</span>
+                    <span style="color:#f92672">}</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> ls<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>复杂度分析 :</p>
+<p>时间复杂度 : Arrays.sort() 最优的快排，时间复杂度为  O(N * log N) 。 后边的两层循环 : O(N ^ 2)</p>
+<p>所以整体时间复杂度 : O(N * logN) + O(N ^ 2) = O(N ^ 2)</p>
+<p>空间复杂度 : 除结果数组以外，没有用到额外的存储空间，所以为 O(1)</p>
+<h1 id="18-四数之和httpsleetcode-cncomproblems4sum"><a href="https://leetcode-cn.com/problems/4sum/">18. 四数之和</a></h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">给定一个包含 n 个整数的数组 nums 和一个目标值 target<span style="color:#960050;background-color:#1e0010">，</span>判断 nums 中是否存在四个元素 a<span style="color:#960050;background-color:#1e0010">，</span>b<span style="color:#960050;background-color:#1e0010">，</span>c 和 d <span style="color:#960050;background-color:#1e0010">，</span>使得 a <span style="color:#f92672">+</span> b <span style="color:#f92672">+</span> c <span style="color:#f92672">+</span> d 的值与 target 相等<span style="color:#960050;background-color:#1e0010">？</span>找出所有满足条件且不重复的四元组<span style="color:#960050;background-color:#1e0010">。</span>
+
+注意<span style="color:#960050;background-color:#1e0010">：</span>
+
+答案中不可以包含重复的四元组<span style="color:#960050;background-color:#1e0010">。</span>
+
+示例<span style="color:#960050;background-color:#1e0010">：</span>
+
+给定数组 nums <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>1<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> <span style="color:#f92672">-</span>2<span style="color:#f92672">,</span> 2<span style="color:#f92672">]</span><span style="color:#960050;background-color:#1e0010">，</span>和 target <span style="color:#f92672">=</span> 0<span style="color:#960050;background-color:#1e0010">。</span>
+
+满足要求的四元组集合为<span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#f92672">[</span>
+  <span style="color:#f92672">[-</span>1<span style="color:#f92672">,</span>  0<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> 1<span style="color:#f92672">],</span>
+  <span style="color:#f92672">[-</span>2<span style="color:#f92672">,</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">,</span> 1<span style="color:#f92672">,</span> 2<span style="color:#f92672">],</span>
+  <span style="color:#f92672">[-</span>2<span style="color:#f92672">,</span>  0<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> 2<span style="color:#f92672">]</span>
+<span style="color:#f92672">]</span>
+
+来源<span style="color:#960050;background-color:#1e0010">：</span>力扣<span style="color:#960050;background-color:#1e0010">（</span>LeetCode<span style="color:#960050;background-color:#1e0010">）</span>
+链接<span style="color:#960050;background-color:#1e0010">：</span>https<span style="color:#f92672">:</span><span style="color:#75715e">//leetcode-cn.com/problems/4sum
+</span><span style="color:#75715e"></span>著作权归领扣网络所有<span style="color:#960050;background-color:#1e0010">。</span>商业转载请联系官方授权<span style="color:#960050;background-color:#1e0010">，</span>非商业转载请注明出处<span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><h2 id="题解-3">题解：</h2>
+<p><strong>leetcode</strong> 也是挺有意思，<strong>两数之和，两数之和I，两数之和II, 三数之和</strong>&hellip;现在又来一个<strong>四数之和</strong></p>
+<p>让我想起了 <strong>丑数I, 丑数II, 丑数III, 超级丑数</strong></p>
+<p>以后会来一个 <strong>N数之和</strong>  或者 <strong>超级N数之和</strong>的吧.</p>
+<ul>
+<li>其实跟三数之和相比， 也没啥新意</li>
+<li>一样的套路，先排序，后循环</li>
+<li>无非是内部三层循环，还是两层循环的问题</li>
+<li>但是做过三数之和的同学都知道，<strong>去重复</strong>的恶心&hellip;</li>
+<li>去重复去的想吐..</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;&gt;</span> <span style="color:#a6e22e">fourSum</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> target<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;&gt;</span> res <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+
+        <span style="color:#75715e">// 先排序
+</span><span style="color:#75715e"></span>        Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">);</span>
+        List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;&gt;</span> ls <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+
+        <span style="color:#75715e">// 排序以后的操作 跟 排序后的两数之和一样
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 3<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">&amp;&amp;</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>i <span style="color:#f92672">-</span> 1<span style="color:#f92672">])</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 2<span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>j <span style="color:#f92672">&gt;</span> i <span style="color:#f92672">+</span> 1 <span style="color:#f92672">&amp;&amp;</span> nums<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>j <span style="color:#f92672">-</span> 1<span style="color:#f92672">])</span> <span style="color:#f92672">{</span>
+                    <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+
+                <span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> j <span style="color:#f92672">+</span> 1<span style="color:#f92672">,</span> r <span style="color:#f92672">=</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">,</span> sum <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">-</span> nums<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
+                <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r<span style="color:#f92672">){</span>
+                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>l<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> nums<span style="color:#f92672">[</span>r<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> sum<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        ls<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">asList</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">],</span>nums<span style="color:#f92672">[</span>j<span style="color:#f92672">],</span> nums<span style="color:#f92672">[</span>l<span style="color:#f92672">],</span> nums<span style="color:#f92672">[</span>r<span style="color:#f92672">]));</span>
+                        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r <span style="color:#f92672">&amp;&amp;</span> nums<span style="color:#f92672">[</span>l<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>l <span style="color:#f92672">+</span> 1<span style="color:#f92672">])</span> l<span style="color:#f92672">++;</span>
+                        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r <span style="color:#f92672">&amp;&amp;</span> nums<span style="color:#f92672">[</span>r<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>r <span style="color:#f92672">-</span> 1<span style="color:#f92672">])</span> r<span style="color:#f92672">--;</span>
+                        l<span style="color:#f92672">++;</span>
+                        r<span style="color:#f92672">--;</span>
+                    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>l<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> nums<span style="color:#f92672">[</span>r<span style="color:#f92672">]</span> <span style="color:#f92672">&lt;</span> sum<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r <span style="color:#f92672">&amp;&amp;</span> nums<span style="color:#f92672">[</span>l<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>l <span style="color:#f92672">+</span> 1<span style="color:#f92672">])</span> l<span style="color:#f92672">++;</span>   <span style="color:#75715e">// 跳过重复值
+</span><span style="color:#75715e"></span>                        l<span style="color:#f92672">++;</span>
+                    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">&lt;</span> r <span style="color:#f92672">&amp;&amp;</span> nums<span style="color:#f92672">[</span>r<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> nums<span style="color:#f92672">[</span>r <span style="color:#f92672">-</span> 1<span style="color:#f92672">])</span> r<span style="color:#f92672">--;</span>
+                        r<span style="color:#f92672">--;</span>
+                    <span style="color:#f92672">}</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> ls<span style="color:#f92672">;</span>
+</code></pre></div><p>时间复杂度 : O(N ^ 3)</p>
 <p>空间复杂度 : O(1)</p>
 
     </div>
