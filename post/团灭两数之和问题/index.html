@@ -69,7 +69,7 @@
 <meta itemprop="description" content="1. 两数之和 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会">
 <meta itemprop="datePublished" content="2020-06-06T11:13:38&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-06T11:13:38&#43;08:00" />
-<meta itemprop="wordCount" content="3481">
+<meta itemprop="wordCount" content="4145">
 
 
 
@@ -348,6 +348,10 @@
 
   <ul>
     <li><a href="#题解-3">题解：</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题解-4">题解：</a></li>
   </ul>
 </nav>
   </div>
@@ -670,6 +674,73 @@
 <p>时间复杂度 : Arrays.sort() 最优的快排，时间复杂度为  O(N * log N) 。 后边的两层循环 : O(N ^ 2)</p>
 <p>所以整体时间复杂度 : O(N * logN) + O(N ^ 2) = O(N ^ 2)</p>
 <p>空间复杂度 : 除结果数组以外，没有用到额外的存储空间，所以为 O(1)</p>
+<h1 id="三数之和再变种">三数之和再变种：</h1>
+<h1 id="16-最接近的三数之和httpsleetcode-cncomproblems3sum-closest"><a href="https://leetcode-cn.com/problems/3sum-closest/">16. 最接近的三数之和</a></h1>
+<blockquote>
+<p>给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。</p>
+<p>示例：</p>
+<p>输入：nums = [-1,2,1,-4], target = 1
+输出：2
+解释：与 target 最接近的和是 2 (-1 + 2 + 1 = 2) 。</p>
+<p>提示：</p>
+<p>3 &lt;= nums.length &lt;= 10^3
+-10^3 &lt;= nums[i] &lt;= 10^3
+-10^4 &lt;= target &lt;= 10^4</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/3sum-closest
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h2 id="题解-3">题解：</h2>
+<ul>
+<li>本题目是15题 <strong>三数之和</strong> 的变种</li>
+<li>15题中，我们采用 <strong>排序 + 双指针</strong> 的解法</li>
+<li>本题中，貌似我们依然可以采用这种解法</li>
+<li>只不过15题是 在遍历过程中， 将和 == target的数依次加入数组</li>
+<li>本题中，只要保存最姐姐的值即可</li>
+<li>这样想，貌似题目还简单了，因为不需要去除麻烦的重复</li>
+</ul>
+<ol>
+<li>依然是排序</li>
+<li>遍历排序后的数组 ，<strong>头尾双指针</strong>解题方法</li>
+<li>求 三个数的和 和 target差值的绝对值</li>
+<li>当最近求出的 差值的绝对值 &lt; 之前求的结果， 则替换结果。</li>
+<li>遍历过程中
+<ol>
+<li>当 sum == target时，差值0，直接return sum</li>
+<li>当 sum &gt; target时，right&ndash;，找是否有更接近的</li>
+<li>当 sum &lt; target时，left++, 找是否有更接近的</li>
+</ol>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">threeSumClosest</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> target<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+				<span style="color:#75715e">// 先排序 时间复杂度 O(N * log N)
+</span><span style="color:#75715e"></span>        Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">sort</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> nums<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> nums<span style="color:#f92672">[</span>2<span style="color:#f92672">];</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+            <span style="color:#66d9ef">int</span> left <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> 1<span style="color:#f92672">,</span> right <span style="color:#f92672">=</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>left <span style="color:#f92672">&lt;</span> right<span style="color:#f92672">){</span>
+                <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>left<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> nums<span style="color:#f92672">[</span>right<span style="color:#f92672">]</span> <span style="color:#f92672">+</span> num<span style="color:#f92672">;</span>
+                <span style="color:#75715e">// 如果有相等的，直接返回0
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>sum <span style="color:#f92672">==</span> target<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> sum<span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">abs</span><span style="color:#f92672">(</span>sum <span style="color:#f92672">-</span> target<span style="color:#f92672">)</span> <span style="color:#f92672">&lt;</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">abs</span><span style="color:#f92672">(</span>res <span style="color:#f92672">-</span> target<span style="color:#f92672">))</span>
+                    res <span style="color:#f92672">=</span> sum<span style="color:#f92672">;</span>
+
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>sum <span style="color:#f92672">&gt;</span> target<span style="color:#f92672">){</span>
+                    right <span style="color:#f92672">--;</span>
+                <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                    left <span style="color:#f92672">++;</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> res<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>复杂度分析 :</p>
+<p>时间复杂度 : O(N ^ 2)</p>
+<p>空间复杂度 : O(1)</p>
+<h1 id="进阶-四数之和">进阶： 四数之和</h1>
 <h1 id="18-四数之和httpsleetcode-cncomproblems4sum"><a href="https://leetcode-cn.com/problems/4sum/">18. 四数之和</a></h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">给定一个包含 n 个整数的数组 nums 和一个目标值 target<span style="color:#960050;background-color:#1e0010">，</span>判断 nums 中是否存在四个元素 a<span style="color:#960050;background-color:#1e0010">，</span>b<span style="color:#960050;background-color:#1e0010">，</span>c 和 d <span style="color:#960050;background-color:#1e0010">，</span>使得 a <span style="color:#f92672">+</span> b <span style="color:#f92672">+</span> c <span style="color:#f92672">+</span> d 的值与 target 相等<span style="color:#960050;background-color:#1e0010">？</span>找出所有满足条件且不重复的四元组<span style="color:#960050;background-color:#1e0010">。</span>
 
@@ -691,7 +762,7 @@
 来源<span style="color:#960050;background-color:#1e0010">：</span>力扣<span style="color:#960050;background-color:#1e0010">（</span>LeetCode<span style="color:#960050;background-color:#1e0010">）</span>
 链接<span style="color:#960050;background-color:#1e0010">：</span>https<span style="color:#f92672">:</span><span style="color:#75715e">//leetcode-cn.com/problems/4sum
 </span><span style="color:#75715e"></span>著作权归领扣网络所有<span style="color:#960050;background-color:#1e0010">。</span>商业转载请联系官方授权<span style="color:#960050;background-color:#1e0010">，</span>非商业转载请注明出处<span style="color:#960050;background-color:#1e0010">。</span>
-</code></pre></div><h2 id="题解-3">题解：</h2>
+</code></pre></div><h2 id="题解-4">题解：</h2>
 <p><strong>leetcode</strong> 也是挺有意思，<strong>两数之和，两数之和I，两数之和II, 三数之和</strong>&hellip;现在又来一个<strong>四数之和</strong></p>
 <p>让我想起了 <strong>丑数I, 丑数II, 丑数III, 超级丑数</strong></p>
 <p>以后会来一个 <strong>N数之和</strong>  或者 <strong>超级N数之和</strong>的吧.</p>

@@ -2182,6 +2182,73 @@ nums1和nums2 的数组大小都不超过1000。&lt;/p&gt;
 &lt;p&gt;时间复杂度 : Arrays.sort() 最优的快排，时间复杂度为  O(N * log N) 。 后边的两层循环 : O(N ^ 2)&lt;/p&gt;
 &lt;p&gt;所以整体时间复杂度 : O(N * logN) + O(N ^ 2) = O(N ^ 2)&lt;/p&gt;
 &lt;p&gt;空间复杂度 : 除结果数组以外，没有用到额外的存储空间，所以为 O(1)&lt;/p&gt;
+&lt;h1 id=&#34;三数之和再变种&#34;&gt;三数之和再变种：&lt;/h1&gt;
+&lt;h1 id=&#34;16-最接近的三数之和httpsleetcode-cncomproblems3sum-closest&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/3sum-closest/&#34;&gt;16. 最接近的三数之和&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;p&gt;输入：nums = [-1,2,1,-4], target = 1
+输出：2
+解释：与 target 最接近的和是 2 (-1 + 2 + 1 = 2) 。&lt;/p&gt;
+&lt;p&gt;提示：&lt;/p&gt;
+&lt;p&gt;3 &amp;lt;= nums.length &amp;lt;= 10^3
+-10^3 &amp;lt;= nums[i] &amp;lt;= 10^3
+-10^4 &amp;lt;= target &amp;lt;= 10^4&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/3sum-closest
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;题解-3&#34;&gt;题解：&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;本题目是15题 &lt;strong&gt;三数之和&lt;/strong&gt; 的变种&lt;/li&gt;
+&lt;li&gt;15题中，我们采用 &lt;strong&gt;排序 + 双指针&lt;/strong&gt; 的解法&lt;/li&gt;
+&lt;li&gt;本题中，貌似我们依然可以采用这种解法&lt;/li&gt;
+&lt;li&gt;只不过15题是 在遍历过程中， 将和 == target的数依次加入数组&lt;/li&gt;
+&lt;li&gt;本题中，只要保存最姐姐的值即可&lt;/li&gt;
+&lt;li&gt;这样想，貌似题目还简单了，因为不需要去除麻烦的重复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;依然是排序&lt;/li&gt;
+&lt;li&gt;遍历排序后的数组 ，&lt;strong&gt;头尾双指针&lt;/strong&gt;解题方法&lt;/li&gt;
+&lt;li&gt;求 三个数的和 和 target差值的绝对值&lt;/li&gt;
+&lt;li&gt;当最近求出的 差值的绝对值 &amp;lt; 之前求的结果， 则替换结果。&lt;/li&gt;
+&lt;li&gt;遍历过程中
+&lt;ol&gt;
+&lt;li&gt;当 sum == target时，差值0，直接return sum&lt;/li&gt;
+&lt;li&gt;当 sum &amp;gt; target时，right&amp;ndash;，找是否有更接近的&lt;/li&gt;
+&lt;li&gt;当 sum &amp;lt; target时，left++, 找是否有更接近的&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;threeSumClosest&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+				&lt;span style=&#34;color:#75715e&#34;&gt;// 先排序 时间复杂度 O(N * log N)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        Arrays&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sort&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;2&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; left &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; right &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;left &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; right&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; sum &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;left&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;right&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; num&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+                &lt;span style=&#34;color:#75715e&#34;&gt;// 如果有相等的，直接返回0
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;sum &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;abs&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;sum &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;abs&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;res &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;
+                    res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;sum &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; target&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                    right &lt;span style=&#34;color:#f92672&#34;&gt;--;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                    left &lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复杂度分析 :&lt;/p&gt;
+&lt;p&gt;时间复杂度 : O(N ^ 2)&lt;/p&gt;
+&lt;p&gt;空间复杂度 : O(1)&lt;/p&gt;
+&lt;h1 id=&#34;进阶-四数之和&#34;&gt;进阶： 四数之和&lt;/h1&gt;
 &lt;h1 id=&#34;18-四数之和httpsleetcode-cncomproblems4sum&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/4sum/&#34;&gt;18. 四数之和&lt;/a&gt;&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;给定一个包含 n 个整数的数组 nums 和一个目标值 target&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;判断 nums 中是否存在四个元素 a&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;b&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;c 和 d &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;使得 a &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; b &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; c &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; d 的值与 target 相等&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;？&lt;/span&gt;找出所有满足条件且不重复的四元组&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
 
@@ -2203,7 +2270,7 @@ nums1和nums2 的数组大小都不超过1000。&lt;/p&gt;
 来源&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;力扣&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;（&lt;/span&gt;LeetCode&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;）&lt;/span&gt;
 链接&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;https&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//leetcode-cn.com/problems/4sum
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;著作权归领扣网络所有&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;商业转载请联系官方授权&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;，&lt;/span&gt;非商业转载请注明出处&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;。&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;题解-3&#34;&gt;题解：&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;题解-4&#34;&gt;题解：&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;leetcode&lt;/strong&gt; 也是挺有意思，&lt;strong&gt;两数之和，两数之和I，两数之和II, 三数之和&lt;/strong&gt;&amp;hellip;现在又来一个&lt;strong&gt;四数之和&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;让我想起了 &lt;strong&gt;丑数I, 丑数II, 丑数III, 超级丑数&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;以后会来一个 &lt;strong&gt;N数之和&lt;/strong&gt;  或者 &lt;strong&gt;超级N数之和&lt;/strong&gt;的吧.&lt;/p&gt;
