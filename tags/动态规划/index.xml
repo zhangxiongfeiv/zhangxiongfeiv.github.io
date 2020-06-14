@@ -6,10 +6,19 @@
     <description>Recent content in 动态规划 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Jun 2020 13:14:14 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2020 14:08:38 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数位dp.2的出现次数</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E4%BD%8Ddp.2%E7%9A%84%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0/</link>
+      <pubDate>Sun, 14 Jun 2020 14:08:38 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E4%BD%8Ddp.2%E7%9A%84%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0/</guid>
+      <description>面试题 17.06. 2出现的次数 编写一个方法，计算从 0 到 n (含 n) 中数字 2 出现的次数。 示例: 输入: 25 输出: 9 解释: (2, 12, 20, 21, 22, 23, 24, 25)(注意 22 应该算作两次</description>
+    </item>
     
     <item>
       <title>739.每日温度</title>
