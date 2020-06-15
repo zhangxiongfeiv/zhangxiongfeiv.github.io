@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>八皇后与回溯算法 - 飞熊&#39;s Blogs</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="飞熊" />
+  <meta name="description" content="八皇后问题 首先我们了解一下著名的八皇后问题 八皇后问题，一个古老而著名的问题，是回溯算法的典型案例。该问题由国际西洋棋棋手马克斯·贝瑟尔于 1848 年" />
+
+  <meta name="keywords" content="Hugo, iOS, arithmetic" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3" />
+
+
+<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/%E5%85%AB%E7%9A%87%E5%90%8E%E4%B8%8E%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+<meta property="og:title" content="八皇后与回溯算法" />
+<meta property="og:description" content="八皇后问题 首先我们了解一下著名的八皇后问题 八皇后问题，一个古老而著名的问题，是回溯算法的典型案例。该问题由国际西洋棋棋手马克斯·贝瑟尔于 1848 年" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E5%85%AB%E7%9A%87%E5%90%8E%E4%B8%8E%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" />
+<meta property="article:published_time" content="2020-06-15T21:10:05+08:00" />
+<meta property="article:modified_time" content="2020-06-15T21:10:05+08:00" />
+<meta itemprop="name" content="八皇后与回溯算法">
+<meta itemprop="description" content="八皇后问题 首先我们了解一下著名的八皇后问题 八皇后问题，一个古老而著名的问题，是回溯算法的典型案例。该问题由国际西洋棋棋手马克斯·贝瑟尔于 1848 年">
+<meta itemprop="datePublished" content="2020-06-15T21:10:05&#43;08:00" />
+<meta itemprop="dateModified" content="2020-06-15T21:10:05&#43;08:00" />
+<meta itemprop="wordCount" content="1308">
+
+
+
+<meta itemprop="keywords" content="回溯算法,算法," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="八皇后与回溯算法"/>
+<meta name="twitter:description" content="八皇后问题 首先我们了解一下著名的八皇后问题 八皇后问题，一个古老而著名的问题，是回溯算法的典型案例。该问题由国际西洋棋棋手马克斯·贝瑟尔于 1848 年"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/categories/">Categories</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/about/">About</a>
+          
+        
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      Fly
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/">Home</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/about/">About</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">八皇后与回溯算法</h1>
+      
+      <div class="post-meta">
+        <time datetime="2020-06-15" class="post-time">
+          Jun 15
+        </time>
+        
+        
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#八皇后的解决思路">八皇后的解决思路</a>
+      <ul>
+        <li><a href="#思路一暴力法">思路一：暴力法</a></li>
+        <li><a href="#思路二优化暴力法">思路二：优化暴力法</a></li>
+        <li><a href="#回溯法">回溯法</a></li>
+      </ul>
+    </li>
+    <li><a href="#回溯法-1">回溯法</a>
+      <ul>
+        <li><a href="#四皇后问题">四皇后问题</a></li>
+        <li><a href="#整体思路">整体思路：</a></li>
+        <li><a href="#代码如下">代码如下；</a></li>
+        <li><a href="#leetcode相关题目">LeetCode相关题目</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <h1 id="八皇后问题">八皇后问题</h1>
+<p>首先我们了解一下著名的八皇后问题</p>
+<blockquote>
+<p>八皇后问题，一个古老而著名的问题，是<a href="https://baike.baidu.com/item/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/9258495">回溯算法</a>的典型案例。该问题由国际西洋棋棋手马克斯·贝瑟尔于 1848 年提出：在 8×8 格的<a href="https://baike.baidu.com/item/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B/80888">国际象棋</a>上摆放八个<a href="https://baike.baidu.com/item/%E7%9A%87%E5%90%8E/15860305">皇后</a>，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。<a href="https://baike.baidu.com/item/%E9%AB%98%E6%96%AF/24098">高斯</a>认为有 76 种方案。1854 年在柏林的象棋杂志上不同的作者发表了 40 种不同的解，后来有人用<a href="https://baike.baidu.com/item/%E5%9B%BE%E8%AE%BA/1433806">图论</a>的方法解出 92 种结果。<a href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338">计算机</a>发明后，有多种计算机语言可以编程解决此问题。</p>
+</blockquote>
+<h2 id="八皇后的解决思路">八皇后的解决思路</h2>
+<h3 id="思路一暴力法">思路一：暴力法</h3>
+<ul>
+<li>从棋盘64个方格中，选出任意8个格子摆放皇后，检查每一种可能性</li>
+<li>一共有 C8/64 中可能性(大约是 4.4 * 10^9种摆法)</li>
+</ul>
+<h3 id="思路二优化暴力法">思路二：优化暴力法</h3>
+<ul>
+<li>显然每个皇后不可能再同一行</li>
+<li>所以共有 8 ^ 8(16777216)种摆法，检查每一种摆法是否合理</li>
+</ul>
+<h3 id="回溯法">回溯法</h3>
+<ul>
+<li>回溯 + 剪枝</li>
+</ul>
+<p>这就引入了我们今天的主角<strong>回溯法</strong></p>
+<h2 id="回溯法-1">回溯法</h2>
+<p><strong>回溯法</strong> ：可以理解为，通过不同的岔路口来通往目的地(找到想要的结果)</p>
+<ul>
+<li>每一步检查都选择一条路出发，能进则进，不能进则返回上一步(<strong>回溯</strong>)，换一条路试试.</li>
+<li>树 / 图的深度优先搜索(<strong>DFS</strong>),  八皇后，走迷宫都是典型的回溯应用。</li>
+</ul>
+<h3 id="四皇后问题">四皇后问题</h3>
+<p>在解决八皇后问题之前，我们先把问题规模减小，看看如何解决<strong>四皇后问题</strong></p>
+<p>以下为四皇后问题的推导过程</p>
+<ul>
+<li>从第一行(1,1)开始放入皇后
+<ul>
+<li>当(1,1)放入皇后之后， 与(1,1) 同行同列同对角线的都不能再放置皇后</li>
+</ul>
+</li>
+<li>继续放第二行，(2,1)(2,2)都不能放置皇后, (2,3)可放置皇后
+<ul>
+<li>放入以后与 (2,3) 同行同列同对角线的位置不能放置皇后</li>
+</ul>
+</li>
+<li>继续放置第三方， 我们发现第三行 每一条路都已<strong>走不通</strong>. (如图一)
+<ul>
+<li>所以接下来，就是<strong>回溯</strong></li>
+</ul>
+</li>
+<li><strong>回溯</strong> 重新放置第二行到 (2,4)</li>
+<li>继续放置 第三行(3,2)</li>
+<li>再继续放置第四行，发现第四行已走不通，所以再次<strong>回溯</strong>.
+<ul>
+<li>因为 二，三行已没有其它路可走，所以回溯第一行</li>
+</ul>
+</li>
+<li><strong>回溯</strong> 将第一行放置 (1,2)</li>
+<li>继续放置第二行 (2,4)</li>
+<li>放置第三行 (3,1)</li>
+<li>放置第四行 (4,3)
+<ul>
+<li>截止这一步，我们<strong>走通了一种可能性</strong></li>
+</ul>
+</li>
+<li>再继续放置 <strong>(1,3),(2,1),(3,4),(4,2)</strong>
+<ul>
+<li>到这一步，我们又<strong>走通了一种可能性</strong></li>
+</ul>
+</li>
+<li>(1,4)时，如图，依然走不通。</li>
+<li>所以最终我们的答案是，有两种可能性.</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gftbovhbssj30u010sgq5.jpg" alt="WechatIMG242"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gftbvcbpebj32iv0u0gwu.jpg" alt="WechatIMG243"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gftbz7bmmtj31460u00y4.jpg" alt="WechatIMG244"></p>
+<h3 id="整体思路">整体思路：</h3>
+<p>所以 <strong>回溯算法解决八皇后问题的总体思路</strong>:</p>
+<ul>
+<li>逐行摆放皇后</li>
+<li>摆放一行后，找下一行是否有可以摆放的位置
+<ul>
+<li>如果有，则摆放，继续下一行</li>
+<li>如果没有，则<strong>回溯</strong>， 换一种可能的路继续走</li>
+</ul>
+</li>
+<li>能走到最后一行，就是其中一种答案</li>
+</ul>
+<h3 id="代码如下">代码如下；</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 存储最终结果数组
+</span><span style="color:#75715e"></span>    List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;&gt;</span> lists<span style="color:#f92672">;</span>
+
+    <span style="color:#75715e">// 存放每一行皇后的列号
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> cols<span style="color:#f92672">;</span>
+    
+    <span style="color:#75715e">// 一共有多少合理的解法
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> ways<span style="color:#f92672">;</span>
+
+    <span style="color:#75715e">// 皇后的个数
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> queenCnt<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;&gt;</span> <span style="color:#a6e22e">solveNQueens</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        cols <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>n<span style="color:#f92672">];</span>
+        queenCnt <span style="color:#f92672">=</span> n<span style="color:#f92672">;</span>
+        lists <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+
+        <span style="color:#75715e">// 从di 0 行开始
+</span><span style="color:#75715e"></span>        place<span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> lists<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 从第row行，开始摆放皇后
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">place</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> row<span style="color:#f92672">){</span>
+        <span style="color:#75715e">// 当 行数 == 皇后数时，说明已经走到最后 ways++
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 并且 组装结果数组
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>row <span style="color:#f92672">==</span> queenCnt<span style="color:#f92672">){</span>
+            ways <span style="color:#f92672">++;</span>
+            show<span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> col <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> col <span style="color:#f92672">&lt;</span> queenCnt<span style="color:#f92672">;</span> col<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isValid<span style="color:#f92672">(</span>row<span style="color:#f92672">,</span>col<span style="color:#f92672">)){</span>
+                cols<span style="color:#f92672">[</span>row<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> col<span style="color:#f92672">;</span>
+                <span style="color:#75715e">// 继续下一行
+</span><span style="color:#75715e"></span>                <span style="color:#75715e">// 如果一直没有可以放置的位置， 则回溯
+</span><span style="color:#75715e"></span>                place<span style="color:#f92672">(</span>row <span style="color:#f92672">+</span> 1<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isValid</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> row<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> col<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> row<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// 当前列 已经有 相同的了
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>cols<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> col<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            <span style="color:#75715e">// 对角线 已经有 相同的了
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>row <span style="color:#f92672">-</span> i <span style="color:#f92672">==</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">abs</span><span style="color:#f92672">(</span>col <span style="color:#f92672">-</span> cols<span style="color:#f92672">[</span>i<span style="color:#f92672">]))</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    
+    <span style="color:#75715e">// 组装最终结果数组
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">show</span><span style="color:#f92672">(){</span>
+        List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> row <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> row <span style="color:#f92672">&lt;</span> queenCnt<span style="color:#f92672">;</span> row<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            StringBuilder sb <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StringBuilder<span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> col <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> col <span style="color:#f92672">&lt;</span> queenCnt<span style="color:#f92672">;</span> col<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>cols<span style="color:#f92672">[</span>row<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> col<span style="color:#f92672">){</span>
+                    <span style="color:#75715e">// 皇后位置
+</span><span style="color:#75715e"></span>                    sb<span style="color:#f92672">.</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Q&#34;</span><span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">// 非皇后位置
+</span><span style="color:#75715e"></span>                    sb<span style="color:#f92672">.</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;.&#34;</span><span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+            list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>sb<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+        lists<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>list<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h3 id="leetcode相关题目">LeetCode相关题目</h3>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfte3id7rxj314406q756.jpg" alt="截屏2020-06-15下午11.26.31"></p>
+<p>其中51 和 面试题08.12 重复， 52和其它两道题的区别，也只在于最终输出形式，基本一样。</p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+      Jun 15
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://zhangxiongfeiv.github.io/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">回溯算法</a>
+          <a href="https://zhangxiongfeiv.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/">
+            
+            <i class="iconfont">
+              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+            </i>
+            <span class="prev-text nav-default">leetcode200题回顾与总结</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/%E6%95%B0%E4%BD%8Ddp.2%E7%9A%84%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0/">
+            <span class="next-text nav-default">数位dp.2的出现次数</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+    
+
+  
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="icon-links">
+  
+  
+    <a href="310311589@qq.com" rel="me noopener" class="iconfont"
+      title="email"  target="_blank"
+      >
+      <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://github.com/zhangxiongfeiv" rel="me noopener" class="iconfont"
+      title="github"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
+</svg>
+
+    </a>
+
+
+<a href="https://zhangxiongfeiv.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+    class="iconfont" title="rss" target="_blank">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="30" height="30">
+  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
+</svg>
+
+  </a>
+   
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2017 -
+    2020
+    <span class="heart">
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        飞熊
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont">
+        
+        <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+      </i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

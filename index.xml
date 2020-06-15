@@ -132,6 +132,181 @@
     </item>
     
     <item>
+      <title>八皇后与回溯算法</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%85%AB%E7%9A%87%E5%90%8E%E4%B8%8E%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Mon, 15 Jun 2020 21:10:05 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%85%AB%E7%9A%87%E5%90%8E%E4%B8%8E%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</guid>
+      
+        <description>&lt;h1 id=&#34;八皇后问题&#34;&gt;八皇后问题&lt;/h1&gt;
+&lt;p&gt;首先我们了解一下著名的八皇后问题&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;八皇后问题，一个古老而著名的问题，是&lt;a href=&#34;https://baike.baidu.com/item/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/9258495&#34;&gt;回溯算法&lt;/a&gt;的典型案例。该问题由国际西洋棋棋手马克斯·贝瑟尔于 1848 年提出：在 8×8 格的&lt;a href=&#34;https://baike.baidu.com/item/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B/80888&#34;&gt;国际象棋&lt;/a&gt;上摆放八个&lt;a href=&#34;https://baike.baidu.com/item/%E7%9A%87%E5%90%8E/15860305&#34;&gt;皇后&lt;/a&gt;，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。&lt;a href=&#34;https://baike.baidu.com/item/%E9%AB%98%E6%96%AF/24098&#34;&gt;高斯&lt;/a&gt;认为有 76 种方案。1854 年在柏林的象棋杂志上不同的作者发表了 40 种不同的解，后来有人用&lt;a href=&#34;https://baike.baidu.com/item/%E5%9B%BE%E8%AE%BA/1433806&#34;&gt;图论&lt;/a&gt;的方法解出 92 种结果。&lt;a href=&#34;https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA/140338&#34;&gt;计算机&lt;/a&gt;发明后，有多种计算机语言可以编程解决此问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;八皇后的解决思路&#34;&gt;八皇后的解决思路&lt;/h2&gt;
+&lt;h3 id=&#34;思路一暴力法&#34;&gt;思路一：暴力法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;从棋盘64个方格中，选出任意8个格子摆放皇后，检查每一种可能性&lt;/li&gt;
+&lt;li&gt;一共有 C8/64 中可能性(大约是 4.4 * 10^9种摆法)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;思路二优化暴力法&#34;&gt;思路二：优化暴力法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;显然每个皇后不可能再同一行&lt;/li&gt;
+&lt;li&gt;所以共有 8 ^ 8(16777216)种摆法，检查每一种摆法是否合理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;回溯法&#34;&gt;回溯法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;回溯 + 剪枝&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这就引入了我们今天的主角&lt;strong&gt;回溯法&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;回溯法-1&#34;&gt;回溯法&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;回溯法&lt;/strong&gt; ：可以理解为，通过不同的岔路口来通往目的地(找到想要的结果)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每一步检查都选择一条路出发，能进则进，不能进则返回上一步(&lt;strong&gt;回溯&lt;/strong&gt;)，换一条路试试.&lt;/li&gt;
+&lt;li&gt;树 / 图的深度优先搜索(&lt;strong&gt;DFS&lt;/strong&gt;),  八皇后，走迷宫都是典型的回溯应用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;四皇后问题&#34;&gt;四皇后问题&lt;/h3&gt;
+&lt;p&gt;在解决八皇后问题之前，我们先把问题规模减小，看看如何解决&lt;strong&gt;四皇后问题&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;以下为四皇后问题的推导过程&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从第一行(1,1)开始放入皇后
+&lt;ul&gt;
+&lt;li&gt;当(1,1)放入皇后之后， 与(1,1) 同行同列同对角线的都不能再放置皇后&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;继续放第二行，(2,1)(2,2)都不能放置皇后, (2,3)可放置皇后
+&lt;ul&gt;
+&lt;li&gt;放入以后与 (2,3) 同行同列同对角线的位置不能放置皇后&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;继续放置第三方， 我们发现第三行 每一条路都已&lt;strong&gt;走不通&lt;/strong&gt;. (如图一)
+&lt;ul&gt;
+&lt;li&gt;所以接下来，就是&lt;strong&gt;回溯&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回溯&lt;/strong&gt; 重新放置第二行到 (2,4)&lt;/li&gt;
+&lt;li&gt;继续放置 第三行(3,2)&lt;/li&gt;
+&lt;li&gt;再继续放置第四行，发现第四行已走不通，所以再次&lt;strong&gt;回溯&lt;/strong&gt;.
+&lt;ul&gt;
+&lt;li&gt;因为 二，三行已没有其它路可走，所以回溯第一行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回溯&lt;/strong&gt; 将第一行放置 (1,2)&lt;/li&gt;
+&lt;li&gt;继续放置第二行 (2,4)&lt;/li&gt;
+&lt;li&gt;放置第三行 (3,1)&lt;/li&gt;
+&lt;li&gt;放置第四行 (4,3)
+&lt;ul&gt;
+&lt;li&gt;截止这一步，我们&lt;strong&gt;走通了一种可能性&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;再继续放置 &lt;strong&gt;(1,3),(2,1),(3,4),(4,2)&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;到这一步，我们又&lt;strong&gt;走通了一种可能性&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;(1,4)时，如图，依然走不通。&lt;/li&gt;
+&lt;li&gt;所以最终我们的答案是，有两种可能性.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gftbovhbssj30u010sgq5.jpg&#34; alt=&#34;WechatIMG242&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gftbvcbpebj32iv0u0gwu.jpg&#34; alt=&#34;WechatIMG243&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gftbz7bmmtj31460u00y4.jpg&#34; alt=&#34;WechatIMG244&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;整体思路&#34;&gt;整体思路：&lt;/h3&gt;
+&lt;p&gt;所以 &lt;strong&gt;回溯算法解决八皇后问题的总体思路&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;逐行摆放皇后&lt;/li&gt;
+&lt;li&gt;摆放一行后，找下一行是否有可以摆放的位置
+&lt;ul&gt;
+&lt;li&gt;如果有，则摆放，继续下一行&lt;/li&gt;
+&lt;li&gt;如果没有，则&lt;strong&gt;回溯&lt;/strong&gt;， 换一种可能的路继续走&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;能走到最后一行，就是其中一种答案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;代码如下&#34;&gt;代码如下；&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 存储最终结果数组
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; lists&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 存放每一行皇后的列号
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; cols&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 一共有多少合理的解法
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; ways&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 皇后的个数
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; queenCnt&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;solveNQueens&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;n &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        cols &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+        queenCnt &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        lists &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 从di 0 行开始
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        place&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; lists&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 从第row行，开始摆放皇后
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;place&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; row&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 当 行数 == 皇后数时，说明已经走到最后 ways++
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// 并且 组装结果数组
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;row &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; queenCnt&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+            ways &lt;span style=&#34;color:#f92672&#34;&gt;++;&lt;/span&gt;
+            show&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; col &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; col &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; queenCnt&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; col&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;isValid&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;row&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;col&lt;span style=&#34;color:#f92672&#34;&gt;)){&lt;/span&gt;
+                cols&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;row&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; col&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+                &lt;span style=&#34;color:#75715e&#34;&gt;// 继续下一行
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 如果一直没有可以放置的位置， 则回溯
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                place&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;row &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;isValid&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; row&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; col&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; row&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// 当前列 已经有 相同的了
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;cols&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; col&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+            &lt;span style=&#34;color:#75715e&#34;&gt;// 对角线 已经有 相同的了
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;row &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; Math&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;abs&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;col &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; cols&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]))&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 组装最终结果数组
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;show&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(){&lt;/span&gt;
+        List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;String&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; list &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; row &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; row &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; queenCnt&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; row&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            StringBuilder sb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; StringBuilder&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; col &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; col &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; queenCnt&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; col&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;cols&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;row&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; col&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                    &lt;span style=&#34;color:#75715e&#34;&gt;// 皇后位置
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    sb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Q&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                    &lt;span style=&#34;color:#75715e&#34;&gt;// 非皇后位置
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;                    sb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+                &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+            list&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;sb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;toString&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;());&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        lists&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;list&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;leetcode相关题目&#34;&gt;LeetCode相关题目&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfte3id7rxj314406q756.jpg&#34; alt=&#34;截屏2020-06-15下午11.26.31&#34;&gt;&lt;/p&gt;
+&lt;p&gt;其中51 和 面试题08.12 重复， 52和其它两道题的区别，也只在于最终输出形式，基本一样。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>数位dp.2的出现次数</title>
       <link>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E4%BD%8Ddp.2%E7%9A%84%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0/</link>
       <pubDate>Sun, 14 Jun 2020 14:08:38 +0800</pubDate>
@@ -2948,82 +3123,6 @@ nums1和nums2 的数组大小都不超过1000。&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;优化后的效果&#34;&gt;优化后的效果&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfhh325d58j30se07mjrv.jpg&#34; alt=&#34;&lt;&gt;屏幕快照 2020-06-05 下午12.54.01&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfhh395wzgj30pu06ggmd.jpg&#34; alt=&#34;u&#34;&gt;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>CA数字证书</title>
-      <link>https://zhangxiongfeiv.github.io/post/ca%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6/</link>
-      <pubDate>Fri, 05 Jun 2020 01:51:42 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/ca%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6/</guid>
-      
-        <description>&lt;h1 id=&#34;证书&#34;&gt;证书&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;证书，联想的是驾驶证、毕业证、英语四六级证等等，都是由权威机构认证的&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;密码学中的证书，全称叫公钥证书（Public-key Certificate，PKC），跟驾驶证类似&lt;/li&gt;
-&lt;li&gt;里面有姓名、邮箱等个人信息，以及此人的公钥&lt;/li&gt;
-&lt;li&gt;并由认证机构（Certificate Authority，CA）施加数字签名&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;CA就是能够认定“公钥确实属于此人”并能够生成数字签名的个人或者组织&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;有国际性组织、政府设立的组织&lt;/li&gt;
-&lt;li&gt;有通过提供认证服务来盈利的企业&lt;/li&gt;
-&lt;li&gt;个人也可以成立认证机构&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;证书的利用&#34;&gt;证书的利用&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;证书是为了解决，公钥发送过程中，被中间人攻击的情况。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;在上一篇文章介绍，数字签名时，我们的问题是： 当Bob 把 自己的&lt;strong&gt;公钥&lt;/strong&gt; 发送给 Alice时，可能会存在&lt;strong&gt;中间人攻击&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;中间人 Mallory 保存 Bob 的公钥&lt;/li&gt;
-&lt;li&gt;Mallory将 自己的 公钥发送给 Alice&lt;/li&gt;
-&lt;li&gt;Alice 以为 公钥是 Bob的，实际上却是中间人Mallory的，会使用Mallory的公钥对发送消息进行加密&lt;/li&gt;
-&lt;li&gt;Alice 在给 Bob发消息时， Mallory拦截到消息，因为消息是用 Mallory 的公钥加密的，所以 Malllory可以解密。 然后篡改消息，接着用第一步保存的Bob的公钥对消息进行加密，并发送个Bob&lt;/li&gt;
-&lt;li&gt;这时，Bob以为得到的消息是Alice发送的，而Alice以为自己的消息已经发送给了Bob。 消息发送者和接收者对已被攻击完全不知情。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfgsj89lovj310m0liwnc.jpg&#34; alt=&#34;截屏2020-06-05上午1.53.51&#34;&gt;&lt;/p&gt;
-&lt;p&gt;而使用上图中的流程， Bob不直接将 公钥发送给 Alice， 而是&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Bob在认证机构 注册自己的公钥&lt;/li&gt;
-&lt;li&gt;认证机构用自己的私钥，对Bob的公钥施加数字签名并生成 &lt;strong&gt;证书&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Alice 得到带有认证机构 的数字签名的 Bob的公钥 (证书)&lt;/li&gt;
-&lt;li&gt;Alice 使用 认证机构 的公钥 验证数字签名， 确认Bob的公钥的合法性&lt;/li&gt;
-&lt;li&gt;Alice 使用Bob的公钥加密消息，并发送给Bob&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
-&lt;h2 id=&#34;加密解密算法&#34;&gt;加密/解密算法&lt;/h2&gt;
-&lt;h3 id=&#34;对称加密&#34;&gt;对称加密&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;加密解密使用的同一个密码&lt;/li&gt;
-&lt;li&gt;加密解密速度快&lt;/li&gt;
-&lt;li&gt;无法解决密钥配送的问题&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;公钥密码&#34;&gt;公钥密码&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;加密解密是不同的密钥&lt;/li&gt;
-&lt;li&gt;加密解密速度慢&lt;/li&gt;
-&lt;li&gt;解决密钥配送问题&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;单向散列函数&#34;&gt;单向散列函数&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;根绝消息生成固定长度的散列值&lt;/li&gt;
-&lt;li&gt;防止数据被篡改&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;数字签名&#34;&gt;数字签名&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;用私钥加密消息的散列值，生成的密文&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;证书-1&#34;&gt;证书&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;用CA的私钥，对其他人的公钥生成数字签名&lt;/li&gt;
-&lt;/ul&gt;
 </description>
       
     </item>
