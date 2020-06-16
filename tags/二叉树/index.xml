@@ -6,10 +6,19 @@
     <description>Recent content in 二叉树 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Jun 2020 01:06:51 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2020 22:25:37 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>剑指offer36.二叉搜索树与双向链表</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer36.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Tue, 16 Jun 2020 22:25:37 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer36.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</guid>
+      <description>面试题36. 二叉搜索树与双向链表 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。要求不能创建任何新的节点，只能调整树中节点指</description>
+    </item>
     
     <item>
       <title>404.左叶子和</title>
@@ -180,15 +189,6 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</guid>
       <description>练习题： 450. 删除二叉搜索树中的节点 给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。返回</description>
-    </item>
-    
-    <item>
-      <title>98.验证二叉搜索树</title>
-      <link>https://zhangxiongfeiv.github.io/post/98.%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
-      <pubDate>Wed, 06 Nov 2019 21:35:41 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/98.%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
-      <description>98. 验证二叉搜索树 题解： 迭代 和 递归两种方法思路一样， 都是利用二叉树的中序遍历 二叉搜索树的中序遍历结果，是严格升序的， 所以我们中序遍历二叉树 记录</description>
     </item>
     
   </channel>

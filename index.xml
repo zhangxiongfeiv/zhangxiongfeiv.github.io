@@ -132,6 +132,186 @@
     </item>
     
     <item>
+      <title>剑指offer36.二叉搜索树与双向链表</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer36.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Tue, 16 Jun 2020 22:25:37 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer36.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</guid>
+      
+        <description>&lt;h1 id=&#34;面试题36-二叉搜索树与双向链表httpsleetcode-cncomproblemser-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/&#34;&gt;面试题36. 二叉搜索树与双向链表&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。要求不能创建任何新的节点，只能调整树中节点指针的指向。&lt;/p&gt;
+&lt;p&gt;为了让您更好地理解问题，以下面的二叉搜索树为例：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfui6b6zyoj30p60fo3zs.jpg&#34; alt=&#34;截屏2020-06-16下午10.33.10&#34;&gt;&lt;/p&gt;
+&lt;p&gt;我们希望将这个二叉搜索树转化为双向循环链表。链表中的每个节点都有一个前驱和后继指针。对于双向循环链表，第一个节点的前驱是最后一个节点，最后一个节点的后继是第一个节点。&lt;/p&gt;
+&lt;p&gt;下图展示了上面的二叉搜索树转化成的链表。“head” 表示指向链表中有最小元素的节点。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfui6gsvxdj30pg0a474l.jpg&#34; alt=&#34;截屏2020-06-16下午10.33.16&#34;&gt;&lt;/p&gt;
+&lt;p&gt;特别地，我们希望可以就地完成转换操作。当转化完成以后，树中节点的左指针需要指向前驱，树中节点的右指针需要指向后继。还需要返回链表中的第一个节点的指针。&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
+&lt;p&gt;这道题考的是， &lt;strong&gt;二叉树的中序遍历&lt;/strong&gt; 以及 &lt;strong&gt;双向链表的相关操作&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;中序遍历二叉树&lt;/li&gt;
+&lt;li&gt;使用三个指针
+&lt;ul&gt;
+&lt;li&gt;cur指针用来遍历节点&lt;/li&gt;
+&lt;li&gt;pre指针指向 cur 的前一个节点&lt;/li&gt;
+&lt;li&gt;head指针为新链表的头节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;遍历二叉树时
+&lt;ul&gt;
+&lt;li&gt;如果是访问的第一个节点
+&lt;ul&gt;
+&lt;li&gt;则为链表的头节点 head = cur&lt;/li&gt;
+&lt;li&gt;cur.left = pre&lt;/li&gt;
+&lt;li&gt;pre = cur&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;如果访问的不是第一个节点(此时 pre 不为空)
+&lt;ul&gt;
+&lt;li&gt;pre.right = cur&lt;/li&gt;
+&lt;li&gt;cur.left = pre&lt;/li&gt;
+&lt;li&gt;pre = cur&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;依次遍历所有节点，当遍历到最后一个节点时，结束遍历
+&lt;ul&gt;
+&lt;li&gt;此时 head 为中序遍历的第一个节点，即&lt;strong&gt;链表的****头节点&lt;/strong&gt;，&lt;/li&gt;
+&lt;li&gt;pre为 中序遍历最后一个节点，即&lt;strong&gt;链表的尾节点&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;所以中序遍历完毕以后，我们再将 pre 和 head串起来
+&lt;ul&gt;
+&lt;li&gt;pre.right = head;&lt;/li&gt;
+&lt;li&gt;head.left = pre&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;然后返回 head 即可.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;模拟过程如下-&#34;&gt;模拟过程如下 :&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfuigfif6jj315w0u0grs.jpg&#34; alt=&#34;WechatIMG246&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;代码&#34;&gt;代码&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;有了思路以后，题目就变得简单了，无非是 dfs二叉树，以及一些链表的基本操作而已&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;思路一--递归&#34;&gt;思路一 ： 递归&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 观察题目
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 可以看出，二叉搜索树转为双向链表之后，为二叉树中序遍历的结果
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 所以 dfs中序遍历二叉树
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * &amp;lt;p&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 记录 pre指针 和 head指针
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * pre表示 当前节点的 上一个
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * head表示 头节点
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * dfs 深度优先遍历 中序遍历
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 当 pre 为空时， 为第一次遍历，头节点设置成 cur, 且把node.left = pre.pre = cur
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 当 pre 不为空时, 不是第一次遍历，把pre 和 cur串起来，之后pre = cur
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; */&lt;/span&gt;
+Node pre &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; head &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Node &lt;span style=&#34;color:#a6e22e&#34;&gt;treeToDoublyList1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Node root&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// dfs
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    dfs&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 最后 head 为头节点， pre 为尾节点， 把head 和 pre串起来
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    head&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pre&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    pre&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; head&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// head 就是链表当头节点
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; head&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// 递归
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dfs&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Node cur&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;cur &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    dfs&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;cur&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;pre &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 当 pre 不为空时, 不是第一次遍历，把pre 和 cur串起来，之后pre = cur
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        pre&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cur&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 为第一次遍历，头节点设置成 cur, 且把node.left = pre.pre = cur
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        head &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cur&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    cur&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pre&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    pre &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cur&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    dfs&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;cur&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfuikjsbf5j30ou068wf8.jpg&#34; alt=&#34;截屏2020-06-16下午10.46.35&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;思路二-迭代&#34;&gt;思路二： 迭代&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 观察题目
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 可以看出，二叉搜索树转为双向链表之后，为二叉树中序遍历的结果
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 所以 dfs中序遍历二叉树
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * &amp;lt;p&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 记录 pre指针 和 head指针
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * pre表示 当前节点的 上一个
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * head表示 头节点
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * dfs 深度优先遍历 中序遍历
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 当 pre 为空时， 为第一次遍历，头节点设置成 cur, 且把node.left = pre.pre = cur
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 当 pre 不为空时, 不是第一次遍历，把pre 和 cur串起来，之后pre = cur
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; */&lt;/span&gt;
+Node pre &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; head &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Node &lt;span style=&#34;color:#a6e22e&#34;&gt;treeToDoublyList1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Node root&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// dfs
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    inorderTraversal&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 最后 head 为头节点， pre 为尾节点， 把head 和 pre串起来
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    head&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pre&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    pre&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; head&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// head 就是链表当头节点
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; head&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// 迭代
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;inorderTraversal&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Node cur&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+    Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Node&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; stack &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(!&lt;/span&gt;stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; cur &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;cur &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+            stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;push&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;cur&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+            cur &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cur&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+        cur &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;pop&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;pre &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+            pre&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cur&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            head &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cur&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        cur&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pre&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        pre &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cur&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+        cur &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cur&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfuikemuy6j30ps06smy2.jpg&#34; alt=&#34;截屏2020-06-16下午10.45.38&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;复杂度分析-&#34;&gt;复杂度分析 :&lt;/h2&gt;
+&lt;p&gt;时间复杂度 : O(N) 其中N位树元素数量，遍历树的所有节点&lt;/p&gt;
+&lt;p&gt;空间复杂度 : O(N) 最差情况二叉搜索树退化成链表。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;递归深度达到 O(N),  使用 O(N) 栈空间。&lt;/li&gt;
+&lt;li&gt;非递归调用，也使用了额外的 O(N) 的 Stack额外存储.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>八皇后与回溯算法</title>
       <link>https://zhangxiongfeiv.github.io/post/%E5%85%AB%E7%9A%87%E5%90%8E%E4%B8%8E%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
       <pubDate>Mon, 15 Jun 2020 21:10:05 +0800</pubDate>
@@ -3004,125 +3184,6 @@ nums1和nums2 的数组大小都不超过1000。&lt;/p&gt;
 &lt;p&gt;以上两张图也验证了我们上边复杂度的分析&lt;/p&gt;
 &lt;p&gt;相加求差值的代码，&lt;strong&gt;完全没有利用到数组是升序的条件&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;所以以后做题过程中，碰到&lt;strong&gt;有序数组查找元素&lt;/strong&gt;，首先就应该想到&lt;strong&gt;二分搜索&lt;/strong&gt;。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>278.寻找重复数</title>
-      <link>https://zhangxiongfeiv.github.io/post/278.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</link>
-      <pubDate>Fri, 05 Jun 2020 12:55:09 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/278.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</guid>
-      
-        <description>&lt;h2 id=&#34;287-寻找重复数httpsleetcode-cncomproblemsfind-the-duplicate-number&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/find-the-duplicate-number/&#34;&gt;287. 寻找重复数&lt;/a&gt;&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;给定一个包含 n + 1 个整数的数组 nums，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设只有一个重复的整数，找出这个重复的数。&lt;/p&gt;
-&lt;p&gt;示例 1:&lt;/p&gt;
-&lt;p&gt;输入: [1,3,4,2,2]
-输出: 2
-示例 2:&lt;/p&gt;
-&lt;p&gt;输入: [3,1,3,4,2]
-输出: 3
-说明：&lt;/p&gt;
-&lt;p&gt;不能更改原数组（假设数组是只读的）。
-只能使用额外的 O(1) 的空间。
-时间复杂度小于 O(n2) 。
-数组中只有一个重复的数字，但它可能不止重复出现一次。&lt;/p&gt;
-&lt;p&gt;来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/find-the-duplicate-number
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
-&lt;h3 id=&#34;思路一&#34;&gt;思路一：&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;遍历数组，使用Hashset存储遍历过的元素&lt;/li&gt;
-&lt;li&gt;当遍历当前元素时
-&lt;ul&gt;
-&lt;li&gt;如果set中包含，则为重复元素，返回当前元素&lt;/li&gt;
-&lt;li&gt;如果set中不包含， 则将当前元素加入set中&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;遍历完这边链表，都没发现重复时，return -1&lt;/li&gt;
-&lt;li&gt;时间复杂度 : O(N)&lt;/li&gt;
-&lt;li&gt;空间复杂度 : O(N)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;/**
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * 解法一：
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * 遍历数组，使用set存放遍历过的值
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * 遍历时，如果set中包含， 则返回 当前元素
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * 如果不包含，加入set中
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * 时间复杂度 : O(N)
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     * 空间复杂度 : O(N)
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;     */&lt;/span&gt;
-
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;findRepeatNumber1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-        HashSet&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; set &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashSet&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;set&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;contains&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]))&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-            set&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]);&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;思路二&#34;&gt;思路二：&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;上述解题中发现，我们完全没有用到此条件：
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;长度为 n， 且所有数字都在 [1, n]范围内&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;所以，如果没有重复元素，则所有元素在排序后，都应该 == 下标index + 1&lt;/li&gt;
-&lt;li&gt;那么，空间复杂度O(1), 时间复杂度 O(N)的解法就来了
-&lt;ul&gt;
-&lt;li&gt;遍历数组，当 下标+1 != 当前元素 时，将当前元素交换至正确的位置&lt;/li&gt;
-&lt;li&gt;交换过程中
-&lt;ul&gt;
-&lt;li&gt;如果当前元素 == 正确位置上的元素， 则重复， return 当前元素&lt;/li&gt;
-&lt;li&gt;如果当前元素 != 正确位置上的元素， 则依次将元素交换至正确的位置&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/**
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 解法二：
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 上述题解发现，我们完全没有用到数组中这个条件：
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 长度为n， 且所有数字都在 [1, n]范围内
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 所以，如果没有重复元素， 则所有元素在排序后，都应该与 下标index一致
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * 那么，空间复杂度O(1),时间复杂度O(n)的解法就来了
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *  1，遍历数组， 当 下标 + 1!= 当前元素时，将当前元素交换至正确的位置。
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *  2，交换过程中，如果 当前元素 == 正确位置上的元素， 则重复，return当前元素
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *  3，交换过程中，如果 当前元素 != 正确位置上的元素， 则依次将正确位置上的元素，移动位置
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; *
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; * */&lt;/span&gt;
-     &lt;span style=&#34;color:#75715e&#34;&gt;// 每个元素跟其下标对比 + 1，若不相同， 则交换元素至正确索引
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;//https://www.toutiao.com/i6761686631729594894
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;findDuplicate1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#75715e&#34;&gt;// 这里需要注意，一定不要 先取出来 int num = nums[i]
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 因为 nums[i] 在每一轮 while循环，是变化的。所以每一轮都取
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
-                swap&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;nums&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;优化后的效果&#34;&gt;优化后的效果&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfhh325d58j30se07mjrv.jpg&#34; alt=&#34;&lt;&gt;屏幕快照 2020-06-05 下午12.54.01&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfhh395wzgj30pu06ggmd.jpg&#34; alt=&#34;u&#34;&gt;&lt;/p&gt;
 </description>
       
     </item>
