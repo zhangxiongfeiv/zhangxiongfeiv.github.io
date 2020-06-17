@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>1014.最佳观光组合 - 飞熊&#39;s blog&#39;</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="1014. 最佳观光组合 给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。 一对景点（i &amp;lt; j）组成的观光组合的得" /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/1014.%E6%9C%80%E4%BD%B3%E8%A7%82%E5%85%89%E7%BB%84%E5%90%88/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="1014.最佳观光组合" />
+<meta property="og:description" content="1014. 最佳观光组合 给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。 一对景点（i &lt; j）组成的观光组合的得" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/1014.%E6%9C%80%E4%BD%B3%E8%A7%82%E5%85%89%E7%BB%84%E5%90%88/" />
+<meta property="article:published_time" content="2020-06-18T00:13:21+08:00" />
+<meta property="article:modified_time" content="2020-06-18T00:13:21+08:00" />
+<meta itemprop="name" content="1014.最佳观光组合">
+<meta itemprop="description" content="1014. 最佳观光组合 给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。 一对景点（i &lt; j）组成的观光组合的得">
+<meta itemprop="datePublished" content="2020-06-18T00:13:21&#43;08:00" />
+<meta itemprop="dateModified" content="2020-06-18T00:13:21&#43;08:00" />
+<meta itemprop="wordCount" content="1830">
+
+
+
+<meta itemprop="keywords" content="算法,动态规划," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="1014.最佳观光组合"/>
+<meta name="twitter:description" content="1014. 最佳观光组合 给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。 一对景点（i &lt; j）组成的观光组合的得"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">1014.最佳观光组合</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Jun 18 </span>
+        
+          <span class="more-meta"> 1830 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#题解-">题解 :</a>
+      <ul>
+        <li><a href="#思路一-暴力法">思路一 ：暴力法</a></li>
+        <li><a href="#思路二-dp">思路二: dp</a></li>
+        <li><a href="#思路三--dp---空间复杂度的优化">思路三 : dp - 空间复杂度的优化</a></li>
+        <li><a href="#思路四--官方题解思路">思路四 : 官方题解思路</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="1014-最佳观光组合httpsleetcode-cncomproblemsbest-sightseeing-pair"><a href="https://leetcode-cn.com/problems/best-sightseeing-pair/">1014. 最佳观光组合</a></h1>
+<blockquote>
+<p>给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。</p>
+<p>一对景点（i &lt; j）组成的观光组合的得分为（A[i] + A[j] + i - j）：景点的评分之和减去它们两者之间的距离。</p>
+<p>返回一对观光景点能取得的最高分。</p>
+<p>示例：</p>
+<p>输入：[8,1,5,2,6]
+输出：11
+解释：i = 0, j = 2, A[i] + A[j] + i - j = 8 + 5 + 0 - 2 = 11</p>
+<p>提示：</p>
+<p>2 &lt;= A.length &lt;= 50000
+1 &lt;= A[i] &lt;= 1000</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/best-sightseeing-pair
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h2 id="题解-">题解 :</h2>
+<h3 id="思路一-暴力法">思路一 ：暴力法</h3>
+<ul>
+<li>两层暴力循环</li>
+<li>计算每一种可能性</li>
+<li>时间复杂度 : O(N * 2)</li>
+<li>空间复杂度 : O(1)</li>
+<li>题目中给出数组元素个数范围 ：2 &lt;= A.length &lt;= 50000</li>
+<li>N ^ 2的时间复杂度 妥妥的超时了</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> *
+</span><span class="cm"> * 暴力法
+</span><span class="cm"> * 双重循环
+</span><span class="cm"> * 计算每一种可能性
+</span><span class="cm"> *
+</span><span class="cm"> * 时间复杂度 : O(N ^ 2)
+</span><span class="cm"> * commit 后， 果然毫无疑问的超时了
+</span><span class="cm"> *
+</span><span class="cm"> * */</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxScoreSightseeingPair</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">A</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="n">A</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="n">A</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+
+            <span class="n">res</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">res</span><span class="o">,</span> <span class="o">(</span><span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfvqu810auj30pk0dwq4i.jpg" alt="截屏2020-06-17下午10.49.10"></p>
+<h3 id="思路二-dp">思路二: dp</h3>
+<ul>
+<li>毫无疑问，我们需要对时间复杂度进行优化</li>
+<li>看到此题目第一眼， 干觉可以使用 dp解决</li>
+<li>dp三步走
+<ul>
+<li>定义 dp 数组的含义 , dp数组为 以 i 结尾的最佳观光组合的 值</li>
+<li>定义 初始值 dp[1]  也就是，0,1位置的元素套用公式得来  dp[1] = A[0] + A[1] - 1</li>
+<li>定义状态转移方程
+<ul>
+<li>dp[j] 的最大值， 也就是 包含dp[j - 1]的前边计算来的， 和 不包含 dp[j -1] 前边的值 中的最大值</li>
+<li>dp[j - 1] - A[j-1] + A[j] -1 为包含 前边的景点, 截止当前景点的 观看组合</li>
+<li>A[j-1] + A[j] -1 为不包含前边， 也就是 [j-1, j] 的观看组合</li>
+<li>dp[j] = Math.max(dp[j - 1] + A[j] - A[j-1] -1, A[j-1] + A[j] -1);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>接下来，就是代码实现 :</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> *
+</span><span class="cm"> * 时间复杂度的优化
+</span><span class="cm"> * 看到此题目第一眼，就感觉可以首页那个dp
+</span><span class="cm"> * 下面我们尝试 用 dp 在 o(N) 的时间复杂度内解决此问题
+</span><span class="cm"> *
+</span><span class="cm"> * 时间复杂度 : O(N)
+</span><span class="cm"> * 空间复杂度 : O(N)
+</span><span class="cm"> *
+</span><span class="cm"> * */</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxScoreSightseeingPair1</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">A</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+    <span class="n">dp</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">A</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">A</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">dp</span><span class="o">[</span><span class="n">1</span><span class="o">];</span>
+
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="c1">// dp[j] 的最大值， 也就是 包含dp[j - 1]的前边计算来的， 和 不包含 dp[j -1] 前边的值 中的最大值
+</span><span class="c1"></span>        <span class="c1">// dp[j - 1] - A[j-1] + A[j] -1 为包含 前边的景点, 截止当前景点的 观看组合
+</span><span class="c1"></span>        <span class="c1">// A[j-1] + A[j] -1 为不包含前边， 也就是 [j-1, j] 的观看组合
+</span><span class="c1"></span>        <span class="n">dp</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">A</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">-</span> <span class="n">A</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">1</span><span class="o">]</span> <span class="o">-</span><span class="n">1</span><span class="o">,</span> <span class="n">A</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">A</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">-</span><span class="n">1</span><span class="o">);</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">res</span><span class="o">,</span> <span class="n">dp</span><span class="o">[</span><span class="n">j</span><span class="o">]);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="复杂度分析-">复杂度分析 :</h4>
+<p>时间复杂度 : O(N) 从头到尾遍历了一遍数组</p>
+<p>空间复杂度 : O(N) 使用了额外的 dp数组</p>
+<h3 id="思路三--dp---空间复杂度的优化">思路三 : dp - 空间复杂度的优化</h3>
+<ul>
+<li>上述题中，我们用到了额外的dp数组</li>
+</ul>
+<ul>
+<li>然而，在解题过程中，我们只用到了 dp数组的 j-1项</li>
+<li>也就是说, dp[j] 只和 dp[j-1] 有关</li>
+<li>所以我们使用一个变量来代替 dp数组</li>
+<li>代码如下 :</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> *
+</span><span class="cm"> * dp 空间复杂度的优化
+</span><span class="cm"> *
+</span><span class="cm"> * 上述题中，我们用到了额外的dp数组
+</span><span class="cm"> * 然而，在解题过程中，我们只用到了 dp数组的 j-1项
+</span><span class="cm"> * 也就是说, dp[j] 只和 dp[j-1] 有关
+</span><span class="cm"> * 所以我们使用一个变量来代替 dp数组
+</span><span class="cm"> *
+</span><span class="cm"> * 将空间复杂度优化至 O(1)
+</span><span class="cm"> *
+</span><span class="cm"> * 时间复杂度 : O(N)
+</span><span class="cm"> * 空间复杂度 : O(1)
+</span><span class="cm"> * */</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxScoreSightseeingPair2</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">A</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">dp</span> <span class="o">=</span> <span class="n">A</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">A</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">dp</span><span class="o">;</span>
+
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="c1">// dp[j] 的最大值， 也就是 包含dp[j - 1]的前边计算来的， 和 不包含 dp[j -1] 前边的值 中的最大值
+</span><span class="c1"></span>        <span class="c1">// dp[j - 1] - A[j-1] + A[j] -1 为包含 前边的景点, 截止当前景点的 观看组合
+</span><span class="c1"></span>        <span class="c1">// A[j-1] + A[j] -1 为不包含前边， 也就是 [j-1, j] 的观看组合
+</span><span class="c1"></span>        <span class="n">dp</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">dp</span> <span class="o">+</span> <span class="n">A</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">-</span> <span class="n">A</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">1</span><span class="o">]</span> <span class="o">-</span><span class="n">1</span><span class="o">,</span> <span class="n">A</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="n">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">A</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">-</span><span class="n">1</span><span class="o">);</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">res</span><span class="o">,</span> <span class="n">dp</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="复杂度分析--1">复杂度分析 :</h4>
+<p>时间复杂度 : O(N)</p>
+<p>空间复杂度 : O(1)</p>
+<h3 id="思路四--官方题解思路">思路四 : 官方题解思路</h3>
+<p>官方<strong>思路清奇</strong>, 不太好想, 但还是比较容易理解的</p>
+<ul>
+<li>官方思路
+<ul>
+<li>观光公式 : A[i] + A[j] + i - j  等于  A[i] + i + A[j] - j</li>
+<li>而我们在遍历, j时， A[j] - j 是固定的</li>
+<li>暴力法存在的问题，是在 A[j] - j固定后，还在用 O(N) 的时间复杂度来计算 A[i] + i</li>
+<li>而 A[i] + i, 我们可以维护一个变量来记录扫描以来的最大值，这时我们去取出 A[i] + i的最大值时</li>
+<li>时间复杂度 就为 O(1)</li>
+<li>算法的整体时间复杂度 为 O(N)</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> *
+</span><span class="cm"> * 时间复杂度优化至 O(N)
+</span><span class="cm"> *
+</span><span class="cm"> * 官方思路
+</span><span class="cm"> * 观光公式 : A[i] + A[j] + i - j  等于  A[i] + i + A[j] - j
+</span><span class="cm"> * 而我们在遍历, j时， A[j] - j 是固定的
+</span><span class="cm"> * 暴力法存在的问题，是在 A[j] - j固定后，还在用 O(N) 的时间复杂度来计算 A[i] + i
+</span><span class="cm"> *
+</span><span class="cm"> * 而 A[i] + i, 我们可以维护一个变量来记录扫描以来的最大值，这时我们去取出 A[i] + i的最大值时
+</span><span class="cm"> * 时间复杂度 就为 O(1)
+</span><span class="cm"> * 算法的整体时间复杂度 为 O(N)
+</span><span class="cm"> *
+</span><span class="cm"> * 时间复杂度 : O(N)
+</span><span class="cm"> * 空间复杂度 : O(1)
+</span><span class="cm"> *
+</span><span class="cm"> * */</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxScoreSightseeingPair3</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">A</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">maxi</span> <span class="o">=</span> <span class="n">A</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">0</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">maxi</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxi</span><span class="o">,</span> <span class="n">A</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">+</span> <span class="n">j</span><span class="o">);</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">res</span><span class="o">,</span> <span class="n">maxi</span> <span class="o">+</span> <span class="n">A</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">-</span> <span class="n">j</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="复杂度分析--2">复杂度分析 :</h4>
+<p>时间复杂度 : O(N)</p>
+<p>空间复杂度 : O(1)</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Jun 18
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">leetcode200题回顾与总结</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E5%9B%A2%E7%81%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E9%97%AE%E9%A2%98/">
+            <span class="next-text nav-default">团灭二叉树路径总和问题</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

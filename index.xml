@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>1014.最佳观光组合</title>
+      <link>https://zhangxiongfeiv.github.io/post/1014.%E6%9C%80%E4%BD%B3%E8%A7%82%E5%85%89%E7%BB%84%E5%90%88/</link>
+      <pubDate>Thu, 18 Jun 2020 00:13:21 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/1014.%E6%9C%80%E4%BD%B3%E8%A7%82%E5%85%89%E7%BB%84%E5%90%88/</guid>
+      <description>1014. 最佳观光组合 给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。 一对景点（i &amp;lt; j）组成的观光组合的得</description>
+    </item>
+    
+    <item>
       <title>团灭二叉树路径总和问题</title>
       <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 17 Jun 2020 16:12:46 +0800</pubDate>
