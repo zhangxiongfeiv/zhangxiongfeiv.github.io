@@ -132,6 +132,163 @@
     </item>
     
     <item>
+      <title>团灭二叉树路径总和问题</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 17 Jun 2020 16:12:46 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E9%97%AE%E9%A2%98/</guid>
+      
+        <description>&lt;h1 id=&#34;二叉树的路径总和问题&#34;&gt;二叉树的路径总和问题&lt;/h1&gt;
+&lt;p&gt;LeetCode上有一系列的 &lt;strong&gt;二叉树路径总和&lt;/strong&gt; 的问题, 如图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfvdlp7e2ej314m06egmk.jpg&#34; alt=&#34;截屏2020-06-17下午4.28.48&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这篇文章中我们按照 &lt;strong&gt;I, II, III&lt;/strong&gt;的顺序依次解决此类题目&lt;/p&gt;
+&lt;h1 id=&#34;112-路径总和httpsleetcode-cncomproblemspath-sum&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/path-sum/&#34;&gt;112. 路径总和&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。&lt;/p&gt;
+&lt;p&gt;说明: 叶子节点是指没有子节点的节点。&lt;/p&gt;
+&lt;p&gt;示例:
+给定如下二叉树，以及目标和 sum = 22，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;          5
+         / \
+        4   8
+       /   / \
+      11  13  4
+     /  \      \
+    7    2      1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;返回 true, 因为存在目标和为 22 的根节点到叶子节点的路径 5-&amp;gt;4-&amp;gt;11-&amp;gt;2。&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/path-sum
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;题解&#34;&gt;题解：&lt;/h2&gt;
+&lt;p&gt;这道题思路比较简单， 无非就是 dfs深度遍历二叉树, 到叶子节点时，如果和为给定的target， 则return true。 否则选择另一条路继续遍历&lt;/p&gt;
+&lt;p&gt;这样看起来，貌似有点 &lt;strong&gt;回溯算法&lt;/strong&gt; 的意思？&lt;/p&gt;
+&lt;p&gt;下边，我们用递归 / 非递归两种实现方式解决此题。&lt;/p&gt;
+&lt;h3 id=&#34;思路一--递归&#34;&gt;思路一 ： 递归&lt;/h3&gt;
+&lt;p&gt;深度优先遍历&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 递归
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;hasPathSumRecursive&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;TreeNode root&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  	&lt;span style=&#34;color:#75715e&#34;&gt;// 根节点为空，直接返回false
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+	
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 遍历到 root 时， 将 sum的值 减去 root.val
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    sum &lt;span style=&#34;color:#f92672&#34;&gt;-=&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+  
+  	&lt;span style=&#34;color:#75715e&#34;&gt;// 此时，如果root为叶子节点， 返回 true， 否则返回false
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; sum &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 继续分别遍历 root的左右子节点
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 两个中，有一个为 true 则返回true。 都为false， 则返回false
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; hasPathSumRecursive&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;sum&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; hasPathSumRecursive&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt;sum&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfvedtj6tqj30pw068wff.jpg&#34; alt=&#34;截屏2020-06-17下午5.07.41&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;思路二迭代&#34;&gt;思路二：迭代&lt;/h3&gt;
+&lt;p&gt;深度优先遍历&lt;/p&gt;
+&lt;p&gt;使用栈 迭代 前序遍历二叉树&lt;/p&gt;
+&lt;p&gt;推导过程如下图 :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfvf5r5mm5j30u0148dif.jpg&#34; alt=&#34;WechatIMG247&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 迭代
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;hasPathSum&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;TreeNode root&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+      	&lt;span style=&#34;color:#75715e&#34;&gt;// 节点栈
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;TreeNode&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;stack &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+        stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;push&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+				&lt;span style=&#34;color:#75715e&#34;&gt;// 数字栈
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; numStack &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Stack&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+        numStack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;push&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;sum &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; root&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+
+      	&lt;span style=&#34;color:#75715e&#34;&gt;// 当栈不为空时 循环
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(!&lt;/span&gt;stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;isEmpty&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()){&lt;/span&gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// 节点栈 取出节点
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            TreeNode node &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;pop&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// 数字栈 取出数字
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numStack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;pop&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+						&lt;span style=&#34;color:#75715e&#34;&gt;// 当节点为跟节点， 且 数字为 0时。 符合条件，return true
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+						
+          	&lt;span style=&#34;color:#75715e&#34;&gt;// 将 节点的 右/左子节点 以及 num与子节点的差值 分别入栈
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+                stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;push&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+                numStack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;push&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+          
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+                stack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;push&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+                numStack&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;push&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;num &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+            &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+      	&lt;span style=&#34;color:#75715e&#34;&gt;// 遍历完一整棵树，一直没有叶子节点，且 数字为0的情况， 则返回false
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfvee0v506j30qq06gglz.jpg&#34; alt=&#34;截屏2020-06-17下午5.06.58&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;113-路径总和-iihttpsleetcode-cncomproblemspath-sum-ii&#34;&gt;&lt;a href=&#34;https://leetcode-cn.com/problems/path-sum-ii/&#34;&gt;113. 路径总和 II&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。&lt;/p&gt;
+&lt;p&gt;说明: 叶子节点是指没有子节点的节点。&lt;/p&gt;
+&lt;p&gt;示例:
+给定如下二叉树，以及目标和 sum = 22，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;          5
+         / \
+        4   8
+       /   / \
+      11  13  4
+     /  \    / \
+    7    2  5   1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;返回:&lt;/p&gt;
+&lt;p&gt;[
+[5,4,11,2],
+[5,8,4,5]
+]&lt;/p&gt;
+&lt;p&gt;来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/path-sum-ii
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;题解-1&#34;&gt;题解：&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;前序遍历&lt;/strong&gt;  + &lt;strong&gt;回溯算法&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先使用前序遍历， 前序遍历是第一次访问到相应节点， 就进行操作的一种遍历方式， &lt;strong&gt;回溯算法&lt;/strong&gt;的题目基本都是采用先序遍历的方式。&lt;/li&gt;
+&lt;li&gt;从 root 节点开始， 当访问到一个节点时， 将节点的 &lt;strong&gt;value&lt;/strong&gt; 记录在 &lt;strong&gt;path&lt;/strong&gt; 中&lt;/li&gt;
+&lt;li&gt;因为要记录所有经过的节点， 所以 &lt;strong&gt;path&lt;/strong&gt; 是要在递归过程中逐层的转递的， 所以当访问完某一个节点后，要将该节点的 value 从 &lt;strong&gt;path&lt;/strong&gt; 中删除。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;path&lt;/strong&gt; 中的元素， 通过上面两个步骤的操作， nums 中的元素始终都是代表从跟，到当前节点路径的所有元素
+当到达任意叶子节点， 则计算 sum(nums) == target 如果相等， 则放入全局的 &lt;strong&gt;res&lt;/strong&gt; 数组中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 结果数组
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;LinkedList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; LinkedList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// 路径
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;LinkedList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; path &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; LinkedList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dfs&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;TreeNode node&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    path&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    sum &lt;span style=&#34;color:#f92672&#34;&gt;-=&lt;/span&gt; node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;val&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;sum &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 0 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 注意这里需要 new 一个path，防止后续path的修改中，影响已添加的结果.../
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        res&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; LinkedList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;(&lt;/span&gt;path&lt;span style=&#34;color:#f92672&#34;&gt;));&lt;/span&gt;
+
+    dfs&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;left&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    dfs&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;node&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;right&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// 回溯
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    path&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;removeLast&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;pathSum&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;TreeNode root&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+
+    dfs&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;root&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; sum&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; res&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfvh38pvwvj30o606c750.jpg&#34; alt=&#34;截屏2020-06-17下午6.41.20&#34;&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>剑指offer.树的子结构</title>
       <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.26%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/</link>
       <pubDate>Wed, 17 Jun 2020 14:59:43 +0800</pubDate>
@@ -3014,168 +3171,6 @@ nums1和nums2 的数组大小都不超过1000。&lt;/p&gt;
 &lt;p&gt;以上是 从 方法一 -&amp;gt; 方法五的执行耗时。&lt;/p&gt;
 &lt;p&gt;递归最快，后序遍历最慢，前序/中序/层序时间一致&lt;/p&gt;
 &lt;p&gt;按理来说，时间复杂度都是 O(N), 执行时间相差大这个问题，先遗留下，以后研究下，再单独写一篇文章解释这个问题。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>iOS签名机制</title>
-      <link>https://zhangxiongfeiv.github.io/post/ios%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6/</link>
-      <pubDate>Fri, 05 Jun 2020 23:26:21 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/ios%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6/</guid>
-      
-        <description>&lt;p&gt;姐妹篇&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;../%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86&#34;&gt;简单了解对称和非对称加密&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;../%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0&#34;&gt;单向散列函数&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;../%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D&#34;&gt;数字签名&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;../ca%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6&#34;&gt;CA数字证书&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;ios签名机制&#34;&gt;iOS签名机制&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;iOS签名机制的作用&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;保证安装到用户手机上的APP都是经过Apple官方允许的&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;不管是真机调试，还是发布APP，开发者都需要经过一系列复杂的步骤&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;生成CertificateSigningRequest.certSigningRequest文件&lt;/li&gt;
-&lt;li&gt;获得ios_development.cer\ios_distribution.cer证书文件&lt;/li&gt;
-&lt;li&gt;注册device、添加App ID&lt;/li&gt;
-&lt;li&gt;获得*.mobileprovision文件&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;对于真机调试，现在的Xcode已经自动帮开发者做了以上操作&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;思考&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;每一步的作用是什么？&lt;/li&gt;
-&lt;li&gt;.certSigningRequest、.cer、.mobileprovision文件究竟里面包含了什么？有何用处？&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;签名流程&#34;&gt;签名流程&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;首先我们需要三个角色，&lt;strong&gt;Mac设备&lt;/strong&gt; ，&lt;strong&gt;苹果后台&lt;/strong&gt;， &lt;strong&gt;iOS设备&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Mac设备要生成一对&lt;strong&gt;公钥私钥&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;苹果后台也有一对公钥私钥，&lt;strong&gt;私钥保存在苹果后台&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;每一台iOS设备上，都有&lt;strong&gt;苹果的公钥&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Mac对App打包时，要对App包进行签名(用Mac的私钥签名)。 签名后生成:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;App包&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;对App包的散列值签名的签名文件&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Mac的公钥&lt;/strong&gt;上传至&lt;strong&gt;苹果后台&lt;/strong&gt;后，苹果会用自己的&lt;strong&gt;私钥&lt;/strong&gt;对Mac的公钥进行签名， 签名后生成：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;用&lt;strong&gt;苹果私钥&lt;/strong&gt;对&lt;strong&gt;Mac公钥&lt;/strong&gt;签名的签名文件 (.cer 文件)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;接着苹果后台，会使用其&lt;strong&gt;私钥&lt;/strong&gt;对包括 &lt;strong&gt;.cer文件，devices，Appid， Entitlements&lt;/strong&gt;在内文件再次数字签名，并生成&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;.mobileprovision 文件
-&lt;ul&gt;
-&lt;li&gt;文件包含 &lt;strong&gt;Mac公钥的数字签名&lt;/strong&gt;，devices，Appid， Entitlements**&lt;/li&gt;
-&lt;li&gt;以及对以上文件，苹果私钥签名后的数字签名&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;在App 安装进&lt;strong&gt;iOS设备&lt;/strong&gt;时, iOS设备首先会用&lt;strong&gt;苹果的公钥&lt;/strong&gt;对.mobileprovision 文件进行解密&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果签名验证通过, 则能接触 &lt;strong&gt;Mac公钥签名&lt;/strong&gt;， &lt;strong&gt;devices， AppId， Entitlements&lt;/strong&gt;等信息&lt;/li&gt;
-&lt;li&gt;如果验证失败， 则会安装失败&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;接下来，还是需要 &lt;strong&gt;苹果的公钥&lt;/strong&gt; 对 &lt;strong&gt;Mac的公钥签名信息&lt;/strong&gt;进行解密&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果签名验证通过， 则能拿到可以确保没有问题的&lt;strong&gt;Mac的公钥信息&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;如果验证失败， 则会安装失败&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;接下来一步，就是利用 &lt;strong&gt;Mac的公钥信息&lt;/strong&gt;验证安装包中的签名(因为Mac打包App时，是使用的自己的&lt;strong&gt;私钥&lt;/strong&gt;进行加密的)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果签名验证通过， 则可以解出App 的 &lt;strong&gt;mach-o文件，资源文件&lt;/strong&gt;等&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfhtbt30lbj31aa0lqwjr.jpg&#34; alt=&#34;截屏2020-06-05下午11.06.50&#34;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Mac生成证书操作&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;先回忆一下，Alice 和 Bob通信过程中，发送公钥经过CA机构签名的过程&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;证书生成过程，是Bob在向Alice，发送公钥时，为了避免 &lt;strong&gt;中间人攻击&lt;/strong&gt;， 而向&lt;strong&gt;CA认证机构&lt;/strong&gt;注册公钥。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;CA认证机构&lt;/strong&gt; 用&lt;strong&gt;自己的私钥&lt;/strong&gt;施加数字签名，并生成证书&lt;/li&gt;
-&lt;li&gt;Alice，在&lt;strong&gt;CA认证机构&lt;/strong&gt;处，得到带有Bob方公钥的数字签名&lt;/li&gt;
-&lt;li&gt;Alice，使用CA机构的公钥，验证数字签名是否有效，确保Bob公钥的合法性&lt;/li&gt;
-&lt;li&gt;Alice，使用接收方的公钥加密，发送消息&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;在Mac 生成证书过程中&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;苹果就充当&lt;strong&gt;CA认证机构&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;第一步，mac生成 .certSignRequest 文件，其实就是 &lt;strong&gt;Mac 的公钥&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;第二步，上传.certSignRequest 文件， 就是&lt;strong&gt;苹果后台用自己的私钥&lt;/strong&gt;，对Mac的公钥进行数字签名&lt;/li&gt;
-&lt;li&gt;第三步，生成**.cer文件**， 也就是**苹果后台用自己的私钥**，对**Mac的公钥签名**后的**证书**文件&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfhsp4wznej310k0eqh7v.jpg&#34; alt=&#34;截屏2020-06-05下午10.44.19&#34;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;.mobileprovision文件&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;生成.mobileprovision文件的过程，就是选择完 &lt;strong&gt;AppID, .cer文件 , devices&lt;/strong&gt;之后，苹果后台又一次对上述文件用&lt;strong&gt;自己的私钥&lt;/strong&gt;，进行&lt;strong&gt;签名&lt;/strong&gt;的过程，签名之后生成.mobileprovision文件&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfhtgm60ywj319c0jmn52.jpg&#34; alt=&#34;截屏2020-06-05下午11.11.16&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfhtgryr0dj314g0kq0xj.jpg&#34; alt=&#34;截屏2020-06-05下午11.11.20&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;总结&#34;&gt;总结：&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;.certSigningRequest文件&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Mac的公钥&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;.cer文件&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;利用&lt;strong&gt;苹果的私钥(CA)&lt;/strong&gt;, 对&lt;strong&gt;Mac的公钥&lt;/strong&gt;签名，生成的数字签名证书&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;.mobileprovision文件&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;利用&lt;strong&gt;苹果私钥&lt;/strong&gt;， 对【&lt;strong&gt;.cer + devices + AppID + entitlements&lt;/strong&gt;】进行数字签名，生成的文件&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;appstore下载的app&#34;&gt;AppStore下载的App&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;如果APP是从AppStore下载安装的，你会发现里面是没有mobileprovision文件的&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;它的验证流程会简单很多，大概如下所示&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://tva1.sinaimg.cn/large/007S8ZIlly1gfhtqjyz4gj30z60cejt3.jpg&#34; alt=&#34;截屏2020-06-05下午11.21.03&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 </description>
       
     </item>

@@ -6,10 +6,19 @@
     <description>Recent content in 二叉树 on 飞熊&#39;s Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 17 Jun 2020 14:59:43 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2020 16:12:46 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>团灭二叉树路径总和问题</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 17 Jun 2020 16:12:46 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E9%97%AE%E9%A2%98/</guid>
+      <description>二叉树的路径总和问题 LeetCode上有一系列的 二叉树路径总和 的问题, 如图 这篇文章中我们按照 I, II, III的顺序依次解决此类题目 112. 路径总和 给定一</description>
+    </item>
     
     <item>
       <title>剑指offer.树的子结构</title>
@@ -180,15 +189,6 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
       <description>二叉树的遍历 有两种遍历树的策略： 深度优先搜索(DFS) 在这个策略中，我们采用深度作为优先级，以便从根开始一直到达某个确定的叶子，然后再返回根</description>
-    </item>
-    
-    <item>
-      <title>235. 二叉搜索树的最近公共祖先</title>
-      <link>https://zhangxiongfeiv.github.io/post/235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
-      <pubDate>Tue, 19 Nov 2019 21:35:41 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
-      <description>235. 二叉搜索树的最近公共祖先 题解： 思路一： 我们使用 HashMap 来存储，子节点的值 -&amp;gt; 父节点。 dfs二叉树，构建map，保存每个节点对应的父节点 根据map，</description>
     </item>
     
   </channel>
