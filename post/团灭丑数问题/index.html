@@ -1,62 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>团灭丑数问题 - 飞熊&#39;s Blogs</title>
-  
-
-<meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>团灭丑数问题 - 飞熊&#39;s blog&#39;</title>
+  <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-<meta name="MobileOptimized" content="width"/>
-<meta name="HandheldFriendly" content="true"/>
-
-
-<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 <meta name="theme-color" content="#f8f5ec" />
 <meta name="msapplication-navbutton-color" content="#f8f5ec">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="飞熊" />
-  <meta name="description" content="什么是丑数？ 先看一下百度百科的解释: 说法一（ugly number）：把只包含质因子2，3和5的数称作丑数（Ugly Number）。例如6、8" />
-
-  <meta name="keywords" content="Hugo, iOS, arithmetic" />
+<meta name="author" content="飞熊" /><meta name="description" content="什么是丑数？ 先看一下百度百科的解释: 说法一（ugly number）：把只包含质因子2，3和5的数称作丑数（Ugly Number）。例如6、8" /><meta name="keywords" content="iOS, 算法, Blog" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.68.3" />
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
 <link rel="canonical" href="https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%91%E6%95%B0%E9%97%AE%E9%A2%98/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
-
-
-<link rel="icon" href="/favicon.ico" />
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
-
-
-
+<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="团灭丑数问题" />
@@ -69,7 +49,7 @@
 <meta itemprop="description" content="什么是丑数？ 先看一下百度百科的解释: 说法一（ugly number）：把只包含质因子2，3和5的数称作丑数（Ugly Number）。例如6、8">
 <meta itemprop="datePublished" content="2020-05-30T10:15:13&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-30T10:15:13&#43;08:00" />
-<meta itemprop="wordCount" content="4625">
+<meta itemprop="wordCount" content="4836">
 
 
 
@@ -86,9 +66,6 @@
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 <![endif]-->
 
-
-
-
 </head>
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
@@ -103,220 +80,62 @@
 </div>
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list">
-    <li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/">Home</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/post/">Archives</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/tags/">Tags</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/categories/">Categories</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/about/">About</a>
-          
-        
-      </li>
-    
-
-    
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
   </ul>
 </nav>
-
-
-  
-    
-
-
-
-
-
-
-  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
-  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
-
-
-
-
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-<div class="pswp__bg"></div>
-
-<div class="pswp__scroll-wrap">
-    
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-    </div>
-    
-    <div class="pswp__ui pswp__ui--hidden">
-    <div class="pswp__top-bar">
-      
-      <div class="pswp__counter"></div>
-      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-      <button class="pswp__button pswp__button--share" title="Share"></button>
-      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-      
-      
-      <div class="pswp__preloader">
-        <div class="pswp__preloader__icn">
-          <div class="pswp__preloader__cut">
-            <div class="pswp__preloader__donut"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-      <div class="pswp__share-tooltip"></div>
-    </div>
-    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-    </button>
-    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-    </button>
-    <div class="pswp__caption">
-      <div class="pswp__caption__center"></div>
-    </div>
-    </div>
-    </div>
-</div>
-
-  
-
-  
-
-  
-
-  <header id="header" class="header container">
-    <div class="logo-wrapper">
-  <a href="/" class="logo">
-    
-      Fly
-    
-  </a>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
 </div>
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
-    
-    
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/">Home</a>
-          
-
-        
-
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
       </li>
-    
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/post/">Archives</a>
-          
-
-        
-
-      </li>
-    
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/tags/">Tags</a>
-          
-
-        
-
-      </li>
-    
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/categories/">Categories</a>
-          
-
-        
-
-      </li>
-    
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/about/">About</a>
-          
-
-        
-
-      </li>
-    
-
-    
-    
-
-    
   </ul>
 </nav>
+    </header>
 
-  </header>
-
-  <div id="mobile-panel">
-    <main id="main" class="main bg-llight">
+    <main id="main" class="main">
       <div class="content-wrapper">
-        <div id="content" class="content container">
-          <article class="post bg-white">
+        <div id="content" class="content">
+          <article class="post">
     
     <header class="post-header">
       <h1 class="post-title">团灭丑数问题</h1>
-      
+
       <div class="post-meta">
-        <time datetime="2020-05-30" class="post-time">
-          May 30
-        </time>
+        <span class="post-time"> May 30 </span>
         
-        
-
-        
-        
-
-        
+          <span class="more-meta"> 4836 words </span>
+          <span class="more-meta"> 10 mins read </span>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Table of Contents</h2>
-  <div class="post-toc-content">
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#什么是丑数">什么是丑数？</a></li>
@@ -345,8 +164,6 @@
 </nav>
   </div>
 </div>
-
-    
     <div class="post-content">
       <h2 id="什么是丑数">什么是丑数？</h2>
 <p>先看一下百度百科的解释:</p>
@@ -387,33 +204,65 @@
 <li>再计算下一个丑数，如果下一个丑数刚好 == 传入数字。 则是丑数</li>
 <li>否则不是丑数</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/*
-</span><span style="color:#75715e">    * 第一种思路
-</span><span style="color:#75715e">    * 在丑数小于 num 时
-</span><span style="color:#75715e">    * 依次计算，丑数数列的下一个
-</span><span style="color:#75715e">    * 直到数列的数字 &gt;= 丑数时
-</span><span style="color:#75715e">    * 当 == 丑数时，true。 当 &gt; 丑数时， false。
-</span><span style="color:#75715e">    * */</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isUgly</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> num<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">&lt;=</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/*
+</span><span class="cm">    * 第一种思路
+</span><span class="cm">    * 在丑数小于 num 时
+</span><span class="cm">    * 依次计算，丑数数列的下一个
+</span><span class="cm">    * 直到数列的数字 &gt;= 丑数时
+</span><span class="cm">    * 当 == 丑数时，true。 当 &gt; 丑数时， false。
+</span><span class="cm">    * */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isUgly</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">&lt;=</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
 
-        <span style="color:#66d9ef">int</span> p2 <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span> p3 <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span> p5 <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-        ArrayList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
-        list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+        <span class="kt">int</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">0</span><span class="o">,</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">0</span><span class="o">,</span> <span class="n">p5</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
 
-        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i<span style="color:#f92672">)</span> <span style="color:#f92672">&lt;</span> num<span style="color:#f92672">){</span>
-            list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>p2<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 2<span style="color:#f92672">,</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>p3<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 3<span style="color:#f92672">),</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>p5<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 5<span style="color:#f92672">));</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">num</span><span class="o">){</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">p2</span><span class="o">)</span> <span class="o">*</span> <span class="n">2</span><span class="o">,</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">p3</span><span class="o">)</span> <span class="o">*</span> <span class="n">3</span><span class="o">),</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">p5</span><span class="o">)</span> <span class="o">*</span> <span class="n">5</span><span class="o">));</span>
 
-            i <span style="color:#f92672">++;</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>p2<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 2<span style="color:#f92672">)</span> p2 <span style="color:#f92672">++;</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>p3<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 3<span style="color:#f92672">)</span> p3 <span style="color:#f92672">++;</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>p5<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> 5<span style="color:#f92672">)</span> p5 <span style="color:#f92672">++;</span>
-        <span style="color:#f92672">}</span>
+            <span class="n">i</span> <span class="o">++;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">p2</span><span class="o">)</span> <span class="o">*</span> <span class="n">2</span><span class="o">)</span> <span class="n">p2</span> <span class="o">++;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">p3</span><span class="o">)</span> <span class="o">*</span> <span class="n">3</span><span class="o">)</span> <span class="n">p3</span> <span class="o">++;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">p5</span><span class="o">)</span> <span class="o">*</span> <span class="n">5</span><span class="o">)</span> <span class="n">p5</span> <span class="o">++;</span>
+        <span class="o">}</span>
 
-        <span style="color:#66d9ef">return</span> list<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> num<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfau3jbn9bj30os0323yo.jpg" alt="截屏2020-05-30下午10.14.26"></p>
+        <span class="k">return</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="n">num</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfau3jbn9bj30os0323yo.jpg" alt="截屏2020-05-30下午10.14.26"></p>
 <p>此解法，因为n 的 取值范围**[−231, 231 − 1]**， 当n过大时， 额外申请的数组的存储空间会很大，超出内存限制。</p>
 <p>时间复杂度 : O(N)</p>
 <p>空间复杂度 : O(1)</p>
@@ -430,60 +279,120 @@
 </li>
 <li>
 <p>一直除到5， 如果最终数为1，则为丑数， 否则不是丑数</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/*
-</span><span style="color:#75715e">    *
-</span><span style="color:#75715e">    * 思路二：
-</span><span style="color:#75715e">    * 如果是丑数， 则 除2 ， 除3， 除5 最终为1。
-</span><span style="color:#75715e">    * 如果 余数 != 0， 代表除不尽， 退出循环
-</span><span style="color:#75715e">    * 继续除下一个
-</span><span style="color:#75715e">    * 一直除到5，如果最终数为1， 则为丑数，否则不是丑数
-</span><span style="color:#75715e">    * */</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isUgly1</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> num<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">&lt;=</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/*
+</span><span class="cm">    *
+</span><span class="cm">    * 思路二：
+</span><span class="cm">    * 如果是丑数， 则 除2 ， 除3， 除5 最终为1。
+</span><span class="cm">    * 如果 余数 != 0， 代表除不尽， 退出循环
+</span><span class="cm">    * 继续除下一个
+</span><span class="cm">    * 一直除到5，如果最终数为1， 则为丑数，否则不是丑数
+</span><span class="cm">    * */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isUgly1</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">&lt;=</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
   
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> num <span style="color:#f92672">/=</span> 2<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="n">num</span> <span class="o">/=</span> <span class="n">2</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
   
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">%</span> 3 <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> num <span style="color:#f92672">/=</span> 3<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">3</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="n">num</span> <span class="o">/=</span> <span class="n">3</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
   
-        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">%</span> 5 <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> num <span style="color:#f92672">/=</span> 5<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">5</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="n">num</span> <span class="o">/=</span> <span class="n">5</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
   
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfau7o78xtj30oc06m0th.jpg" alt="截屏2020-05-30下午10.16.56"></p>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfau7o78xtj30oc06m0th.jpg" alt="截屏2020-05-30下午10.16.56"></p>
 </li>
 </ul>
 <h4 id="思路三">思路三：</h4>
 <p>递归</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/*
-</span><span style="color:#75715e">* 
-</span><span style="color:#75715e">* 思路三：
-</span><span style="color:#75715e">* 递归
-</span><span style="color:#75715e">* 跟思路二类似
-</span><span style="color:#75715e">* 迭代 换成 递归
-</span><span style="color:#75715e">* */</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isUgly</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> num<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">&lt;</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">return</span> search<span style="color:#f92672">(</span>num<span style="color:#f92672">);</span>
-<span style="color:#f92672">}</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/*
+</span><span class="cm">* 
+</span><span class="cm">* 思路三：
+</span><span class="cm">* 递归
+</span><span class="cm">* 跟思路二类似
+</span><span class="cm">* 迭代 换成 递归
+</span><span class="cm">* */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isUgly</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="k">return</span> <span class="n">search</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+<span class="o">}</span>
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">search</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> num<span style="color:#f92672">){</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">search</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">){</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
 
-    <span style="color:#75715e">// 如果对 2 3 5都不能整除, 则说明这条路走不通, 返回上一层
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">%</span> 2 <span style="color:#f92672">!=</span> 0 <span style="color:#f92672">&amp;&amp;</span> num <span style="color:#f92672">%</span> 3 <span style="color:#f92672">!=</span> 0 <span style="color:#f92672">&amp;&amp;</span> num <span style="color:#f92672">%</span> 5 <span style="color:#f92672">!=</span> 0<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+    <span class="c1">// 如果对 2 3 5都不能整除, 则说明这条路走不通, 返回上一层
+</span><span class="c1"></span>    <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">2</span> <span class="o">!=</span> <span class="n">0</span> <span class="o">&amp;&amp;</span> <span class="n">num</span> <span class="o">%</span> <span class="n">3</span> <span class="o">!=</span> <span class="n">0</span> <span class="o">&amp;&amp;</span> <span class="n">num</span> <span class="o">%</span> <span class="n">5</span> <span class="o">!=</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
 
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0<span style="color:#f92672">){</span>
-        <span style="color:#66d9ef">return</span> search<span style="color:#f92672">(</span>num <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>num <span style="color:#f92672">%</span> 3 <span style="color:#f92672">==</span> 0<span style="color:#f92672">){</span>
-        <span style="color:#66d9ef">return</span> search<span style="color:#f92672">(</span>num <span style="color:#f92672">/</span> 3<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">return</span> search<span style="color:#f92672">(</span>num <span style="color:#f92672">/</span> 5<span style="color:#f92672">);</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfaul93da3j30om06w0th.jpg" alt="截屏2020-05-30下午10.28.49"></p>
+    <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">2</span> <span class="o">==</span> <span class="n">0</span><span class="o">){</span>
+        <span class="k">return</span> <span class="n">search</span><span class="o">(</span><span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">);</span>
+    <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">3</span> <span class="o">==</span> <span class="n">0</span><span class="o">){</span>
+        <span class="k">return</span> <span class="n">search</span><span class="o">(</span><span class="n">num</span> <span class="o">/</span> <span class="n">3</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">search</span><span class="o">(</span><span class="n">num</span> <span class="o">/</span> <span class="n">5</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfaul93da3j30om06w0th.jpg" alt="截屏2020-05-30下午10.28.49"></p>
 <h2 id="264-丑数-iihttpsleetcode-cncomproblemsugly-number-ii"><a href="https://leetcode-cn.com/problems/ugly-number-ii/">264. 丑数 II</a></h2>
 <blockquote>
 <p>编写一个程序，找出第 n 个丑数。</p>
@@ -507,57 +416,116 @@ n 不超过1690。</p>
 <li>每次取出对头元素，存入对头元素 * 2, 对头元素 * 3, 对头元素 * 5</li>
 <li>但注意，像12这个元素，可以是 4 * 3得到，也可以是 2 * 6得到，所以注意去重</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#75715e">/*
-</span><span style="color:#75715e">    *
-</span><span style="color:#75715e">    * 思路一：
-</span><span style="color:#75715e">    * 最小堆
-</span><span style="color:#75715e">    * 利用优先队列有自动排序的功能
-</span><span style="color:#75715e">    * 每次取出队头元素，存入队头元素*2、队头元素*3、队头元素*5
-</span><span style="color:#75715e">    * 但注意，像12这个元素，可由4乘3得到，也可由6乘2得到，所以要注意去重
-</span><span style="color:#75715e">    * */</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">nthUglyNumber1</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"> <span class="cm">/*
+</span><span class="cm">    *
+</span><span class="cm">    * 思路一：
+</span><span class="cm">    * 最小堆
+</span><span class="cm">    * 利用优先队列有自动排序的功能
+</span><span class="cm">    * 每次取出队头元素，存入队头元素*2、队头元素*3、队头元素*5
+</span><span class="cm">    * 但注意，像12这个元素，可由4乘3得到，也可由6乘2得到，所以要注意去重
+</span><span class="cm">    * */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">nthUglyNumber1</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
 
-        PriorityQueue<span style="color:#f92672">&lt;</span>Long<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PriorityQueue<span style="color:#f92672">&lt;&gt;();</span>
+        <span class="n">PriorityQueue</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;();</span>
 
-        <span style="color:#66d9ef">long</span> answer <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> n<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>answer <span style="color:#f92672">*</span> 2<span style="color:#f92672">);</span>
-            queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>answer <span style="color:#f92672">*</span> 3<span style="color:#f92672">);</span>
-            queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>answer <span style="color:#f92672">*</span> 5<span style="color:#f92672">);</span>
+        <span class="kt">long</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">answer</span> <span class="o">*</span> <span class="n">2</span><span class="o">);</span>
+            <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">answer</span> <span class="o">*</span> <span class="n">3</span><span class="o">);</span>
+            <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">answer</span> <span class="o">*</span> <span class="n">5</span><span class="o">);</span>
 
-            answer <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>queue<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()</span> <span style="color:#f92672">&amp;&amp;</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> answer<span style="color:#f92672">)</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+            <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">queue</span><span class="o">.</span><span class="na">peek</span><span class="o">()</span> <span class="o">==</span> <span class="n">answer</span><span class="o">)</span> <span class="n">queue</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+        <span class="o">}</span>
 
-        <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>answer<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
+        <span class="k">return</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
 
-</code></pre></div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfavoq3glej30nu07awfb.jpg" alt="截屏2020-05-30下午10.57.00"></p>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfavoq3glej30nu07awfb.jpg" alt="截屏2020-05-30下午10.57.00"></p>
 <h4 id="思路二-1">思路二：</h4>
 <p>对思路一的优化， 用set去重复</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#75715e">/*
-</span><span style="color:#75715e">    * 进一步使用 set 优化 去重
-</span><span style="color:#75715e">    * */</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">nthUglyNumber2</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="cm">/*
+</span><span class="cm">    * 进一步使用 set 优化 去重
+</span><span class="cm">    * */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">nthUglyNumber2</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
 
-        PriorityQueue<span style="color:#f92672">&lt;</span>Long<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PriorityQueue<span style="color:#f92672">&lt;&gt;();</span>
-        HashSet<span style="color:#f92672">&lt;</span>Long<span style="color:#f92672">&gt;</span> set <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;();</span>
-        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>2<span style="color:#f92672">,</span>3<span style="color:#f92672">,</span>5<span style="color:#f92672">};</span>
+        <span class="n">PriorityQueue</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+        <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span> <span class="o">=</span> <span class="o">{</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">5</span><span class="o">};</span>
 
-        <span style="color:#66d9ef">long</span> answer <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> n<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">long</span> tmp <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">peek</span><span style="color:#f92672">();</span>
-            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>set<span style="color:#f92672">.</span><span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> tmp<span style="color:#f92672">)){</span>
-                    set<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> tmp<span style="color:#f92672">);</span>
-                    queue<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>nums<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> tmp<span style="color:#f92672">);</span>
-                <span style="color:#f92672">}</span>
-            <span style="color:#f92672">}</span>
-            answer <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>answer<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfavpdmontj30p406ujs6.jpg" alt="截屏2020-05-30下午11.03.43"></p>
+        <span class="kt">long</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">long</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">set</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">*</span> <span class="n">tmp</span><span class="o">)){</span>
+                    <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">*</span> <span class="n">tmp</span><span class="o">);</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">*</span> <span class="n">tmp</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfavpdmontj30p406ujs6.jpg" alt="截屏2020-05-30下午11.03.43"></p>
 <h4 id="思路三-1">思路三：</h4>
 <ul>
 <li>动态规划，三指针法</li>
@@ -565,28 +533,55 @@ n 不超过1690。</p>
 <li>当数组的下一个是 *2 得来时, p2 ++, *3得来时，p3++, *5得来时，p5++</li>
 <li>注意去重， 有可能下一个数字即是 * 2得来，又是 * 3得来时，p2 和 p3都需要 ++</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#75715e">/*
-</span><span style="color:#75715e">     *
-</span><span style="color:#75715e">     * 思路三：
-</span><span style="color:#75715e">     * 动态规划 三指针法
-</span><span style="color:#75715e">     * 起初三根指针都指向数组 0 位置
-</span><span style="color:#75715e">     * 当数组的下一个是 *2 得出时， p2++, *3 得出时， p3++, *5 得出时， p5++
-</span><span style="color:#75715e">     * 注意有可能，同时是 2 和 3的公倍数， 比如6， 当下一个为6时， p2 和 p3同时 ++
-</span><span style="color:#75715e">     * */</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">nthUglyNumber</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">int</span> p2 <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span> p3 <span style="color:#f92672">=</span> 0<span style="color:#f92672">,</span> p5 <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>n<span style="color:#f92672">];</span>
-        dp<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> n<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>p2<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> 2<span style="color:#f92672">,</span> dp<span style="color:#f92672">[</span>p3<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> 3<span style="color:#f92672">),</span> dp<span style="color:#f92672">[</span>p5<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> 5<span style="color:#f92672">);</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="cm">/*
+</span><span class="cm">     *
+</span><span class="cm">     * 思路三：
+</span><span class="cm">     * 动态规划 三指针法
+</span><span class="cm">     * 起初三根指针都指向数组 0 位置
+</span><span class="cm">     * 当数组的下一个是 *2 得出时， p2++, *3 得出时， p3++, *5 得出时， p5++
+</span><span class="cm">     * 注意有可能，同时是 2 和 3的公倍数， 比如6， 当下一个为6时， p2 和 p3同时 ++
+</span><span class="cm">     * */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">nthUglyNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">0</span><span class="o">,</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">0</span><span class="o">,</span> <span class="n">p5</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="n">dp</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">p2</span><span class="o">]</span> <span class="o">*</span> <span class="n">2</span><span class="o">,</span> <span class="n">dp</span><span class="o">[</span><span class="n">p3</span><span class="o">]</span> <span class="o">*</span> <span class="n">3</span><span class="o">),</span> <span class="n">dp</span><span class="o">[</span><span class="n">p5</span><span class="o">]</span> <span class="o">*</span> <span class="n">5</span><span class="o">);</span>
 
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> dp<span style="color:#f92672">[</span>p2<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> 2<span style="color:#f92672">)</span> p2 <span style="color:#f92672">++;</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> dp<span style="color:#f92672">[</span>p3<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> 3<span style="color:#f92672">)</span> p3 <span style="color:#f92672">++;</span>
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> dp<span style="color:#f92672">[</span>p5<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> 5<span style="color:#f92672">)</span> p5 <span style="color:#f92672">++;</span>
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> dp<span style="color:#f92672">[</span>n <span style="color:#f92672">-</span> 1<span style="color:#f92672">];</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfavsm5otcj30ny06edgl.jpg" alt="截屏2020-05-30下午11.06.48"></p>
+            <span class="k">if</span> <span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">dp</span><span class="o">[</span><span class="n">p2</span><span class="o">]</span> <span class="o">*</span> <span class="n">2</span><span class="o">)</span> <span class="n">p2</span> <span class="o">++;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">dp</span><span class="o">[</span><span class="n">p3</span><span class="o">]</span> <span class="o">*</span> <span class="n">3</span><span class="o">)</span> <span class="n">p3</span> <span class="o">++;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">dp</span><span class="o">[</span><span class="n">p5</span><span class="o">]</span> <span class="o">*</span> <span class="n">5</span><span class="o">)</span> <span class="n">p5</span> <span class="o">++;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="o">[</span><span class="n">n</span> <span class="o">-</span> <span class="n">1</span><span class="o">];</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfavsm5otcj30ny06edgl.jpg" alt="截屏2020-05-30下午11.06.48"></p>
 <h2 id="1201-丑数-iiihttpsleetcode-cncomproblemsugly-number-iii"><a href="https://leetcode-cn.com/problems/ugly-number-iii/">1201. 丑数 III</a></h2>
 <blockquote>
 <p>请你帮忙设计一个程序，用来找出第 n 个丑数。</p>
@@ -659,53 +654,105 @@ n 不超过1690。</p>
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">nthUglyNumber</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> b<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> c<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-    <span style="color:#75715e">// 看到 n 的范围就应该想到二分
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">long</span> low <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> b<span style="color:#f92672">),</span> c<span style="color:#f92672">);</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">nthUglyNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">,</span> <span class="kt">int</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 看到 n 的范围就应该想到二分
+</span><span class="c1"></span>    <span class="kt">long</span> <span class="n">low</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">),</span> <span class="n">c</span><span class="o">);</span>
 
-    <span style="color:#66d9ef">long</span> high <span style="color:#f92672">=</span> low <span style="color:#f92672">*</span> n<span style="color:#f92672">;</span>
+    <span class="kt">long</span> <span class="n">high</span> <span class="o">=</span> <span class="n">low</span> <span class="o">*</span> <span class="n">n</span><span class="o">;</span>
 
-    <span style="color:#66d9ef">long</span> res <span style="color:#f92672">=</span> binarySearch<span style="color:#f92672">(</span>low<span style="color:#f92672">,</span> high<span style="color:#f92672">,</span> a<span style="color:#f92672">,</span> b<span style="color:#f92672">,</span> c<span style="color:#f92672">,</span> n<span style="color:#f92672">);</span>
-    <span style="color:#66d9ef">long</span> cnta <span style="color:#f92672">=</span> res <span style="color:#f92672">%</span> a<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">long</span> cntb <span style="color:#f92672">=</span> res <span style="color:#f92672">%</span> b<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">long</span> cntc <span style="color:#f92672">=</span> res <span style="color:#f92672">%</span> c<span style="color:#f92672">;</span>
-    res <span style="color:#f92672">-=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>cnta<span style="color:#f92672">,</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>cntb<span style="color:#f92672">,</span> cntc<span style="color:#f92672">));</span>
+    <span class="kt">long</span> <span class="n">res</span> <span class="o">=</span> <span class="n">binarySearch</span><span class="o">(</span><span class="n">low</span><span class="o">,</span> <span class="n">high</span><span class="o">,</span> <span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+    <span class="kt">long</span> <span class="n">cnta</span> <span class="o">=</span> <span class="n">res</span> <span class="o">%</span> <span class="n">a</span><span class="o">;</span>
+    <span class="kt">long</span> <span class="n">cntb</span> <span class="o">=</span> <span class="n">res</span> <span class="o">%</span> <span class="n">b</span><span class="o">;</span>
+    <span class="kt">long</span> <span class="n">cntc</span> <span class="o">=</span> <span class="n">res</span> <span class="o">%</span> <span class="n">c</span><span class="o">;</span>
+    <span class="n">res</span> <span class="o">-=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">cnta</span><span class="o">,</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">cntb</span><span class="o">,</span> <span class="n">cntc</span><span class="o">));</span>
 
-    <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span> res<span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
+    <span class="k">return</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
 
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">binarySearch</span><span style="color:#f92672">(</span><span style="color:#66d9ef">long</span> low <span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> high<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> b<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> c<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> n<span style="color:#f92672">){</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>low <span style="color:#f92672">&gt;=</span> high<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> low<span style="color:#f92672">;</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="kt">long</span> <span class="n">low</span> <span class="o">,</span> <span class="kt">long</span> <span class="n">high</span><span class="o">,</span> <span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">,</span> <span class="kt">int</span> <span class="n">c</span><span class="o">,</span> <span class="kt">long</span> <span class="n">n</span><span class="o">){</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">low</span> <span class="o">&gt;=</span> <span class="n">high</span><span class="o">)</span> <span class="k">return</span> <span class="n">low</span><span class="o">;</span>
 
-    <span style="color:#66d9ef">long</span> mid <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>low <span style="color:#f92672">+</span> high<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">;</span>
+    <span class="kt">long</span> <span class="n">mid</span> <span class="o">=</span> <span class="o">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="o">)</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">;</span>
 
-    <span style="color:#66d9ef">long</span> MCM_a_b <span style="color:#f92672">=</span> MCM<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> b<span style="color:#f92672">);</span>
-    <span style="color:#66d9ef">long</span> MCM_a_c <span style="color:#f92672">=</span> MCM<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> c<span style="color:#f92672">);</span>
-    <span style="color:#66d9ef">long</span> MCM_b_c <span style="color:#f92672">=</span> MCM<span style="color:#f92672">(</span>b<span style="color:#f92672">,</span> c<span style="color:#f92672">);</span>
+    <span class="kt">long</span> <span class="n">MCM_a_b</span> <span class="o">=</span> <span class="n">MCM</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">);</span>
+    <span class="kt">long</span> <span class="n">MCM_a_c</span> <span class="o">=</span> <span class="n">MCM</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">c</span><span class="o">);</span>
+    <span class="kt">long</span> <span class="n">MCM_b_c</span> <span class="o">=</span> <span class="n">MCM</span><span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">);</span>
 
-    <span style="color:#66d9ef">long</span> MCM_a_b_c <span style="color:#f92672">=</span> MCM<span style="color:#f92672">(</span>MCM_a_b<span style="color:#f92672">,</span> c<span style="color:#f92672">);</span>
+    <span class="kt">long</span> <span class="n">MCM_a_b_c</span> <span class="o">=</span> <span class="n">MCM</span><span class="o">(</span><span class="n">MCM_a_b</span><span class="o">,</span> <span class="n">c</span><span class="o">);</span>
 
-    <span style="color:#66d9ef">long</span> count <span style="color:#f92672">=</span> mid <span style="color:#f92672">/</span> a <span style="color:#f92672">+</span> mid <span style="color:#f92672">/</span> b <span style="color:#f92672">+</span> mid <span style="color:#f92672">/</span> c <span style="color:#f92672">-</span> mid <span style="color:#f92672">/</span> MCM_a_b <span style="color:#f92672">-</span> mid <span style="color:#f92672">/</span> MCM_a_c <span style="color:#f92672">-</span> mid <span style="color:#f92672">/</span> MCM_b_c <span style="color:#f92672">+</span> mid <span style="color:#f92672">/</span> MCM_a_b_c<span style="color:#f92672">;</span>
+    <span class="kt">long</span> <span class="n">count</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">/</span> <span class="n">a</span> <span class="o">+</span> <span class="n">mid</span> <span class="o">/</span> <span class="n">b</span> <span class="o">+</span> <span class="n">mid</span> <span class="o">/</span> <span class="n">c</span> <span class="o">-</span> <span class="n">mid</span> <span class="o">/</span> <span class="n">MCM_a_b</span> <span class="o">-</span> <span class="n">mid</span> <span class="o">/</span> <span class="n">MCM_a_c</span> <span class="o">-</span> <span class="n">mid</span> <span class="o">/</span> <span class="n">MCM_b_c</span> <span class="o">+</span> <span class="n">mid</span> <span class="o">/</span> <span class="n">MCM_a_b_c</span><span class="o">;</span>
 
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>count <span style="color:#f92672">==</span> n<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> mid<span style="color:#f92672">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">==</span> <span class="n">n</span><span class="o">)</span> <span class="k">return</span> <span class="n">mid</span><span class="o">;</span>
 
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>count <span style="color:#f92672">&gt;</span> n<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> binarySearch<span style="color:#f92672">(</span>low<span style="color:#f92672">,</span> mid <span style="color:#f92672">-</span> 1<span style="color:#f92672">,</span> a<span style="color:#f92672">,</span> b<span style="color:#f92672">,</span> c<span style="color:#f92672">,</span> n<span style="color:#f92672">);</span>
-    <span style="color:#66d9ef">return</span> binarySearch<span style="color:#f92672">(</span>mid <span style="color:#f92672">+</span> 1<span style="color:#f92672">,</span> high<span style="color:#f92672">,</span> a<span style="color:#f92672">,</span> b<span style="color:#f92672">,</span> c<span style="color:#f92672">,</span> n<span style="color:#f92672">);</span>
-<span style="color:#f92672">}</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="n">n</span><span class="o">)</span> <span class="k">return</span> <span class="n">binarySearch</span><span class="o">(</span><span class="n">low</span><span class="o">,</span> <span class="n">mid</span> <span class="o">-</span> <span class="n">1</span><span class="o">,</span> <span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">binarySearch</span><span class="o">(</span><span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">high</span><span class="o">,</span> <span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+<span class="o">}</span>
 
-<span style="color:#75715e">// 求最小公倍数 : 两数相乘 除以 最小公约数
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">MCM</span><span style="color:#f92672">(</span><span style="color:#66d9ef">long</span> m<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> n<span style="color:#f92672">){</span>
+<span class="c1">// 求最小公倍数 : 两数相乘 除以 最小公约数
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">MCM</span><span class="o">(</span><span class="kt">long</span> <span class="n">m</span><span class="o">,</span> <span class="kt">long</span> <span class="n">n</span><span class="o">){</span>
 
-    <span style="color:#66d9ef">long</span> Multi <span style="color:#f92672">=</span> m <span style="color:#f92672">*</span> n<span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">){</span>
-        <span style="color:#66d9ef">long</span> tmp <span style="color:#f92672">=</span> m <span style="color:#f92672">%</span> n<span style="color:#f92672">;</span>
-        m <span style="color:#f92672">=</span> n<span style="color:#f92672">;</span>
-        n <span style="color:#f92672">=</span> tmp<span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">return</span> Multi <span style="color:#f92672">/</span> m<span style="color:#f92672">;</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><h2 id="313-超级丑数httpsleetcode-cncomproblemssuper-ugly-number"><a href="https://leetcode-cn.com/problems/super-ugly-number/">313. 超级丑数</a></h2>
+    <span class="kt">long</span> <span class="n">Multi</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">n</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">){</span>
+        <span class="kt">long</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">m</span> <span class="o">%</span> <span class="n">n</span><span class="o">;</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">Multi</span> <span class="o">/</span> <span class="n">m</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="313-超级丑数httpsleetcode-cncomproblemssuper-ugly-number"><a href="https://leetcode-cn.com/problems/super-ugly-number/">313. 超级丑数</a></h2>
 <blockquote>
 <p>编写一段程序来查找第 n 个超级丑数。</p>
 <p>超级丑数是指其所有质因数都是长度为 k 的质数列表 primes 中的正整数。</p>
@@ -733,36 +780,63 @@ n 不超过1690。</p>
 <li>依然需要注意,  同一个丑数，可能同时由两个质数 * 其dp对应位置得出， 所以需要去重！</li>
 </ul>
 <p>代码如下:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">nthSuperUglyNumber</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> primes<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>n <span style="color:#f92672">&lt;=</span> 1<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> 1<span style="color:#f92672">;</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">nthSuperUglyNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">primes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">1</span><span class="o">;</span>
 
-        <span style="color:#75715e">// 存放 primes 对应位置的数字 指针指向的位置
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> pointers <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>primes<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">];</span>
+        <span class="c1">// 存放 primes 对应位置的数字 指针指向的位置
+</span><span class="c1"></span>        <span class="kt">int</span><span class="o">[]</span> <span class="n">pointers</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">primes</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
 
-        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>n<span style="color:#f92672">];</span>
-        dp<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> n<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">int</span> next <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">MAX_VALUE</span><span style="color:#f92672">;</span>
-            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> primes<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-                next <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">min</span><span style="color:#f92672">(</span>next<span style="color:#f92672">,</span> primes<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> dp<span style="color:#f92672">[</span>pointers<span style="color:#f92672">[</span>j<span style="color:#f92672">]]);</span>
-            <span style="color:#f92672">}</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="n">dp</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">primes</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">next</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">next</span><span class="o">,</span> <span class="n">primes</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">*</span> <span class="n">dp</span><span class="o">[</span><span class="n">pointers</span><span class="o">[</span><span class="n">j</span><span class="o">]]);</span>
+            <span class="o">}</span>
 
-            dp<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> next<span style="color:#f92672">;</span>
+            <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
 
-            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> pointers<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
-                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>next <span style="color:#f92672">==</span> primes<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> dp<span style="color:#f92672">[</span>pointers<span style="color:#f92672">[</span>j<span style="color:#f92672">]])</span> pointers<span style="color:#f92672">[</span>j<span style="color:#f92672">]++;</span>
-            <span style="color:#f92672">}</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">pointers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">next</span> <span class="o">==</span> <span class="n">primes</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">*</span> <span class="n">dp</span><span class="o">[</span><span class="n">pointers</span><span class="o">[</span><span class="n">j</span><span class="o">]])</span> <span class="n">pointers</span><span class="o">[</span><span class="n">j</span><span class="o">]++;</span>
+            <span class="o">}</span>
 
-        <span style="color:#f92672">}</span>
-        <span style="color:#66d9ef">return</span> dp<span style="color:#f92672">[</span>n <span style="color:#f92672">-</span> 1<span style="color:#f92672">];</span>
-    <span style="color:#f92672">}</span>
-</code></pre></div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfaw58djhnj30ns06m0t5.jpg" alt="截屏2020-05-30下午11.25.20"></p>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="o">[</span><span class="n">n</span> <span class="o">-</span> <span class="n">1</span><span class="o">];</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfaw58djhnj30ns06m0t5.jpg" alt="截屏2020-05-30下午11.25.20"></p>
 
     </div>
 
-    
-    
-<div class="post-copyright">
+    <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">Author</span>
     <span class="item-content">飞熊</span>
@@ -770,127 +844,51 @@ n 不超过1690。</p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      May 30
-      
+        May 30
+        
     </span>
   </p>
   
-  <p class="copyright-item">
-    <span class="item-title">License</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
+  
 </div>
-
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          <a href="https://zhangxiongfeiv.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-          <a href="https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E5%A0%86/">二叉堆</a>
-          <a href="https://zhangxiongfeiv.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-          <a href="https://zhangxiongfeiv.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
-          <a href="https://zhangxiongfeiv.github.io/tags/%E5%9B%A2%E7%81%AD%E7%B3%BB%E5%88%97/">团灭系列</a>
-          
-        </div>
-
-      
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          <a href="/tags/%E4%BA%8C%E5%8F%89%E5%A0%86/">二叉堆</a>
+          <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          <a href="/tags/%E5%9B%A2%E7%81%AD%E7%B3%BB%E5%88%97/">团灭系列</a>
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
+        <a class="prev" href="/post/40.%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/">
+            <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">40.最小的k个数</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        
-          <a class="next" href="/post/%E4%BA%8C%E5%8F%89%E5%A0%86/">
+        <a class="next" href="/post/%E4%BA%8C%E5%8F%89%E5%A0%86/">
             <span class="next-text nav-default">二叉堆</span>
-            <span class="prev-text nav-mobile">Next</span>
-            
-            <i class="iconfont">
-              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
-</svg>
-
-            </i>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
           </a>
       </nav>
     </footer>
   </article>
-
-  
-  
-
-  
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-    
-
-  
-
         </div>
+        
+
+  
+
+  
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="icon-links">
-  
-  
-    <a href="310311589@qq.com" rel="me noopener" class="iconfont"
-      title="email"  target="_blank"
-      >
-      <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="36" height="36">
-  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
-</svg>
-
-    </a>
-  
-    <a href="https://github.com/zhangxiongfeiv" rel="me noopener" class="iconfont"
-      title="github"  target="_blank"
-      >
-      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="36" height="36">
-  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
-</svg>
-
-    </a>
-
-
-<a href="https://zhangxiongfeiv.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
-    class="iconfont" title="rss" target="_blank">
-    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="30" height="30">
-  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
-</svg>
-
-  </a>
-   
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
@@ -899,82 +897,36 @@ n 不超过1690。</p>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
+  
+
   <span class="copyright-year">
-    &copy;
-    
-      2017 -
+    &copy; 
+    2017 - 
     2020
     <span class="heart">
-      
-      <i class="iconfont">
-        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="14" height="14">
-  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
-   fill="#8a8a8a"></path>
-</svg>
-
-      </i>
-    </span><span class="author">
-        飞熊
-        
-      </span></span>
-
-  
-  
-
-  
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
 </div>
-
     </footer>
 
     <div class="back-to-top" id="back-to-top">
-      <i class="iconfont">
-        
-        <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="35" height="35">
-  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
-</svg>
-
-      </i>
+      <i class="iconfont icon-up"></i>
     </div>
   </div>
   
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
 
 
-
-<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
-    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
-    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
-  
-
-
-
-
-
-
-
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
 
 
 

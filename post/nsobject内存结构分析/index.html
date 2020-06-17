@@ -1,62 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>NSObject内存结构 - 飞熊&#39;s Blogs</title>
-  
-
-<meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>NSObject内存结构 - 飞熊&#39;s blog&#39;</title>
+  <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-<meta name="MobileOptimized" content="width"/>
-<meta name="HandheldFriendly" content="true"/>
-
-
-<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 <meta name="theme-color" content="#f8f5ec" />
 <meta name="msapplication-navbutton-color" content="#f8f5ec">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="飞熊" />
-  <meta name="description" content="一，Objective-C的本质 我们平时编写的Objective-C代码，底层实现都是C/C&#43;&#43;代码。 所以Objective-C的面向对象，" />
-
-  <meta name="keywords" content="Hugo, iOS, arithmetic" />
+<meta name="author" content="飞熊" /><meta name="description" content="一，Objective-C的本质 我们平时编写的Objective-C代码，底层实现都是C/C&#43;&#43;代码。 所以Objective-C的面向对象，" /><meta name="keywords" content="iOS, 算法, Blog" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.68.3" />
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
 <link rel="canonical" href="https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
-
-
-<link rel="icon" href="/favicon.ico" />
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
-
-
-
+<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="NSObject内存结构" />
@@ -69,7 +49,7 @@
 <meta itemprop="description" content="一，Objective-C的本质 我们平时编写的Objective-C代码，底层实现都是C/C&#43;&#43;代码。 所以Objective-C的面向对象，">
 <meta itemprop="datePublished" content="2018-06-25T17:24:50&#43;08:00" />
 <meta itemprop="dateModified" content="2018-06-25T17:24:50&#43;08:00" />
-<meta itemprop="wordCount" content="4192">
+<meta itemprop="wordCount" content="4324">
 
 
 
@@ -86,9 +66,6 @@
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 <![endif]-->
 
-
-
-
 </head>
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
@@ -103,220 +80,64 @@
 </div>
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list">
-    <li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/">Home</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/post/">Archives</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/tags/">Tags</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/categories/">Categories</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/about/">About</a>
-          
-        
-      </li>
-    
-
-    
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
   </ul>
 </nav>
-
-
-  
-    
-
-
-
-
-
-
-  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
-  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
-
-
-
-
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-<div class="pswp__bg"></div>
-
-<div class="pswp__scroll-wrap">
-    
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-    </div>
-    
-    <div class="pswp__ui pswp__ui--hidden">
-    <div class="pswp__top-bar">
-      
-      <div class="pswp__counter"></div>
-      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-      <button class="pswp__button pswp__button--share" title="Share"></button>
-      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-      
-      
-      <div class="pswp__preloader">
-        <div class="pswp__preloader__icn">
-          <div class="pswp__preloader__cut">
-            <div class="pswp__preloader__donut"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-      <div class="pswp__share-tooltip"></div>
-    </div>
-    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-    </button>
-    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-    </button>
-    <div class="pswp__caption">
-      <div class="pswp__caption__center"></div>
-    </div>
-    </div>
-    </div>
-</div>
-
-  
-
-  
-
-  
-
-  <header id="header" class="header container">
-    <div class="logo-wrapper">
-  <a href="/" class="logo">
-    
-      Fly
-    
-  </a>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
 </div>
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
-    
-    
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/">Home</a>
-          
-
-        
-
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
       </li>
-    
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/post/">Archives</a>
-          
-
-        
-
-      </li>
-    
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/tags/">Tags</a>
-          
-
-        
-
-      </li>
-    
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/categories/">Categories</a>
-          
-
-        
-
-      </li>
-    
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://zhangxiongfeiv.github.io/about/">About</a>
-          
-
-        
-
-      </li>
-    
-
-    
-    
-
-    
   </ul>
 </nav>
+    </header>
 
-  </header>
-
-  <div id="mobile-panel">
-    <main id="main" class="main bg-llight">
+    <main id="main" class="main">
       <div class="content-wrapper">
-        <div id="content" class="content container">
-          <article class="post bg-white">
+        <div id="content" class="content">
+          <article class="post">
     
     <header class="post-header">
       <h1 class="post-title">NSObject内存结构</h1>
-      
+
       <div class="post-meta">
-        <time datetime="2018-06-25" class="post-time">
-          Jun 25
-        </time>
-        
-        
-
-        
-        
-
-        
+        <span class="post-time"> Jun 25 </span>
+        <div class="post-category">
+            <a href="/categories/ios/"> iOS </a>
+            </div>
+          <span class="more-meta"> 4324 words </span>
+          <span class="more-meta"> 9 mins read </span>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Table of Contents</h2>
-  <div class="post-toc-content">
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
     <li>
@@ -331,8 +152,6 @@
 </nav>
   </div>
 </div>
-
-    
     <div class="post-content">
       <h3 id="一objective-c的本质">一，Objective-C的本质</h3>
 <p>我们平时编写的Objective-C代码，底层实现都是C/C++代码。</p>
@@ -340,62 +159,155 @@
 <p>Objective-C的对象，是用C++中的结构体来实现的。</p>
 <h3 id="二猜测">二，猜测</h3>
 <p>接下来我们通过代码来验证下OC对象的本质。OC代码如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objective-c" data-lang="objective-c"><span style="color:#75715e">#import &lt;Foundation/Foundation.h&gt;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> argv[]) {
-    <span style="color:#66d9ef">@autoreleasepool</span> {
-        NSObject <span style="color:#f92672">*</span>objc <span style="color:#f92672">=</span> [[NSObject alloc] init];
-        NSLog(<span style="color:#e6db74">@&#34;Hello, World!&#34;</span>);
-    }
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-</code></pre></div><p>我们使用命令行工具将一下代码转化为C++代码，命令如下：</p>
-<pre><code>clang -rewrite-objc main.m -o main.cpp
-</code></pre><p>我们可以指定架构，命令如下：</p>
-<pre><code>xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main-arm64.cpp 
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objective-c" data-lang="objective-c"><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="k">@autoreleasepool</span> <span class="p">{</span>
+        <span class="n">NSObject</span> <span class="o">*</span><span class="n">objc</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSObject</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;Hello, World!&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们使用命令行工具将一下代码转化为C++代码，命令如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">clang -rewrite-objc main.m -o main.cpp
+</code></pre></td></tr></table>
+</div>
+</div><p>我们可以指定架构，命令如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main-arm64.cpp 
 生成 main-arm64.cpp 
-</code></pre><p>接下来，我们在main-arm64.cpp文件中，探索NSObject对象的本质，可以找到NSObject_IMPL(即NSObject对象转化为C++后的实现)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objective-c" data-lang="objective-c"><span style="color:#66d9ef">struct</span> NSObject_IMPL {
-    <span style="color:#66d9ef">Class</span> isa;
-};
-<span style="color:#75715e">// 查看Class本质
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> objc_class <span style="color:#f92672">*</span><span style="color:#66d9ef">Class</span>;
-<span style="color:#960050;background-color:#1e0010">我们发现</span>Class其实就是一个指针<span style="color:#960050;background-color:#1e0010">，对象底层实现其实就是这个样子。</span>
-</code></pre></div><p>通过以上代码，发现NSObject对象转换为结构体后，结构体成员中只有一个isa指针，指针在arm64架构下，大小为8个字节，在32位下是4个字节，也就是说一个NSObject对象在64位所占用的内存空间为8个字节，32位下是4个字节。</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>接下来，我们在main-arm64.cpp文件中，探索NSObject对象的本质，可以找到NSObject_IMPL(即NSObject对象转化为C++后的实现)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objective-c" data-lang="objective-c"><span class="k">struct</span> <span class="n">NSObject_IMPL</span> <span class="p">{</span>
+    <span class="kt">Class</span> <span class="n">isa</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="c1">// 查看Class本质
+</span><span class="c1"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">objc_class</span> <span class="o">*</span><span class="kt">Class</span><span class="p">;</span>
+<span class="err">我们发现</span><span class="n">Class其实就是一个指针</span><span class="err">，对象底层实现其实就是这个样子。</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>通过以上代码，发现NSObject对象转换为结构体后，结构体成员中只有一个isa指针，指针在arm64架构下，大小为8个字节，在32位下是4个字节，也就是说一个NSObject对象在64位所占用的内存空间为8个字节，32位下是4个字节。</p>
 <h3 id="三验证">三，验证</h3>
 <h5 id="1代码层次">1，代码层次：</h5>
 <p>我们通过class_getInstanceSize()来打印NSObject对象的大小，代码如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objective-c" data-lang="objective-c"><span style="color:#75715e">#import &lt;Foundation/Foundation.h&gt;
-</span><span style="color:#75715e">#import &lt;objc/runtime.h&gt;
-</span><span style="color:#75715e">#import &lt;malloc/malloc.h&gt;
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">struct</span> NSObject_IMPL {
-    <span style="color:#66d9ef">Class</span> isa;
-};
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objective-c" data-lang="objective-c"><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span><span class="cp">#import &lt;objc/runtime.h&gt;
+</span><span class="cp">#import &lt;malloc/malloc.h&gt;
+</span><span class="cp"></span>
+<span class="k">struct</span> <span class="n">NSObject_IMPL</span> <span class="p">{</span>
+    <span class="kt">Class</span> <span class="n">isa</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> argv[]) {
-    <span style="color:#66d9ef">@autoreleasepool</span> {
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="k">@autoreleasepool</span> <span class="p">{</span>
         
-        NSObject <span style="color:#f92672">*</span>objc <span style="color:#f92672">=</span> [[NSObject alloc] init];
+        <span class="n">NSObject</span> <span class="o">*</span><span class="n">objc</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSObject</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
         
-        <span style="color:#75715e">//获得NSObject类的NSObject_IMPL结构体的大小
-</span><span style="color:#75715e"></span>        NSLog(<span style="color:#e6db74">@&#34;class: %zd&#34;</span>, class_getInstanceSize([NSObject <span style="color:#66d9ef">class</span>]));
-        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-    }
-}
-</code></pre></div><p>打印结果如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objective-c" data-lang="objective-c"><span style="color:#ae81ff">2018</span><span style="color:#f92672">-</span><span style="color:#ae81ff">06</span><span style="color:#f92672">-</span><span style="color:#ae81ff">25</span> <span style="color:#ae81ff">21</span><span style="color:#f92672">:</span><span style="color:#ae81ff">09</span><span style="color:#f92672">:</span><span style="color:#ae81ff">04.070852</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span> interview1<span style="color:#f92672">-</span>OC对象的本质[<span style="color:#ae81ff">16368</span><span style="color:#f92672">:</span><span style="color:#ae81ff">450669</span>] <span style="color:#66d9ef">class</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8</span>
-</code></pre></div><p>我们在runtime源码中查看class_getInstanceSize的具体实现，看看获取的到底是什么占用的内存。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">size_t <span style="color:#a6e22e">class_getInstanceSize</span>(Class cls)
-{
-    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>cls) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">-&gt;</span>alignedInstanceSize();
-}
-</code></pre></div><p>继续点进去alignedInstanceSize如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Class&#39;s ivar size rounded up to a pointer-size boundary.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">uint32_t</span> <span style="color:#a6e22e">alignedInstanceSize</span>() {
-  <span style="color:#66d9ef">return</span> word_align(unalignedInstanceSize());
-}
-</code></pre></div><p>ivar是成员变量的意思，通过注释我们大概可以猜到，此方法是获取对象的成员变量占用内存的大小。</p>
+        <span class="c1">//获得NSObject类的NSObject_IMPL结构体的大小
+</span><span class="c1"></span>        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;class: %zd&#34;</span><span class="p">,</span> <span class="n">class_getInstanceSize</span><span class="p">([</span><span class="n">NSObject</span> <span class="k">class</span><span class="p">]));</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>打印结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objective-c" data-lang="objective-c"><span class="mi">2018</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mi">25</span> <span class="mi">21</span><span class="o">:</span><span class="mi">09</span><span class="o">:</span><span class="mf">04.070852</span><span class="o">+</span><span class="mi">0800</span> <span class="n">interview1</span><span class="o">-</span><span class="n">OC对象的本质</span><span class="p">[</span><span class="mi">16368</span><span class="o">:</span><span class="mi">450669</span><span class="p">]</span> <span class="k">class</span><span class="o">:</span> <span class="mi">8</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们在runtime源码中查看class_getInstanceSize的具体实现，看看获取的到底是什么占用的内存。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">size_t</span> <span class="nf">class_getInstanceSize</span><span class="p">(</span><span class="n">Class</span> <span class="n">cls</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">cls</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">cls</span><span class="o">-&gt;</span><span class="n">alignedInstanceSize</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>继续点进去alignedInstanceSize如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// Class&#39;s ivar size rounded up to a pointer-size boundary.
+</span><span class="c1"></span><span class="kt">uint32_t</span> <span class="nf">alignedInstanceSize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">word_align</span><span class="p">(</span><span class="n">unalignedInstanceSize</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>ivar是成员变量的意思，通过注释我们大概可以猜到，此方法是获取对象的成员变量占用内存的大小。</p>
 <h5 id="2xcode-lldb工具验证">2，Xcode lldb工具验证</h5>
 <p>我们在代码中打个断点，如下：</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ge610n1ojkj30xc0dbwg2.jpg" alt=""></p>
@@ -416,40 +328,93 @@
 <h3 id="更复杂的对象">更复杂的对象</h3>
 <h5 id="student对象">Student对象</h5>
 <p>定义如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objective-c" data-lang="objective-c"><span style="color:#66d9ef">@interface</span> <span style="color:#a6e22e">Student</span>:<span style="color:#a6e22e">NSObject</span>
-{
-    <span style="color:#66d9ef">@public</span>
-    <span style="color:#66d9ef">int</span> _no;
-    <span style="color:#66d9ef">int</span> _age;
-}
-<span style="color:#66d9ef">@end</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">Student</span>:<span class="nc">NSObject</span>
+<span class="p">{</span>
+    <span class="k">@public</span>
+    <span class="kt">int</span> <span class="n">_no</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_age</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@end</span>
 
-<span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">Student</span>
-<span style="color:#66d9ef">@end</span>
+<span class="k">@implementation</span> <span class="nc">Student</span>
+<span class="k">@end</span>
 
-<span style="color:#66d9ef">int</span> main(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> argv[]) {
-    <span style="color:#66d9ef">@autoreleasepool</span> {
-        Student <span style="color:#f92672">*</span>student <span style="color:#f92672">=</span> [[Student alloc] init];
-        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-    }
-}
-</code></pre></div><p>由以上得出的结论，我们猜测，Student对象，中含有一个继承NSObject来的isa指针，占用8个字节，_no和_age各占用4个字节，总共占用8 + 4 + 4 = 16个字节。</p>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="k">@autoreleasepool</span> <span class="p">{</span>
+        <span class="n">Student</span> <span class="o">*</span><span class="n">student</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Student</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>由以上得出的结论，我们猜测，Student对象，中含有一个继承NSObject来的isa指针，占用8个字节，_no和_age各占用4个字节，总共占用8 + 4 + 4 = 16个字节。</p>
 <p>同样，我们还是把main.m文件转化为C++的源码。我们在main.cpp中通过command+f搜索Student_IMPL这个东西，我们为什么要搜索这个东西呢？因为我们在学习NSObject对象时找到了NSObject_IMPL这个结构体，果然，我们也找到了Student_IMPL这个结构体</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objective-c" data-lang="objective-c"><span style="color:#66d9ef">struct</span> Student_IMPL {
-    <span style="color:#66d9ef">struct</span> NSObject_IMPL NSObject_IVARS;
-    <span style="color:#66d9ef">int</span> _no;
-    <span style="color:#66d9ef">int</span> _age;
-};
-</code></pre></div><p>而NSObject_IMPL结构体，我们在上边的分析已经知道，其中只有一个isa指针，所以Student_IMPL结构体可以写为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objective-c" data-lang="objective-c"><span style="color:#66d9ef">struct</span> Student_IMPL {
-    <span style="color:#66d9ef">Class</span> isa;
-    <span style="color:#66d9ef">int</span> _no;
-    <span style="color:#66d9ef">int</span> _age;
-};
-</code></pre></div><p>所以我们知道一个Student的实例对象在内存中占8+4+4=16个字节空间。并且三块内存空间是连续的。假设isa的地址是0x100400110，那么_no的地址就是0x100400118，_age就是0x10040011C。那么我们怎样验证我们的结论呢？首先使用指针给成员变量赋值:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">student<span style="color:#f92672">-&gt;</span>_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
-student<span style="color:#f92672">-&gt;</span>_age<span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
-</code></pre></div><p>然后我们在程序中打个断点查看student指针的地址为0x600000014d10。再利用xcode的工具查看内存：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objective-c" data-lang="objective-c"><span class="k">struct</span> <span class="n">Student_IMPL</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">NSObject_IMPL</span> <span class="n">NSObject_IVARS</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_no</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_age</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>而NSObject_IMPL结构体，我们在上边的分析已经知道，其中只有一个isa指针，所以Student_IMPL结构体可以写为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objective-c" data-lang="objective-c"><span class="k">struct</span> <span class="n">Student_IMPL</span> <span class="p">{</span>
+    <span class="kt">Class</span> <span class="n">isa</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_no</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_age</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>所以我们知道一个Student的实例对象在内存中占8+4+4=16个字节空间。并且三块内存空间是连续的。假设isa的地址是0x100400110，那么_no的地址就是0x100400118，_age就是0x10040011C。那么我们怎样验证我们的结论呢？首先使用指针给成员变量赋值:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="n">student</span><span class="o">-&gt;</span><span class="n">_no</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="n">student</span><span class="o">-&gt;</span><span class="n">_age</span><span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后我们在程序中打个断点查看student指针的地址为0x600000014d10。再利用xcode的工具查看内存：</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ge615yyv5fj30xc0qnah4.jpg" alt=""></p>
 <p>可以很清晰的看到红框的八个字节存放的是isa指针，绿框的四个字节存放的是_no成员变量，黄框的四个字节存放的是_age成员变量。并且我们可以看到绿框中四个字节存放的内容是04 00 00 00，这和_no成员变量的值好像很吻合，又好像有一点不对，同样，_age成员变量也是这样。这是为什么呢？
 这里涉及到一个概念：<strong>大端模式和小端模式。</strong></p>
@@ -459,47 +424,102 @@ student<span style="color:#f92672">-&gt;</span>_age<span style="color:#f92672">=
 </blockquote>
 <p>Mac OS系统使用的是大端模式。所以较高的有效字节存储在较低的存储器地址，所以04 00 00 00的正确值就是00 00 00 04即4。
 下面我们再用另外一种方式来证明我们的结论，我们使用在NSObject对象中使用过的<code>class_getInstanceSize()</code>读取Student_IMPL所占的存储空间：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objective-c" data-lang="objective-c"><span style="color:#75715e">//获得student实例对象的成员变量所占的大小
-</span><span style="color:#75715e"></span> NSLog(<span style="color:#e6db74">@&#34;student实例对象的成员变量所占的存储空间:%zd&#34;</span>, class_getInstanceSize([Student <span style="color:#66d9ef">class</span>]));
-</code></pre></div><p>输出结果：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#ae81ff">2018</span><span style="color:#f92672">-</span><span style="color:#ae81ff">06</span><span style="color:#f92672">-</span><span style="color:#ae81ff">26</span> <span style="color:#ae81ff">18</span><span style="color:#f92672">:</span><span style="color:#ae81ff">33</span><span style="color:#f92672">:</span><span style="color:#ae81ff">36.642604</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span> interview1<span style="color:#f92672">-</span>OC对象的本质Student[<span style="color:#ae81ff">11339</span><span style="color:#f92672">:</span><span style="color:#ae81ff">336714</span>] student实例对象所占的存储空间:<span style="color:#ae81ff">16</span>
-</code></pre></div><p>输出结果再次证明了我们刚才的结论！
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objective-c" data-lang="objective-c"><span class="c1">//获得student实例对象的成员变量所占的大小
+</span><span class="c1"></span> <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;student实例对象的成员变量所占的存储空间:%zd&#34;</span><span class="p">,</span> <span class="n">class_getInstanceSize</span><span class="p">([</span><span class="n">Student</span> <span class="k">class</span><span class="p">]));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="mi">2018</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span><span class="o">:</span><span class="mi">33</span><span class="o">:</span><span class="mf">36.642604</span><span class="o">+</span><span class="mi">0800</span> <span class="n">interview1</span><span class="o">-</span><span class="n">OC对象的本质Student</span><span class="p">[</span><span class="mi">11339</span><span class="o">:</span><span class="mi">336714</span><span class="p">]</span> <span class="nl">student实例对象所占的存储空间</span><span class="p">:</span><span class="mi">16</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果再次证明了我们刚才的结论！
 student实例对象的内存结构大概就是下图这样：</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ge616u9oo6j30j00j475h.jpg" alt=""></p>
 <h5 id="对拥有person父类的student对象的分析">对拥有Person父类的Student对象的分析</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objectivec" data-lang="objectivec"><span style="color:#66d9ef">@interface</span> <span style="color:#a6e22e">Person</span>:<span style="color:#a6e22e">NSObject</span>
-{
-    <span style="color:#66d9ef">int</span> _age;
-}
-<span style="color:#66d9ef">@end</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objectivec" data-lang="objectivec"><span class="k">@interface</span> <span class="nc">Person</span>:<span class="nc">NSObject</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">_age</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@end</span>
 
-<span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">Person</span>
-<span style="color:#66d9ef">@end</span>
+<span class="k">@implementation</span> <span class="nc">Person</span>
+<span class="k">@end</span>
 
-<span style="color:#66d9ef">@interface</span> <span style="color:#a6e22e">Student</span>:<span style="color:#a6e22e">Person</span>
-{ 
-    <span style="color:#66d9ef">@public</span>
-    <span style="color:#66d9ef">int</span> _no;
-}
-<span style="color:#66d9ef">@end</span>
-<span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">Student</span>
-<span style="color:#66d9ef">@end</span>
-</code></pre></div><p>Student类继承自Person类，Person类又继承自NSObject类，Person类有一个成员变量_age，Student类有一个成员变量_no。那么问题来了，Student实例对象和Person实例对象在内存中各占多少存储空间呢？
+<span class="k">@interface</span> <span class="nc">Student</span>:<span class="nc">Person</span>
+<span class="p">{</span> 
+    <span class="k">@public</span>
+    <span class="kt">int</span> <span class="n">_no</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+<span class="k">@implementation</span> <span class="nc">Student</span>
+<span class="k">@end</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Student类继承自Person类，Person类又继承自NSObject类，Person类有一个成员变量_age，Student类有一个成员变量_no。那么问题来了，Student实例对象和Person实例对象在内存中各占多少存储空间呢？
 首先我们不把代码转化为C++的源码，根据前面对NSObject对象和Student对象的分析，我们可以构建下图：</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ge617g94i1j30xc0hddhl.jpg" alt=""></p>
 <p>下面我们把main.m转化为C++的源码验证一下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">NSObject_IMPL</span> {
-    Class isa;
-};
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Person_IMPL</span> {
-    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">NSObject_IMPL</span> NSObject_IVARS;<span style="color:#75715e">//8个字节
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> _age;     <span style="color:#75715e">//4个字节
-</span><span style="color:#75715e"></span>};
-<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Student_IMPL</span> {
-    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Person_IMPL</span> Person_IVARS;
-    <span style="color:#66d9ef">int</span> _no;
-};
-</code></pre></div><p>这和我们预期的是完全一样的。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">NSObject_IMPL</span> <span class="p">{</span>
+    <span class="n">Class</span> <span class="n">isa</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="nc">Person_IMPL</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">NSObject_IMPL</span> <span class="n">NSObject_IVARS</span><span class="p">;</span><span class="c1">//8个字节
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">_age</span><span class="p">;</span>     <span class="c1">//4个字节
+</span><span class="c1"></span><span class="p">};</span>
+<span class="k">struct</span> <span class="nc">Student_IMPL</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">Person_IMPL</span> <span class="n">Person_IVARS</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_no</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这和我们预期的是完全一样的。
 <strong>首先我们来分析一下Person实例对象占多少存储空间：</strong>
 我们知道一个NSObject_IMPL结构体占8字节，一个int型的成员变量占4字节，那么是不是一个Person实例对象就占12字节的空间呢？实际上不是的。原因有二：</p>
 <ul>
@@ -517,47 +537,96 @@ Student_IMPL有两个成员变量，其中Person_IVARS这个成员变量，我�
 <p>那么对于Student_IMPL的_no成员变量来说，它的存储位置是接在灰色区域之后，把灰色区域继续空出来还是把灰色区域利用起来呢？答案是把灰色区域利用起来。Student_IMPL的内存结构如下图：</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ge61aso0lmj30ik0hi3zj.jpg" alt=""></p>
 <p>所以一个Student实例对象所占的内存空间也是16字节。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objective-c" data-lang="objective-c">        Student <span style="color:#f92672">*</span>student <span style="color:#f92672">=</span> [[Student alloc] init];
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objective-c" data-lang="objective-c">        <span class="n">Student</span> <span class="o">*</span><span class="n">student</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Student</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
     
-        Person <span style="color:#f92672">*</span>person <span style="color:#f92672">=</span> [[Person alloc] init];
+        <span class="n">Person</span> <span class="o">*</span><span class="n">person</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Person</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
         
-        <span style="color:#75715e">//获得student实例对象的成员变量所占的大小
-</span><span style="color:#75715e"></span>        NSLog(<span style="color:#e6db74">@&#34;student实例对象的成员变量所占的存储空间:%zd&#34;</span>, class_getInstanceSize([Student <span style="color:#66d9ef">class</span>]));        
-        <span style="color:#75715e">//获得person实例对象的成员变量所占的大小
-</span><span style="color:#75715e"></span>        NSLog(<span style="color:#e6db74">@&#34;person实例对象的成员变量所占的存储空间:%zd&#34;</span>, class_getInstanceSize([Person <span style="color:#66d9ef">class</span>]));
-</code></pre></div><p>打印结果：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objective-c" data-lang="objective-c"><span style="color:#ae81ff">2018</span><span style="color:#f92672">-</span><span style="color:#ae81ff">06</span><span style="color:#f92672">-</span><span style="color:#ae81ff">26</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">33</span><span style="color:#f92672">:</span><span style="color:#ae81ff">52.467400</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span> interview1<span style="color:#f92672">-</span>OC对象的本质Student[<span style="color:#ae81ff">12656</span><span style="color:#f92672">:</span><span style="color:#ae81ff">386270</span>] student实例对象的成员变量所占的存储空间:<span style="color:#ae81ff">16</span>
-<span style="color:#ae81ff">2018</span><span style="color:#f92672">-</span><span style="color:#ae81ff">06</span><span style="color:#f92672">-</span><span style="color:#ae81ff">26</span> <span style="color:#ae81ff">19</span><span style="color:#f92672">:</span><span style="color:#ae81ff">33</span><span style="color:#f92672">:</span><span style="color:#ae81ff">52.468997</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0800</span> interview1<span style="color:#f92672">-</span>OC对象的本质Student[<span style="color:#ae81ff">12656</span><span style="color:#f92672">:</span><span style="color:#ae81ff">386270</span>] person实例对象的成员变量所占的存储空间:<span style="color:#ae81ff">16</span>
-</code></pre></div><p>打印结果也就验证了我们的推测。</p>
+        <span class="c1">//获得student实例对象的成员变量所占的大小
+</span><span class="c1"></span>        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;student实例对象的成员变量所占的存储空间:%zd&#34;</span><span class="p">,</span> <span class="n">class_getInstanceSize</span><span class="p">([</span><span class="n">Student</span> <span class="k">class</span><span class="p">]));</span>        
+        <span class="c1">//获得person实例对象的成员变量所占的大小
+</span><span class="c1"></span>        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;person实例对象的成员变量所占的存储空间:%zd&#34;</span><span class="p">,</span> <span class="n">class_getInstanceSize</span><span class="p">([</span><span class="n">Person</span> <span class="k">class</span><span class="p">]));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>打印结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objective-c" data-lang="objective-c"><span class="mi">2018</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mi">26</span> <span class="mi">19</span><span class="o">:</span><span class="mi">33</span><span class="o">:</span><span class="mf">52.467400</span><span class="o">+</span><span class="mi">0800</span> <span class="n">interview1</span><span class="o">-</span><span class="n">OC对象的本质Student</span><span class="p">[</span><span class="mi">12656</span><span class="o">:</span><span class="mi">386270</span><span class="p">]</span> <span class="nl">student实例对象的成员变量所占的存储空间</span><span class="p">:</span><span class="mi">16</span>
+<span class="mi">2018</span><span class="o">-</span><span class="mo">06</span><span class="o">-</span><span class="mi">26</span> <span class="mi">19</span><span class="o">:</span><span class="mi">33</span><span class="o">:</span><span class="mf">52.468997</span><span class="o">+</span><span class="mi">0800</span> <span class="n">interview1</span><span class="o">-</span><span class="n">OC对象的本质Student</span><span class="p">[</span><span class="mi">12656</span><span class="o">:</span><span class="mi">386270</span><span class="p">]</span> <span class="nl">person实例对象的成员变量所占的存储空间</span><span class="p">:</span><span class="mi">16</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>打印结果也就验证了我们的推测。</p>
 <h5 id="属性和方法">属性和方法</h5>
 <p>我们给Person类增加一个height属性。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objectivec" data-lang="objectivec"><span style="color:#66d9ef">@interface</span> <span style="color:#a6e22e">Person</span>:<span style="color:#a6e22e">NSobject</span>
-{
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objectivec" data-lang="objectivec"><span class="k">@interface</span> <span class="nc">Person</span>:<span class="nc">NSobject</span>
+<span class="p">{</span>
     
-    <span style="color:#66d9ef">@public</span>
-    <span style="color:#66d9ef">int</span> _no;
-}
-<span style="color:#66d9ef">@property</span> (<span style="color:#66d9ef">nonatomic</span>, <span style="color:#66d9ef">assign</span>) <span style="color:#66d9ef">int</span> height;
+    <span class="k">@public</span>
+    <span class="kt">int</span> <span class="n">_no</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">assign</span><span class="p">)</span> <span class="kt">int</span> <span class="n">height</span><span class="p">;</span>
 
-<span style="color:#66d9ef">@end</span>
+<span class="k">@end</span>
 
-<span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">Person</span>
-<span style="color:#66d9ef">@end</span>
-</code></pre></div><p>那么Person_IMPL结构体会变成什么样子呢？转化后找到Person_IMPL：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Person_IMPL</span> {
-    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">NSObject_IMPL</span> NSObject_IVARS;
-    <span style="color:#66d9ef">int</span> _age;
-    <span style="color:#66d9ef">int</span> _height;
-};
-</code></pre></div><p>我们可以看到增加了_height成员变量，这和我们所学的OC知识：声明一个属性的同时也就声明了一个成员变量是一致的。
+<span class="k">@implementation</span> <span class="nc">Person</span>
+<span class="k">@end</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>那么Person_IMPL结构体会变成什么样子呢？转化后找到Person_IMPL：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Person_IMPL</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">NSObject_IMPL</span> <span class="n">NSObject_IVARS</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_age</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_height</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们可以看到增加了_height成员变量，这和我们所学的OC知识：声明一个属性的同时也就声明了一个成员变量是一致的。
 <strong>我们创建出来的实例对象中只有成员变量，为什么没有存放方法呢？</strong>
 每个实例对象中都有一份成员变量，因为每个实例对象都可以有自己的成员变量值，每个实例对象的成员变量值都可以不一样，所以需要在每个实例对象中存放所有的成员变量。但是方法就不一样了，每个对象执行的方法都是一样的，只需要保存一份就够了，没有必要在每个实例对象中都保留一份方法。</p>
 
     </div>
 
-    
-    
-<div class="post-copyright">
+    <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">Author</span>
     <span class="item-content">飞熊</span>
@@ -565,123 +634,47 @@ Student_IMPL有两个成员变量，其中Person_IVARS这个成员变量，我�
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-      Jun 25
-      
+        Jun 25
+        
     </span>
   </p>
   
-  <p class="copyright-item">
-    <span class="item-title">License</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
+  
 </div>
-
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          <a href="https://zhangxiongfeiv.github.io/tags/ios/">iOS</a>
-          
-        </div>
-
-      
+          <a href="/tags/ios/">iOS</a>
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
+        <a class="prev" href="/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/">
+            <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">字符串常用算法 --&gt; 双指针</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        
-          <a class="next" href="/post/mac%E9%80%9A%E8%BF%87ssh%E8%BF%9E%E6%8E%A5ios%E8%AE%BE%E5%A4%87/">
+        <a class="next" href="/post/mac%E9%80%9A%E8%BF%87ssh%E8%BF%9E%E6%8E%A5ios%E8%AE%BE%E5%A4%87/">
             <span class="next-text nav-default">Mac通过SSH登录iOS设备</span>
-            <span class="prev-text nav-mobile">Next</span>
-            
-            <i class="iconfont">
-              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
-</svg>
-
-            </i>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
           </a>
       </nav>
     </footer>
   </article>
-
-  
-  
-
-  
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-    
-
-  
-
         </div>
+        
+
+  
+
+  
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="icon-links">
-  
-  
-    <a href="310311589@qq.com" rel="me noopener" class="iconfont"
-      title="email"  target="_blank"
-      >
-      <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="36" height="36">
-  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
-</svg>
-
-    </a>
-  
-    <a href="https://github.com/zhangxiongfeiv" rel="me noopener" class="iconfont"
-      title="github"  target="_blank"
-      >
-      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="36" height="36">
-  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
-</svg>
-
-    </a>
-
-
-<a href="https://zhangxiongfeiv.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
-    class="iconfont" title="rss" target="_blank">
-    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="30" height="30">
-  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
-</svg>
-
-  </a>
-   
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
@@ -690,82 +683,36 @@ Student_IMPL有两个成员变量，其中Person_IVARS这个成员变量，我�
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
+  
+
   <span class="copyright-year">
-    &copy;
-    
-      2017 -
+    &copy; 
+    2017 - 
     2020
     <span class="heart">
-      
-      <i class="iconfont">
-        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="14" height="14">
-  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
-   fill="#8a8a8a"></path>
-</svg>
-
-      </i>
-    </span><span class="author">
-        飞熊
-        
-      </span></span>
-
-  
-  
-
-  
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
 </div>
-
     </footer>
 
     <div class="back-to-top" id="back-to-top">
-      <i class="iconfont">
-        
-        <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="35" height="35">
-  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
-</svg>
-
-      </i>
+      <i class="iconfont icon-up"></i>
     </div>
   </div>
   
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
 
 
-
-<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
-    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
-    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
-  
-
-
-
-
-
-
-
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
 
 
 

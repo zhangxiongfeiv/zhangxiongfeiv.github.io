@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>二叉搜索树 on 飞熊&#39;s Blogs</title>
+    <title>二叉搜索树 on 飞熊&#39;s blog&#39;</title>
     <link>https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
-    <description>Recent content in 二叉搜索树 on 飞熊&#39;s Blogs</description>
+    <description>Recent content in 二叉搜索树 on 飞熊&#39;s blog&#39;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 16 Jun 2020 22:25:37 +0800</lastBuildDate>
@@ -53,7 +53,7 @@
       <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/938.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</guid>
-      <description>938. 二叉搜索树的范围和 题解： 二叉树中序遍历， 递加在 [L , R] 范围的元素即可。 思路一： 递归 代码如下： int sum = 0; public int rangeSumBST(TreeNode root, int L, int R){ if (root == null) return 0; rangeSumBST(root.left, L ,R); if (root.val &amp;gt;=</description>
+      <description>938. 二叉搜索树的范围和 题解： 二叉树中序遍历， 递加在 [L , R] 范围的元素即可。 思路一： 递归 代码如下： 1 2 3 4 5 6 7 8 9 10 11 12 int sum = 0; public int rangeSumBST(TreeNode root, int L, int R){</description>
     </item>
     
     <item>
@@ -125,7 +125,7 @@
       <pubDate>Thu, 09 May 2019 21:35:41 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/700.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2/</guid>
-      <description>700. 二叉搜索树中的搜索 题解： 思路一： 迭代：题目非常简单，普通的二叉搜索树查找。 代码如下： // 二叉搜索树性质， 左子树的值都比根节点小， 右子树的值都</description>
+      <description>700. 二叉搜索树中的搜索 题解： 思路一： 迭代：题目非常简单，普通的二叉搜索树查找。 代码如下： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 // 二叉搜索树性</description>
     </item>
     
     <item>

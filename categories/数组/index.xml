@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数组 on 飞熊&#39;s blog&#39;</title>
+    <link>https://zhangxiongfeiv.github.io/categories/%E6%95%B0%E7%BB%84/</link>
+    <description>Recent content in 数组 on 飞熊&#39;s blog&#39;</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 12 May 2020 22:31:36 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhangxiongfeiv.github.io/categories/%E6%95%B0%E7%BB%84/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>08.03魔术索引</title>
+      <link>https://zhangxiongfeiv.github.io/post/08.03%E9%AD%94%E6%9C%AF%E7%B4%A2%E5%BC%95/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/08.03%E9%AD%94%E6%9C%AF%E7%B4%A2%E5%BC%95/</guid>
+      <description>面试题 08.03. 魔术索引 魔术索引。 在数组A[0&amp;hellip;n-1]中，有所谓的魔术索引，满足条件A[i] = i。给定一个有序整数数组，编写一种方法</description>
+    </item>
+    
+    <item>
+      <title>10.01合并排序的数组</title>
+      <link>https://zhangxiongfeiv.github.io/post/10.01%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/10.01%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E6%95%B0%E7%BB%84/</guid>
+      <description>面试题 10.01. 合并排序的数组 给定两个排序后的数组 A 和 B，其中 A 的末端有足够的缓冲空间容纳 B。 编写一个方法，将 B 合并入 A 并排序。 初始化 A 和 B 的元素数</description>
+    </item>
+    
+    <item>
+      <title>35. 搜索插入位置</title>
+      <link>https://zhangxiongfeiv.github.io/post/35.-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 10 Feb 2020 11:25:40 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/35.-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</guid>
+      <description>35. 搜索插入位置 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 你可以</description>
+    </item>
+    
+    <item>
+      <title>27.移除元素</title>
+      <link>https://zhangxiongfeiv.github.io/post/27.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/</link>
+      <pubDate>Tue, 03 Sep 2019 11:25:40 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/27.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/</guid>
+      <description>27. 移除元素](https://leetcode-cn.com/problems/remove-element/) 给你一个数组 nums 和一个值 val</description>
+    </item>
+    
+    <item>
+      <title>1. 两数之和</title>
+      <link>https://zhangxiongfeiv.github.io/post/1.-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</link>
+      <pubDate>Sun, 11 Aug 2019 11:25:40 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/1.-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</guid>
+      <description>1. 两数之和 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会</description>
+    </item>
+    
+    <item>
+      <title>11.盛最多水的容器</title>
+      <link>https://zhangxiongfeiv.github.io/post/11.%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/</link>
+      <pubDate>Thu, 11 Jul 2019 11:25:40 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/11.%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/</guid>
+      <description>11. 盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/)</description>
+    </item>
+    
+  </channel>
+</rss>

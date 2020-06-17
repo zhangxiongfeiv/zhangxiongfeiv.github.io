@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>BFS on 飞熊&#39;s Blogs</title>
+    <title>BFS on 飞熊&#39;s blog&#39;</title>
     <link>https://zhangxiongfeiv.github.io/tags/bfs/</link>
-    <description>Recent content in BFS on 飞熊&#39;s Blogs</description>
+    <description>Recent content in BFS on 飞熊&#39;s blog&#39;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 06 Jun 2020 01:06:51 +0800</lastBuildDate>
@@ -89,7 +89,7 @@
       <pubDate>Thu, 25 Apr 2019 18:25:18 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/104.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/</guid>
-      <description>104. 二叉树的最大深度 题解： 思路一： 使用递归， node节点的高度等于其 max(node.left, node.right) + 1 左右孩子的高度中的较大者 + 1. 代码如下： public int maxDepth(TreeNode root){ if (root == null) return 0; return Math.max(maxDepth(root.left),maxDepth(root.right)) + 1;</description>
+      <description>104. 二叉树的最大深度 题解： 思路一： 使用递归， node节点的高度等于其 max(node.left, node.right) + 1 左右孩子的高度中的较大者 + 1. 代码如下： 1 2 3 4 5 public int maxDepth(TreeNode root){ if (root == null) return</description>
     </item>
     
     <item>
@@ -116,7 +116,7 @@
       <pubDate>Thu, 25 Apr 2019 18:25:18 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/589.n%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
-      <description>589. N叉树的前序遍历 题解： 思路一： 递归 代码如下： ArrayList list = new ArrayList(); public List&amp;lt;Integer&amp;gt; preorder(Node root) { if (root == null) return list; Node node = root; list.add(node.val); for (int i = 0; i &amp;lt; root.children.size(); i++){ preorder(node.children.get(i)); } return list; } 思路二： 迭代 , 跟二叉树前</description>
+      <description>589. N叉树的前序遍历 题解： 思路一： 递归 代码如下： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 ArrayList list = new ArrayList(); public List&amp;lt;Integer&amp;gt; preorder(Node root) { if (root == null) return list; Node node = root; list.add(node.val); for (int i = 0; i &amp;lt; root.children.size(); i++){ preorder(node.children.get(i)); } return</description>
     </item>
     
     <item>

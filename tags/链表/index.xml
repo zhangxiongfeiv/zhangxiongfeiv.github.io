@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>链表 on 飞熊&#39;s Blogs</title>
+    <title>链表 on 飞熊&#39;s blog&#39;</title>
     <link>https://zhangxiongfeiv.github.io/tags/%E9%93%BE%E8%A1%A8/</link>
-    <description>Recent content in 链表 on 飞熊&#39;s Blogs</description>
+    <description>Recent content in 链表 on 飞熊&#39;s blog&#39;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 16 Jun 2020 22:25:37 +0800</lastBuildDate>
@@ -71,7 +71,7 @@
       <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/02.05%E9%93%BE%E8%A1%A8%E6%B1%82%E5%92%8C/</guid>
-      <description>面试题 02.05. 链表求和 给定两个用链表表示的整数，每个节点包含一个数位。 这些数位是反向存放的，也就是个位排在链表首部。 编写函数对这两个整数求和，并用</description>
+      <description>面试题 02.05. 链表求和 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 给定两个用链表表示的整数，每个节点包含一个数位。 这些数位是反向存放的，也就是个位</description>
     </item>
     
     <item>
@@ -170,7 +170,7 @@
       <pubDate>Fri, 21 Jun 2019 20:33:49 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/203.%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8-%E5%85%83%E7%B4%A0/</guid>
-      <description>203. 移除链表元素 删除链表中等于给定值 *val* 的所有节点。 示例: 输入: 1-&amp;gt;2-&amp;gt;6-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;6, val = 6 输出: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5 题解： 如果删除的是中间节点， 此题看起来非常简单，直接拿到prev</description>
+      <description>203. 移除链表元素 删除链表中等于给定值 *val* 的所有节点。 示例: 1 2 输入: 1-&amp;gt;2-&amp;gt;6-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;6, val = 6 输出: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5 题解： 如果删除的是中间节点， 此题看起来非常简单，直接拿到pr</description>
     </item>
     
     <item>
