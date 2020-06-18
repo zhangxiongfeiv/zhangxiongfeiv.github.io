@@ -49,7 +49,7 @@
 <meta itemprop="description" content="142. 环形链表 II 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接">
 <meta itemprop="datePublished" content="2019-10-26T18:09:26&#43;08:00" />
 <meta itemprop="dateModified" content="2019-10-26T18:09:26&#43;08:00" />
-<meta itemprop="wordCount" content="758">
+<meta itemprop="wordCount" content="768">
 
 
 
@@ -127,7 +127,7 @@
       <div class="post-meta">
         <span class="post-time"> Oct 26 </span>
         
-          <span class="more-meta"> 758 words </span>
+          <span class="more-meta"> 768 words </span>
           <span class="more-meta"> 2 mins read </span>
         
       </div>
@@ -183,6 +183,8 @@
 <li>如果有环slow == fast时，break；代表有环，进入第二阶段</li>
 <li>在第二节点，将slow指针指向head， slow和fast都依次走一步。 当slow 和 fast相等时，就是相交节点.</li>
 </ul>
+<p>看图更容易理解一些：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwv3cig4oj30u0199gqi.jpg" alt="WechatIMG250"></p>
 <p>代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
