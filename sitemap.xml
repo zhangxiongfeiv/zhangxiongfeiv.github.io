@@ -898,41 +898,6 @@
   </url>
   
   <url>
-    <loc>https://zhangxiongfeiv.github.io/private/</loc>
-    <lastmod>2020-05-02T18:01:04+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhangxiongfeiv.github.io/private/%E7%8E%8B%E9%81%93%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2020-05-02T18:01:04+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhangxiongfeiv.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2020-05-02T18:01:04+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhangxiongfeiv.github.io/private/%E7%8E%8B%E9%81%93%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2020-05-02T11:04:13+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhangxiongfeiv.github.io/private/%E7%8E%8B%E9%81%93%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-05-02T08:36:02+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://zhangxiongfeiv.github.io/post/803%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E7%A7%91%E5%9F%BA%E7%A1%80%E7%BB%BC%E5%90%88/</loc>
     <lastmod>2020-04-30T18:09:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -940,7 +905,21 @@
   </url>
   
   <url>
-    <loc>https://zhangxiongfeiv.github.io/private/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</loc>
+    <loc>https://zhangxiongfeiv.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2020-04-30T18:09:56+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhangxiongfeiv.github.io/privates/</loc>
+    <lastmod>2020-04-30T17:57:19+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhangxiongfeiv.github.io/privates/%E6%84%BF%E5%8C%97%E9%82%AE%E6%88%90%E4%B8%BA%E6%88%91%E9%82%AE/</loc>
     <lastmod>2020-04-30T17:57:19+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
