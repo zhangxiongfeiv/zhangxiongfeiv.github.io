@@ -84,15 +84,6 @@
     </item>
     
     <item>
-      <title>字符串常用算法 --&gt; 滑动窗口</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
-      <pubDate>Mon, 06 Apr 2020 21:16:57 +0800</pubDate>
-      
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</guid>
-      <description>字符串算法之滑动窗口 题目 3. 无重复字符的最长子串 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。 示例 1: 输入: &amp;ldquo;abcabcbb&amp;rdquo; 输出: 3 解释: 因为无</description>
-    </item>
-    
-    <item>
       <title>字符串常用算法 --&gt; 双指针</title>
       <link>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</link>
       <pubDate>Fri, 05 Apr 2019 20:52:54 +0800</pubDate>

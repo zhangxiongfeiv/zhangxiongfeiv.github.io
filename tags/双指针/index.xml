@@ -6,10 +6,19 @@
     <description>Recent content in 双指针 on 飞熊&#39;s blog&#39;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Jun 2020 21:31:33 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2020 14:56:29 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>团灭滑动窗口问题</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 18 Jun 2020 14:56:29 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
+      <description>题外话 今天开始刷 LeetCode 探索频道, 字节跳动的题目，一道字符串相关的经典题目，无重复最长子串. 明明记得做过, 然而写完暴力法，在尝试进行时间复杂度优化</description>
+    </item>
     
     <item>
       <title>剑指offe21.调整数组顺序使奇数位于偶数前面</title>
