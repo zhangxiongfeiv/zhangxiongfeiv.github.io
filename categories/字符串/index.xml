@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>字符串 on 飞熊&#39;s blog&#39;</title>
-    <link>https://zhangxiongfeiv.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+    <link>https://zhangxiongfeiv.githubio/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
     <description>Recent content in 字符串 on 飞熊&#39;s blog&#39;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 28 May 2020 22:37:48 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.githubio/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>01.06字符串压缩</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</link>
+      <link>https://zhangxiongfeiv.githubio/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</link>
       <pubDate>Thu, 28 May 2020 22:37:48 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</guid>
+      <guid>https://zhangxiongfeiv.githubio/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</guid>
       <description>面试题 01.06. 字符串压缩 字符串压缩。利用字符重复出现的次数，编写一种方法，实现基本的字符串压缩功能。比如，字符串aabcccccaaa会变为a2b</description>
     </item>
     
     <item>
       <title>01.05一次编辑</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</link>
+      <link>https://zhangxiongfeiv.githubio/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</link>
       <pubDate>Thu, 28 May 2020 22:32:11 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</guid>
+      <guid>https://zhangxiongfeiv.githubio/post/01.05%E4%B8%80%E6%AC%A1%E7%BC%96%E8%BE%91/</guid>
       <description>面试题 01.05. 一次编辑 字符串有三种编辑操作:插入一个字符、删除一个字符或者替换一个字符。 给定两个字符串，编写一个函数判定它们是否只需要一次(或者零</description>
     </item>
     
     <item>
       <title>01.04.回文排列</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</link>
+      <link>https://zhangxiongfeiv.githubio/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</link>
       <pubDate>Thu, 28 May 2020 22:27:06 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</guid>
+      <guid>https://zhangxiongfeiv.githubio/post/01.04%E5%9B%9E%E6%96%87%E6%8E%92%E5%88%97/</guid>
       <description>面试题 01.04. 回文排列 给定一个字符串，编写一个函数判定其是否为某个回文串的排列之一。 回文串是指正反两个方向都一样的单词或短语。排列是指字母的重新排</description>
     </item>
     
     <item>
       <title>01.03URL化</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.03url%E5%8C%96/</link>
+      <link>https://zhangxiongfeiv.githubio/post/01.03url%E5%8C%96/</link>
       <pubDate>Thu, 28 May 2020 22:22:18 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.03url%E5%8C%96/</guid>
+      <guid>https://zhangxiongfeiv.githubio/post/01.03url%E5%8C%96/</guid>
       <description>面试题 01.03. URL化 URL化。编写一种方法，将字符串中的空格全部替换为%20。假定该字符串尾部有足够的空间存放新增字符，并且知道字符串的“真实”</description>
     </item>
     
     <item>
       <title>01.02判断是否互为字符重排</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.02%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92/</link>
+      <link>https://zhangxiongfeiv.githubio/post/01.02%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92/</link>
       <pubDate>Thu, 28 May 2020 22:18:56 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.02%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92/</guid>
+      <guid>https://zhangxiongfeiv.githubio/post/01.02%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92/</guid>
       <description>面试题 01.02. 判定是否互为字符重排 给定两个字符串 s1 和 s2，请编写一个程序，确定其中一个字符串的字符重新排列后，能否变成另一个字符串。 示例 1： 输入:</description>
     </item>
     
     <item>
       <title>01.01判断字符是否唯一</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.01%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80/</link>
+      <link>https://zhangxiongfeiv.githubio/post/01.01%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80/</link>
       <pubDate>Thu, 28 May 2020 22:15:10 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.01%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80/</guid>
+      <guid>https://zhangxiongfeiv.githubio/post/01.01%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80/</guid>
       <description>面试题 01.01. 判定字符是否唯一 实现一个算法，确定一个字符串 s 的所有字符是否全都不同。 示例 1： 输入: s = &amp;ldquo;leetcode&amp;rdquo; 输出: false 示例 2： 输入: s = &amp;ldquo;abc&amp;rdquo; 输出: true 限制：</description>
     </item>
     
     <item>
       <title>01.09字符串轮转</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.09%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AE%E8%BD%AC/</link>
+      <link>https://zhangxiongfeiv.githubio/post/01.09%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AE%E8%BD%AC/</link>
       <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.09%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AE%E8%BD%AC/</guid>
+      <guid>https://zhangxiongfeiv.githubio/post/01.09%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AE%E8%BD%AC/</guid>
       <description>面试题 01.09. 字符串轮转 字符串轮转。给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成（比如，waterbottle是erbottle</description>
     </item>
     

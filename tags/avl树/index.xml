@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AVL树 on 飞熊&#39;s blog&#39;</title>
-    <link>https://zhangxiongfeiv.github.io/tags/avl%E6%A0%91/</link>
+    <link>https://zhangxiongfeiv.githubio/tags/avl%E6%A0%91/</link>
     <description>Recent content in AVL树 on 飞熊&#39;s blog&#39;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 11 May 2020 21:04:44 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.github.io/tags/avl%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.githubio/tags/avl%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>AVL树</title>
-      <link>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</link>
+      <link>https://zhangxiongfeiv.githubio/post/avl%E6%A0%91/</link>
       <pubDate>Mon, 11 May 2020 21:04:44 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</guid>
+      <guid>https://zhangxiongfeiv.githubio/post/avl%E6%A0%91/</guid>
       <description>AVL树 平衡因子(Balance Factor): 某节点左右子树的高度差 AVL树的特点 每个节点的平衡因子只可能是1, 0, -1(绝对值 &amp;lt;= 1, 如果超过1，称之为 &amp;l</description>
     </item>
     
