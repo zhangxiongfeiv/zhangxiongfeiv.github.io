@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>剑指offer on 飞熊&#39;s blog&#39;</title>
-    <link>https://zhangxiongfeiv.githubio/tags/%E5%89%91%E6%8C%87offer/</link>
-    <description>Recent content in 剑指offer on 飞熊&#39;s blog&#39;</description>
+    <title>剑指offer on 飞熊&#39;s blogs</title>
+    <link>https://zhangxiongfeiv.github.io/tags/%E5%89%91%E6%8C%87offer/</link>
+    <description>Recent content in 剑指offer on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 17 Jun 2020 14:59:43 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.githubio/tags/%E5%89%91%E6%8C%87offer/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E5%89%91%E6%8C%87offer/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>剑指offer.树的子结构</title>
-      <link>https://zhangxiongfeiv.githubio/post/%E5%89%91%E6%8C%87offer.26%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.26%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/</link>
       <pubDate>Wed, 17 Jun 2020 14:59:43 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.githubio/post/%E5%89%91%E6%8C%87offer.26%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.26%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/</guid>
       <description>面试题26. 树的子结构 姐妹篇 04.10检查子树 输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构) B是A的子结构</description>
     </item>
     

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>回溯算法 on 飞熊&#39;s blog&#39;</title>
-    <link>https://zhangxiongfeiv.githubio/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
-    <description>Recent content in 回溯算法 on 飞熊&#39;s blog&#39;</description>
+    <title>回溯算法 on 飞熊&#39;s blogs</title>
+    <link>https://zhangxiongfeiv.github.io/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 回溯算法 on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 17 Jun 2020 16:12:46 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.githubio/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>团灭二叉树路径总和问题</title>
-      <link>https://zhangxiongfeiv.githubio/post/%E5%9B%A2%E7%81%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E9%97%AE%E9%A2%98/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 17 Jun 2020 16:12:46 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.githubio/post/%E5%9B%A2%E7%81%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E9%97%AE%E9%A2%98/</guid>
       <description>二叉树的路径总和问题 LeetCode上有一系列的 二叉树路径总和 的问题, 如图 这篇文章中我们按照 I, II, III的顺序依次解决此类题目 112. 路径总和 给定一</description>
     </item>
     
     <item>
       <title>八皇后与回溯算法</title>
-      <link>https://zhangxiongfeiv.githubio/post/%E5%85%AB%E7%9A%87%E5%90%8E%E4%B8%8E%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%85%AB%E7%9A%87%E5%90%8E%E4%B8%8E%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
       <pubDate>Mon, 15 Jun 2020 21:10:05 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.githubio/post/%E5%85%AB%E7%9A%87%E5%90%8E%E4%B8%8E%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%85%AB%E7%9A%87%E5%90%8E%E4%B8%8E%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</guid>
       <description>八皇后问题 首先我们了解一下著名的八皇后问题 八皇后问题，一个古老而著名的问题，是回溯算法的典型案例。该问题由国际西洋棋棋手马克斯·贝瑟尔于 1848 年</description>
     </item>
     

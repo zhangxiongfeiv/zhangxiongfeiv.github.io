@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>滑动窗口 on 飞熊&#39;s blog&#39;</title>
-    <link>https://zhangxiongfeiv.githubio/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
-    <description>Recent content in 滑动窗口 on 飞熊&#39;s blog&#39;</description>
+    <title>滑动窗口 on 飞熊&#39;s blogs</title>
+    <link>https://zhangxiongfeiv.github.io/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</link>
+    <description>Recent content in 滑动窗口 on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 18 Jun 2020 14:56:29 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.githubio/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>团灭滑动窗口问题</title>
-      <link>https://zhangxiongfeiv.githubio/post/%E5%9B%A2%E7%81%AD%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 18 Jun 2020 14:56:29 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.githubio/post/%E5%9B%A2%E7%81%AD%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
       <description>题外话 今天开始刷 LeetCode 探索频道, 字节跳动的题目，一道字符串相关的经典题目，无重复最长子串. 明明记得做过, 然而写完暴力法，在尝试进行时间复杂度优化</description>
     </item>
     
     <item>
       <title>1248.统计优美子数组</title>
-      <link>https://zhangxiongfeiv.githubio/post/1248.%E7%BB%9F%E8%AE%A1%E4%BC%98%E7%BE%8E%E5%AD%90%E6%95%B0%E7%BB%84/</link>
+      <link>https://zhangxiongfeiv.github.io/post/1248.%E7%BB%9F%E8%AE%A1%E4%BC%98%E7%BE%8E%E5%AD%90%E6%95%B0%E7%BB%84/</link>
       <pubDate>Wed, 27 May 2020 17:09:19 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.githubio/post/1248.%E7%BB%9F%E8%AE%A1%E4%BC%98%E7%BE%8E%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/1248.%E7%BB%9F%E8%AE%A1%E4%BC%98%E7%BE%8E%E5%AD%90%E6%95%B0%E7%BB%84/</guid>
       <description>1248. 统计「优美子数组」 此题同 560, 974解题思路一致，复习时，可以一块看。 标签前序和。一并看懂前序和的问题。 给你一个整数数组 nums 和一个整数 k。 如果某</description>
     </item>
     

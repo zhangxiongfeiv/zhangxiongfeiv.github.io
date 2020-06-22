@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>生活 on 飞熊&#39;s blog&#39;</title>
-    <link>https://zhangxiongfeiv.githubio/tags/%E7%94%9F%E6%B4%BB/</link>
-    <description>Recent content in 生活 on 飞熊&#39;s blog&#39;</description>
+    <title>生活 on 飞熊&#39;s blogs</title>
+    <link>https://zhangxiongfeiv.github.io/tags/%E7%94%9F%E6%B4%BB/</link>
+    <description>Recent content in 生活 on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 28 May 2020 10:09:44 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.githubio/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>leetcode200题回顾与总结</title>
-      <link>https://zhangxiongfeiv.githubio/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</link>
+      <link>https://zhangxiongfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</link>
       <pubDate>Thu, 28 May 2020 10:09:44 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.githubio/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</guid>
       <description>2020.5.27总结 截止 5.27日，leetcode总刷题数到达200，写一篇文章以回顾，总结。 起因 非计算机专业出身的程序员, 经历过很多因</description>
     </item>
     
     <item>
       <title>Hello,张清妍</title>
-      <link>https://zhangxiongfeiv.githubio/post/hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</link>
+      <link>https://zhangxiongfeiv.github.io/post/hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</link>
       <pubDate>Sun, 26 Apr 2020 16:15:11 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.githubio/post/hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/hello%E5%BC%A0%E6%B8%85%E5%A6%8D/</guid>
       <description>Hello, 张清妍 地点：北京天坛医院 2020年4月16日 医生检查我们嘟嘟生长受限，决定提前生产，早上vv做了otc检查，用来判断是否符合顺产的条件，o</description>
     </item>
     

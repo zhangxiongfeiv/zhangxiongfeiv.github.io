@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>leetcode on 飞熊&#39;s blog&#39;</title>
-    <link>https://zhangxiongfeiv.githubio/tags/leetcode/</link>
-    <description>Recent content in leetcode on 飞熊&#39;s blog&#39;</description>
+    <title>leetcode on 飞熊&#39;s blogs</title>
+    <link>https://zhangxiongfeiv.github.io/tags/leetcode/</link>
+    <description>Recent content in leetcode on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 12 May 2020 22:31:36 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.githubio/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>02.06回文链表</title>
-      <link>https://zhangxiongfeiv.githubio/post/02.06%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</link>
+      <link>https://zhangxiongfeiv.github.io/post/02.06%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</link>
       <pubDate>Tue, 12 May 2020 22:31:36 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.githubio/post/02.06%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/02.06%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</guid>
       <description>面试题 02.06. 回文链表 编写一个函数，检查输入的链表是否是回文的。 示例 1： 输入： 1-&amp;gt;2 输出： false 示例 2： 输入： 1-&amp;gt;2-&amp;gt;2-&amp;gt;1 输出： true 进阶： 你能否用 O(n) 时间复杂度和 O(1) 空间</description>
     </item>
     
