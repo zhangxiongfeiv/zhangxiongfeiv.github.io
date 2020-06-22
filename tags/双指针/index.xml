@@ -2,111 +2,111 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>双指针 on 飞熊&#39;s blogs</title>
-    <link>https://zhangxiongfeiv.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+    <link>https://zhangxionongfeiv.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/</link>
     <description>Recent content in 双指针 on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 18 Jun 2020 14:56:29 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxionongfeiv.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>团灭滑动窗口问题</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
+      <link>https://zhangxionongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 18 Jun 2020 14:56:29 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E9%97%AE%E9%A2%98/</guid>
       <description>题外话 今天开始刷 LeetCode 探索频道, 字节跳动的题目，一道字符串相关的经典题目，无重复最长子串. 明明记得做过, 然而写完暴力法，在尝试进行时间复杂度优化</description>
     </item>
     
     <item>
       <title>剑指offe21.调整数组顺序使奇数位于偶数前面</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offe21.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</link>
+      <link>https://zhangxionongfeiv.github.io/post/%E5%89%91%E6%8C%87offe21.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</link>
       <pubDate>Sat, 06 Jun 2020 21:31:33 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offe21.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/%E5%89%91%E6%8C%87offe21.%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</guid>
       <description>面试题21. 调整数组顺序使奇数位于偶数前面 输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位</description>
     </item>
     
     <item>
       <title>团灭两数之和问题</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98/</link>
+      <link>https://zhangxionongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sat, 06 Jun 2020 11:13:38 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/%E5%9B%A2%E7%81%AD%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98/</guid>
       <description>1. 两数之和 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。 你可以假设每种输入只会</description>
     </item>
     
     <item>
       <title>415.字符串相加</title>
-      <link>https://zhangxiongfeiv.github.io/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</link>
+      <link>https://zhangxionongfeiv.github.io/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</link>
       <pubDate>Mon, 01 Jun 2020 22:23:54 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/415.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</guid>
       <description>415. 字符串相加 给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。 注意： num1 和num2 的长度都小于 5100. num1 和num2 都只包含数字 0-9. num1 和num2 都</description>
     </item>
     
     <item>
       <title>01.06字符串压缩</title>
-      <link>https://zhangxiongfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</link>
+      <link>https://zhangxionongfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</link>
       <pubDate>Thu, 28 May 2020 22:37:48 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/01.06%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%8B%E7%BC%A9/</guid>
       <description>面试题 01.06. 字符串压缩 字符串压缩。利用字符重复出现的次数，编写一种方法，实现基本的字符串压缩功能。比如，字符串aabcccccaaa会变为a2b</description>
     </item>
     
     <item>
       <title>86.分隔链表</title>
-      <link>https://zhangxiongfeiv.github.io/post/86.%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/</link>
+      <link>https://zhangxionongfeiv.github.io/post/86.%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/</link>
       <pubDate>Tue, 26 May 2020 17:09:30 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/86.%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/86.%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8/</guid>
       <description>86. 分隔链表 给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。 你应当保留两个分区中每个节点的初始相对</description>
     </item>
     
     <item>
       <title>142.环形链表II</title>
-      <link>https://zhangxiongfeiv.github.io/post/142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8ii/</link>
+      <link>https://zhangxionongfeiv.github.io/post/142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8ii/</link>
       <pubDate>Sat, 26 Oct 2019 18:09:26 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8ii/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8ii/</guid>
       <description>142. 环形链表 II 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接</description>
     </item>
     
     <item>
       <title>234.回文链表</title>
-      <link>https://zhangxiongfeiv.github.io/post/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</link>
+      <link>https://zhangxionongfeiv.github.io/post/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</link>
       <pubDate>Mon, 26 Aug 2019 18:21:27 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</guid>
       <description>234. 回文链表 请判断一个链表是否为回文链表。 示例 1: 输入: 1-&amp;gt;2 输出: false 示例 2: 输入: 1-&amp;gt;2-&amp;gt;2-&amp;gt;1 输出: true 进阶： 你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？ 来源：</description>
     </item>
     
     <item>
       <title>141.环形链表</title>
-      <link>https://zhangxiongfeiv.github.io/post/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</link>
+      <link>https://zhangxionongfeiv.github.io/post/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</link>
       <pubDate>Mon, 26 Aug 2019 17:58:30 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/</guid>
       <description>141. 环形链表 给定一个链表，判断链表中是否有环。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -</description>
     </item>
     
     <item>
       <title>19.删除链表的倒数第N个节点</title>
-      <link>https://zhangxiongfeiv.github.io/post/19.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACn%E4%B8%AA%E8%8A%82%E7%82%B9/</link>
+      <link>https://zhangxionongfeiv.github.io/post/19.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACn%E4%B8%AA%E8%8A%82%E7%82%B9/</link>
       <pubDate>Wed, 14 Aug 2019 20:33:49 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/19.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACn%E4%B8%AA%E8%8A%82%E7%82%B9/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/19.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACn%E4%B8%AA%E8%8A%82%E7%82%B9/</guid>
       <description>19. 删除链表的倒数第N个节点 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。 示例： 给定一个链表: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, 和 n = 2. 当删除了倒数第二个节点</description>
     </item>
     
     <item>
       <title>字符串常用算法 --&gt; 双指针</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</link>
+      <link>https://zhangxionongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</link>
       <pubDate>Fri, 05 Apr 2019 20:52:54 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</guid>
       <description>151. 翻转字符串里的单词 题目 给定一个字符串，逐个反转字符串中的每个单词 示例 1： 1 2 输入: &amp;#34;the sky is blue&amp;#34; 输出: &amp;#34;blue is sky the&amp;#34; 说明： 无空格字符构成一个单词。 输入</description>
     </item>
     

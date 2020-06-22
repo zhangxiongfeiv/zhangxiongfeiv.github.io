@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
-<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/charles%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E6%8A%93https/" />
+<link rel="canonical" href="https://zhangxionongfeiv.github.io/post/charles%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E6%8A%93https/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -42,14 +42,14 @@
 <meta property="og:title" content="Charles为什么能抓https?" />
 <meta property="og:description" content="经历 曾经去某公司ms, 公司名称就不透露了， 面试官问到，Charles为什么能抓https? 当时没回答上来。一年半以后，终于把有关https 加" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/charles%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E6%8A%93https/" />
+<meta property="og:url" content="https://zhangxionongfeiv.github.io/post/charles%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E6%8A%93https/" />
 <meta property="article:published_time" content="2020-06-09T10:36:04+08:00" />
 <meta property="article:modified_time" content="2020-06-09T10:36:04+08:00" />
 <meta itemprop="name" content="Charles为什么能抓https?">
 <meta itemprop="description" content="经历 曾经去某公司ms, 公司名称就不透露了， 面试官问到，Charles为什么能抓https? 当时没回答上来。一年半以后，终于把有关https 加">
 <meta itemprop="datePublished" content="2020-06-09T10:36:04&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-09T10:36:04&#43;08:00" />
-<meta itemprop="wordCount" content="3023">
+<meta itemprop="wordCount" content="3158">
 
 
 
@@ -127,7 +127,7 @@
       <div class="post-meta">
         <span class="post-time"> Jun 09 </span>
         
-          <span class="more-meta"> 3023 words </span>
+          <span class="more-meta"> 3158 words </span>
           <span class="more-meta"> 7 mins read </span>
         
       </div>
@@ -160,11 +160,14 @@
     <div class="post-content">
       <h1 id="经历">经历</h1>
 <p>曾经去某公司ms, 公司名称就不透露了， 面试官问到，<strong>Charles为什么能抓https?</strong> 当时没回答上来。一年半以后，终于把有关https <strong>加密/数字签名/证书,</strong> 以及<strong>Charles抓https原理</strong>等整理了一遍。</p>
+<p>其实<strong>https为什么安全</strong> 可以和 <strong>iOS签名机制</strong>放在一块学习，原理基本是一样的。</p>
+<p>在正式写这篇文章前，已经连续几天学习相关的，比如<strong>加密，单向散列函数，签名，证书</strong>等相关的知识啦， 自己复习或者有小伙伴看到这篇文章时，最好可以把姐妹篇一并看过。应该可以帮助更好的理解。</p>
 <h1 id="姐妹篇">姐妹篇</h1>
 <p><a href="https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86">简单了解对称和非对称加密</a></p>
 <p><a href="https://zhangxiongfeiv.github.io/post/%E5%8D%95%E5%90%91%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0">单向散列函数</a></p>
 <p><a href="https://zhangxiongfeiv.github.io/post/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D">数字签名</a></p>
 <p><a href="https://zhangxiongfeiv.github.io/post/ca%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6">CA数字证书</a></p>
+<p><a href="https://zhangxiongfeiv.github.io/post/ios%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6">iOS签名机制</a></p>
 <h1 id="安全的https">安全的https</h1>
 <p>我们都知道，https通过一系列的 <strong>加密，单项散列函数, 数字签名，数字证书</strong>等操作来避免以下不安全的情况</p>
 <p>(消息发送者以下简称 <strong>sender</strong>，消息接收者一下简称 <strong>receiver</strong>)</p>
@@ -411,7 +414,7 @@
       <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
       <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
-  <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  <a href="https://zhangxionongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">

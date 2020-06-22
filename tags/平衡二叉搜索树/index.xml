@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>平衡二叉搜索树 on 飞熊&#39;s blogs</title>
-    <link>https://zhangxiongfeiv.github.io/tags/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+    <link>https://zhangxionongfeiv.github.io/tags/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
     <description>Recent content in 平衡二叉搜索树 on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 11 May 2020 21:04:44 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxionongfeiv.github.io/tags/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>AVL树</title>
-      <link>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</link>
+      <link>https://zhangxionongfeiv.github.io/post/avl%E6%A0%91/</link>
       <pubDate>Mon, 11 May 2020 21:04:44 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/avl%E6%A0%91/</guid>
       <description>AVL树 平衡因子(Balance Factor): 某节点左右子树的高度差 AVL树的特点 每个节点的平衡因子只可能是1, 0, -1(绝对值 &amp;lt;= 1, 如果超过1，称之为 &amp;l</description>
     </item>
     
     <item>
       <title>平衡二叉搜索树</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <link>https://zhangxionongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Mon, 11 May 2020 21:03:47 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
       <description>平衡二叉搜索树 (BBST) 二叉搜索树(BST)的缺陷？ 二叉搜索树，在某种情况下会导致极度的不平衡，导致时间复杂度剧增。 如图，如果按照 7 4 9 2 5 8 11 的顺</description>
     </item>
     

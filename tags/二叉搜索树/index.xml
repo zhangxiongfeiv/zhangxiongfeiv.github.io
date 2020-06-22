@@ -2,138 +2,138 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>二叉搜索树 on 飞熊&#39;s blogs</title>
-    <link>https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+    <link>https://zhangxionongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
     <description>Recent content in 二叉搜索树 on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 16 Jun 2020 22:25:37 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxionongfeiv.github.io/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>剑指offer36.二叉搜索树与双向链表</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer36.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</link>
+      <link>https://zhangxionongfeiv.github.io/post/%E5%89%91%E6%8C%87offer36.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</link>
       <pubDate>Tue, 16 Jun 2020 22:25:37 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer36.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/%E5%89%91%E6%8C%87offer36.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</guid>
       <description>面试题36. 二叉搜索树与双向链表 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。要求不能创建任何新的节点，只能调整树中节点指</description>
     </item>
     
     <item>
       <title>剑指offer.68.二叉树的最近公共祖先</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
+      <link>https://zhangxionongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
       <pubDate>Tue, 02 Jun 2020 21:51:04 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/%E5%89%91%E6%8C%87offer.68.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
       <description>面试题68 - I. 二叉搜索树的最近公共祖先 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树</description>
     </item>
     
     <item>
       <title>AVL树</title>
-      <link>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</link>
+      <link>https://zhangxionongfeiv.github.io/post/avl%E6%A0%91/</link>
       <pubDate>Mon, 11 May 2020 21:04:44 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/avl%E6%A0%91/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/avl%E6%A0%91/</guid>
       <description>AVL树 平衡因子(Balance Factor): 某节点左右子树的高度差 AVL树的特点 每个节点的平衡因子只可能是1, 0, -1(绝对值 &amp;lt;= 1, 如果超过1，称之为 &amp;l</description>
     </item>
     
     <item>
       <title>平衡二叉搜索树</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <link>https://zhangxionongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Mon, 11 May 2020 21:03:47 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
       <description>平衡二叉搜索树 (BBST) 二叉搜索树(BST)的缺陷？ 二叉搜索树，在某种情况下会导致极度的不平衡，导致时间复杂度剧增。 如图，如果按照 7 4 9 2 5 8 11 的顺</description>
     </item>
     
     <item>
       <title>938. 二叉搜索树的范围和</title>
-      <link>https://zhangxiongfeiv.github.io/post/938.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</link>
+      <link>https://zhangxionongfeiv.github.io/post/938.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</link>
       <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/938.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/938.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E8%8C%83%E5%9B%B4%E5%92%8C/</guid>
       <description>938. 二叉搜索树的范围和 题解： 二叉树中序遍历， 递加在 [L , R] 范围的元素即可。 思路一： 递归 代码如下： 1 2 3 4 5 6 7 8 9 10 11 12 int sum = 0; public int rangeSumBST(TreeNode root, int L, int R){</description>
     </item>
     
     <item>
       <title>二叉搜索树</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <link>https://zhangxionongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Sat, 09 May 2020 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
       <description>思考？ 在 n 个动态的整数中搜索某个整数？ (查看其是否存在) 假设用动态数组存放元素，从第0个位置开始遍历搜索，平均时间复杂度 O(N) 如果维护一个有序的</description>
     </item>
     
     <item>
       <title>235. 二叉搜索树的最近公共祖先</title>
-      <link>https://zhangxiongfeiv.github.io/post/235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
+      <link>https://zhangxionongfeiv.github.io/post/235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</link>
       <pubDate>Tue, 19 Nov 2019 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</guid>
       <description>235. 二叉搜索树的最近公共祖先 题解： 思路一： 我们使用 HashMap 来存储，子节点的值 -&amp;gt; 父节点。 dfs二叉树，构建map，保存每个节点对应的父节点 根据map，</description>
     </item>
     
     <item>
       <title>450.删除二叉搜索树中的节点</title>
-      <link>https://zhangxiongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</link>
+      <link>https://zhangxionongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</link>
       <pubDate>Sat, 09 Nov 2019 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/450.%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</guid>
       <description>练习题： 450. 删除二叉搜索树中的节点 给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。返回</description>
     </item>
     
     <item>
       <title>98.验证二叉搜索树</title>
-      <link>https://zhangxiongfeiv.github.io/post/98.%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <link>https://zhangxionongfeiv.github.io/post/98.%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Wed, 06 Nov 2019 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/98.%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/98.%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
       <description>98. 验证二叉搜索树 题解： 迭代 和 递归两种方法思路一样， 都是利用二叉树的中序遍历 二叉搜索树的中序遍历结果，是严格升序的， 所以我们中序遍历二叉树 记录</description>
     </item>
     
     <item>
       <title>108.将有序数组转换成二叉搜索树</title>
-      <link>https://zhangxiongfeiv.github.io/post/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <link>https://zhangxionongfeiv.github.io/post/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Thu, 09 May 2019 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
       <description>108. 将有序数组转换为二叉搜索树 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。 本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左</description>
     </item>
     
     <item>
       <title>230. 二叉搜索树中第K小的元素</title>
-      <link>https://zhangxiongfeiv.github.io/post/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</link>
+      <link>https://zhangxionongfeiv.github.io/post/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</link>
       <pubDate>Thu, 09 May 2019 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</guid>
       <description>230. 二叉搜索树中第K小的元素 题解： 二叉搜索树中序遍历的结果，是升序数组， 所以先中序遍历数组，第k个元素即为第k个小的元素。 思路一： 迭代 代码如下</description>
     </item>
     
     <item>
       <title>530.二叉树的最小绝对差</title>
-      <link>https://zhangxiongfeiv.github.io/post/530.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/</link>
+      <link>https://zhangxionongfeiv.github.io/post/530.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/</link>
       <pubDate>Thu, 09 May 2019 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/530.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/530.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/</guid>
       <description>530. 二叉搜索树的最小绝对差 给你一棵所有节点为非负值的二叉搜索树，请你计算树中任意两节点的差的绝对值的最小值。 题解： 二叉搜索树中序遍历的结果，是</description>
     </item>
     
     <item>
       <title>700.二叉搜索树中的搜索</title>
-      <link>https://zhangxiongfeiv.github.io/post/700.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2/</link>
+      <link>https://zhangxionongfeiv.github.io/post/700.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2/</link>
       <pubDate>Thu, 09 May 2019 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/700.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/700.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2/</guid>
       <description>700. 二叉搜索树中的搜索 题解： 思路一： 迭代：题目非常简单，普通的二叉搜索树查找。 代码如下： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 // 二叉搜索树性</description>
     </item>
     
     <item>
       <title>701.二叉搜索树中的插入操作</title>
-      <link>https://zhangxiongfeiv.github.io/post/701.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C/</link>
+      <link>https://zhangxionongfeiv.github.io/post/701.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Thu, 09 May 2019 21:35:41 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/701.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C/</guid>
+      <guid>https://zhangxionongfeiv.github.io/post/701.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C/</guid>
       <description>701. 二叉搜索树中的插入操作 题解： 二叉搜索树的插入操作非常简单，当val &amp;gt; root.val时，插入root的左子树, 当val &amp;lt; root.val时</description>
     </item>
     
