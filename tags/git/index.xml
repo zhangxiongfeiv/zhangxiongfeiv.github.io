@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on 飞熊&#39;s blogs</title>
-    <link>https://zhangxionongfeiv.github.io/tags/git/</link>
+    <link>https://zhangxiongfeiv.github.io/tags/git/</link>
     <description>Recent content in Git on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 12 Jun 2020 10:49:43 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxionongfeiv.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Git操作指南转载</title>
-      <link>https://zhangxionongfeiv.github.io/post/git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97%E8%BD%AC%E8%BD%BD/</link>
+      <link>https://zhangxiongfeiv.github.io/post/git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97%E8%BD%AC%E8%BD%BD/</link>
       <pubDate>Fri, 12 Jun 2020 10:49:43 +0800</pubDate>
       
-      <guid>https://zhangxionongfeiv.github.io/post/git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97%E8%BD%AC%E8%BD%BD/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/git%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97%E8%BD%AC%E8%BD%BD/</guid>
       <description>git - 简易指南 转载自原文地址助你开始使用 git 的简易指南，木有高深内容，;)。 Tweet 作者：罗杰·杜德勒 感谢：@tfnico, @fhd and Namics 其他语言 english, deutsch, espa</description>
     </item>
     

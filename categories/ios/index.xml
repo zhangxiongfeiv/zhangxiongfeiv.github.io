@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>iOS on 飞熊&#39;s blogs</title>
-    <link>https://zhangxionongfeiv.github.io/categories/ios/</link>
+    <link>https://zhangxiongfeiv.github.io/categories/ios/</link>
     <description>Recent content in iOS on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 25 Jun 2018 17:24:50 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxionongfeiv.github.io/categories/ios/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.github.io/categories/ios/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>NSObject内存结构</title>
-      <link>https://zhangxionongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</link>
+      <link>https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</link>
       <pubDate>Mon, 25 Jun 2018 17:24:50 +0800</pubDate>
       
-      <guid>https://zhangxionongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/nsobject%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</guid>
       <description>一，Objective-C的本质 我们平时编写的Objective-C代码，底层实现都是C/C++代码。 所以Objective-C的面向对象，</description>
     </item>
     

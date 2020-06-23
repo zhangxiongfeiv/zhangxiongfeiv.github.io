@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>递归 on 飞熊&#39;s blogs</title>
-    <link>https://zhangxionongfeiv.github.io/tags/%E9%80%92%E5%BD%92/</link>
+    <link>https://zhangxiongfeiv.github.io/tags/%E9%80%92%E5%BD%92/</link>
     <description>Recent content in 递归 on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 10 Jun 2020 16:40:17 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxionongfeiv.github.io/tags/%E9%80%92%E5%BD%92/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E9%80%92%E5%BD%92/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>递归-汉诺塔问题</title>
-      <link>https://zhangxionongfeiv.github.io/post/%E9%80%92%E5%BD%92-%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E9%80%92%E5%BD%92-%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 10 Jun 2020 16:40:17 +0800</pubDate>
       
-      <guid>https://zhangxionongfeiv.github.io/post/%E9%80%92%E5%BD%92-%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E9%80%92%E5%BD%92-%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/</guid>
       <description>面试题 08.06. 汉诺塔问题 在经典汉诺塔问题中，有 3 根柱子及 N 个不同大小的穿孔圆盘，盘子可以滑入任意一根柱子。一开始，所有盘子自上而下按升序依次套在第</description>
     </item>
     
     <item>
       <title>简单了解递归</title>
-      <link>https://zhangxionongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E9%80%92%E5%BD%92/</link>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E9%80%92%E5%BD%92/</link>
       <pubDate>Wed, 10 Jun 2020 12:26:51 +0800</pubDate>
       
-      <guid>https://zhangxionongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E9%80%92%E5%BD%92/</guid>
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E9%80%92%E5%BD%92/</guid>
       <description>递归(Recursion) 定义： 函数自身直接或间接调用自身，是一种常用的变成技巧。 生活中的递归现象： 从前有座山，山里有座庙，庙里有个老和尚，</description>
     </item>
     
