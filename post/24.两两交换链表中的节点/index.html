@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>24 - 飞熊&#39;s blogs</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="24. 两两交换链表中的节点 1 2 3 4 5 6 7 8 9 10 11 12 13 14 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值" /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/24.%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="24" />
+<meta property="og:description" content="24. 两两交换链表中的节点 1 2 3 4 5 6 7 8 9 10 11 12 13 14 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/24.%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/" />
+<meta property="article:published_time" content="2020-06-23T21:40:25+08:00" />
+<meta property="article:modified_time" content="2020-06-23T21:40:25+08:00" />
+<meta itemprop="name" content="24">
+<meta itemprop="description" content="24. 两两交换链表中的节点 1 2 3 4 5 6 7 8 9 10 11 12 13 14 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值">
+<meta itemprop="datePublished" content="2020-06-23T21:40:25&#43;08:00" />
+<meta itemprop="dateModified" content="2020-06-23T21:40:25&#43;08:00" />
+<meta itemprop="wordCount" content="976">
+
+
+
+<meta itemprop="keywords" content="链表,递归," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="24"/>
+<meta name="twitter:description" content="24. 两两交换链表中的节点 1 2 3 4 5 6 7 8 9 10 11 12 13 14 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">24</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Jun 23 </span>
+        
+          <span class="more-meta"> 976 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#题解-">题解 :</a>
+      <ul>
+        <li><a href="#思路一迭代">思路一：迭代</a></li>
+        <li><a href="#思路二-递归">思路二 ：递归</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="24-两两交换链表中的节点httpsleetcode-cncomproblemsswap-nodes-in-pairs"><a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/">24. 两两交换链表中的节点</a></h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">给定一个链表</span><span class="err">，</span><span class="n">两两交换其中相邻的节点</span><span class="err">，</span><span class="n">并返回交换后的链表</span><span class="err">。</span>
+
+<span class="n">你不能只是单纯的改变节点内部的值</span><span class="err">，</span><span class="n">而是需要实际的进行节点交换</span><span class="err">。</span>
+<span class="nl">
+</span><span class="nl"> 
+</span><span class="nl">
+</span><span class="nl">示例:</span>
+
+<span class="n">给定</span> <span class="n">1</span><span class="o">-&gt;</span><span class="n">2</span><span class="o">-&gt;</span><span class="n">3</span><span class="o">-&gt;</span><span class="n">4</span><span class="o">,</span> <span class="n">你应该返回</span> <span class="n">2</span><span class="o">-&gt;</span><span class="n">1</span><span class="o">-&gt;</span><span class="n">4</span><span class="o">-&gt;</span><span class="n">3</span><span class="o">.</span>
+
+
+<span class="n">来源</span><span class="err">：</span><span class="n">力扣</span><span class="err">（</span><span class="n">LeetCode</span><span class="err">）</span>
+<span class="n">链接</span><span class="err">：</span><span class="n">https</span><span class="o">:</span><span class="c1">//leetcode-cn.com/problems/swap-nodes-in-pairs
+</span><span class="c1"></span><span class="n">著作权归领扣网络所有</span><span class="err">。</span><span class="n">商业转载请联系官方授权</span><span class="err">，</span><span class="n">非商业转载请注明出处</span><span class="err">。</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="题解-">题解 :</h2>
+<h3 id="思路一迭代">思路一：迭代</h3>
+<ul>
+<li>从头开始遍历链表
+<ul>
+<li>遍历<strong>当前节点node</strong>时，直接将<strong>node</strong> 与 <strong>node.next</strong>节点交换位置</li>
+<li>然后继续遍历 <strong>node.next</strong>
+<ul>
+<li>重复以上操作。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>循环结束条件 : <strong>node != null &amp;&amp; node.next != null</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> *
+</span><span class="cm"> * 迭代
+</span><span class="cm"> * 从头开始遍历链表
+</span><span class="cm"> *      遍历当前节点时，直接将 当前节点 与 其next节点调换位置
+</span><span class="cm"> * 而后继续遍历下一个节点
+</span><span class="cm"> * 重复以上操作
+</span><span class="cm"> *
+</span><span class="cm"> * */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ListNode</span> <span class="nf">swapPairs1</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">ListNode</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="n">ListNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">node</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">node</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+        <span class="n">ListNode</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="n">node</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">prev</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+            <span class="n">prev</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="n">prev</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">head</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="复杂度分析-">复杂度分析 :</h4>
+<p><strong>时间复杂度 : O(N)</strong></p>
+<p><strong>空间复杂度 : O(1)</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gg2k8skle2j30o606ewf8.jpg" alt="截屏2020-06-23下午9.33.18"></p>
+<h3 id="思路二-递归">思路二 ：递归</h3>
+<p><a href="https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E9%80%92%E5%BD%92/"><strong>递归</strong>简单介绍</a>以及<a href="https://zhangxiongfeiv.github.io/post/%E9%80%92%E5%BD%92-%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98">经典汉诺塔问题</a>传送门。</p>
+<ul>
+<li><strong>递归</strong>的思路，貌似刚接触时，特别不容易想</li>
+<li>处理递归问题，有一个<strong>诀窍</strong></li>
+<li>那就是先不要考虑，算法的具体实现步骤</li>
+<li>首先搞清楚，这个算法在解决什么问题</li>
+<li>具体如何解决问题的细节，我们先不去考虑</li>
+<li>此题目中，算法解决的问题，就是亮亮交换 head 开头的链表</li>
+<li>所以 swapPairs(head.next.next), 也就是当前节点的 <strong>下下个节点</strong>反转后的结果</li>
+<li>所以在得到 <strong>下下个节点反转</strong>后的结果之后，我们要做的就剩下，把head 和 head.next反转，再和 <strong>next_next</strong> 串起来即可</li>
+<li>这样想，递归的思路还是标容易理解的。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> *
+</span><span class="cm"> * 递归
+</span><span class="cm"> * 递归题目，有一个诀窍
+</span><span class="cm"> * 先不要考虑，算法的具体实现步骤
+</span><span class="cm"> * 先搞清楚，这个算法在解决什么问题
+</span><span class="cm"> *
+</span><span class="cm"> * 此题目中，算法解决的问题 就是 两两交换 head 节点
+</span><span class="cm"> * 所以 swapPairs(head.next.next), 我们就得到了 当前节点的 下下个节点反转后的链表
+</span><span class="cm"> *
+</span><span class="cm"> * 得到 next_next 之后，我们要做的就很简单了
+</span><span class="cm"> * 将 head 和 head.next交换
+</span><span class="cm"> * 交换后，再与 next_next串起来就可以咯
+</span><span class="cm"> *
+</span><span class="cm"> * 这样想的话，递归还是比较容易理解的。
+</span><span class="cm"> *
+</span><span class="cm"> * */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">ListNode</span> <span class="nf">swapPairs</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">|</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="n">head</span><span class="o">;</span>
+
+    <span class="n">ListNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+    <span class="c1">// 将当前节点的 下下个节点反转
+</span><span class="c1"></span>    <span class="n">ListNode</span> <span class="n">next</span> <span class="o">=</span> <span class="n">swapPairs</span><span class="o">(</span><span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">);</span>
+
+    <span class="c1">// 反转 node 和 node.next
+</span><span class="c1"></span>    <span class="c1">// 然后与 next 拼接即可
+</span><span class="c1"></span>    <span class="n">ListNode</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="n">node</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="n">tmp</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+    <span class="n">head</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">;</span>
+
+    <span class="k">return</span> <span class="n">head</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="复杂度分析">复杂度分析:</h4>
+<p>时间复杂度 : O(N**)**</p>
+<p><strong>空间复杂度 : O(1)</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gg2kh8qev4j30pa06qgmd.jpg" alt="截屏2020-06-23下午9.33.31"></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Jun 23
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>
+          <a href="/tags/%E9%80%92%E5%BD%92/">递归</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E5%88%86%E6%B2%BB%E4%B9%8B%E5%BF%AB%E9%80%9F%E5%B9%82%E7%AE%97%E6%B3%95/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">分治之快速幂算法</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/278.%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%94%99%E8%AF%AF%E7%89%88%E6%9C%AC/">
+            <span class="next-text nav-default">278.第一个错误版本</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

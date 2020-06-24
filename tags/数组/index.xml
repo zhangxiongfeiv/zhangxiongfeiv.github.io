@@ -6,10 +6,19 @@
     <description>Recent content in 数组 on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Jun 2020 21:31:33 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2020 16:48:53 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E6%95%B0%E7%BB%84/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数组代替HashMap提高效率的应用</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E4%BB%A3%E6%9B%BFhashmap%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Wed, 24 Jun 2020 16:48:53 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%95%B0%E7%BB%84%E4%BB%A3%E6%9B%BFhashmap%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
+      <description>首先，我们看一道题目，用此题目为例说明，使用数组代替哈希表的使用 剑指 Offer 50. 第一个只出现一次的字符 在字符串 s 中找出第一个只出现一次的字符。如果没</description>
+    </item>
     
     <item>
       <title>剑指offe21.调整数组顺序使奇数位于偶数前面</title>
