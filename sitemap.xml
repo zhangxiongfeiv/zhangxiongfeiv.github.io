@@ -9,15 +9,29 @@
   </url>
   
   <url>
+    <loc>https://zhangxiongfeiv.github.io/tags/ios/</loc>
+    <lastmod>2020-06-28T14:03:20+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhangxiongfeiv.github.io/post/ios%E4%B8%AD%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2020-06-28T14:03:20+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://zhangxiongfeiv.github.io/post/</loc>
-    <lastmod>2020-06-28T09:57:36+08:00</lastmod>
+    <lastmod>2020-06-28T14:03:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zhangxiongfeiv.github.io/tags/</loc>
-    <lastmod>2020-06-28T09:57:36+08:00</lastmod>
+    <lastmod>2020-06-28T14:03:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -374,13 +388,6 @@
   
   <url>
     <loc>https://zhangxiongfeiv.github.io/post/https%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%89%E5%85%A8%E7%9A%84/</loc>
-    <lastmod>2020-06-08T15:50:47+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhangxiongfeiv.github.io/tags/ios/</loc>
     <lastmod>2020-06-08T15:50:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -857,13 +864,6 @@
   
   <url>
     <loc>https://zhangxiongfeiv.github.io/post/17.16%E6%8C%89%E6%91%A9%E5%B8%88/</loc>
-    <lastmod>2020-05-12T22:31:36+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhangxiongfeiv.github.io/tags/leetcode/</loc>
     <lastmod>2020-05-12T22:31:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
