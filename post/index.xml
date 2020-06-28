@@ -6,7 +6,7 @@
     <description>Recent content in Posts on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 28 Jun 2020 14:03:20 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2020 18:34:12 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://zhangxiongfeiv.github.io/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/</guid>
       <description>2020.5.27总结 截止 5.27日，leetcode总刷题数到达200，写一篇文章以回顾，总结。 起因 非计算机专业出身的程序员, 经历过很多因</description>
+    </item>
+    
+    <item>
+      <title>238.除自身以外数组的乘积</title>
+      <link>https://zhangxiongfeiv.github.io/post/238.-%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF/</link>
+      <pubDate>Sun, 28 Jun 2020 18:34:12 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/238.-%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF/</guid>
+      <description>238. 除自身以外数组的乘积 给你一个长度为 n 的整数数组 nums，其中 n &amp;gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。 示例: 输入: [1,2,3,4]</description>
     </item>
     
     <item>

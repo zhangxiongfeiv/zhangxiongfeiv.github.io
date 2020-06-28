@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>238.除自身以外数组的乘积 - 飞熊&#39;s blogs</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="238. 除自身以外数组的乘积 给你一个长度为 n 的整数数组 nums，其中 n &amp;gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。 示例: 输入: [1,2,3,4]" /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/238.-%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="238.除自身以外数组的乘积" />
+<meta property="og:description" content="238. 除自身以外数组的乘积 给你一个长度为 n 的整数数组 nums，其中 n &gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。 示例: 输入: [1,2,3,4]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/238.-%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF/" />
+<meta property="article:published_time" content="2020-06-28T18:34:12+08:00" />
+<meta property="article:modified_time" content="2020-06-28T18:34:12+08:00" />
+<meta itemprop="name" content="238.除自身以外数组的乘积">
+<meta itemprop="description" content="238. 除自身以外数组的乘积 给你一个长度为 n 的整数数组 nums，其中 n &gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。 示例: 输入: [1,2,3,4]">
+<meta itemprop="datePublished" content="2020-06-28T18:34:12&#43;08:00" />
+<meta itemprop="dateModified" content="2020-06-28T18:34:12&#43;08:00" />
+<meta itemprop="wordCount" content="1667">
+
+
+
+<meta itemprop="keywords" content="数组,动态规划," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="238.除自身以外数组的乘积"/>
+<meta name="twitter:description" content="238. 除自身以外数组的乘积 给你一个长度为 n 的整数数组 nums，其中 n &gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。 示例: 输入: [1,2,3,4]"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">238.除自身以外数组的乘积</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Jun 28 </span>
+        
+          <span class="more-meta"> 1667 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#题解-">题解 :</a>
+      <ul>
+        <li><a href="#思路一--暴力法">思路一 ： 暴力法</a></li>
+        <li><a href="#思路二-线性时间复杂度的优化">思路二: 线性时间复杂度的优化</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="238-除自身以外数组的乘积httpsleetcode-cncomproblemsproduct-of-array-except-self"><a href="https://leetcode-cn.com/problems/product-of-array-except-self/">238. 除自身以外数组的乘积</a></h1>
+<blockquote>
+<p>给你一个长度为 n 的整数数组 nums，其中 n &gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。</p>
+<p>示例:</p>
+<p>输入: [1,2,3,4]
+输出: [24,12,8,6]</p>
+<p>提示：题目数据保证数组之中任意元素的全部前缀元素和后缀（甚至是整个数组）的乘积都在 32 位整数范围内。</p>
+<p>说明: 请不要使用除法，且在 O(n) 时间复杂度内完成此题。</p>
+<p>进阶：
+你可以在常数空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数组不被视为额外空间。）</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/product-of-array-except-self
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h2 id="题解-">题解 :</h2>
+<ul>
+<li>这道题看起来非常容易，直接把数组中所有元素的乘积算出来</li>
+<li>计算某个位置的值时，直接用总的乘积 / 当前元素的值即可得到最终结果</li>
+<li>但是题目中有明确要求，不得使用除法</li>
+<li>所以想<strong>线性时间复杂度</strong>的方法不太容易想</li>
+</ul>
+<h3 id="思路一--暴力法">思路一 ： 暴力法</h3>
+<ul>
+<li>暴力法很容易想到</li>
+<li>当计算第 i 位的值时，取出 除第 i 位以外的元素，计算乘积</li>
+<li>此算法毫无疑问是正确的，但是时间复杂度很高，存在大量冗余的计算</li>
+<li>提交后，超时了&hellip;</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> *
+</span><span class="cm"> * 暴力法
+</span><span class="cm"> * 暴力法很容易想到
+</span><span class="cm"> * 当计算 i 位置的值时，取出 除i位置以外的元素，计算乘积
+</span><span class="cm"> *
+</span><span class="cm"> * 时间复杂度 : O(N ^ 2)
+</span><span class="cm"> * 空间复杂度 : O(1)
+</span><span class="cm"> *
+</span><span class="cm"> * */</span>
+<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">constructArr</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="o">)</span> <span class="k">continue</span><span class="o">;</span>
+
+            <span class="n">cur</span> <span class="o">+=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+        <span class="o">}</span>
+        <span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">cur</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="复杂度分析-">复杂度分析 :</h4>
+<p><strong>时间复杂度 : O(N ^ 2)</strong>	 两遍暴力循环</p>
+<p><strong>空间复杂度 : O(1)</strong>	没有使用额外的存储空间</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gg87z9b8u4j30su08gwf0.jpg" alt="截屏2020-06-28下午6.42.47"></p>
+<h3 id="思路二-线性时间复杂度的优化">思路二: 线性时间复杂度的优化</h3>
+<ul>
+<li>
+<p>在一个评论中看到，这道题可以看作 <strong>从前往后 和 从后往前的两遍 dp</strong>，深以为然</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gg8893ct5tj30r606uab2.jpg" alt="截屏2020-06-28下午7.27.33"></p>
+</li>
+<li>
+<p>分别计算出某元素，<strong>前边所有元素的积</strong> 和 <strong>后边元素的积</strong></p>
+</li>
+<li>
+<p>两者的成绩，也就是要求的除自身以外的所有元素的乘积</p>
+</li>
+<li>
+<p>我们使用 <strong>prev</strong>数组 存储 i 元素 前边所有元素的乘积</p>
+</li>
+<li>
+<p>使用 <strong>next</strong>数组 存储 i 元素。后边所有元素的乘积</p>
+</li>
+<li>
+<p>最终结果数组 <strong>res[i] = prev[i] * next[i]</strong></p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> *
+</span><span class="cm"> * 分别计算出某元素 前边所有元素的积 和 后边所有元素的积
+</span><span class="cm"> * 两者的乘积，就是要求的除自身以外的子数组的乘积
+</span><span class="cm"> *
+</span><span class="cm"> * 我们使用 prev数组 存储 i 元素 前边所有元素的乘积
+</span><span class="cm"> * next数组 存储 i 元素 后边所有元素的乘积
+</span><span class="cm"> *
+</span><span class="cm"> * 最终的结果数组 res[i] = prev[i] * next[i]
+</span><span class="cm"> *
+</span><span class="cm"> * 时间复杂度 : O(N)
+</span><span class="cm"> * 空间复杂度 : O(N)
+</span><span class="cm"> *
+</span><span class="cm"> * */</span>
+<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">constructArr1</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">prev</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+    <span class="n">prev</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">prev</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="o">]</span> <span class="o">*</span> <span class="n">prev</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="o">];</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">next</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">+</span> <span class="n">1</span><span class="o">];</span>
+    <span class="n">next</span><span class="o">[</span><span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+        <span class="n">next</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">1</span><span class="o">]</span> <span class="o">*</span> <span class="n">next</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">1</span><span class="o">];</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">prev</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">prev</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">*</span> <span class="n">next</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="复杂度分析--1">复杂度分析 :</h4>
+<p><strong>时间复杂度 : O(N)</strong> 线性遍历数组</p>
+<p><strong>空间复杂度 : O(N)</strong> 使用了额外的 prev 和 next数组存储空间</p>
+<p>相比较第一种暴力法来说，这种解法在执行效率上就很优秀了。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gg883jtyy7j30s2062t9i.jpg" alt="截屏2020-06-28下午6.03.46"></p>
+<h4 id="思路三-空间复杂度的优化">思路三: 空间复杂度的优化</h4>
+<ul>
+<li>思路二，已经很好的解决了问题。 但是仍然有优化的空间
+<ul>
+<li>1，空间复杂度
+<ul>
+<li>题目进阶中有要求，是否可以使用 O(1) 空间复杂度解决问题？</li>
+</ul>
+</li>
+<li>2，循环次数
+<ul>
+<li>思路二，虽然是O(N)的时间复杂度，但是我们将数组遍历了 3 遍</li>
+<li>是否可以减少遍历数组的次数？</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>下边这种解法，我们尝试进行上述两点的优化
+<ul>
+<li>初始化一个 res 数组，用于存储最终答案</li>
+<li>在计算元素<strong>前边元素乘积</strong>时，将结果存入 <strong>res</strong> 数组</li>
+<li>在计算元素<strong>后边元素乘积</strong>时，同步将结果存入 <strong>res</strong> 数组中</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> *
+</span><span class="cm"> * 优化
+</span><span class="cm"> * 1，空间复杂度
+</span><span class="cm"> * 题目中进阶有要求
+</span><span class="cm"> * 是否可以 O(1) 空间复杂度解决问题？
+</span><span class="cm"> *
+</span><span class="cm"> * 2, 循环次数
+</span><span class="cm"> * 上述解法，我们遍历了3遍数组
+</span><span class="cm"> * 是否可以少遍历一遍数组？
+</span><span class="cm"> *
+</span><span class="cm"> * 下边这种解法，我们尝试进行上述两点的优化
+</span><span class="cm"> *
+</span><span class="cm"> * [1,2,3,4,5]
+</span><span class="cm"> * [120,60,40,30,24]
+</span><span class="cm"> *
+</span><span class="cm"> * [1,1,2,6,24]
+</span><span class="cm"> * [,30,24]
+</span><span class="cm"> * */</span>
+<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">constructArr12int2</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+    <span class="n">res</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="o">]</span> <span class="o">*</span> <span class="n">res</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="o">];</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span> <span class="n">R</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+        <span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="o">]</span> <span class="o">*</span> <span class="n">R</span><span class="o">;</span>
+        <span class="n">R</span> <span class="o">*=</span> <span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="复杂度分析--2">复杂度分析 :</h4>
+<p><strong>时间复杂度 : O(N)</strong> 遍历了两遍数组, 时间复杂度 : O(N)</p>
+<p><strong>空间复杂度 : O(1)</strong>  题目中说，答案数组不被算作额外的存储空间，所以此解法，空间复杂度 O(1)</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gg88anqm3wj30ry06kmxz.jpg" alt="截屏2020-06-28下午7.15.16"></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Jun 28
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E6%95%B0%E7%BB%84/">数组</a>
+          <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/leetcode200%E9%A2%98%E5%9B%9E%E9%A1%BE/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">leetcode200题回顾与总结</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/ios%E4%B8%AD%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/">
+            <span class="next-text nav-default">iOS中内联函数的使用</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
