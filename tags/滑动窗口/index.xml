@@ -6,10 +6,19 @@
     <description>Recent content in 滑动窗口 on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 18 Jun 2020 14:56:29 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2020 17:01:41 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>了解最长重复子串和子序列</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E4%BA%86%E8%A7%A3%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2%E5%92%8C%E5%AD%90%E5%BA%8F%E5%88%97/</link>
+      <pubDate>Wed, 01 Jul 2020 17:01:41 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E4%BA%86%E8%A7%A3%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2%E5%92%8C%E5%AD%90%E5%BA%8F%E5%88%97/</guid>
+      <description>子序列 和 子串(子数组) Q:首先这两个看起来很像的概念有什么区别呢？ A: 先抛出结论，子序列默认不连续， 子串(子数组)默认连续 接下来，通过两道题，</description>
+    </item>
     
     <item>
       <title>团灭滑动窗口问题</title>
