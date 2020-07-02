@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>通过优化排序了解策略模式 - 飞熊&#39;s blogs</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="什么是策略模式? 接下来，我们通过之前复习过的排序算法 来谈谈策略模式。 以选择排序为例，之前我们写的排序算法， 数据类型写的 Integer 类型的数组. 代码如下" /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%9C%A8ios%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="通过优化排序了解策略模式" />
+<meta property="og:description" content="什么是策略模式? 接下来，我们通过之前复习过的排序算法 来谈谈策略模式。 以选择排序为例，之前我们写的排序算法， 数据类型写的 Integer 类型的数组. 代码如下" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%9C%A8ios%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" />
+<meta property="article:published_time" content="2020-07-02T17:10:23+08:00" />
+<meta property="article:modified_time" content="2020-07-02T17:10:23+08:00" />
+<meta itemprop="name" content="通过优化排序了解策略模式">
+<meta itemprop="description" content="什么是策略模式? 接下来，我们通过之前复习过的排序算法 来谈谈策略模式。 以选择排序为例，之前我们写的排序算法， 数据类型写的 Integer 类型的数组. 代码如下">
+<meta itemprop="datePublished" content="2020-07-02T17:10:23&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-02T17:10:23&#43;08:00" />
+<meta itemprop="wordCount" content="1553">
+
+
+
+<meta itemprop="keywords" content="设计模式," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="通过优化排序了解策略模式"/>
+<meta name="twitter:description" content="什么是策略模式? 接下来，我们通过之前复习过的排序算法 来谈谈策略模式。 以选择排序为例，之前我们写的排序算法， 数据类型写的 Integer 类型的数组. 代码如下"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">通过优化排序了解策略模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Jul 02 </span>
+        
+          <span class="more-meta"> 1553 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#代码如下-">代码如下 :</a></li>
+      </ul>
+    </li>
+    <li><a href="#需求变化">需求变化</a></li>
+    <li><a href="#改进">改进</a>
+      <ul>
+        <li><a href="#代码如下--1">代码如下 :</a></li>
+      </ul>
+    </li>
+    <li><a href="#仍然不够灵活">仍然不够灵活</a></li>
+    <li><a href="#继续改进">继续改进</a>
+      <ul>
+        <li><a href="#代码如下--2">代码如下 :</a></li>
+      </ul>
+    </li>
+    <li><a href="#排序策略">排序策略</a></li>
+    <li><a href="#总结-">总结 :</a></li>
+    <li><a href="#主要解决的问题">主要解决的问题</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="什么是策略模式">什么是策略模式?</h1>
+<p>接下来，我们通过之前复习过的<strong>排序算法</strong> 来谈谈<strong>策略模式</strong>。</p>
+<p>以<strong>选择排序</strong>为例，之前我们写的排序算法， 数据类型写的 Integer 类型的数组.</p>
+<h3 id="代码如下-">代码如下 :</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 交换元素
+</span><span class="c1"></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">swap</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i2</span><span class="o">){</span>
+    <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i1</span><span class="o">];</span>
+    <span class="n">nums</span><span class="o">[</span><span class="n">i1</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i2</span><span class="o">];</span>
+    <span class="n">nums</span><span class="o">[</span><span class="n">i2</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i1</span><span class="o">];</span>
+<span class="o">}</span>
+
+<span class="c1">// 选择排序
+</span><span class="c1"></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectionSort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">){</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--){</span>
+        <span class="kt">int</span> <span class="n">maxIdx</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">nums</span><span class="o">[</span><span class="n">maxIdx</span><span class="o">]){</span>
+                <span class="n">maxIdx</span> <span class="o">=</span> <span class="n">j</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">swap</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span> <span class="n">maxIdx</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="需求变化">需求变化</h2>
+<p>这时，如果我们要排序 double 类型的数组呢？</p>
+<p>这有啥难的? 直接把上述代码拷贝一份，类型换成<strong>double</strong>呗。反正Java支持<strong>函数重载</strong>，确实可以做得到。</p>
+<p>但是有个问题，如果有大量的需要比较的类型，甚至包括<strong>自定义对象</strong>， 岂不是每一种对象都得<strong>copy</strong>一份方法, 明显不符合<strong>开闭原则</strong> (<strong>对扩展开放，对修改闭合</strong>)，因为我们没增加一个比较类，就需要对 <strong>selectionSort</strong>类修改。</p>
+<h2 id="改进">改进</h2>
+<p>如何解决上边提到的问题？</p>
+<p>我们<strong>声明</strong>一个<strong>Comparable</strong>接口，接口中有一个 <strong>compareTo(T o)</strong> 方法,为了能兼容各种类型的对象，我们使用<strong>范型</strong>.</p>
+<p>并要求使用 <strong>selectionSort</strong>  排序的对象，必须实现 <strong>compareTo(T o)</strong> 方法.</p>
+<p>这时，我们实现多种对象的排序上， 就会方便很多了.</p>
+<h3 id="代码如下--1">代码如下 :</h3>
+<p>接口代码 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 接口
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;{</span>
+    <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">T</span> <span class="n">o</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>选择排序代码 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 交换元素
+</span><span class="c1"></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">swap</span><span class="o">(</span><span class="n">Comparable</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i2</span><span class="o">){</span>
+    <span class="n">Comparable</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i1</span><span class="o">];</span>
+    <span class="n">nums</span><span class="o">[</span><span class="n">i1</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i2</span><span class="o">];</span>
+    <span class="n">nums</span><span class="o">[</span><span class="n">i2</span><span class="o">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 选择排序
+</span><span class="c1"></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectionSort</span><span class="o">(</span><span class="n">Comparable</span><span class="o">[]</span> <span class="n">nums</span><span class="o">){</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--){</span>
+        <span class="kt">int</span> <span class="n">maxIdx</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">compareTo</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">maxIdx</span><span class="o">])</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">){</span>
+                <span class="n">maxIdx</span> <span class="o">=</span> <span class="n">j</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">swap</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span><span class="n">maxIdx</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>需要排序的对象类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">implements</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Dog</span><span class="o">&gt;{</span>
+    <span class="kt">int</span> <span class="n">weight</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">Dog</span><span class="o">(</span><span class="kt">int</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">Dog</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">-</span> <span class="n">o</span><span class="o">.</span><span class="na">weight</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;Dog{&#34;</span> <span class="o">+</span>
+                <span class="s">&#34;weight=&#34;</span> <span class="o">+</span> <span class="n">weight</span> <span class="o">+</span>
+                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这样我们就限制了，传入的需要排序的类，必须实现 <strong>Comparable</strong>接口，并且使用 <strong>Comparable</strong>接口中的 <strong>int compareTo(T o);</strong> 方法来比较排序对象。</p>
+<h2 id="仍然不够灵活">仍然不够灵活</h2>
+<p>但是上边这种做法，依然<strong>不够灵活</strong>. <strong>Why?</strong> 因为比如 Cat 对象中，有两个属性 <strong>height,  age</strong>， 我们有时候需要用 <strong>height</strong> 排序，有时候使用 <strong>age</strong> 来排序.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cat</span> <span class="kd">implements</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Cat</span><span class="o">&gt;{</span>
+
+    <span class="kt">int</span> <span class="n">height</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Cat</span><span class="o">(</span><span class="kt">int</span> <span class="n">height</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">height</span> <span class="o">=</span> <span class="n">height</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">Cat</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">-</span> <span class="n">o</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;Cat{&#34;</span> <span class="o">+</span>
+                <span class="s">&#34;height=&#34;</span> <span class="o">+</span> <span class="n">height</span> <span class="o">+</span>
+                <span class="s">&#34;, age=&#34;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果采用上述 <strong>Comparable</strong> 方法, 我们没办法实现使用 <strong>height</strong> 排序。</p>
+<h2 id="继续改进">继续改进</h2>
+<p>接下来正式引入我们的主角，<strong>策略模式</strong>，<strong>Comparator接口</strong></p>
+<p><strong>策略模式</strong>符合设计模式的<strong>开闭原则 : 对修改关闭，对扩展开放</strong></p>
+<p>我们依然定义一个接口 <strong>Comparator</strong>接口，并且要求比较的类实现<strong>compare方法</strong></p>
+<h3 id="代码如下--2">代码如下 :</h3>
+<p>接口代码 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Comparator</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;{</span>
+    <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">T</span> <span class="n">o1</span><span class="o">,</span> <span class="n">T</span> <span class="n">o2</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>选择排序代码 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 交换元素
+</span><span class="c1"></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">swap</span><span class="o">(</span><span class="n">T</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i2</span><span class="o">){</span>
+    <span class="n">T</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i1</span><span class="o">];</span>
+    <span class="n">nums</span><span class="o">[</span><span class="n">i1</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i2</span><span class="o">];</span>
+    <span class="n">nums</span><span class="o">[</span><span class="n">i2</span><span class="o">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 选择排序
+</span><span class="c1"></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectionSort</span><span class="o">(</span><span class="n">T</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">comparator</span><span class="o">){</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--){</span>
+        <span class="kt">int</span> <span class="n">maxIdx</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">comparator</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">],</span> <span class="n">nums</span><span class="o">[</span><span class="n">maxIdx</span><span class="o">])</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">){</span>
+                <span class="n">maxIdx</span> <span class="o">=</span> <span class="n">j</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">swap</span><span class="o">(</span><span class="n">nums</span><span class="o">,</span><span class="n">maxIdx</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>比较代码:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">SelectionSort</span> <span class="n">sort</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SelectionSort</span><span class="o">();</span>
+<span class="n">Cat</span><span class="o">[]</span> <span class="n">cats</span> <span class="o">=</span> <span class="o">{</span><span class="k">new</span> <span class="n">Cat</span><span class="o">(</span><span class="n">39</span><span class="o">,</span><span class="n">1</span><span class="o">),</span><span class="k">new</span> <span class="n">Cat</span><span class="o">(</span><span class="n">20</span><span class="o">,</span><span class="n">4</span><span class="o">),</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">(</span><span class="n">10</span><span class="o">,</span><span class="n">2</span><span class="o">)};</span>
+<span class="n">sort</span><span class="o">.</span><span class="na">selectionSort</span><span class="o">(</span><span class="n">cats</span><span class="o">,</span> <span class="k">new</span> <span class="n">Comparator</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Object</span> <span class="n">o1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Cat</span> <span class="n">c1</span> <span class="o">=</span> <span class="o">(</span><span class="n">Cat</span><span class="o">)</span><span class="n">o1</span><span class="o">;</span>
+        <span class="n">Cat</span> <span class="n">c2</span> <span class="o">=</span> <span class="o">(</span><span class="n">Cat</span><span class="o">)</span><span class="n">o2</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">c1</span><span class="o">.</span><span class="na">age</span> <span class="o">-</span> <span class="n">c2</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="排序策略">排序策略</h2>
+<h2 id="总结-">总结 :</h2>
+<ul>
+<li>以上就是<strong>策略</strong>设计模式，在排序中的应用</li>
+<li>从上到下的优化过程，可以明显的看出，从上到下依次更容易拓展
+<ul>
+<li><strong>第一种</strong>，增加排序类型时，只能在 <strong>SelectionSort</strong> 类中增加代码. 非常不方便</li>
+<li><strong>第二种</strong>，我们在每个类内部实现 <strong>Comparable</strong> 的 <strong>compareTo</strong>方法
+<ul>
+<li>使得增加一种支持排序的类时，只需要将此类实现 <strong>Comparable</strong> 接口指定方法即可</li>
+<li>而如果没有实现 <strong>compareto</strong>方法，就无法使用我们的 <strong>SelectionSort</strong>方法</li>
+</ul>
+</li>
+<li><strong>第三种</strong>，第二种方法相比第一种来说，易扩展很多。
+<ul>
+<li>但是仍然有<strong>局限性</strong>，就是每个类只支持一种<strong>排序方法</strong></li>
+<li>当我们分别需要对 <strong>Cat</strong> 对象，用 age 排序，再用 weight 排序。</li>
+<li>第二种就做不到了</li>
+<li>所以第三种我们使用 <strong>比较器</strong> <strong>Comparator</strong>, <strong>SelectionSort</strong> 排序方法中，增加一个传参数，传入一个比较器。实现对应比较方法即可</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="主要解决的问题">主要解决的问题</h2>
+<ul>
+<li>
+<p>在有多种<strong>算法相似</strong>的情况下，使用 <strong>if&hellip;else</strong> 或者 <strong>switch&hellip;case</strong> 所带来的复杂和难以维护</p>
+</li>
+<li>
+<p><strong>优点：</strong></p>
+<ul>
+<li>1、算法可以自由切换。</li>
+<li>2、避免使用多重条件判断。</li>
+<li>3、扩展性良好。</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>1、策略类会增多。</li>
+<li>2、所有策略类都需要对外暴露。</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Jul 02
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/leetcode%E5%88%B7%E9%A2%98%E5%9B%9E%E9%A1%BE%E4%B8%8E%E6%80%BB%E7%BB%93/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">LeetCode刷题回顾与总结</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E4%BA%86%E8%A7%A3%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2%E5%92%8C%E5%AD%90%E5%BA%8F%E5%88%97/">
+            <span class="next-text nav-default">了解最长重复子串和子序列</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
