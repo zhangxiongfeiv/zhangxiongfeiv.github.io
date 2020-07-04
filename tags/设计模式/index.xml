@@ -6,10 +6,19 @@
     <description>Recent content in 设计模式 on API调用工程师的进阶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 02 Jul 2020 17:10:23 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2020 14:46:20 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>设计模式之抽象工厂模式</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E4%B8%89%E7%A7%8D%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 04 Jul 2020 14:46:20 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E4%B8%89%E7%A7%8D%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
+      <description>需求 暂且不提工厂模式， 我们先了解一个简单的需求, 然后通过这个需求的改进过程了解工厂模式。 需求如下 : 假设现在，我有一辆车Car，它有一个 go() 方法</description>
+    </item>
     
     <item>
       <title>通过优化排序了解策略模式</title>

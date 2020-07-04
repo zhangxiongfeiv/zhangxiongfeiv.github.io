@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>模拟OjbC中抽象类的使用</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E6%A8%A1%E6%8B%9Fojbc%E4%B8%AD%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sat, 04 Jul 2020 17:57:39 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E6%A8%A1%E6%8B%9Fojbc%E4%B8%AD%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>抽象类 什么是抽象类? 在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，并不是所有的类都是用来描绘对象的，如果一个类中没有包含足够</description>
+    </item>
+    
+    <item>
+      <title>设计模式之抽象工厂模式</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E4%B8%89%E7%A7%8D%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 04 Jul 2020 14:46:20 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E4%B8%89%E7%A7%8D%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
+      <description>需求 暂且不提工厂模式， 我们先了解一个简单的需求, 然后通过这个需求的改进过程了解工厂模式。 需求如下 : 假设现在，我有一辆车Car，它有一个 go() 方法</description>
+    </item>
+    
+    <item>
       <title>约瑟夫环的几种解决方法</title>
       <link>https://zhangxiongfeiv.github.io/post/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E7%9A%84%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
       <pubDate>Fri, 03 Jul 2020 14:48:59 +0800</pubDate>

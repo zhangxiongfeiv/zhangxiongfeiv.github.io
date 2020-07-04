@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>设计模式之抽象工厂模式 - API调用工程师的进阶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="需求 暂且不提工厂模式， 我们先了解一个简单的需求, 然后通过这个需求的改进过程了解工厂模式。 需求如下 : 假设现在，我有一辆车Car，它有一个 go() 方法" /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E4%B8%89%E7%A7%8D%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="设计模式之抽象工厂模式" />
+<meta property="og:description" content="需求 暂且不提工厂模式， 我们先了解一个简单的需求, 然后通过这个需求的改进过程了解工厂模式。 需求如下 : 假设现在，我有一辆车Car，它有一个 go() 方法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E4%B8%89%E7%A7%8D%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" />
+<meta property="article:published_time" content="2020-07-04T14:46:20+08:00" />
+<meta property="article:modified_time" content="2020-07-04T14:46:20+08:00" />
+<meta itemprop="name" content="设计模式之抽象工厂模式">
+<meta itemprop="description" content="需求 暂且不提工厂模式， 我们先了解一个简单的需求, 然后通过这个需求的改进过程了解工厂模式。 需求如下 : 假设现在，我有一辆车Car，它有一个 go() 方法">
+<meta itemprop="datePublished" content="2020-07-04T14:46:20&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-04T14:46:20&#43;08:00" />
+<meta itemprop="wordCount" content="2187">
+
+
+
+<meta itemprop="keywords" content="设计模式," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="设计模式之抽象工厂模式"/>
+<meta name="twitter:description" content="需求 暂且不提工厂模式， 我们先了解一个简单的需求, 然后通过这个需求的改进过程了解工厂模式。 需求如下 : 假设现在，我有一辆车Car，它有一个 go() 方法"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">设计模式之抽象工厂模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Jul 04 </span>
+        
+          <span class="more-meta"> 2187 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一简单工厂">一，简单工厂</a></li>
+    <li><a href="#二工厂方法">二，工厂方法</a></li>
+    <li><a href="#三抽象工厂模式abstract-factory">三，抽象工厂模式(Abstract Factory)</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="需求">需求</h1>
+<p>暂且不提工厂模式， 我们先了解一个简单的需求, 然后通过这个需求的改进过程了解<strong>工厂模式</strong>。 需求如下 :</p>
+<p>假设现在，我有一辆车<strong>Car</strong>，它有一个 <strong>go()</strong> 方法, 代码很简单，如下 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Car run ~&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们同时有一辆新的交通工具飞机 <strong>Airplane</strong>, 同样也有一个 <strong>go()</strong> 方法, 代码如下 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Airplane</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Airplane fly ~&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这时，如果我们第一次坐🚗Car,  然后再坐✈️飞机，代码就得这样写：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">//        Car c = new Car();
+</span><span class="c1">//        c.go();
+</span><span class="c1"></span>        <span class="n">Airplane</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Airplane</span><span class="o">();</span>
+        <span class="n">a</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在坐车时， new一个 🚗对象，🚗.go().</p>
+<p>在坐飞机时，new 一个✈️对象， ✈️go().</p>
+<p>这时候，如果我们又要坐火车🚄呢？</p>
+<p>我们要做的就是，再添加一个 <strong>Train</strong>类，并实现 🚄的 go() 方法。 并在 main 函数中 new 一个🚄对象，<strong>🚄.go()</strong>;</p>
+<p>所以，每次添加一种交通工具，我们都需要添加类，并实现 go() 方法。 有没有更好的方法，可扩展性更好呢?</p>
+<p>答案就是，为交通工具建一个父类。利用面向对象的多态，增加可扩展性。</p>
+<ul>
+<li>在Java中，我们可以使用  抽象父类 <strong>abstract class</strong> 解决</li>
+<li>也可以使用 <strong>interface</strong>接口解决，这里我们使用 <strong>interface</strong>解决
+<ul>
+<li>新建一个 <strong>interface</strong> 接口 <strong>Moveable</strong>，其中添加一个方法 <strong>go()</strong></li>
+<li>并且让我们所有的交通工具都实现 <strong>Moveable</strong> 接口的方法 <strong>go()</strong></li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Moveable</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="kd">implements</span> <span class="n">Moveable</span><span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Car run ~&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Airplane</span> <span class="kd">implements</span> <span class="n">Moveable</span><span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Airplane run ~&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这时，Main函数中的代码就可以这样写</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Moveable</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Car</span><span class="o">();</span>
+    <span class="n">c</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
+    <span class="n">Moveable</span> <span class="n">m</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Airplane</span><span class="o">();</span>
+    <span class="n">m</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上是<strong>多态</strong>的简单运用。</p>
+<p>我们又有新的需求？ <strong>定制生产过程</strong>， 也就是，在 new Car() 的前后，需要做一些事情。 如果按照上边方法做，就需要在<strong>main</strong> 函数中一通修改。如果更方便的定制生产过程？ 引入了我们的主角，<strong>工厂模式</strong>。</p>
+<h1 id="定义">定义</h1>
+<p>什么是<strong>工厂</strong>呢？</p>
+<ul>
+<li>任何可以产生对象的方法或类，都可以称之为<strong>工厂</strong></li>
+<li>单例也是一种<strong>工厂</strong></li>
+<li>工厂主要有三种
+<ul>
+<li><strong>简单工厂</strong></li>
+<li><strong>工厂方法</strong></li>
+<li><strong>抽象工厂</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="一简单工厂">一，简单工厂</h2>
+<p>接下来，我们通过，简单工厂模式，来解决 <strong>定制生产过程</strong> 的问题</p>
+<ul>
+<li>我们创建一个 <strong>VehicelFactory</strong> ，此类专门用来生产各种交通工具</li>
+<li>这样，我们就可以在 工厂类中，定制生产交通工具时业务逻辑所需要的过程</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">VehicelFactory</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Car</span> <span class="nf">createCar</span><span class="o">(){</span>
+        <span class="c1">// 这里可以处理业务逻辑所需要的定制过程
+</span><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">Car</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Airplane</span> <span class="nf">createAirplane</span><span class="o">(){</span>
+        <span class="c1">// 这里可以处理业务逻辑所需要的定制过程
+</span><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">Airplane</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们<strong>main</strong> 函数处的代码就简单了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Moveable</span> <span class="n">c</span> <span class="o">=</span> <span class="n">VehicelFactory</span><span class="o">.</span><span class="na">createCar</span><span class="o">();</span>
+    <span class="n">c</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
+    <span class="n">Moveable</span> <span class="n">m</span> <span class="o">=</span> <span class="n">VehicelFactory</span><span class="o">.</span><span class="na">createAirplane</span><span class="o">();</span>
+    <span class="n">m</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>以上就是<strong>简单工厂模式</strong>的一个应用</li>
+<li>有一些缺点
+<ul>
+<li>扩展性并不好
+<ul>
+<li>增加一种交通工具，就需要在 <strong>VehicelFactory</strong>中创建方法，和一大堆的业务逻辑</li>
+<li>随着业务逻辑变多，<strong>VehicelFactory</strong> 会变得越来越庞大，难以维护</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>如何解决，<strong>VehicelFactory</strong> 不好扩展的问题呢 ? 答案就是: 工厂方法</p>
+<h2 id="二工厂方法">二，工厂方法</h2>
+<ul>
+<li>工厂方法，也是使用工厂类创建交通工具</li>
+<li>不同之处在于，工厂方法中，我们为每个类，创建一个 <strong>Factory</strong>用于定制其生产过程。
+<ul>
+<li>比如，我们为 Car创建一个 <strong>CarFactory</strong> 类生产 🚗</li>
+<li>为 Airplane创建一个 <strong>AirplaneFactory</strong>类 生产 ✈️</li>
+</ul>
+</li>
+<li>很显然，工厂方法不会产生庞大的 <strong>VehicelFactory</strong> 工厂</li>
+<li>增加一种交通工具时，为新的交通工具创建对应的 <strong>Factory</strong> 即可</li>
+</ul>
+<p>代码如下 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AirplaneFactory</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Moveable</span> <span class="nf">create</span><span class="o">(){</span>
+        <span class="c1">// 这里可以处理业务逻辑所需要的定制过程
+</span><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">Airplane</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CarFactory</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Moveable</span> <span class="nf">create</span><span class="o">(){</span>
+        <span class="c1">// 这里可以处理业务逻辑所需要的定制过程
+</span><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">Car</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Moveable</span> <span class="n">c</span> <span class="o">=</span> <span class="n">CarFactory</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+    <span class="n">c</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>这样我们就解决了，在交通工具类很多时扩展性的问题</li>
+</ul>
+<p>现在， 我们又有新需求了。 如何定制一系列的产品呢？</p>
+<p>比如一个现实世界的人，可以<strong>一辆车</strong>，可以拿武器<strong>AK47</strong>，可以吃<strong>面包</strong></p>
+<p>而一个魔法世界的人，可以 <strong>骑扫帚</strong>，可以拿武器<strong>魔法棒</strong>， 可以吃<strong>蘑菇</strong></p>
+<p>&hellip;</p>
+<p>如何来定制这一类人对应的一系列产品呢 ？ 答案就是，<strong>抽象工厂模式</strong></p>
+<h2 id="三抽象工厂模式abstract-factory">三，抽象工厂模式(Abstract Factory)</h2>
+<p>这里的一系列产品，是一个 <strong>产品族</strong> 的概念，接下来我们使用<strong>抽象工厂</strong>来实现灵活的扩展<strong>产品族</strong>。</p>
+<ul>
+<li>我们先定义一个 抽象工厂 <strong>AbstractFactory</strong>，并且此类中，有以下三个抽象方法</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">abstract</span> <span class="n">Food</span> <span class="nf">createFood</span><span class="o">();</span>				<span class="c1">// 创建食物
+</span><span class="c1"></span><span class="kd">abstract</span> <span class="n">Vehicle</span> <span class="nf">createVehicle</span><span class="o">();</span> <span class="c1">// 创建交通工具
+</span><span class="c1"></span><span class="kd">abstract</span> <span class="n">Weapon</span> <span class="nf">createWeapon</span><span class="o">();</span>		<span class="c1">// 创建武器
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>再定义两个 类型的工厂 ,都继承自 <strong>AbstractFactory</strong>,并且实现 <strong>AbstractFactory</strong> 的三个抽象方法</p>
+</li>
+<li>
+<p>现代人的工厂 <strong>MordernFactory</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MordernFactory</span> <span class="kd">extends</span> <span class="n">AbstractFactory</span><span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="n">Food</span> <span class="nf">createFood</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Bread</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="n">Vehicle</span> <span class="nf">createVehicle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Car</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="n">Weapon</span> <span class="nf">createWeapon</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">AK47</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>魔法世界的人的工厂 <strong>MagicFactory</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MagicFactory</span> <span class="kd">extends</span> <span class="n">AbstractFactory</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="n">Food</span> <span class="nf">createFood</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">MushRoom</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="n">Vehicle</span> <span class="nf">createVehicle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Broom</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="n">Weapon</span> <span class="nf">createWeapon</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">MagicStick</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>&hellip;</p>
+</li>
+<li>
+<p>定义三个 抽象类</p>
+<ul>
+<li><strong>Food</strong> 抽象的食物类, 并且其中有 eat() 抽象方法
+<ul>
+<li>使<strong>MushRoom</strong> 和 <strong>Bread</strong> 都继承 Food。并且实现 <strong>eat()</strong> 方法</li>
+</ul>
+</li>
+<li><strong>Weapon</strong> 抽象的武器类，并且其中有 attack() 抽象方法
+<ul>
+<li>使<strong>AK47</strong> 和 <strong>MagicStick</strong>都继承自 Weapon。并且实现 <strong>attack()</strong> 方法</li>
+</ul>
+</li>
+<li><strong>Vehicle</strong> 抽象的交通工具类，并且有 go() 抽象方法
+<ul>
+<li>使<strong>Car</strong> 和 <strong>Broom</strong> 都继承自 Vehile。 并且实现 <strong>go()</strong> 方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>在main函数中使用时，我们只需要，使用对应的具体的<strong>工厂</strong>，调用方法即可.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">//        AbstractFactory abstractFactory = new MagicFactory();
+</span><span class="c1"></span>        <span class="n">AbstractFactory</span> <span class="n">abstractFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MordernFactory</span><span class="o">();</span>
+        <span class="n">abstractFactory</span><span class="o">.</span><span class="na">createFood</span><span class="o">().</span><span class="na">eat</span><span class="o">();</span>
+        <span class="n">abstractFactory</span><span class="o">.</span><span class="na">createVehicle</span><span class="o">().</span><span class="na">go</span><span class="o">();</span>
+        <span class="n">abstractFactory</span><span class="o">.</span><span class="na">createWeapon</span><span class="o">().</span><span class="na">attack</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>以上就是，三种工厂模式的使用例子。</p>
+</li>
+</ul>
+<h1 id="总结">总结</h1>
+<p>以上三种工厂模式有什么优缺点呢？</p>
+<ul>
+<li><strong>工厂方法</strong>，方便的是<strong>产品的扩展</strong>
+<ul>
+<li><strong>优点</strong> : 增加新的产品类时无须修改现有系统，并封装了产品对象的创建细节，系统具有良好的灵活性和可扩展性</li>
+<li><strong>缺点</strong> : 在于增加新产品的同时需要增加新的工厂，导致系统类的个数成对增加，在一定程度上增加了系统的复杂性。</li>
+</ul>
+</li>
+<li><strong>抽象工厂方法</strong>，方便的是<strong>产品族的扩展</strong>
+<ul>
+<li><strong>优点</strong> : 增加新的<strong>工厂和产品族</strong>容易</li>
+<li><strong>缺点</strong> : 增加新的<strong>产品</strong>等级结构麻烦</li>
+</ul>
+</li>
+<li>两者都有自己的局限性</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Jul 04
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E6%A8%A1%E6%8B%9Fojbc%E4%B8%AD%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">模拟OjbC中抽象类的使用</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E7%9A%84%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+            <span class="next-text nav-default">约瑟夫环的几种解决方法</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
