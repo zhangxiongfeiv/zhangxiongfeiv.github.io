@@ -6,10 +6,19 @@
     <description>Recent content in 链表 on 飞熊&#39;s blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 30 Jun 2020 13:31:08 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2020 14:48:59 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E9%93%BE%E8%A1%A8/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>约瑟夫环的几种解决方法</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E7%9A%84%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Fri, 03 Jul 2020 14:48:59 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E7%9A%84%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
+      <description>约瑟夫问题 本文参考 leetcode大神题解，查看原文 首先我们来了解下，什么是约瑟夫问题？ 这个问题是以弗拉维奥·约瑟夫命名的，他是1世纪的一名</description>
+    </item>
     
     <item>
       <title>143.重排链表</title>

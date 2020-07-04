@@ -10,14 +10,35 @@
   
   <url>
     <loc>https://zhangxiongfeiv.github.io/post/</loc>
-    <lastmod>2020-07-02T17:10:23+08:00</lastmod>
+    <lastmod>2020-07-03T14:48:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zhangxiongfeiv.github.io/tags/</loc>
-    <lastmod>2020-07-02T17:10:23+08:00</lastmod>
+    <lastmod>2020-07-03T14:48:59+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhangxiongfeiv.github.io/tags/%E6%95%B0%E7%BB%84/</loc>
+    <lastmod>2020-07-03T14:48:59+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhangxiongfeiv.github.io/post/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E7%9A%84%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2020-07-03T14:48:59+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhangxiongfeiv.github.io/tags/%E9%93%BE%E8%A1%A8/</loc>
+    <lastmod>2020-07-03T14:48:59+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -79,13 +100,6 @@
   </url>
   
   <url>
-    <loc>https://zhangxiongfeiv.github.io/tags/%E9%93%BE%E8%A1%A8/</loc>
-    <lastmod>2020-06-30T13:31:08+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://zhangxiongfeiv.github.io/post/215.%E6%95%B0%E7%BB%84%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/</loc>
     <lastmod>2020-06-29T13:31:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -122,13 +136,6 @@
   
   <url>
     <loc>https://zhangxiongfeiv.github.io/post/238.-%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF/</loc>
-    <lastmod>2020-06-28T18:34:12+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhangxiongfeiv.github.io/tags/%E6%95%B0%E7%BB%84/</loc>
     <lastmod>2020-06-28T18:34:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

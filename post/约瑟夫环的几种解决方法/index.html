@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>约瑟夫环的几种解决方法 - 飞熊&#39;s blogs</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="约瑟夫问题 本文参考 leetcode大神题解，查看原文 首先我们来了解下，什么是约瑟夫问题？ 这个问题是以弗拉维奥·约瑟夫命名的，他是1世纪的一名" /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E7%9A%84%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="约瑟夫环的几种解决方法" />
+<meta property="og:description" content="约瑟夫问题 本文参考 leetcode大神题解，查看原文 首先我们来了解下，什么是约瑟夫问题？ 这个问题是以弗拉维奥·约瑟夫命名的，他是1世纪的一名" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E7%9A%84%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" />
+<meta property="article:published_time" content="2020-07-03T14:48:59+08:00" />
+<meta property="article:modified_time" content="2020-07-03T14:48:59+08:00" />
+<meta itemprop="name" content="约瑟夫环的几种解决方法">
+<meta itemprop="description" content="约瑟夫问题 本文参考 leetcode大神题解，查看原文 首先我们来了解下，什么是约瑟夫问题？ 这个问题是以弗拉维奥·约瑟夫命名的，他是1世纪的一名">
+<meta itemprop="datePublished" content="2020-07-03T14:48:59&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-03T14:48:59&#43;08:00" />
+<meta itemprop="wordCount" content="2269">
+
+
+
+<meta itemprop="keywords" content="链表,数组," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="约瑟夫环的几种解决方法"/>
+<meta name="twitter:description" content="约瑟夫问题 本文参考 leetcode大神题解，查看原文 首先我们来了解下，什么是约瑟夫问题？ 这个问题是以弗拉维奥·约瑟夫命名的，他是1世纪的一名"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">约瑟夫环的几种解决方法</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Jul 03 </span>
+        
+          <span class="more-meta"> 2269 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#约瑟夫问题与单向循环链表">约瑟夫问题与单向循环链表</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#题解-">题解 :</a>
+      <ul>
+        <li><a href="#heading"></a></li>
+        <li><a href="#思路一--单向循环链表">思路一 ： 单向循环链表</a></li>
+        <li><a href="#思路二--数组">思路二 : 数组</a></li>
+        <li><a href="#思路三--数学">思路三 : 数学</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="约瑟夫问题">约瑟夫问题</h1>
+<p>本文参考 leetcode大神题解，<a href="https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/solution/javajie-jue-yue-se-fu-huan-wen-ti-gao-su-ni-wei-sh/">查看原文</a></p>
+<p>首先我们来了解下，什么是<strong>约瑟夫问题</strong>？</p>
+<blockquote>
+<p>这个问题是以弗拉维奥·约瑟夫命名的，他是1世纪的一名犹太历史学家。他在自己的日记中写道，他和他的40个战友被罗马军队包围在洞中。他们讨论是自杀还是被俘，最终决定自杀，并以抽签的方式决定谁杀掉谁。约瑟夫斯和另外一个人是最后两个留下的人。约瑟夫斯说服了那个人，他们将向罗马军队投降，不再自杀。约瑟夫斯把他的存活归因于运气或天意，他不知道是哪一个。 —— 【约瑟夫问题】维基百科</p>
+</blockquote>
+<h2 id="约瑟夫问题与单向循环链表">约瑟夫问题与单向循环链表</h2>
+<ul>
+<li>首次看到 <strong>约瑟夫问题</strong> 是在学习<strong>单向循环链表</strong>的应用。</li>
+<li>我们从 链表的header 开始遍历链表。 遍历到第 3 个时，删除。</li>
+<li>继续从第4个开始遍历，遍历到 第 6 个时，删除。</li>
+<li>再从第 7 个开始遍历, 遍历到第 9 个时，删除。</li>
+<li>&hellip;</li>
+<li>依次执行上述操作</li>
+<li>直到链表剩余 1 个元素</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggdsk1ncsij317s0naalx.jpg" alt="U"></p>
+<p>以上，就是我之前理解的约瑟夫问题。 接下来，我们看一道<strong>约瑟夫问题</strong>的题目。</p>
+<h1 id="剑指-offer-62-圆圈中最后剩下的数字httpsleetcode-cncomproblemsyuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof"><a href="https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/">剑指 Offer 62. 圆圈中最后剩下的数字</a></h1>
+<blockquote>
+<p>0,1,,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。</p>
+<p>例如，0、1、2、3、4这5个数字组成一个圆圈，从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。</p>
+<p>示例 1：</p>
+<p>输入: n = 5, m = 3
+输出: 3
+示例 2：</p>
+<p>输入: n = 10, m = 17
+输出: 2</p>
+<p>限制：</p>
+<p>1 &lt;= n &lt;= 10^5
+1 &lt;= m &lt;= 10^6</p>
+<p>来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h2 id="题解-">题解 :</h2>
+<ul>
+<li>看到这个题目，想一想，这不是跟我们的 <strong>约瑟夫问题</strong> 一模一样？</li>
+<li>只不过相当于，原问题中，m是固定的 3， 而此题目中，m是一个变量。</li>
+<li>迫不及待使用 单向循环链表 来解题试试咯。</li>
+</ul>
+<h3 id="heading"></h3>
+<h3 id="思路一--单向循环链表">思路一 ： 单向循环链表</h3>
+<ul>
+<li>我们创建一个 <strong>node</strong> 内部类来存放链表的节点</li>
+<li>第一步，我们循环创建链表
+<ul>
+<li>将 [0, n-1] 范围内的数字，都保存在 <strong>node</strong> 中，串成 <strong>单向循环链表</strong></li>
+</ul>
+</li>
+<li>第二部，遍历链表
+<ul>
+<li>遍历了 m 个时，将 <strong>当前节点</strong> 删除</li>
+<li>并且，从下一个节点继续遍历</li>
+<li>循环退出条件，链表中只有一个元素，也就是 <strong>head.next == head</strong></li>
+</ul>
+</li>
+<li>最终返回 head.val</li>
+</ul>
+<h4 id="代码如下-">代码如下 :</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">
+		<span class="cm">/**
+</span><span class="cm">     *
+</span><span class="cm">     *
+</span><span class="cm">     * 这道题最常见的解决思路是 单向循环链表
+</span><span class="cm">     *
+</span><span class="cm">     * 从链表头节点开始遍历，遍历到第 3 个时，删除。并且从第4个接着遍历
+</span><span class="cm">     *
+</span><span class="cm">     *
+</span><span class="cm">     * 下标这种解法，使用链表解决，超时了...
+</span><span class="cm">     *
+</span><span class="cm">     * 此题目中  n,m的取值范围分别是 :
+</span><span class="cm">     *         1 &lt;= n &lt;= 10^5
+</span><span class="cm">     *         1 &lt;= m &lt;= 10^6
+</span><span class="cm">     *
+</span><span class="cm">     *
+</span><span class="cm">     * 我们从 m开始删除节点，最终剩下1个节点。需要删除 m-1 次
+</span><span class="cm">     * 而每次查找，删除的节点，需要 n 次的查找
+</span><span class="cm">     * 所以整体时间复杂度 : O(m * n)
+</span><span class="cm">     *
+</span><span class="cm">     * 极限情况，会 new 10^5 个 node 节点，循环 10 ^ 6次
+</span><span class="cm">     * 好无疑问，耗时会很长
+</span><span class="cm">     *
+</span><span class="cm">     *
+</span><span class="cm">     * */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">lastRemaining1</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">m</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">m</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">n</span><span class="o">-</span><span class="n">1</span><span class="o">;</span>
+        <span class="n">Node</span> <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+        <span class="n">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">node</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">node</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+
+        <span class="n">Node</span> <span class="n">current</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">head</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="n">head</span><span class="o">){</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">current</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">head</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="复杂度分析-">复杂度分析 :</h4>
+<p>代码提交后，<strong>超时</strong>。 所以这里我们来分析一下，算法的时间复杂度.</p>
+<ul>
+<li>经过了 <strong>n - 1</strong>次的删除操作</li>
+<li>每次删除操作，需要 <strong>m</strong> 次的查找，找到要删除的节点</li>
+<li>所以算法时间复杂度 : O(m * n)</li>
+<li>这道题中 n, m 的取值范围分别为:
+<ul>
+<li>1 &lt;= n &lt;= 10^5</li>
+<li>1 &lt;= m &lt;= 10^6</li>
+</ul>
+</li>
+<li>m * n 的时间复杂度，无疑是非常高的.</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggdszhsn6aj30q409ggmc.jpg" alt="屏幕快照 2020-07-03 下午2.08.08"></p>
+<h3 id="思路二--数组">思路二 : 数组</h3>
+<ul>
+<li>
+<p>我们来简单分析下，使用数组来解决问题的时间复杂度</p>
+</li>
+<li>
+<p>也需要经过 <strong>n - 1</strong> 次的删除操作</p>
+</li>
+<li>
+<p>数组删除元素，复杂度为 O(n), 因为后续所有元素都需要向前移动</p>
+</li>
+<li>
+<p>而数组的每次查找，要删除的位置，是可以通过下标直接访问的，时间复杂度是 O(1)</p>
+</li>
+<li>
+<p>这样看起来，貌似使用数组的时间复杂度 和 m 无关 。 为 O(N ^ 2)</p>
+</li>
+<li>
+<p>但是重点来了！<strong>其实是内存连续空间的拷贝的！所以相比于 LinkedList 大量非连续性地址访问，ArrayList 的性能是很 OK 的！</strong></p>
+</li>
+<li>
+<p>以下是， Java数组的删除操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * Private remove method that skips bounds checking and does not
+</span><span class="cm"> * return the value removed.
+</span><span class="cm"> */</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">fastRemove</span><span class="o">(</span><span class="n">Object</span><span class="o">[]</span> <span class="n">es</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">modCount</span><span class="o">++;</span>
+    <span class="kd">final</span> <span class="kt">int</span> <span class="n">newSize</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">((</span><span class="n">newSize</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">i</span><span class="o">)</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">es</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">es</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">newSize</span> <span class="o">-</span> <span class="n">i</span><span class="o">);</span>
+    <span class="n">es</span><span class="o">[</span><span class="n">size</span> <span class="o">=</span> <span class="n">newSize</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="heading-1"></h4>
+<h4 id="基于数组模拟链表的实现">基于数组模拟链表的实现</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">lastRemaining</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">m</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">m</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">n</span><span class="o">-</span><span class="n">1</span><span class="o">;</span>
+
+    <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">n</span><span class="o">);</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+  	<span class="c1">// 删除直到 数组中只有 一个元素
+</span><span class="c1"></span>    <span class="k">while</span> <span class="o">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+      	<span class="c1">// 找到要删除的位置
+</span><span class="c1"></span>        <span class="n">idx</span> <span class="o">=</span> <span class="o">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">%</span> <span class="n">n</span><span class="o">;</span>
+      	<span class="c1">// 删除 
+</span><span class="c1"></span>        <span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">idx</span><span class="o">);</span>
+      	<span class="c1">// 删除以后，数组元素 - 1
+</span><span class="c1"></span>        <span class="n">n</span><span class="o">--;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>提交后，算法通过了。 但是耗时较长，见图。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggdtcg6t4vj30ou06o0ti.jpg" alt="屏幕快照 2020-07-03 下午3.23.31"></p>
+<h3 id="思路三--数学">思路三 : 数学</h3>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggdudpzy6rj30yy0netbt.jpg" alt="屏幕快照 2020-07-03 下午4.01.09"></p>
+<ul>
+<li>
+<p>第一轮, [0, 1,2,3,4] 删除第三个，也就是 2 被删除了</p>
+</li>
+<li>
+<p>第二轮, 数组变为 [3,4, 0, 1], 删除第三个，也就是 0 被删除了</p>
+</li>
+<li>
+<p>第三轮, 数组变为 [1,3,4], 删除第三个， 也就是 4 被删除了</p>
+</li>
+<li>
+<p>第四轮, 数组变为 [1,3], 删除第三个，也就是 1 被删除了</p>
+</li>
+<li>
+<p>数组中最后剩余 [3]. 在数组中下标为 0.</p>
+</li>
+<li>
+<p>接下来，我们依次往上推 [3] 在  第四轮，第三轮， 第二轮，第一轮中的下标</p>
+</li>
+<li>
+<p>当我们推导到<strong>第一轮</strong>时, 也就求出来了，3在数组中的下标</p>
+</li>
+<li>
+<p>我们知道 3 在最后一轮的下标一定是0.</p>
+</li>
+<li>
+<p>所以在 第四轮 剩余2个元素时的下标为 <strong>index = (0 + 3) % 2</strong> = 1</p>
+</li>
+<li>
+<p>第三轮 剩余3个元素时的下标为 <strong>index = (1 + 3) % 3</strong> = 1</p>
+</li>
+<li>
+<p>第二轮 剩余4个元素时的下标为 <strong>index = (1 + 3) % 4</strong> = 0</p>
+</li>
+<li>
+<p>第一轮 在原数组中的下标为 <strong>index = (0 + 3) % 5</strong> = 3</p>
+</li>
+<li>
+<p>这样，我们就推导出了，最终结果 <strong>3</strong></p>
+</li>
+<li>
+<p>思路明白以后，代码就很简单了</p>
+</li>
+</ul>
+<h4 id="代码如下">代码如下:</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> *
+</span><span class="cm"> * 数学解法
+</span><span class="cm"> *
+</span><span class="cm"> * */</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">lastRemaining2</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">m</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">m</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">n</span><span class="o">-</span><span class="n">1</span><span class="o">;</span>
+    
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+    <span class="c1">// 最后一轮剩下2个人，所以从2开始反推
+</span><span class="c1"></span>    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="o">(</span><span class="n">res</span> <span class="o">+</span> <span class="n">m</span><span class="o">)</span> <span class="o">%</span> <span class="n">i</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="复杂度分析--1">复杂度分析 :</h4>
+<p><strong>时间复杂度 : O(N)</strong></p>
+<p><strong>空间复杂度 : O(1)</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggdupc93sgj30qg06sjsd.jpg" alt="屏幕快照 2020-07-03 下午3.59.45"></p>
+<p>参考文献 :</p>
+<p><a href="https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/solution/javajie-jue-yue-se-fu-huan-wen-ti-gao-su-ni-wei-sh/">Java解决约瑟夫环问题，告诉你为什么模拟会超时！</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Jul 03
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>
+          <a href="/tags/%E6%95%B0%E7%BB%84/">数组</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/leetcode%E5%88%B7%E9%A2%98%E5%9B%9E%E9%A1%BE%E4%B8%8E%E6%80%BB%E7%BB%93/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">LeetCode刷题回顾与总结</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%9C%A8ios%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">
+            <span class="next-text nav-default">通过优化排序了解策略模式</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
