@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>函数指针,block与lambda表达式 - API调用工程师的进阶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="C语言中的函数指针, OjbC中的block,以及C&#43;&#43;和Java中的lambda表达式非常类似. 在学习单个语言时不会想到他们之间的共通点和区" /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88block%E4%B8%8Elambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="函数指针,block与lambda表达式" />
+<meta property="og:description" content="C语言中的函数指针, OjbC中的block,以及C&#43;&#43;和Java中的lambda表达式非常类似. 在学习单个语言时不会想到他们之间的共通点和区" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88block%E4%B8%8Elambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
+<meta property="article:published_time" content="2020-07-05T20:38:59+08:00" />
+<meta property="article:modified_time" content="2020-07-05T20:38:59+08:00" />
+<meta itemprop="name" content="函数指针,block与lambda表达式">
+<meta itemprop="description" content="C语言中的函数指针, OjbC中的block,以及C&#43;&#43;和Java中的lambda表达式非常类似. 在学习单个语言时不会想到他们之间的共通点和区">
+<meta itemprop="datePublished" content="2020-07-05T20:38:59&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-05T20:38:59&#43;08:00" />
+<meta itemprop="wordCount" content="2380">
+
+
+
+<meta itemprop="keywords" content="iOS," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="函数指针,block与lambda表达式"/>
+<meta name="twitter:description" content="C语言中的函数指针, OjbC中的block,以及C&#43;&#43;和Java中的lambda表达式非常类似. 在学习单个语言时不会想到他们之间的共通点和区"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">函数指针,block与lambda表达式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Jul 05 </span>
+        
+          <span class="more-meta"> 2380 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-c函数指针">一, C函数指针</a>
+      <ul>
+        <li><a href="#概念">概念</a></li>
+        <li><a href="#代码举例">代码举例</a></li>
+      </ul>
+    </li>
+    <li><a href="#二-c-lambda表达式">二, C++ lambda表达式</a>
+      <ul>
+        <li><a href="#概念-1">概念</a></li>
+        <li><a href="#代码举例-1">代码举例</a></li>
+        <li><a href="#本质">本质</a></li>
+        <li><a href="#作为参数">作为参数</a></li>
+        <li><a href="#变量捕获capture">变量捕获capture</a></li>
+        <li><a href="#mutable">mutable</a></li>
+      </ul>
+    </li>
+    <li><a href="#三objc-block">三,ObjC block</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><strong>C语言</strong>中的<strong>函数指针</strong>, <strong>OjbC</strong>中的<strong>block</strong>,以及<strong>C++</strong>和<strong>Java</strong>中的<strong>lambda表达式</strong>非常类似.</p>
+<p>在学习单个语言时不会想到他们之间的共通点和区别，最近在学习C++ 和 Java语法时，发觉<strong>lambda表达式</strong>，这不是跟ObjC中的 block 非常相似吗？</p>
+<p>说到底不都是，可以<strong>捕获变量</strong>的<strong>指向函数的指针</strong>吗?</p>
+<p>所以打算写一篇总结各语言中<strong>函数指针</strong>的使用的文章。</p>
+<p>因为笔者是iOS开发人员，所以对 ObjC的block会介绍的详细一些。 C函数指针 和 C++ lambda表达式简单过一下。</p>
+<h2 id="一-c函数指针">一, C函数指针</h2>
+<h3 id="概念">概念</h3>
+<ul>
+<li>在学习 C语言时，我们学到了<strong>函数指针</strong>，其定义就是指向函数的指针。</li>
+<li>通常<strong>指针</strong>是指向一个<strong>变量</strong>，而<strong>函数指针</strong>是指向函数。</li>
+<li>函数指针也可以像函数一样，<strong>调用</strong>函数，<strong>传递参数</strong>。</li>
+</ul>
+<h3 id="代码举例">代码举例</h3>
+<p>以下代码是一个简单的<strong>函数指针</strong>的用法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="c1">// 函数
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="err">@</span><span class="n">autoreleasepool</span> <span class="p">{</span>       
+        <span class="c1">// 定义之战 ptr 指向 sum函数
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="n">sum</span><span class="p">;</span>
+        <span class="c1">// 通过 函数指针 ptr 调用 sum函数
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="二-c-lambda表达式">二, C++ lambda表达式</h2>
+<h3 id="概念-1">概念</h3>
+<ul>
+<li><strong>C++</strong>中的 <strong>lambda表达式</strong> 类似 ObjC中的block，其本质上就是<strong>函数</strong>.</li>
+<li>完整结构 : <strong>[capture list][paramas list]  mutable exception -&gt; return type{function body}</strong>
+<ul>
+<li><strong>capture list</strong> ：捕获外部变量列表</li>
+<li><strong>params list</strong> : 形参列表，不能使用默认参数, 不能省略参数名</li>
+<li><strong>mutable</strong> : 用来说明是否可以修改捕获的变量</li>
+<li><strong>exception</strong> : 异常设定</li>
+<li><strong>return type</strong> : 返回值类型</li>
+<li><strong>function body</strong> : 函数体</li>
+</ul>
+</li>
+<li>有时可以省略部分结构 :
+<ul>
+<li><strong>[capture list](params list) -&gt; return type{function body}</strong></li>
+<li><strong>[capture list](params list) {function body}</strong></li>
+<li><strong>[capture list]{function body}</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="代码举例-1">代码举例</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="c1">// 定义 lambda表达式
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr1</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">int</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ptr1</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>而在 C++11以后，引入了<strong>自动类型推断</strong></li>
+<li>所以我们可以省略上边复杂的类型定义， 直接写 <strong>auto</strong></li>
+<li>自动类型推断是编译器来识别推断类型</li>
+<li>在编译后形成的汇编代码中，和主动写的类型没有任何区别</li>
+<li>不会影响程序指向效率</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="c1">// 定义 lambda表达式
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr1</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">int</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ptr1</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="c1">// 定义 lambda表达式
+</span><span class="c1"></span>    <span class="c1">// C++11 加入自动类型推断
+</span><span class="c1"></span>    <span class="c1">// 所以我们可以省略上边复杂的 类型，直接写auto
+</span><span class="c1"></span>    <span class="c1">// 自动类型推断是编译器来识别推断。
+</span><span class="c1"></span>    <span class="c1">// 在编译后形成的代码跟制定类型没有区别
+</span><span class="c1"></span>    <span class="c1">// 不会影响程序运行效率
+</span><span class="c1"></span>    <span class="k">auto</span> <span class="n">ptr2</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">int</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ptr2</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="本质">本质</h3>
+<p>lambda表达式在编译时，编译器会将<strong>lambda表达式生成函数</strong>， 所以 lambda表达式的本质其实就是<strong>函数</strong>, 而lambda表达式的调用，其实就是<strong>函数调用</strong>。</p>
+<p>我们用汇编代码来证明这个问题。</p>
+<ul>
+<li>上述代码在运行时转为汇编以后，可以看到第一张图中，是将 main.cpp 文件的第14行转为了一下的汇编，而第14行正是lambda表达式。</li>
+<li>我们一步步跟进去汇编代码，到了第二张图函数的实现，可以看到 确实是<strong>加法</strong>操作
+<ul>
+<li>一步步的使用寄存器赋值，赋值后进行加法操作，再将结果返回</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggggje2tcvj31ce0fyaen.jpg" alt="截屏2020-07-05下午10.17.00"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggggjjgmaaj31fw07cwgu.jpg" alt="截屏2020-07-05下午10.17.56"></p>
+<h3 id="作为参数">作为参数</h3>
+<ul>
+<li>假设我们有 加减乘除 四个方法，分别是传入两个数字，进行加减乘除操作</li>
+<li>还有个 exec方法，用来传入两个参数，并传入函数名，进行对应的加减乘除操作</li>
+</ul>
+<h4 id="不使用-lambda表达式">不使用 lambda表达式</h4>
+<p>代码如下 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v2</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">subtrace</span><span class="p">(</span><span class="kt">int</span> <span class="n">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v2</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">v1</span> <span class="o">-</span> <span class="n">v2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">multiply</span><span class="p">(</span><span class="kt">int</span> <span class="n">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v2</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">v1</span> <span class="o">*</span> <span class="n">v2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">divide</span><span class="p">(</span><span class="kt">int</span> <span class="n">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v2</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">v1</span> <span class="o">/</span> <span class="n">v2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">exec</span><span class="p">(</span><span class="kt">int</span> <span class="n">v1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v2</span><span class="p">,</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)){</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">exec</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">add</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">exec</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">subtrace</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">exec</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">multiply</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">exec</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">divide</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="使用-lambda表达式">使用 lambda表达式</h4>
+<p>代码如下 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">exec</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="p">})</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">exec</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span> <span class="p">})</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">exec</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span> <span class="p">})</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">exec</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">;</span> <span class="p">})</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>上述代码执行和不使用 第一种写法 效果一样</li>
+<li>以上就是作为参数使用的例子</li>
+</ul>
+<h3 id="变量捕获capture">变量捕获capture</h3>
+<h4 id="概念-2">概念</h4>
+<ul>
+<li>中括号 [] 里边放的是什么呢？貌似我们上边一只没有用到</li>
+<li>[]里放入的是用来做变量捕获的。</li>
+<li>我们在 <strong>labmda表达式</strong>中使用<strong>外部局部变量</strong>时，默认是不可以访问的</li>
+<li>需要将变量名添加到 [] 中， 才可以访问。</li>
+</ul>
+<h4 id="举例说明">举例说明</h4>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggghhvxdxrj31fy0a475w.jpg" alt="截屏2020-07-05下午10.51.02"></p>
+<ul>
+<li>我们在 func 中，访问局部变量 a , 是不可以直接访问的。</li>
+<li>如果需要访问，需要将变量名放到 [] 中，代码如下</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="k">auto</span> <span class="n">func</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="n">func</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>上述代码中， 我们可以直接访问变量a 和 变量 b</li>
+</ul>
+<h4 id="值捕获地址捕获">值捕获？地址捕获？</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="k">auto</span> <span class="n">func</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">};</span>
+  	
+  	<span class="n">a</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+  	<span class="n">b</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
+  
+    <span class="n">func</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>我们可以访问 a, b变量以后，如果我们后续将 a， b的值改了，再调用 func() 时，访问到的是10，20还是 30，40呢？
+<ul>
+<li>答案是10, 20</li>
+</ul>
+</li>
+<li>why ?  看起来，我明明将用到的 a 和 b 的值改掉了，为什么访问还是原来的值呢？
+<ul>
+<li>因为这里的变量捕获是<strong>值捕获</strong> ，也就是说func直接将 10，20 捕获了，后边修改 a，b的值跟func内部捕获的值完全没有关系。</li>
+</ul>
+</li>
+<li>如何实现，在 a，b修改以后，调用 func() 时，访问新的 a，b的值呢？
+<ul>
+<li>答案是 <strong>地址捕获</strong>，如何办到地址捕获呢？ (类似在用的非常多的 <strong>swap()<strong>函数中的</strong>地址引用</strong>)
+<ul>
+<li>很简单，我们在 [] 中捕获变量时，直接对a取地址，传进去，也就是将&amp;a放大 [] 中</li>
+<li>地址捕获以后，我们就可以
+<ul>
+<li>在 func() 函数调用时，根据 a 的地址，找到 a 最新的值</li>
+<li>并且，可以根据 a 的地址给 a 赋值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="mutable">mutable</h3>
+<ul>
+<li>在上边小段的学习中，我们知道值捕获时不可以修改引用的变量的值的，因为我们相当于单单引用了值，也就是常量</li>
+<li>还有另外一种做法，来实现 在 func 内部修改 a 的值
+<ul>
+<li>使用 mutable 关键字</li>
+</ul>
+</li>
+<li>首先明确一点， 使用 mutable关键字后， 变量仍然是 <strong>值捕获</strong></li>
+<li>所以，在 func 内部不可能修改外部 a 的值</li>
+<li>但是可以修改 func() 内部变量 a 的值</li>
+<li><strong>mutable</strong>关键字做法类似于
+<ul>
+<li>在 func() 函数体内部，初始化了一个变量，初始值为 a</li>
+<li>所以在 func()函数题内部，当然可以修改 其内部的 a</li>
+<li>但是无法对外部的 a 产生影响。</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="nf">main</span><span class="o">(</span><span class="kt">int</span> <span class="n">argc</span><span class="o">,</span> <span class="kd">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="o">[])</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+    <span class="n">auto</span> <span class="n">func</span> <span class="o">=</span> <span class="o">[</span><span class="n">a</span><span class="o">]()</span> <span class="n">mutable</span><span class="o">{</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">20</span><span class="o">;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;func -&gt; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="o">;</span>
+    <span class="o">};</span>
+    <span class="n">func</span><span class="o">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="o">;</span>
+    <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>所以上述代码的打印结果为
+<ul>
+<li><strong>func -&gt; 20</strong></li>
+<li><strong>10</strong>*</li>
+<li><strong>Program ended with exit code: 0</strong></li>
+</ul>
+</li>
+<li>其内部的a被修改了，但是外部的值仍然是原来的值。</li>
+</ul>
+<h2 id="三objc-block">三,ObjC block</h2>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Jul 05
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/ios/">iOS</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/leetcode%E5%88%B7%E9%A2%98%E5%9B%9E%E9%A1%BE%E4%B8%8E%E6%80%BB%E7%BB%93/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">LeetCode刷题回顾与总结</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E6%A8%A1%E6%8B%9Fojbc%E4%B8%AD%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/">
+            <span class="next-text nav-default">模拟OjbC中抽象类的使用</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -6,10 +6,19 @@
     <description>Recent content in iOS on API调用工程师的进阶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Jul 2020 17:57:39 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2020 20:38:59 +0800</lastBuildDate>
     
 	<atom:link href="https://zhangxiongfeiv.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>函数指针,block与lambda表达式</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88block%E4%B8%8Elambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Sun, 05 Jul 2020 20:38:59 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88block%E4%B8%8Elambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>C语言中的函数指针, OjbC中的block,以及C++和Java中的lambda表达式非常类似. 在学习单个语言时不会想到他们之间的共通点和区</description>
+    </item>
     
     <item>
       <title>模拟OjbC中抽象类的使用</title>

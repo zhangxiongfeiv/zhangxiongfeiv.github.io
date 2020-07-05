@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>函数指针,block与lambda表达式</title>
+      <link>https://zhangxiongfeiv.github.io/post/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88block%E4%B8%8Elambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Sun, 05 Jul 2020 20:38:59 +0800</pubDate>
+      
+      <guid>https://zhangxiongfeiv.github.io/post/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88block%E4%B8%8Elambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>C语言中的函数指针, OjbC中的block,以及C++和Java中的lambda表达式非常类似. 在学习单个语言时不会想到他们之间的共通点和区</description>
+    </item>
+    
+    <item>
       <title>模拟OjbC中抽象类的使用</title>
       <link>https://zhangxiongfeiv.github.io/post/%E6%A8%A1%E6%8B%9Fojbc%E4%B8%AD%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Sat, 04 Jul 2020 17:57:39 +0800</pubDate>
