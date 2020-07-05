@@ -49,7 +49,7 @@
 <meta itemprop="description" content="146. LRU缓存机制 运用你所掌握的数据结构，设计和实现一个 LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。 获取数据 get(key) - 如">
 <meta itemprop="datePublished" content="2020-05-25T16:01:40&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-25T16:01:40&#43;08:00" />
-<meta itemprop="wordCount" content="1451">
+<meta itemprop="wordCount" content="1578">
 
 
 
@@ -127,8 +127,8 @@
       <div class="post-meta">
         <span class="post-time"> May 25 </span>
         
-          <span class="more-meta"> 1451 words </span>
-          <span class="more-meta"> 3 mins read </span>
+          <span class="more-meta"> 1578 words </span>
+          <span class="more-meta"> 4 mins read </span>
         
       </div>
     </header>
@@ -470,6 +470,20 @@ cache.get(4);       // 返回  4
 <p><strong>空间复杂度</strong> : O(capacity)，因为哈希表 和 双向链表 最多存储 capacity + 1个元素.</p>
 <h6 id="执行流程">执行流程：</h6>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf4rp42h3dj30ea0jzwub.jpg" alt="image-20200525161805239"></p>
+<h4 id="202075更-lru缓存策略的应用">2020.7.5更 LRU缓存策略的应用</h4>
+<ul>
+<li>今天翻博客目录在 mac 文件夹中的排序方法</li>
+<li>看到按照修改日期排序</li>
+<li>心里想，这不就是 <strong>LRU缓存策略</strong> 吗
+<ul>
+<li>将最近使用的挪到 链表的头部</li>
+<li>最不常用的在 链表的尾部</li>
+</ul>
+</li>
+<li>猜想可能mac OS操作系统，文件管理，对 文件的排序，使用到了 LRU缓存策略</li>
+<li>见下图</li>
+</ul>
+<p><!-- raw HTML omitted --><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gggj5vgt2bj30pm0ykb29.jpg" alt="截屏2020-07-05下午11.44.27"><!-- raw HTML omitted --></p>
 
     </div>
 

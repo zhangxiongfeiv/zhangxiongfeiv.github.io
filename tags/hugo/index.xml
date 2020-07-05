@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>Hugo基本使用</title>
+      <title>Mac环境下使用Hugo搭建github博客</title>
       <link>https://zhangxiongfeiv.github.io/post/hugo/</link>
       <pubDate>Mon, 06 Mar 2017 14:04:58 +0800</pubDate>
       
       <guid>https://zhangxiongfeiv.github.io/post/hugo/</guid>
-      <description>Mac环境下安装Hugo 第一步：安装hugo mac环境下用homebrew工具安装hugo，一句命令即可 1 $ brew install hugo 第二步：生成站点 利用 hugo 生成</description>
+      <description>Mac环境下使用Hugo搭建github博客 第一步：安装hugo mac环境下用homebrew工具安装hugo，一句命令即可 1 $ brew install hugo 第二步</description>
     </item>
     
   </channel>
