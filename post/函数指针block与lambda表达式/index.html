@@ -43,13 +43,13 @@
 <meta property="og:description" content="C语言中的函数指针, OjbC中的block,以及C&#43;&#43;和Java中的lambda表达式非常类似. 在学习单个语言时不会想到他们之间的共通点和区" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zhxiongfei.github.io/post/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88block%E4%B8%8Elambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
-<meta property="article:published_time" content="2020-07-05T20:38:59+08:00" />
-<meta property="article:modified_time" content="2020-07-05T20:38:59+08:00" />
+<meta property="article:published_time" content="2020-07-07T00:56:36+08:00" />
+<meta property="article:modified_time" content="2020-07-07T00:56:36+08:00" />
 <meta itemprop="name" content="函数指针,block与lambda表达式">
 <meta itemprop="description" content="C语言中的函数指针, OjbC中的block,以及C&#43;&#43;和Java中的lambda表达式非常类似. 在学习单个语言时不会想到他们之间的共通点和区">
-<meta itemprop="datePublished" content="2020-07-05T20:38:59&#43;08:00" />
-<meta itemprop="dateModified" content="2020-07-05T20:38:59&#43;08:00" />
-<meta itemprop="wordCount" content="3880">
+<meta itemprop="datePublished" content="2020-07-07T00:56:36&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-07T00:56:36&#43;08:00" />
+<meta itemprop="wordCount" content="5922">
 
 
 
@@ -125,10 +125,10 @@
       <h1 class="post-title">函数指针,block与lambda表达式</h1>
 
       <div class="post-meta">
-        <span class="post-time"> Jul 05 </span>
+        <span class="post-time"> Jul 07 </span>
         
-          <span class="more-meta"> 3880 words </span>
-          <span class="more-meta"> 8 mins read </span>
+          <span class="more-meta"> 5922 words </span>
+          <span class="more-meta"> 12 mins read </span>
         
       </div>
     </header>
@@ -154,11 +154,11 @@
         <li><a href="#mutable">mutable</a></li>
       </ul>
     </li>
-    <li><a href="#三objc-block">三,ObjC block</a></li>
-    <li><a href="#heading"></a>
+    <li><a href="#三objc-block">三,ObjC block</a>
       <ul>
         <li><a href="#从c看block本质">从C++看block本质</a></li>
         <li><a href="#block-的变量捕获-capture">block 的变量捕获 capture</a></li>
+        <li><a href="#block的类型">block的类型</a></li>
       </ul>
     </li>
   </ul>
@@ -589,7 +589,6 @@
 <li>其内部的a被修改了，但是外部的值仍然是原来的值。</li>
 </ul>
 <h2 id="三objc-block">三,ObjC block</h2>
-<h2 id="heading"></h2>
 <h3 id="从c看block本质">从C++看block本质</h3>
 <ul>
 <li>
@@ -840,12 +839,16 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">__main_block_impl_0</span> <span class="p">{</span>
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// block的结构体
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">__main_block_impl_0</span> <span class="p">{</span>
   <span class="k">struct</span> <span class="nc">__block_impl</span> <span class="n">impl</span><span class="p">;</span>
   <span class="k">struct</span> <span class="nc">__main_block_desc_0</span><span class="o">*</span> <span class="n">Desc</span><span class="p">;</span>
-  <span class="n">__Block_byref_a_0</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span> <span class="c1">// by ref
+  <span class="c1">// 封装了变量a地址的结构体
+</span><span class="c1"></span>  <span class="n">__Block_byref_a_0</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span> <span class="c1">// by ref
 </span><span class="c1"></span><span class="p">};</span>
 </code></pre></td></tr></table>
 </div>
@@ -858,9 +861,11 @@
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="n">__Block_byref_a_0</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">,(</span><span class="n">__Block_byref_a_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">__Block_byref_a_0</span><span class="p">),</span> <span class="mi">10</span><span class="p">};</span>
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="c1">// 变量a 在 __block修饰后，变为结构体，并且结构体中地址引用变量 a
+</span><span class="c1"></span><span class="n">__Block_byref_a_0</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">,(</span><span class="n">__Block_byref_a_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">__Block_byref_a_0</span><span class="p">),</span> <span class="mi">10</span><span class="p">};</span>
 
 <span class="n">block</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">__main_block_impl_0</span><span class="p">(</span><span class="n">__main_block_func_0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">__main_block_desc_0_DATA</span><span class="p">,</span> <span class="p">(</span><span class="n">__Block_byref_a_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="mi">570425344</span><span class="p">));</span>
 
@@ -926,7 +931,511 @@
 <p>当 访问 a  时，直接取到的 __Block_byref_a_0结构体 的 (a.__forwarding-&gt;a) = 20; 地址赋值</p>
 </li>
 <li>
-<p>在取值时，仍然是 通过</p>
+<p>在取值时，仍然是 通过  __Block_byref_a_0结构体的 __forwwarding指针，再找到 a 的地址来修改的</p>
+</li>
+<li>
+<p>总结来说，就是  用 <strong>__block</strong> 修饰后，变量的<strong>值引用 变为 地址引用</strong></p>
+<ul>
+<li>所以可以通过地址来访问变量 a 的更改后的值</li>
+<li>也可以通过地址来修改外部变量 a 的值</li>
+</ul>
+</li>
+<li>
+<p>以上是对 <strong>局部auto变量的总结</strong></p>
+</li>
+<li>
+<p>下边我们看另外一种情况， static变量</p>
+</li>
+</ul>
+<h5 id="static变量">static变量</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="k">static</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span>  <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;a is %d&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="n">block</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>仍然使用命令，将以上代码转化为 C++代码，如下 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">__main_block_impl_0</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="nc">__block_impl</span> <span class="n">impl</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">__main_block_desc_0</span><span class="o">*</span> <span class="n">Desc</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">__main_block_func_0</span><span class="p">(</span><span class="k">struct</span> <span class="nc">__main_block_impl_0</span> <span class="o">*</span><span class="n">__cself</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="n">__cself</span><span class="o">-&gt;</span><span class="n">a</span><span class="p">;</span> <span class="c1">// bound by copy
+</span><span class="c1"></span>            <span class="n">NSLog</span><span class="p">(</span><span class="n">XXX</span>  <span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="cm">/* @autoreleasepool */</span> <span class="p">{</span> <span class="n">__AtAutoreleasePool</span> <span class="n">__autoreleasepool</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="c1">// 注意这里是，地址引用
+</span><span class="c1"></span>        <span class="n">block</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">__main_block_impl_0</span><span class="p">(</span><span class="n">__main_block_func_0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">__main_block_desc_0_DATA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">));</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="p">(</span><span class="n">block</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">FuncPtr</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>可以看出来，static变量，在block中的引用是 <strong>地址引用</strong></li>
+<li>所以可以在block中修改变量的值。</li>
+<li>为什么static变量是<strong>地址引用</strong>呢？
+<ul>
+<li>猜想是因为，static变量在内存中只有一份，不会被释放，不会存在，block中访问时，变量已被释放的风险</li>
+<li>所以可以直接引用地址</li>
+</ul>
+</li>
+</ul>
+<h5 id="全局变量">全局变量</h5>
+<ul>
+<li>全局变量不会进行变量捕获</li>
+<li>在 block 函数体中，可以直接访问全局变量</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="k">@autoreleasepool</span> <span class="p">{</span>
+        
+        <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span>  <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;a is %d&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="n">block</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="nc">__main_block_impl_0</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="nc">__block_impl</span> <span class="n">impl</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">__main_block_desc_0</span><span class="o">*</span> <span class="n">Desc</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">__main_block_func_0</span><span class="p">(</span><span class="k">struct</span> <span class="nc">__main_block_impl_0</span> <span class="o">*</span><span class="n">__cself</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="cm">/* @autoreleasepool */</span> <span class="p">{</span> <span class="n">__AtAutoreleasePool</span> <span class="n">__autoreleasepool</span><span class="p">;</span>
+
+        <span class="n">block</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">__main_block_impl_0</span><span class="p">(</span><span class="n">__main_block_func_0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">__main_block_desc_0_DATA</span><span class="p">));</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="n">block</span><span class="o">-&gt;</span><span class="n">FuncPtr</span><span class="p">;</span>
+
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="变量捕获总结-">变量捕获总结 :</h5>
+<ul>
+<li>局部变量会被捕获.
+<ul>
+<li>auto(默认) 类型的局部变量是值捕获</li>
+<li>static(静态) 类型的局部变量是地址捕获</li>
+</ul>
+</li>
+<li>全局变量不会被捕获
+<ul>
+<li>全局变量在 block 函数体中，可以直接访问，不会被捕获</li>
+</ul>
+</li>
+</ul>
+<h5 id="进阶---另一种变量">进阶 - 另一种变量</h5>
+<ul>
+<li>下边代码中， Person是一个 ObjC类，请问在  test 函数中的block，是否会捕获 self ?</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">test</span><span class="p">{</span>
+    <span class="n">block</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%p&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nb">self</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">instancetype</span><span class="p">)</span><span class="nf">init</span><span class="p">{</span>
+    <span class="nb">self</span> <span class="o">=</span> <span class="p">[</span><span class="nb">super</span> <span class="n">init</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="nb">self</span> <span class="n">test</span><span class="p">];</span>
+        <span class="n">block</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">self</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>根据上边的经验，我们知道，如果变量是 局部变量，就会被捕获。</li>
+<li>所以上边的问题，转化成了，test 函数中的 self 是局部变量还是全局变量 ?</li>
+<li>接下来，我们就把 Person.m转换成 .cpp文件，来窥探是否被捕获</li>
+</ul>
+<p>转化为 .cpp后，主要代码如下 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// block 的定义
+</span><span class="c1"></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="c1">// block 结构体
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">__Person__test_block_impl_0</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="nc">__block_impl</span> <span class="n">impl</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">__Person__test_block_desc_0</span><span class="o">*</span> <span class="n">Desc</span><span class="p">;</span>
+  <span class="n">Person</span> <span class="o">*</span><span class="n">self</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// block实现函数
+</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">__Person__test_block_func_0</span><span class="p">(</span><span class="k">struct</span> <span class="nc">__Person__test_block_impl_0</span> <span class="o">*</span><span class="n">__cself</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Person</span> <span class="o">*</span><span class="n">self</span> <span class="o">=</span> <span class="n">__cself</span><span class="o">-&gt;</span><span class="n">self</span><span class="p">;</span> <span class="c1">// bound by copy
+</span><span class="c1"></span>    <span class="n">NSLog</span><span class="p">(</span><span class="o">&amp;</span><span class="n">self</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// test函数的实现
+</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">_I_Person_test</span><span class="p">(</span><span class="n">Person</span> <span class="o">*</span> <span class="n">self</span><span class="p">,</span> <span class="n">SEL</span> <span class="n">_cmd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">block</span> <span class="o">=</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">__Person__test_block_impl_0</span><span class="p">(</span><span class="n">__Person__test_block_func_0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">__Person__test_block_desc_0_DATA</span><span class="p">,</span> <span class="n">self</span><span class="p">,</span> <span class="mi">570425344</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>根据上面代码，我们发现：</li>
+<li>self 被捕获到 block结构体中了</li>
+<li>而且是<strong>值捕获</strong>，说明 self 是一个局部变量，而非全局变量</li>
+<li>从test函数的实现 <strong>_I_Person_test</strong>可以看出， test函数有两个<strong>隐式参数</strong>
+<ul>
+<li>self,   这就是为什么我们可以在 对象方法，函数体中，直接访问 self 的原因</li>
+<li>_cmd， 函数名.</li>
+</ul>
+</li>
+</ul>
+<h3 id="block的类型">block的类型</h3>
+<ul>
+<li>block 有三种类型，可以通过调用 class 和 isa指针查看具体类型，最终都继承自 NSBlock 类型，而 NSBlock 继承自 NSObject
+<ul>
+<li><strong>NSGlobalBlock</strong> （ _NSConcreteGlobalBlock ）</li>
+<li><strong>NSStackBlock</strong> （ _NSConcreteStackBlock ）</li>
+<li><strong>NSMallocBlock</strong> （ _NSConcreteMallocBlock ）</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gghphr2viaj30uy0gyq7l.jpg" alt="截屏2020-07-07上午12.13.02"></p>
+<ul>
+<li>
+<p>为了能更好的理解，block的三种类型，我们最好关闭 <strong>ARC</strong>， 因为ARC环境下，编译器会帮我们做很多事情，</p>
+<ul>
+<li>比如在指针指向时，会自动把 block 从 栈区拷贝到堆区。</li>
+<li>不利于我们学习 block 的三种类型</li>
+</ul>
+</li>
+<li>
+<p>GlobalBlock 是没有访问外部auto局部变量的block</p>
+<ul>
+<li>存放在 程序的<strong>数据区域</strong>，也就是代码区</li>
+</ul>
+</li>
+<li>
+<p>StackBlock 访问了局部变量的block</p>
+<ul>
+<li>存放在 <strong>栈区</strong></li>
+</ul>
+</li>
+<li>
+<p>MallocBlock 访问了局部变量的block，调用了copy，就会被复制到堆区，成为 MallocBlock</p>
+<ul>
+<li>存放在 <strong>堆区</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gghpnhi2m2j30vc0g444j.jpg" alt="截屏2020-07-07上午12.19.57"></p>
+<h6 id="globalblock">GlobalBlock</h6>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;GlobalBlock&#34;</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="n">block</span><span class="p">();</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@&#34;</span><span class="p">,</span> <span class="p">[</span><span class="n">block</span> <span class="k">class</span><span class="p">]);</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>像这种没有访问 auto变量的 block，其类型为 <strong>GlobalBlock</strong></li>
+</ul>
+<h6 id="stackblock">StackBlock</h6>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;a is %d&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@&#34;</span><span class="p">,</span> <span class="p">[</span><span class="n">block</span> <span class="k">class</span><span class="p">]);</span>
+<span class="n">block</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>像这种，访问了auto局部变量的block， 其类型为 <strong>StackBlock</strong></li>
+<li><strong>StackBlock</strong>存放在栈区，而存放在栈区的数据，是有编译器决定其什么时候释放的，程序员无法更改</li>
+<li>这样就很有可能，当我们访问 <strong>StackBlock</strong>时，block内部的变量已经被释放，无法访问</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">test</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="n">block</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;a is %d&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@&#34;</span><span class="p">,</span> <span class="p">[</span><span class="n">block</span> <span class="k">class</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="k">@autoreleasepool</span> <span class="p">{</span>
+        
+        <span class="n">test</span><span class="p">();</span>
+        <span class="n">block</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>比如，上边代码，block虽然声明为全局， 但是block是在<strong>栈区</strong>， 其内部需要的变量比如 a 也在栈区。</p>
+</li>
+<li>
+<p>当test函数，花括号结束后， 栈的内存空间已经销毁</p>
+</li>
+<li>
+<p>所以执行block时，出现混乱</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">2020-07-07 00:29:21.841482+0800 测试<span class="o">[</span>12408:4050060<span class="o">]</span> __NSStackBlock__
+2020-07-07 00:29:21.842224+0800 测试<span class="o">[</span>12408:4050060<span class="o">]</span> a is -272632552
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p>所以，如何避免block在栈区，访问变量可能会被随时销毁，程序员无法控制的问题呢？</p>
+<p>答案是 ; 将 <strong>StackBlock</strong> 拷贝到 <strong>堆区</strong>。而堆区的内存是程序员可以控制其生命周期的。</p>
+<h6 id="mallocblock">MallocBlock</h6>
+<ul>
+<li>
+<p>上边我们总结过，StackBlock调用 copy ， 会从<strong>栈区</strong>拷贝到<strong>堆区</strong>， 成为<strong>MallocBlock</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+  
+<span class="kt">void</span> <span class="nf">test</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="n">block</span> <span class="o">=</span> <span class="p">[</span><span class="o">^</span><span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;a is %d&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">copy</span><span class="p">];</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@&#34;</span><span class="p">,</span> <span class="p">[</span><span class="n">block</span> <span class="k">class</span><span class="p">]);</span>
+    <span class="p">[</span><span class="n">block</span> <span class="k">release</span><span class="p">];</span>
+<span class="p">}</span>
+  
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="k">@autoreleasepool</span> <span class="p">{</span>
+          
+        <span class="n">test</span><span class="p">();</span>
+        <span class="n">block</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">2020-07-07 00:40:36.241385+0800 测试<span class="o">[</span>12695:4058169<span class="o">]</span> __NSMallocBlock__
+2020-07-07 00:40:36.242059+0800 测试<span class="o">[</span>12695:4058169<span class="o">]</span> a is <span class="m">10</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>可以看到，block调用copy以后，StackBlock果然变为 MallocBlock,  并且其中局部变量可以访问。</p>
 </li>
 </ul>
 
@@ -940,7 +1449,7 @@
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        Jul 05
+        Jul 07
         
     </span>
   </p>
@@ -957,8 +1466,8 @@
             <span class="prev-text nav-default">LeetCode刷题回顾与总结</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        <a class="next" href="/post/%E6%A8%A1%E6%8B%9Fojbc%E4%B8%AD%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/">
-            <span class="next-text nav-default">模拟OjbC中抽象类的使用</span>
+        <a class="next" href="/post/objc%E4%B8%AD%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8Cproperty%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">
+            <span class="next-text nav-default">ObjC中全局变量和@property属性的区别</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>一道有意思的考察block的面试题 - API调用工程师的进阶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="有趣的面试经历 记得是 2018年底，去海淀区一家公司面试。 记得约的下午2点钟的面试，差不多中午那会就到达了即将面试的公司附近。 距离2点钟还早，" /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhxiongfei.github.io/post/%E4%B8%80%E9%81%93%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E8%80%83%E5%AF%9Fblock%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="一道有意思的考察block的面试题" />
+<meta property="og:description" content="有趣的面试经历 记得是 2018年底，去海淀区一家公司面试。 记得约的下午2点钟的面试，差不多中午那会就到达了即将面试的公司附近。 距离2点钟还早，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhxiongfei.github.io/post/%E4%B8%80%E9%81%93%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E8%80%83%E5%AF%9Fblock%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/" />
+<meta property="article:published_time" content="2020-07-06T22:25:46+08:00" />
+<meta property="article:modified_time" content="2020-07-06T22:25:46+08:00" />
+<meta itemprop="name" content="一道有意思的考察block的面试题">
+<meta itemprop="description" content="有趣的面试经历 记得是 2018年底，去海淀区一家公司面试。 记得约的下午2点钟的面试，差不多中午那会就到达了即将面试的公司附近。 距离2点钟还早，">
+<meta itemprop="datePublished" content="2020-07-06T22:25:46&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-06T22:25:46&#43;08:00" />
+<meta itemprop="wordCount" content="439">
+
+
+
+<meta itemprop="keywords" content="iOS," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一道有意思的考察block的面试题"/>
+<meta name="twitter:description" content="有趣的面试经历 记得是 2018年底，去海淀区一家公司面试。 记得约的下午2点钟的面试，差不多中午那会就到达了即将面试的公司附近。 距离2点钟还早，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">一道有意思的考察block的面试题</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Jul 06 </span>
+        
+          <span class="more-meta"> 439 words </span>
+          <span class="more-meta"> 1 min read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#有趣的面试经历">有趣的面试经历</a></li>
+    <li><a href="#题目-">题目 :</a>
+      <ul>
+        <li><a href="#题目分析-">题目分析 :</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="有趣的面试经历">有趣的面试经历</h2>
+<p>记得是 2018年底，去海淀区一家公司面试。</p>
+<p>记得约的下午2点钟的面试，差不多中午那会就到达了即将面试的公司附近。</p>
+<p>距离2点钟还早，于是就去附近的一家肯德基吃了中饭，拿出电脑复习面试题。</p>
+<p>一点四十五左右，起身往公司走，到达那家公司第一印象，空间压抑，空气中透露着闷热，跟大冬天外边寒冷的空气对比非常明显。</p>
+<p>说实话，第一印象非常一般，公司规模不大， 环境一般，填表，各种信息。填完表坐等面试。</p>
+<p>没想到，正是这家以为是小公司，印象不怎么好的公司， 问了一些能让我在两年时间内，还能记忆清晰的题目。考察的真是基本功。</p>
+<p>比如，<a href="https://zhxiongfei.github.io/post/charles%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E6%8A%93https/">Charles为什么能抓https ?</a> 再比如即将总结的这道题。</p>
+<p>扯着扯着就扯远了，回归正题，<strong>题目</strong>。</p>
+<h2 id="题目-">题目 :</h2>
+<p>查看以下代码，指出 r1, r2, r3的值分别是几 ?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+    
+    <span class="k">__block</span> <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">objc_setAssociatedObject</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">,</span> <span class="mi">@1</span><span class="p">,</span> <span class="n">OBJC_ASSOCIATION_ASSIGN</span><span class="p">);</span>
+    
+    <span class="kt">int</span> <span class="n">r1</span> <span class="o">=</span> <span class="p">[</span><span class="n">objc_getAssociatedObject</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">)</span> <span class="n">intValue</span><span class="p">];</span>
+    
+    <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+        <span class="n">objc_setAssociatedObject</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">,</span> <span class="mi">@2</span><span class="p">,</span> <span class="n">OBJC_ASSOCIATION_ASSIGN</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+    <span class="kt">int</span> <span class="n">r2</span> <span class="o">=</span> <span class="p">[</span><span class="n">objc_getAssociatedObject</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">)</span> <span class="n">intValue</span><span class="p">];</span>
+    
+    <span class="n">block</span><span class="p">();</span>
+    
+    <span class="kt">int</span> <span class="n">r3</span> <span class="o">=</span> <span class="p">[</span><span class="n">objc_getAssociatedObject</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">)</span> <span class="n">intValue</span><span class="p">];</span>
+    
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;-----%d, %d, %d&#34;</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="题目分析-">题目分析 :</h3>
+<ul>
+<li>这道题考察了 <strong>runtime关联对象</strong>，<strong>block</strong> , <strong>__block关键词</strong>等知识点</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Jul 06
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/ios/">iOS</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/objc%E4%B8%AD%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8Cproperty%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8C%BA%E5%88%AB/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">ObjC中全局变量和@property属性的区别</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E6%A8%A1%E6%8B%9Fojbc%E4%B8%AD%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/">
+            <span class="next-text nav-default">模拟OjbC中抽象类的使用</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhxiongfei.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
