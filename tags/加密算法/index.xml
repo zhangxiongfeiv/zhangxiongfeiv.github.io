@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>加密算法 on API调用工程师的进阶</title>
-    <link>https://zhangxiongfeiv.github.io/tags/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</link>
+    <link>https://zhxiongfei.github.io/tags/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</link>
     <description>Recent content in 加密算法 on API调用工程师的进阶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 04 Jun 2020 13:46:26 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.github.io/tags/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhxiongfei.github.io/tags/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>简单了解对称和非对称加密</title>
-      <link>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</link>
+      <link>https://zhxiongfei.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</link>
       <pubDate>Thu, 04 Jun 2020 13:46:26 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</guid>
+      <guid>https://zhxiongfei.github.io/post/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</guid>
       <description>学前须知 学习对称/非对称加密的主要目的是，学习iOS的签名机制. 我们简单的掌握一下，对称/非对称加密，常用算法，以及其原理，有助于我们理解签</description>
     </item>
     

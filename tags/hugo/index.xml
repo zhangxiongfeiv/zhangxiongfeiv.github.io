@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hugo on API调用工程师的进阶</title>
-    <link>https://zhangxiongfeiv.github.io/tags/hugo/</link>
+    <link>https://zhxiongfei.github.io/tags/hugo/</link>
     <description>Recent content in hugo on API调用工程师的进阶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 06 Mar 2017 14:04:58 +0800</lastBuildDate>
     
-	<atom:link href="https://zhangxiongfeiv.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhxiongfei.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mac环境下使用Hugo搭建github博客</title>
-      <link>https://zhangxiongfeiv.github.io/post/hugo/</link>
+      <link>https://zhxiongfei.github.io/post/hugo/</link>
       <pubDate>Mon, 06 Mar 2017 14:04:58 +0800</pubDate>
       
-      <guid>https://zhangxiongfeiv.github.io/post/hugo/</guid>
+      <guid>https://zhxiongfei.github.io/post/hugo/</guid>
       <description>Mac环境下使用Hugo搭建github博客 第一步：安装hugo mac环境下用homebrew工具安装hugo，一句命令即可 1 $ brew install hugo 第二步</description>
     </item>
     

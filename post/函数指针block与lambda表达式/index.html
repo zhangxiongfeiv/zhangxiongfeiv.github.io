@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
-<link rel="canonical" href="https://zhangxiongfeiv.github.io/post/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88block%E4%B8%8Elambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
+<link rel="canonical" href="https://zhxiongfei.github.io/post/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88block%E4%B8%8Elambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -42,14 +42,14 @@
 <meta property="og:title" content="函数指针,block与lambda表达式" />
 <meta property="og:description" content="C语言中的函数指针, OjbC中的block,以及C&#43;&#43;和Java中的lambda表达式非常类似. 在学习单个语言时不会想到他们之间的共通点和区" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zhangxiongfeiv.github.io/post/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88block%E4%B8%8Elambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
+<meta property="og:url" content="https://zhxiongfei.github.io/post/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88block%E4%B8%8Elambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
 <meta property="article:published_time" content="2020-07-05T20:38:59+08:00" />
 <meta property="article:modified_time" content="2020-07-05T20:38:59+08:00" />
 <meta itemprop="name" content="函数指针,block与lambda表达式">
 <meta itemprop="description" content="C语言中的函数指针, OjbC中的block,以及C&#43;&#43;和Java中的lambda表达式非常类似. 在学习单个语言时不会想到他们之间的共通点和区">
 <meta itemprop="datePublished" content="2020-07-05T20:38:59&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-05T20:38:59&#43;08:00" />
-<meta itemprop="wordCount" content="2380">
+<meta itemprop="wordCount" content="3880">
 
 
 
@@ -127,8 +127,8 @@
       <div class="post-meta">
         <span class="post-time"> Jul 05 </span>
         
-          <span class="more-meta"> 2380 words </span>
-          <span class="more-meta"> 5 mins read </span>
+          <span class="more-meta"> 3880 words </span>
+          <span class="more-meta"> 8 mins read </span>
         
       </div>
     </header>
@@ -155,6 +155,12 @@
       </ul>
     </li>
     <li><a href="#三objc-block">三,ObjC block</a></li>
+    <li><a href="#heading"></a>
+      <ul>
+        <li><a href="#从c看block本质">从C++看block本质</a></li>
+        <li><a href="#block-的变量捕获-capture">block 的变量捕获 capture</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -583,6 +589,346 @@
 <li>其内部的a被修改了，但是外部的值仍然是原来的值。</li>
 </ul>
 <h2 id="三objc-block">三,ObjC block</h2>
+<h2 id="heading"></h2>
+<h3 id="从c看block本质">从C++看block本质</h3>
+<ul>
+<li>
+<p>首先来看一个最简单的block, 没有返回值，没有参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+   <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;a is %d&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="n">block</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>我们编写的 OC代码，底层实现其实都是 C/C++代码</p>
+</li>
+<li>
+<p>所以要理解 block 的本质， 我们将下边代码转换为 C++ 代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.cpp
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>转为C++代码以后, 我们创建和调用 block 代码如下 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// block的赋值 
+</span><span class="c1"></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">__main_block_impl_0</span><span class="p">(</span><span class="n">__main_block_func_0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">__main_block_desc_0_DATA</span><span class="p">,</span> <span class="n">a</span><span class="p">));</span>
+<span class="c1">// block的调用
+</span><span class="c1"></span><span class="n">block</span><span class="o">-&gt;</span><span class="n">FuncPtr</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// block结构体
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">__main_block_impl_0</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="nc">__block_impl</span> <span class="n">impl</span><span class="p">;</span>					<span class="c1">// 实现
+</span><span class="c1"></span>  <span class="k">struct</span> <span class="nc">__main_block_desc_0</span><span class="o">*</span> <span class="n">Desc</span><span class="p">;</span> <span class="c1">// 描述
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>														<span class="c1">// 捕获的变量
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// block 的实现结构体
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">__block_impl</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="o">*</span><span class="n">isa</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">Flags</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">Reserved</span><span class="p">;</span>
+  <span class="kt">void</span> <span class="o">*</span><span class="n">FuncPtr</span><span class="p">;</span>	<span class="c1">// FuncPtr指向函数的具体实现
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// block 的描述信息
+</span><span class="c1"></span><span class="kd">static</span> <span class="n">struct</span> <span class="n">__main_block_desc_0</span> <span class="o">{</span>
+  <span class="n">size_t</span> <span class="n">reserved</span><span class="o">;</span>
+  <span class="n">size_t</span> <span class="n">Block_size</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// __block_impl 的 funcPtr指向的函数具体实现
+</span><span class="c1">// 就是，我们编写的 ObjC 的 打印 &#34;a is %d&#34;, a
+</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">__main_block_func_0</span><span class="p">(</span><span class="k">struct</span> <span class="nc">__main_block_impl_0</span> <span class="o">*</span><span class="n">__cself</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">__cself</span><span class="o">-&gt;</span><span class="n">a</span><span class="p">;</span> <span class="c1">// bound by copy
+</span><span class="c1"></span>      <span class="n">NSLog</span><span class="p">(</span><span class="o">***</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>经过转为 C++ 代码，分析后发现，我们在 ObjC 中编写的 block 代码，在 C++中转为了<strong>结构体</strong></p>
+</li>
+<li>
+<p>这个结构体中，包含 block 函数的具体实现，block 的size等等</p>
+</li>
+<li>
+<p>并且在 block结构体中，有我们访问的<strong>外部局部变量 int a</strong></p>
+</li>
+</ul>
+<h3 id="block-的变量捕获-capture">block 的变量捕获 capture</h3>
+<h4 id="举例分析">举例分析</h4>
+<ul>
+<li>
+<p>上边的分析中，我们得知 block 访问的外部局部变量，被<strong>捕获</strong>到了block结构体内部</p>
+</li>
+<li>
+<p>为什么要捕获这个变量呢？</p>
+</li>
+<li>
+<p>举个🌰，查看下边代码 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="k">@autoreleasepool</span> <span class="p">{</span>
+        <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+                <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;a is %d&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+            <span class="p">};</span>
+        <span class="p">}</span>
+        <span class="n">block</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>int a 是局部变量, 在花括号结束后， a就释放了</p>
+</li>
+<li>
+<p>既然它释放了，我们在花括号外调用block() 如何访问 a 呢</p>
+</li>
+<li>
+<p>这就用到了<strong>变量捕获</strong>, 要<strong>保证我们在 block 函数体中能访问需要的局部变量，所以需要变量捕获。</strong></p>
+</li>
+</ul>
+<h4 id="c分析">C++分析</h4>
+<ul>
+<li>
+<p>从上述 C++ 代码可以看出，在构建 block 的 结构体时，将 变量 a 传入了 结构体的<strong>构造函数</strong>， 使用<strong>C++中初始化列表</strong>给结构体中的 a 赋值</p>
+</li>
+<li>
+<p>在**__main_block_func_0** 中，访问 a 时。 直接取出来 **int a = __cself-&gt;a;** ,再进行访问</p>
+</li>
+</ul>
+<h4 id="值引用地址引用">值引用？地址引用？</h4>
+<h5 id="值引用">值引用</h5>
+<p>先看如下代码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+ <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span>  <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+     <span class="n">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s">&#34;a is %d&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+ <span class="p">};</span>
+ <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+ <span class="n">block</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>问题： 在 block 中 输出的 a 是10 还是 20 ？</li>
+<li>答案是 <strong>10</strong></li>
+<li>为什么是10呢？ 从上述 C++ 代码分析可以看出来， 我们是直接拿 a 的值直接传入构造函数，为结构体中 a 赋值</li>
+<li>所以这里是<strong>值引用</strong>， 相当于这里直接把 10 捕获到结构体中， 再与 变量 a 没有一点关系。</li>
+<li>这也是为什么，在block中不能给 a 赋值的原因，block中能访问的 a 相当于是常量 10</li>
+</ul>
+<h5 id="地址引用">地址引用</h5>
+<p>那么，如何能实现, 外部 a 变化以后，block内部的 a 也发生变化？以及，如何才能在 block 中修改 a 的值？</p>
+<ul>
+<li>答案就是使用，<strong>引用传递</strong></li>
+<li>通过前边 C++的学习，C++的lambda表达式非常方便改为引用传递，直接在捕获列表中 把 a 变为 &amp;a 即可</li>
+<li>而在 ObjC中不可以显式的设置捕获列表。OC为我们提供了 <strong>__block</strong> 关键字
+<ul>
+<li>使用 __block 修饰的变量，可以在 block函数体内部赋值，并且外部修改后，也可以值同步</li>
+</ul>
+</li>
+<li>我们猜想，使用 __block修饰后的变量，从<strong>值引用遍历了地址引用</strong></li>
+<li>接下来，我们通过C++代码来验证我们的猜想</li>
+</ul>
+<h5 id="从c代码验证__block关键字">从C++代码验证__block关键字</h5>
+<ul>
+<li>同样，我们把 main.m 转化为 main.cpp</li>
+<li>转化为 cpp后，发现代码变得特别复杂，我们这里着重看重点代码，没必要去分析晦涩难懂的大量 C++代码</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">__main_block_impl_0</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="nc">__block_impl</span> <span class="n">impl</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="nc">__main_block_desc_0</span><span class="o">*</span> <span class="n">Desc</span><span class="p">;</span>
+  <span class="n">__Block_byref_a_0</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span> <span class="c1">// by ref
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="n">__Block_byref_a_0</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">,(</span><span class="n">__Block_byref_a_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">__Block_byref_a_0</span><span class="p">),</span> <span class="mi">10</span><span class="p">};</span>
+
+<span class="n">block</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">__main_block_impl_0</span><span class="p">(</span><span class="n">__main_block_func_0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">__main_block_desc_0_DATA</span><span class="p">,</span> <span class="p">(</span><span class="n">__Block_byref_a_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="mi">570425344</span><span class="p">));</span>
+
+<span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">__forwarding</span><span class="o">-&gt;</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="n">block</span><span class="o">-&gt;</span><span class="n">FuncPtr</span><span class="p">)();</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">__Block_byref_a_0</span> <span class="p">{</span>
+  <span class="kt">void</span> <span class="o">*</span><span class="n">__isa</span><span class="p">;</span>
+<span class="n">__Block_byref_a_0</span> <span class="o">*</span><span class="n">__forwarding</span><span class="p">;</span>
+ <span class="kt">int</span> <span class="n">__flags</span><span class="p">;</span>
+ <span class="kt">int</span> <span class="n">__size</span><span class="p">;</span>
+ <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">static</span> <span class="kt">void</span> <span class="nf">__main_block_func_0</span><span class="p">(</span><span class="k">struct</span> <span class="nc">__main_block_impl_0</span> <span class="o">*</span><span class="n">__cself</span><span class="p">)</span> <span class="p">{</span>
+  		<span class="n">__Block_byref_a_0</span> <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="n">__cself</span><span class="o">-&gt;</span><span class="n">a</span><span class="p">;</span> <span class="c1">// bound by ref
+</span><span class="c1"></span>  		<span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">__forwarding</span><span class="o">-&gt;</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>重点代码是以上三段主要代码</p>
+</li>
+<li>
+<p>可以看出，使用 __block修饰的变量a, 在定义时，就被封装成了一个 结构体</p>
+<ul>
+<li><strong>__Block_byref_a_0</strong>
+<ul>
+<li>此结构体中，isa地址是 变量 a 的地址</li>
+<li>有一个指向自己的 <strong>__forwarding</strong>指针指向</li>
+<li>还有 变量 a 的值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>在 构造 <strong>__main_block_impl_0</strong>  时，传入的是 <strong>__Block_byref_a_0</strong> 的地址值</p>
+</li>
+<li>
+<p>当 访问 a  时，直接取到的 __Block_byref_a_0结构体 的 (a.__forwarding-&gt;a) = 20; 地址赋值</p>
+</li>
+<li>
+<p>在取值时，仍然是 通过</p>
+</li>
+</ul>
 
     </div>
 
@@ -634,7 +980,7 @@
       <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
       <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
-  <a href="https://zhangxiongfeiv.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  <a href="https://zhxiongfei.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
