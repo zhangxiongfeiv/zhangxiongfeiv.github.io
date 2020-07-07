@@ -49,7 +49,7 @@
 <meta itemprop="description" content="C语言中的函数指针, OjbC中的block,以及C&#43;&#43;和Java中的lambda表达式非常类似. 在学习单个语言时不会想到他们之间的共通点和区">
 <meta itemprop="datePublished" content="2020-07-07T00:56:36&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-07T00:56:36&#43;08:00" />
-<meta itemprop="wordCount" content="5922">
+<meta itemprop="wordCount" content="7382">
 
 
 
@@ -127,8 +127,8 @@
       <div class="post-meta">
         <span class="post-time"> Jul 07 </span>
         
-          <span class="more-meta"> 5922 words </span>
-          <span class="more-meta"> 12 mins read </span>
+          <span class="more-meta"> 7382 words </span>
+          <span class="more-meta"> 15 mins read </span>
         
       </div>
     </header>
@@ -159,6 +159,11 @@
         <li><a href="#从c看block本质">从C++看block本质</a></li>
         <li><a href="#block-的变量捕获-capture">block 的变量捕获 capture</a></li>
         <li><a href="#block的类型">block的类型</a></li>
+        <li><a href="#block中访问-对象类型的-auto变量">Block中访问 对象类型的 auto变量</a></li>
+        <li><a href="#__block的内存管理">__block的内存管理</a></li>
+        <li><a href="#对象类型的auto变量__block变量">对象类型的auto变量、__block变量</a></li>
+        <li><a href="#被__block修饰的对象类型">被__block修饰的对象类型</a></li>
+        <li><a href="#循环引用问题">循环引用问题</a></li>
       </ul>
     </li>
   </ul>
@@ -1436,6 +1441,157 @@
 </div></li>
 <li>
 <p>可以看到，block调用copy以后，StackBlock果然变为 MallocBlock,  并且其中局部变量可以访问。</p>
+</li>
+<li>
+<p>在ARC环境下，编译器会根据情况自动将栈上的block复制到堆上，比如以下情况</p>
+<ul>
+<li>block作为函数返回值时</li>
+<li>将block赋值给__strong指针时</li>
+<li>block作为Cocoa API中方法名含有usingBlock的方法参数时</li>
+<li>block作为GCD API的方法参数时</li>
+</ul>
+</li>
+<li>
+<p>MRC下block属性的建议写法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="k">@property</span> <span class="p">(</span><span class="k">copy</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">)</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>ARC下block属性的建议写法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="o">-</span> <span class="k">@property</span> <span class="p">(</span><span class="k">strong</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">)</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+<span class="o">-</span> <span class="k">@property</span> <span class="p">(</span><span class="k">copy</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">)</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="block中访问-对象类型的-auto变量">Block中访问 对象类型的 auto变量</h3>
+<ul>
+<li>
+<p>当block内部访问了对象类型的auto变量时</p>
+<ul>
+<li>如果block是在栈上，将不会对auto变量产生强引用</li>
+</ul>
+</li>
+<li>
+<p>如果block被拷贝到堆上</p>
+<ul>
+<li>会调用block内部的copy函数</li>
+<li>copy函数内部会调用_Block_object_assign函数</li>
+<li>_Block_object_assign函数会根据auto变量的修饰符（__strong、__weak、__unsafe_unretained）做出相应的操作，形成强引用（retain）或者弱引用</li>
+</ul>
+</li>
+<li>
+<p>如果block从堆上移除</p>
+<ul>
+<li>会调用block内部的dispose函数</li>
+<li>dispose函数内部会调用_Block_object_dispose函数</li>
+<li>_Block_object_dispose函数会自动释放引用的auto变量（release）</li>
+</ul>
+</li>
+</ul>
+<h3 id="__block的内存管理">__block的内存管理</h3>
+<ul>
+<li>
+<p>当block在栈上时，并不会对__block变量产生强引用</p>
+</li>
+<li>
+<p>当block被copy到堆时</p>
+<ul>
+<li>会调用block内部的copy函数</li>
+<li>copy函数内部会调用_Block_object_assign函数_</li>
+<li>Block_object_assign函数会对__block变量形成强引用（retain）</li>
+</ul>
+</li>
+<li>
+<p>当block从堆中移除时</p>
+<ul>
+<li>会调用block内部的dispose函数</li>
+<li>dispose函数内部会调用_Block_object_dispose函数</li>
+<li>_Block_object_dispose函数会自动释放引用的__block变量（release）</li>
+</ul>
+</li>
+</ul>
+<h3 id="对象类型的auto变量__block变量">对象类型的auto变量、__block变量</h3>
+<ul>
+<li>当block在栈上时，对它们都不会产生强引用</li>
+<li>当block拷贝到堆上时，都会通过copy函数来处理它们
+<ul>
+<li>__block变量（假设变量名叫做a）</li>
+<li>Block_object_assign((void*)&amp;dst-&gt;a, (void*)src-&gt;a, 8/*BLOCK_FIELD_IS_BYREF*/);</li>
+</ul>
+</li>
+<li>对象类型的auto变量（假设变量名叫做p）
+<ul>
+<li>_Block_object_assign((void*)&amp;dst-&gt;p, (void*)src-&gt;p, 3/*BLOCK_FIELD_IS_OBJECT*/)</li>
+</ul>
+</li>
+<li>当block从堆上移除时，都会通过dispose函数来释放它们
+<ul>
+<li>__block变量（假设变量名叫做a）
+<ul>
+<li>Block_object_dispose((void*)src-&gt;a, 8/*BLOCK_FIELD_IS_BYREF*/);</li>
+</ul>
+</li>
+<li>对象类型的auto变量（假设变量名叫做p）</li>
+<li>_Block_object_dispose((void*)src-&gt;p, 3/*BLOCK_FIELD_IS_OBJECT*/);</li>
+</ul>
+</li>
+</ul>
+<h3 id="被__block修饰的对象类型">被__block修饰的对象类型</h3>
+<ul>
+<li>
+<p>当__block变量在栈上时，不会对指向的对象产生强引用</p>
+</li>
+<li>
+<p>当__block变量被copy到堆时</p>
+<ul>
+<li>会调用__block变量内部的copy函数</li>
+<li>copy函数内部会调用_Block_object_assign函数</li>
+<li>_Block_object_assign函数会根据所指向对象的修饰符（__strong、__weak、__unsafe_unretained）做出相应的操作，形成强引用（retain）或者弱引用（注意：这里仅限于ARC时会retain，MRC时不会retain）</li>
+</ul>
+</li>
+<li>
+<p>如果__block变量从堆上移除</p>
+<ul>
+<li>会调用__block变量内部的dispose函数</li>
+<li>dispose函数内部会调用_Block_object_dispose函数</li>
+<li>_Block_object_dispose函数会自动释放指向的对象（release）</li>
+</ul>
+</li>
+</ul>
+<h3 id="循环引用问题">循环引用问题</h3>
+<h4 id="解决循环引用问题---arc">解决循环引用问题 - ARC</h4>
+<ul>
+<li>
+<p>用__weak、__unsafe_unretained解决</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggiv016t1hj30ka09uwh9.jpg" alt="截屏2020-07-08上午12.10.36"></p>
+</li>
+<li>
+<p>用__block解决（必须要调用block）</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggiv0qu8f5j31ao07idm4.jpg" alt="截屏2020-07-08上午12.11.19"></p>
+</li>
+</ul>
+<h4 id="解决循环引用问题---mrc">解决循环引用问题 - MRC</h4>
+<ul>
+<li>
+<p>用__unsafe_unretained解决</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggiv1gjdbuj30k004ugmv.jpg" alt="截屏2020-07-08上午12.12.01"></p>
+</li>
+<li>
+<p>用__block解决</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggiv2lw0cjj30eo04mq3x.jpg" alt="截屏2020-07-08上午12.13.06"></p>
 </li>
 </ul>
 
