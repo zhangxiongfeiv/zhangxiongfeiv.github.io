@@ -49,7 +49,7 @@
 <meta itemprop="description" content="抽象类 什么是抽象类? 在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，并不是所有的类都是用来描绘对象的，如果一个类中没有包含足够">
 <meta itemprop="datePublished" content="2020-07-04T17:57:39&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-04T17:57:39&#43;08:00" />
-<meta itemprop="wordCount" content="1413">
+<meta itemprop="wordCount" content="1802">
 
 
 
@@ -127,8 +127,8 @@
       <div class="post-meta">
         <span class="post-time"> Jul 04 </span>
         
-          <span class="more-meta"> 1413 words </span>
-          <span class="more-meta"> 3 mins read </span>
+          <span class="more-meta"> 1802 words </span>
+          <span class="more-meta"> 4 mins read </span>
         
       </div>
     </header>
@@ -152,9 +152,15 @@
     </li>
     <li><a href="#objc中模拟抽象类的使用">ObjC中模拟抽象类的使用</a>
       <ul>
-        <li></li>
+        <li><a href="#masonry">Masonry</a></li>
+        <li><a href="#nscoder">NSCoder</a></li>
       </ul>
     </li>
+  </ul>
+
+  <ul>
+    <li><a href="#declaration">Declaration</a></li>
+    <li><a href="#overview">Overview</a></li>
   </ul>
 </nav>
   </div>
@@ -422,7 +428,7 @@
 </li>
 </ul>
 <h2 id="objc中模拟抽象类的使用">ObjC中模拟抽象类的使用</h2>
-<h4 id="masonry">Masonry</h4>
+<h3 id="masonry">Masonry</h3>
 <p><strong>Masonry</strong>中的<strong>MASConstraint</strong>就是一个抽象类。</p>
 <p>拿出一段代码举例 :</p>
 <div class="highlight"><div class="chroma">
@@ -478,7 +484,56 @@
 @interface MASViewConstraint : MASConstraint &lt;NSCopying&gt;
 </code></pre></td></tr></table>
 </div>
-</div><p>参考文献:</p>
+</div><h3 id="nscoder">NSCoder</h3>
+<ul>
+<li>NSCoder 是一个抽象类</li>
+<li>不能被直接使用，只能实例化子类并使用子类。</li>
+<li>以下内容来自苹果官方文档</li>
+</ul>
+<blockquote>
+<h1 id="nscoder-1">NSCoder</h1>
+<p>An abstract class that serves as the basis for objects that enable archiving and distribution of other objects.</p>
+<p>Language</p>
+<ul>
+<li><a href="apple-reference-documentation://hs-QohqVnU">Swift</a></li>
+<li>Objective-C</li>
+</ul>
+<p>SDKs</p>
+<ul>
+<li>iOS 2.0+</li>
+<li>macOS 10.0+</li>
+<li>tvOS 9.0+</li>
+<li>watchOS 2.0+</li>
+<li>Mac Catalyst 13.0+</li>
+</ul>
+<p>Framework</p>
+<ul>
+<li>Foundation</li>
+</ul>
+<p>On This Page</p>
+<ul>
+<li><a href="apple-reference-documentation://hc-QohqVnU#declarations">Declaration</a></li>
+<li><a href="apple-reference-documentation://hc-QohqVnU#overview">Overview</a></li>
+<li><a href="apple-reference-documentation://hc-QohqVnU#topics">Topics</a></li>
+<li><a href="apple-reference-documentation://hc-QohqVnU#relationships">Relationships</a></li>
+</ul>
+<hr>
+<h2 id="declaration">Declaration</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">@interface NSCoder : NSObject
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="overview">Overview</h2>
+<p><code>NSCoder</code> declares the interface used by concrete subclasses to transfer objects and other values between memory and some other format. This capability provides the basis for archiving (storing objects and data on disk) and distribution (copying objects and data items between different processes or threads). The concrete subclasses provided by Foundation for these purposes are <a href="apple-reference-documentation://hcV2yyhcOH"><code>NSArchiver</code></a>, <a href="apple-reference-documentation://hcciqXyX7U"><code>NSUnarchiver</code></a>, <a href="apple-reference-documentation://hc0T6C3j_2"><code>NSKeyedArchiver</code></a>, <a href="apple-reference-documentation://hcADiXUh9J"><code>NSKeyedUnarchiver</code></a>, and <a href="apple-reference-documentation://hcx8TY-cmz"><code>NSPortCoder</code></a>. Concrete subclasses of <code>NSCoder</code> are “coder classes”, and instances of these classes are “coder objects” (or simply “coders”). A coder that can only encode values is an “encoder”, and one that can only decode values is a “decoder”.</p>
+<p><code>NSCoder</code> operates on objects, scalars, C arrays, structures, strings, and on pointers to these types. It doesn’t handle types whose implementation varies across platforms, such as <code>union</code>, <code>void *</code>, function pointers, and long chains of pointers. A coder stores object type information along with the data, so an object decoded from a stream of bytes is normally of the same class as the object that was originally encoded into the stream. An object can change its class when encoded, however; this is described in <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Archiving/Archiving.html#//apple_ref/doc/uid/10000047i">Archives and Serializations Programming Guide</a>.</p>
+<p>The AVFoundation framework adds methods to the <a href="apple-reference-documentation://hc-QohqVnU"><code>NSCoder</code></a> class to make it easier to create archives including Core Media time structures, and extract Core Media time structure from archives.</p>
+<p>&mdash;&ndash;引用自苹果官方文档</p>
+</blockquote>
+<p>参考文献:</p>
 <p><a href="http://www.veryitman.com/2019/04/21/%E7%94%A8Objective-C%E5%AE%9E%E7%8E%B0%E6%8A%BD%E8%B1%A1%E7%B1%BB/">用Objective-C实现抽象类</a></p>
 <p><a href="https://www.jianshu.com/p/fa3705fac11f">Objective-C中的抽象类</a></p>
 <p><a href="https://www.runoob.com/java/java-abstraction.html">Java 抽象类</a></p>
