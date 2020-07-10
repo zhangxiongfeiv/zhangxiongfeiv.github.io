@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>贪心算法 on API调用工程师的进阶</title>
+    <link>https://zhxiongfei.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 贪心算法 on API调用工程师的进阶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 10 Jul 2020 13:01:07 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhxiongfei.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>团灭买卖股票问题</title>
+      <link>https://zhxiongfei.github.io/post/%E5%9B%A2%E7%81%AD%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 10 Jul 2020 13:01:07 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E5%9B%A2%E7%81%AD%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E9%97%AE%E9%A2%98/</guid>
+      <description>121. 买卖股票的最佳时机 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。 如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一</description>
+    </item>
+    
+  </channel>
+</rss>
