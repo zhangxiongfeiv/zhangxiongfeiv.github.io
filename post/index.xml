@@ -6,7 +6,7 @@
     <description>Recent content in Posts on API调用工程师的进阶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Jul 2020 13:01:07 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2020 14:17:18 +0800</lastBuildDate>
     
 	<atom:link href="https://zhxiongfei.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,24 @@
       
       <guid>https://zhxiongfei.github.io/post/leetcode%E5%88%B7%E9%A2%98%E5%9B%9E%E9%A1%BE%E4%B8%8E%E6%80%BB%E7%BB%93/</guid>
       <description>LeetCode刷题回顾与总结 2020.5.27记 截止 5.27日，leetcode总刷题数到达200，写一篇文章以回顾，总结。 起因 非计算机专</description>
+    </item>
+    
+    <item>
+      <title>装饰器模式与ObjC的Category</title>
+      <link>https://zhxiongfei.github.io/post/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8Eobjc%E7%9A%84category/</link>
+      <pubDate>Mon, 13 Jul 2020 14:17:18 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8Eobjc%E7%9A%84category/</guid>
+      <description>装饰器模式 装饰器模式(Decorator Pattern) 允许向一个现有的对象添加新的功能，同时又不改变其结构。这种类型的设计模式属于结构型模式，它是作为现</description>
+    </item>
+    
+    <item>
+      <title>装饰器模式在ObjC中的应用</title>
+      <link>https://zhxiongfei.github.io/post/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E5%9C%A8objc%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Sat, 11 Jul 2020 22:50:15 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E5%9C%A8objc%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
+      <description>装饰器模式</description>
     </item>
     
     <item>
