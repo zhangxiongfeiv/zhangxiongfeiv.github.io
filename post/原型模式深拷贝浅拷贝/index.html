@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>原型模式,深拷贝,浅拷贝 - API调用工程师的进阶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="原型模式 原型模式（Prototype Pattern）是用于创建重复的对象，同时又能保证性能。这种类型的设计模式属于创建型模式，它提供了一种创" /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhxiongfei.github.io/post/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="原型模式,深拷贝,浅拷贝" />
+<meta property="og:description" content="原型模式 原型模式（Prototype Pattern）是用于创建重复的对象，同时又能保证性能。这种类型的设计模式属于创建型模式，它提供了一种创" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhxiongfei.github.io/post/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/" />
+<meta property="article:published_time" content="2020-07-14T11:54:29+08:00" />
+<meta property="article:modified_time" content="2020-07-14T11:54:29+08:00" />
+<meta itemprop="name" content="原型模式,深拷贝,浅拷贝">
+<meta itemprop="description" content="原型模式 原型模式（Prototype Pattern）是用于创建重复的对象，同时又能保证性能。这种类型的设计模式属于创建型模式，它提供了一种创">
+<meta itemprop="datePublished" content="2020-07-14T11:54:29&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-14T11:54:29&#43;08:00" />
+<meta itemprop="wordCount" content="2755">
+
+
+
+<meta itemprop="keywords" content="设计模式,iOS," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="原型模式,深拷贝,浅拷贝"/>
+<meta name="twitter:description" content="原型模式 原型模式（Prototype Pattern）是用于创建重复的对象，同时又能保证性能。这种类型的设计模式属于创建型模式，它提供了一种创"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">原型模式,深拷贝,浅拷贝</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Jul 14 </span>
+        
+          <span class="more-meta"> 2755 words </span>
+          <span class="more-meta"> 6 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#原型模式">原型模式</a></li>
+    <li><a href="#介绍">介绍</a></li>
+    <li><a href="#java-原型模式">Java 原型模式</a></li>
+    <li><a href="#objc-原型模式">Objc 原型模式</a></li>
+    <li><a href="#objc-foundation类的拷贝">Objc Foundation类的拷贝</a>
+      <ul>
+        <li><a href="#nsstring的拷贝">NSString的拷贝</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="原型模式">原型模式</h2>
+<blockquote>
+<p>原型模式（Prototype Pattern）是用于创建重复的对象，同时又能保证性能。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。</p>
+<p>这种模式是实现了一个原型接口，该接口用于创建当前对象的克隆。当直接创建对象的代价比较大时，则采用这种模式。例如，一个对象需要在一个高代价的数据库操作之后被创建。我们可以缓存该对象，在下一个请求时返回它的克隆，在需要的时候更新数据库，以此来减少数据库调用。</p>
+</blockquote>
+<blockquote>
+<h2 id="介绍">介绍</h2>
+<p>**意图：**用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。</p>
+<p>**主要解决：**在运行期建立和删除原型。</p>
+<p><strong>何时使用：</strong> 1、当一个系统应该独立于它的产品创建，构成和表示时。 2、当要实例化的类是在运行时刻指定时，例如，通过动态装载。 3、为了避免创建一个与产品类层次平行的工厂类层次时。 4、当一个类的实例只能有几个不同状态组合中的一种时。建立相应数目的原型并克隆它们可能比每次用合适的状态手工实例化该类更方便一些。</p>
+<p>**如何解决：**利用已有的一个原型对象，快速地生成和原型对象一样的实例。</p>
+<p><strong>关键代码：</strong> 1、实现克隆操作，在 JAVA 继承 Cloneable，重写 clone()，在 .NET 中可以使用 Object 类的 MemberwiseClone() 方法来实现对象的浅拷贝或通过序列化的方式来实现深拷贝。 2、原型模式同样用于隔离类对象的使用者和具体类型（易变类）之间的耦合关系，它同样要求这些&quot;易变类&quot;拥有稳定的接口。</p>
+<p><strong>应用实例：</strong> 1、细胞分裂。 2、JAVA 中的 Object clone() 方法。</p>
+<p><strong>优点：</strong> 1、性能提高。 2、逃避构造函数的约束。</p>
+<p><strong>缺点：</strong> 1、配备克隆方法需要对类的功能进行通盘考虑，这对于全新的类不是很难，但对于已有的类不一定很容易，特别当一个类引用不支持串行化的间接对象，或者引用含有循环结构的时候。 2、必须实现 Cloneable 接口。</p>
+<p><strong>使用场景：</strong> 1、资源优化场景。 2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。 3、性能和安全要求的场景。 4、通过 new 产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。 5、一个对象多个修改者的场景。 6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。 7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过 clone 的方法创建一个对象，然后由工厂方法提供给调用者。原型模式已经与 Java 融为浑然一体，大家可以随手拿来使用。</p>
+<p>**注意事项：**与通过对一个类进行实例化来构造新对象不同的是，原型模式是通过拷贝一个现有对象生成新对象的。浅拷贝实现 Cloneable，重写，深拷贝是通过实现 Serializable 读取二进制流。</p>
+</blockquote>
+<h2 id="java-原型模式">Java 原型模式</h2>
+<ul>
+<li>
+<p>创建抽象类 Shape, 并实现 <strong>Cloneable</strong>接口, 实现 clone() 方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Shape</span> <span class="kd">implements</span> <span class="n">Cloneable</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="n">String</span> <span class="n">type</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getType</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">type</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setType</span><span class="o">(</span><span class="n">String</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="n">type</span><span class="o">;</span>
+    <span class="o">}</span>
+  
+    <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">draw</span><span class="o">();</span>
+  
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">clone</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Object</span> <span class="n">clone</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">clone</span> <span class="o">=</span> <span class="kd">super</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">CloneNotSupportedException</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">clone</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建 上面抽象类的具体实现类</p>
+<ul>
+<li>
+<p>Rectangle.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Rectangle</span> <span class="kd">extends</span> <span class="n">Shape</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Rectangle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;Rectangle&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kt">void</span> <span class="nf">draw</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Inside Rectangle::draw() method.&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Squre.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Square</span> <span class="kd">extends</span> <span class="n">Shape</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Square</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;Square&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kt">void</span> <span class="nf">draw</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Inside Square::draw() method.&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Ciecle.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Circle</span> <span class="kd">extends</span> <span class="n">Shape</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Circle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;Circle&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kt">void</span> <span class="nf">draw</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Inside Circle::draw() method.&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>创建一个类 ShareCache 从数据库获取实体类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ShareCache</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Hashtable</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Shape</span><span class="o">&gt;</span> <span class="n">shareMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Hashtable</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Shape</span><span class="o">&gt;();</span>
+  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Shape</span> <span class="nf">getShape</span><span class="o">(</span><span class="n">String</span> <span class="n">shapeId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Shape</span> <span class="n">cachedShape</span> <span class="o">=</span> <span class="n">shareMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">shapeId</span><span class="o">);</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">Shape</span><span class="o">)</span> <span class="n">cachedShape</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+    <span class="o">}</span>
+  
+    <span class="c1">// 对每种形状都运行数据库查询，并创建该形状
+</span><span class="c1"></span>    <span class="c1">// shapeMap.put(shapeKey, shape);
+</span><span class="c1"></span>    <span class="c1">// 例如，我们要添加三种形状
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">loadCache</span><span class="o">(){</span>
+        <span class="n">Circle</span> <span class="n">circle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Circle</span><span class="o">();</span>
+        <span class="n">circle</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">&#34;1&#34;</span><span class="o">);</span>
+        <span class="n">shareMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">circle</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span> <span class="n">circle</span><span class="o">);</span>
+  
+        <span class="n">Square</span> <span class="n">square</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Square</span><span class="o">();</span>
+        <span class="n">square</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">&#34;2&#34;</span><span class="o">);</span>
+        <span class="n">shareMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">square</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span> <span class="n">square</span><span class="o">);</span>
+  
+        <span class="n">Rectangle</span> <span class="n">rectangle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Rectangle</span><span class="o">();</span>
+        <span class="n">rectangle</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">&#34;3&#34;</span><span class="o">);</span>
+        <span class="n">shareMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">rectangle</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span> <span class="n">rectangle</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>测试代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  
+        <span class="n">ShareCache</span><span class="o">.</span><span class="na">loadCache</span><span class="o">();</span>
+  
+        <span class="n">Shape</span> <span class="n">cloneShape1</span> <span class="o">=</span> <span class="o">(</span><span class="n">Shape</span><span class="o">)</span> <span class="n">ShareCache</span><span class="o">.</span><span class="na">getShape</span><span class="o">(</span><span class="s">&#34;1&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Shape : &#34;</span> <span class="o">+</span> <span class="n">cloneShape1</span><span class="o">.</span><span class="na">getType</span><span class="o">());</span>
+  
+        <span class="n">Shape</span> <span class="n">cloneShape2</span> <span class="o">=</span> <span class="o">(</span><span class="n">Shape</span><span class="o">)</span> <span class="n">ShareCache</span><span class="o">.</span><span class="na">getShape</span><span class="o">(</span><span class="s">&#34;2&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Shape : &#34;</span> <span class="o">+</span> <span class="n">cloneShape2</span><span class="o">.</span><span class="na">getType</span><span class="o">());</span>
+  
+        <span class="n">Shape</span> <span class="n">cloneShape3</span> <span class="o">=</span> <span class="o">(</span><span class="n">Shape</span><span class="o">)</span> <span class="n">ShareCache</span><span class="o">.</span><span class="na">getShape</span><span class="o">(</span><span class="s">&#34;3&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Shape : &#34;</span> <span class="o">+</span> <span class="n">cloneShape3</span><span class="o">.</span><span class="na">getType</span><span class="o">());</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>这样，我们就利用 ShareCache类, 原型模式创建了各种 图形实体对象.</p>
+</li>
+</ul>
+<h2 id="objc-原型模式">Objc 原型模式</h2>
+<ul>
+<li>
+<p>在ObjC中，使用原型模式创建自定义对象, 比如 Person类</p>
+<ul>
+<li>
+<p>首先需要遵守 <strong>NSCopying</strong>协议</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="k">@interface</span> <span class="nc">Person</span> : <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">NSCopying</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>实现 <strong>copyWithZone:</strong> 方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">copyWithZone:</span><span class="p">(</span><span class="n">nullable</span> <span class="n">NSZone</span> <span class="o">*</span><span class="p">)</span><span class="nv">zone</span><span class="p">{</span>
+    <span class="n">Person</span> <span class="o">*</span><span class="n">copyObj</span> <span class="o">=</span> <span class="p">[[[</span><span class="nb">self</span> <span class="k">class</span><span class="p">]</span> <span class="nl">allocWithZone</span><span class="p">:</span><span class="n">zone</span><span class="p">]</span> <span class="nl">initWithName</span><span class="p">:</span><span class="n">_name</span> <span class="nl">gender</span><span class="p">:</span><span class="n">_gender</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">copyObj</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>这时，我们就可以利用 <strong>copy</strong> 来创建 Person 对象了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="k">@autoreleasepool</span> <span class="p">{</span>
+        <span class="n">Person</span> <span class="o">*</span><span class="n">p1</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Person</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithName</span><span class="p">:</span><span class="s">@&#34;Jack&#34;</span> <span class="nl">gender</span><span class="p">:</span><span class="s">@&#34;male&#34;</span><span class="p">];</span>
+        <span class="n">Person</span> <span class="o">*</span><span class="n">p2</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="k">copy</span><span class="p">;</span>
+            
+        <span class="n">p2</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@&#34;Rose&#34;</span><span class="p">;</span>
+        <span class="n">p2</span><span class="p">.</span><span class="n">gender</span> <span class="o">=</span> <span class="s">@&#34;female&#34;</span><span class="p">;</span>
+            
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@&#34;</span><span class="p">,</span><span class="n">p1</span><span class="p">);</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@&#34;</span><span class="p">,</span><span class="n">p2</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>我们覆写了 <strong>description</strong> 方法，最终打印结果如下 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="p">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">description</span><span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&#34;%@ is %@, &lt;memory address: %p&gt;&#34;</span><span class="p">,</span> <span class="n">_name</span><span class="p">,</span> <span class="n">_gender</span><span class="p">,</span> <span class="nb">self</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">测试[60329:1050217] Jack is male, &lt;memory address: 0x10059d840&gt;
+测试[60329:1050217] Rose is female, &lt;memory address: 0x10059e010&gt;
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>可以看到, 打印出的内存地址不同，我们把这种<strong>copy</strong>称为<strong>深拷贝</strong> (<strong>deep copy</strong>), 也称为<strong>值拷贝</strong></p>
+<ul>
+<li>我们修改 p2 不会对 p1 造成影响， 因为栈中p1 p2两个指针指向堆中两个不同的地址</li>
+</ul>
+<p>![屏幕快照 2020-07-16 下午5.32.03](/Users/liuxiaoyong/Desktop/屏幕快照 2020-07-16 下午5.32.03.png)</p>
+</li>
+<li>
+<p>深拷贝的原因，是我们在 copyWithZone 方法中，重新 alloc 了内存空间 , 那假如我们不重新申请内存空间呢?</p>
+</li>
+<li>
+<p>重写copyWithZone 方法如下 :</p>
+<ul>
+<li>没有重新申请内存空间</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">copyWithZone:</span><span class="p">(</span><span class="n">nullable</span> <span class="n">NSZone</span> <span class="o">*</span><span class="p">)</span><span class="nv">zone</span><span class="p">{</span>
+    <span class="n">Person</span> <span class="o">*</span><span class="n">copyObj</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">initWithName</span><span class="p">:</span><span class="n">_name</span> <span class="nl">gender</span><span class="p">:</span><span class="n">_gender</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">copyObj</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>main函数中代码不改动，输出结果如下:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">测试[60355:1053881] Rose is female, &lt;memory address: 0x100612520&gt;
+测试[60355:1053881] Rose is female, &lt;memory address: 0x100612520&gt;
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>发现 对 p2的修改，影响了 p1， 并且 p1 和 p2的内存地址是一样的。</li>
+</ul>
+</li>
+<li>
+<p>这种copy,我们称为 <strong>浅拷贝(Shadow Copy)</strong>, 也叫<strong>指针拷贝</strong></p>
+</li>
+<li>
+<p>没有为 p2 申请新的堆空间, 而是将 p2指针执行 p1 指向的地址 。</p>
+</li>
+<li>
+<p>p2的修改，修改了堆空间的值，对p1产生影响</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="objc-foundation类的拷贝">Objc Foundation类的拷贝</h2>
+<ul>
+<li><strong>NSString, NSArray, NSDictionary</strong>等类型，都实现了 <strong>NSCopying</strong> 协议, 所以这些类，可以通过 copy 创建.</li>
+<li>本文以 <strong>NSString</strong> 为例, 说明何时为 <strong>深拷贝</strong>， 何时为<strong>浅拷贝</strong></li>
+</ul>
+<h3 id="nsstring的拷贝">NSString的拷贝</h3>
+<ul>
+<li>自定义对象的 <strong>copyWithZone</strong>: 方法，是我们自己实现，我们清楚其是<strong>深拷贝</strong>还是<strong>浅拷贝</strong></li>
+<li>但是 <strong>NSString</strong> 的 copy 是深拷贝还是浅拷贝呢 ?</li>
+<li>不能看源代码，只能代码验证咯</li>
+</ul>
+<h4 id="分四种情况验证">分四种情况验证</h4>
+<ul>
+<li><strong>不可变</strong>字符串，<strong>copy</strong> 	<strong>-&gt; 浅拷贝</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc">        <span class="n">NSString</span> <span class="o">*</span><span class="n">str1</span> <span class="o">=</span> <span class="s">@&#34;I am a String&#34;</span><span class="p">;</span>
+        <span class="n">NSString</span> <span class="o">*</span><span class="n">str2</span> <span class="o">=</span> <span class="n">str1</span><span class="p">.</span><span class="k">copy</span><span class="p">;</span>
+        
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@,&lt;memory address: %p&gt;&#34;</span><span class="p">,</span> <span class="n">str1</span><span class="p">,</span> <span class="n">str1</span><span class="p">);</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@,&lt;memory address: %p&gt;&#34;</span><span class="p">,</span> <span class="n">str1</span><span class="p">,</span> <span class="n">str2</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="err">测试</span><span class="p">[</span><span class="mi">60501</span><span class="o">:</span><span class="mi">1063290</span><span class="p">]</span> <span class="n">I</span> <span class="n">am</span> <span class="n">a</span> <span class="n">String</span><span class="p">,</span><span class="o">&lt;</span><span class="n">memory</span> <span class="nl">address</span><span class="p">:</span> <span class="mh">0x1000020a8</span><span class="o">&gt;</span>
+<span class="err">测试</span><span class="p">[</span><span class="mi">60501</span><span class="o">:</span><span class="mi">1063290</span><span class="p">]</span> <span class="n">I</span> <span class="n">am</span> <span class="n">a</span> <span class="n">String</span><span class="p">,</span><span class="o">&lt;</span><span class="n">memory</span> <span class="nl">address</span><span class="p">:</span> <span class="mh">0x1000020a8</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>可变</strong>字符串, <strong>copy</strong>	-&gt; <strong>深拷贝</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc">        <span class="n">NSMutableString</span> <span class="o">*</span><span class="n">str1</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableString</span> <span class="nl">stringWithString</span><span class="p">:</span><span class="s">@&#34;I am a String&#34;</span><span class="p">];</span>
+        <span class="n">NSString</span> <span class="o">*</span><span class="n">str2</span> <span class="o">=</span> <span class="n">str1</span><span class="p">.</span><span class="k">copy</span><span class="p">;</span>
+        
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@,&lt;memory address: %p&gt;&#34;</span><span class="p">,</span> <span class="n">str1</span><span class="p">,</span> <span class="n">str1</span><span class="p">);</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@,&lt;memory address: %p&gt;&#34;</span><span class="p">,</span> <span class="n">str1</span><span class="p">,</span> <span class="n">str2</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="err">测试</span><span class="p">[</span><span class="mi">60516</span><span class="o">:</span><span class="mi">1064232</span><span class="p">]</span> <span class="n">I</span> <span class="n">am</span> <span class="n">a</span> <span class="n">String</span><span class="p">,</span><span class="o">&lt;</span><span class="n">memory</span> <span class="nl">address</span><span class="p">:</span> <span class="mh">0x100608d40</span><span class="o">&gt;</span>
+<span class="err">测试</span><span class="p">[</span><span class="mi">60516</span><span class="o">:</span><span class="mi">1064232</span><span class="p">]</span> <span class="n">I</span> <span class="n">am</span> <span class="n">a</span> <span class="n">String</span><span class="p">,</span><span class="o">&lt;</span><span class="n">memory</span> <span class="nl">address</span><span class="p">:</span> <span class="mh">0x100608e00</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>不可变</strong>字符串, <strong>mutableCopy</strong> -&gt; <strong>深拷贝</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc">        <span class="n">NSString</span> <span class="o">*</span><span class="n">str1</span> <span class="o">=</span> <span class="s">@&#34;I am a String&#34;</span><span class="p">;</span>
+        <span class="n">NSString</span> <span class="o">*</span><span class="n">str2</span> <span class="o">=</span> <span class="n">str1</span><span class="p">.</span><span class="n">mutableCopy</span><span class="p">;</span>
+        
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@,&lt;memory address: %p&gt;&#34;</span><span class="p">,</span> <span class="n">str1</span><span class="p">,</span> <span class="n">str1</span><span class="p">);</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@,&lt;memory address: %p&gt;&#34;</span><span class="p">,</span> <span class="n">str1</span><span class="p">,</span> <span class="n">str2</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="err">测试</span><span class="p">[</span><span class="mi">60527</span><span class="o">:</span><span class="mi">1065196</span><span class="p">]</span> <span class="n">I</span> <span class="n">am</span> <span class="n">a</span> <span class="n">String</span><span class="p">,</span><span class="o">&lt;</span><span class="n">memory</span> <span class="nl">address</span><span class="p">:</span> <span class="mh">0x1000020a8</span><span class="o">&gt;</span>
+<span class="err">测试</span><span class="p">[</span><span class="mi">60527</span><span class="o">:</span><span class="mi">1065196</span><span class="p">]</span> <span class="n">I</span> <span class="n">am</span> <span class="n">a</span> <span class="n">String</span><span class="p">,</span><span class="o">&lt;</span><span class="n">memory</span> <span class="nl">address</span><span class="p">:</span> <span class="mh">0x101852a10</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>可变</strong>字符串, <strong>mutableCopy</strong> -&gt; <strong>深拷贝</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc">        <span class="n">NSMutableString</span> <span class="o">*</span><span class="n">str1</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableString</span> <span class="nl">stringWithString</span><span class="p">:</span><span class="s">@&#34;I am a String&#34;</span><span class="p">];</span>
+        <span class="n">NSString</span> <span class="o">*</span><span class="n">str2</span> <span class="o">=</span> <span class="n">str1</span><span class="p">.</span><span class="n">mutableCopy</span><span class="p">;</span>
+        
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@,&lt;memory address: %p&gt;&#34;</span><span class="p">,</span> <span class="n">str1</span><span class="p">,</span> <span class="n">str1</span><span class="p">);</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&#34;%@,&lt;memory address: %p&gt;&#34;</span><span class="p">,</span> <span class="n">str1</span><span class="p">,</span> <span class="n">str2</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-objc" data-lang="objc"><span class="err">测试</span><span class="p">[</span><span class="mi">60539</span><span class="o">:</span><span class="mi">1066040</span><span class="p">]</span> <span class="n">I</span> <span class="n">am</span> <span class="n">a</span> <span class="n">String</span><span class="p">,</span><span class="o">&lt;</span><span class="n">memory</span> <span class="nl">address</span><span class="p">:</span> <span class="mh">0x100554890</span><span class="o">&gt;</span>
+<span class="err">测试</span><span class="p">[</span><span class="mi">60539</span><span class="o">:</span><span class="mi">1066040</span><span class="p">]</span> <span class="n">I</span> <span class="n">am</span> <span class="n">a</span> <span class="n">String</span><span class="p">,</span><span class="o">&lt;</span><span class="n">memory</span> <span class="nl">address</span><span class="p">:</span> <span class="mh">0x100554950</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="结论">结论</h4>
+<p>通过以上代码分析，可以得出结论 :</p>
+<ul>
+<li><strong>[immutableObj copy]  -&gt; 浅复制</strong></li>
+<li><strong>[immutableObj mutableCopy]  -&gt; 深复制</strong></li>
+<li><strong>[mutableObj copy]  -&gt; 深复制</strong></li>
+<li><strong>[mutableObj copy]  -&gt; 深复制</strong></li>
+</ul>
+<p>以上结论同样适用于 <strong>NSArray</strong>, <strong>NSDictionary</strong> 等数据结构.</p>
+<p>参考文献</p>
+<p><a href="https://www.runoob.com/design-pattern/prototype-pattern.html">菜鸟教程</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Jul 14
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+          <a href="/tags/ios/">iOS</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/leetcode%E5%88%B7%E9%A2%98%E5%9B%9E%E9%A1%BE%E4%B8%8E%E6%80%BB%E7%BB%93/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">LeetCode刷题回顾与总结</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8Eobjc%E7%9A%84category/">
+            <span class="next-text nav-default">装饰器模式与ObjC的Category</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhxiongfei.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

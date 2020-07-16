@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>原型模式,深拷贝,浅拷贝</title>
+      <link>https://zhxiongfei.github.io/post/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/</link>
+      <pubDate>Tue, 14 Jul 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/</guid>
+      <description>原型模式 原型模式（Prototype Pattern）是用于创建重复的对象，同时又能保证性能。这种类型的设计模式属于创建型模式，它提供了一种创</description>
+    </item>
+    
+    <item>
       <title>装饰器模式与ObjC的Category</title>
       <link>https://zhxiongfei.github.io/post/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8Eobjc%E7%9A%84category/</link>
       <pubDate>Mon, 13 Jul 2020 14:17:18 +0800</pubDate>
