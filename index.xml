@@ -26,7 +26,7 @@
       <pubDate>Tue, 14 Jul 2020 11:54:29 +0800</pubDate>
       
       <guid>https://zhxiongfei.github.io/post/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/</guid>
-      <description>原型模式 原型模式（Prototype Pattern）是用于创建重复的对象，同时又能保证性能。这种类型的设计模式属于创建型模式，它提供了一种创</description>
+      <description>原型模式 本文概念主要摘取书籍**《大话设计模式》**, ObjC的深浅拷贝主要是对**《苹果开发文档 》**相关内容的理解和翻译，以及写代码进行</description>
     </item>
     
     <item>
