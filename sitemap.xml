@@ -9,22 +9,36 @@
   </url>
   
   <url>
+    <loc>https://zhxiongfei.github.io/tags/apple-developer-documentation%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92/</loc>
+    <lastmod>2020-07-21T11:52:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://zhxiongfei.github.io/tags/ios/</loc>
-    <lastmod>2020-07-14T11:54:29+08:00</lastmod>
+    <lastmod>2020-07-21T11:52:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zhxiongfei.github.io/post/</loc>
-    <lastmod>2020-07-14T11:54:29+08:00</lastmod>
+    <lastmod>2020-07-21T11:52:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zhxiongfei.github.io/tags/</loc>
-    <lastmod>2020-07-14T11:54:29+08:00</lastmod>
+    <lastmod>2020-07-21T11:52:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhxiongfei.github.io/post/using-responders-and-the-responder-chain-to-handle-events/</loc>
+    <lastmod>2020-07-21T11:52:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

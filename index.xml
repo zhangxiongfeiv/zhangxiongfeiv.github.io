@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Using Responders and the Responder Chain to Handle Events</title>
+      <link>https://zhxiongfei.github.io/post/using-responders-and-the-responder-chain-to-handle-events/</link>
+      <pubDate>Tue, 21 Jul 2020 11:52:08 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/using-responders-and-the-responder-chain-to-handle-events/</guid>
+      <description>Using Responders and the Responder Chain to Handle Events 原文地址 : Using Responders and the Responder Chain to Handle Events 使用响应者和响应链来处理事件 Learn how to handle events that propagate through your app. 了解如何处理应用事件的传递. Overview Apps receive and handle events using responder objects.</description>
+    </item>
+    
+    <item>
       <title>原型模式,深拷贝,浅拷贝</title>
       <link>https://zhxiongfei.github.io/post/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/</link>
       <pubDate>Tue, 14 Jul 2020 11:54:29 +0800</pubDate>

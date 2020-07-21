@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Using Responders and the Responder Chain to Handle Events - API调用工程师的进阶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="Using Responders and the Responder Chain to Handle Events 原文地址 : Using Responders and the Responder Chain to Handle Events 使用响应者和响应链来处理事件 Learn how to handle events that propagate through your app. 了解如何处理应用事件的传递. Overview Apps receive and handle events using responder objects." /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhxiongfei.github.io/post/using-responders-and-the-responder-chain-to-handle-events/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Using Responders and the Responder Chain to Handle Events" />
+<meta property="og:description" content="Using Responders and the Responder Chain to Handle Events 原文地址 : Using Responders and the Responder Chain to Handle Events 使用响应者和响应链来处理事件 Learn how to handle events that propagate through your app. 了解如何处理应用事件的传递. Overview Apps receive and handle events using responder objects." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhxiongfei.github.io/post/using-responders-and-the-responder-chain-to-handle-events/" />
+<meta property="article:published_time" content="2020-07-21T11:52:08+08:00" />
+<meta property="article:modified_time" content="2020-07-21T11:52:08+08:00" />
+<meta itemprop="name" content="Using Responders and the Responder Chain to Handle Events">
+<meta itemprop="description" content="Using Responders and the Responder Chain to Handle Events 原文地址 : Using Responders and the Responder Chain to Handle Events 使用响应者和响应链来处理事件 Learn how to handle events that propagate through your app. 了解如何处理应用事件的传递. Overview Apps receive and handle events using responder objects.">
+<meta itemprop="datePublished" content="2020-07-21T11:52:08&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-21T11:52:08&#43;08:00" />
+<meta itemprop="wordCount" content="2466">
+
+
+
+<meta itemprop="keywords" content="ios,Apple Developer documentation翻译计划," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Using Responders and the Responder Chain to Handle Events"/>
+<meta name="twitter:description" content="Using Responders and the Responder Chain to Handle Events 原文地址 : Using Responders and the Responder Chain to Handle Events 使用响应者和响应链来处理事件 Learn how to handle events that propagate through your app. 了解如何处理应用事件的传递. Overview Apps receive and handle events using responder objects."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Using Responders and the Responder Chain to Handle Events</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Jul 21 </span>
+        
+          <span class="more-meta"> 2466 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#using-responders-and-the-responder-chain-to-handle-events">Using Responders and the Responder Chain to Handle Events</a></li>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#determining-an-events-first-responder">Determining an Event&rsquo;s First Responder</a></li>
+        <li><a href="#determining-which-responder-contained-a-touch-event">Determining Which Responder Contained a Touch Event</a></li>
+        <li><a href="#altering-the-responder-chain">Altering the Responder Chain</a></li>
+      </ul>
+    </li>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#see-also">See Also</a>
+      <ul>
+        <li><a href="#first-steps">First Steps</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="using-responders-and-the-responder-chain-to-handle-events">Using Responders and the Responder Chain to Handle Events</h2>
+<p>原文地址 : <a href="https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/using_responders_and_the_responder_chain_to_handle_events?language=objc">Using Responders and the Responder Chain to Handle Events</a></p>
+<blockquote>
+<p>使用响应者和响应链来处理事件</p>
+<p>Learn how to handle events that propagate through your app.</p>
+<p>了解如何处理应用事件的传递.</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<blockquote>
+<p>Apps receive and handle events using <em>responder objects</em>. A responder object is any instance of the <a href="https://developer.apple.com/documentation/uikit/uiresponder"><code>UIResponder</code></a> class, and common subclasses include <a href="https://developer.apple.com/documentation/uikit/uiview"><code>UIView</code></a>, <a href="https://developer.apple.com/documentation/uikit/uiviewcontroller"><code>UIViewController</code></a>, and <a href="https://developer.apple.com/documentation/uikit/uiapplication"><code>UIApplication</code></a>. Responders receive the raw event data and must either handle the event or forward it to another responder object. When your app receives an event, UIKit automatically directs that event to the most appropriate responder object, known as the <em>first responder</em>.</p>
+<ul>
+<li>应用使用相应对象responder来接收和处理事件。</li>
+<li>响应对象是UIResponder的任何子类，公共子类包括 UIView,UIViewController 和 UIApplication.</li>
+<li>响应对象接收原始事件数据，并且必须处理事件或者转发到另一个响应放对象</li>
+<li>当你的应用接收到事件时，UIKit自动将该事件引导到最合适的响应者对象, 称为第一响应者.</li>
+</ul>
+<p>Unhandled events are passed from responder to responder in the active <em>responder chain</em>, which is the dynamic configuration of your app’s responder objects. <a href="https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/using_responders_and_the_responder_chain_to_handle_events#3004381">Figure 1</a> shows the responders in an app whose interface contains a label, a text field, a button, and two background views. The diagram also shows how events move from one responder to the next, following the responder chain.</p>
+<ul>
+<li>未处理的事件会通过响应者链传递到下一级响应者</li>
+<li>响应者链是应用程序响应者对象动态配置的</li>
+<li>Figure1 显示了应用程序的响应者包含, label, text field, button, 两个背景视图. 该图还显示了事件如何按照响应者链从一个响应者移动到下一个响应者</li>
+</ul>
+<p>![image-20200721134705759](/Users/liuxiaoyong/Library/Application Support/typora-user-images/image-20200721134705759.png)</p>
+</blockquote>
+<blockquote>
+<p>If the text field does not handle an event, UIKit sends the event to the text field’s parent <code>UIView</code>object, followed by the root view of the window.</p>
+<p>From the root view, the responder chain diverts to the owning view controller before directing the event to the window.</p>
+<p>If the window cannot handle the event, UIKit delivers the event to the <code>UIApplication</code> object, and possibly to the app delegate if that object is an instance of <code>UIResponder</code> and not already part of the responder chain.</p>
+<ul>
+<li>如果 text field 没有处理事件, UIKit 会把事件发送给 text field 的父视图 UIView 对象, 其次是 根视图</li>
+<li>从根视图开始, 响应者链条在将事件转发到UIWindow之前，先转发到拥有该视图的视图控制器</li>
+<li>如果 UIWindow 无法处理事件, UIKit 将事件转发到 UIApplication对象,  也可能转发给  AppDelegate , 前提是 AppDelegate 是 UIResponder 的子类，并且还不是响应者链的一部分.</li>
+</ul>
+</blockquote>
+<h3 id="determining-an-events-first-responder">Determining an Event&rsquo;s First Responder</h3>
+<blockquote>
+<p>UIKit designates an object as the first responder to an event based on the type of that event. Event types include:</p>
+<p>UIKit 根据事件的类型, 将对象指定为事件的第一响应者. 事件类型包括 :</p>
+<table>
+<thead>
+<tr>
+<th align="left">Event type</th>
+<th align="left">First responder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Touch events</td>
+<td align="left">The view in which the touch occurred.</td>
+</tr>
+<tr>
+<td align="left">Press events</td>
+<td align="left">The object that has focus.</td>
+</tr>
+<tr>
+<td align="left">Shake-motion events</td>
+<td align="left">The object that you (or UIKit) designate.</td>
+</tr>
+<tr>
+<td align="left">Remote-control events</td>
+<td align="left">The object that you (or UIKit) designate.</td>
+</tr>
+<tr>
+<td align="left">Editing menu messages</td>
+<td align="left">The object that you (or UIKit) designate.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">事件类型</th>
+<th align="left">第一响应者</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">点击事件</td>
+<td align="left">发生触摸的视图</td>
+</tr>
+<tr>
+<td align="left">长按事件</td>
+<td align="left">具有焦点的对象</td>
+</tr>
+<tr>
+<td align="left">震动事件</td>
+<td align="left">你 或者 UIKit 指定的对象</td>
+</tr>
+<tr>
+<td align="left">远程控制事件</td>
+<td align="left">你 或者 UIKit 指定的对象</td>
+</tr>
+<tr>
+<td align="left">编辑菜单消息</td>
+<td align="left">你 或者 UIKit 指定的对象</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<blockquote>
+<p>Note</p>
+<p>Motion events related to the accelerometers, gyroscopes, and magnetometer do not follow the responder chain. Instead, Core Motion delivers those events directly to the designated object. For more information, see <a href="https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/iPhoneOSTechOverview/CoreServicesLayer/CoreServicesLayer.html#//apple_ref/doc/uid/TP40007898-CH10-SW27">Core Motion Framework</a></p>
+<p>注意:</p>
+<p>与加速计，陀螺仪和磁力计有关的运动事件不遵循响应者链条。相反，Core Motion 会将这些事件直接传递到指定的对象。有关更多信息，参见Core Motion框架</p>
+</blockquote>
+<blockquote>
+<p>Controls communicate directly with their associated target object using action messages.</p>
+<p>When the user interacts with a control, the control sends an action message to its target object.</p>
+<p>Action messages are not events, but they may still take advantage of the responder chain.</p>
+<p>When the target object of a control is nil, UIKit starts from the target object and traverses the responder chain until it finds an object that implements the appropriate action method.</p>
+<p>For example, the UIKit editing menu uses this behavior to search for responder objects that implement methods with names like cut(<em>:), copy(</em>:), or paste(_:).</p>
+<p>Gesture recognizers receive touch and press events before their view does.</p>
+<p>If a view&rsquo;s gesture recognizers fail to recognize a sequence of touches, UIKit sends the touches to the view.</p>
+<p>If the view does not handle the touches, UIKit passes them up the responder chain.</p>
+<p>For more information about using gesture recognizer’s to handle events, see Handling UIKit Gestures.</p>
+<ul>
+<li>
+<p>控件使用动作消息直接与其关联的目标对象进行通信。</p>
+</li>
+<li>
+<p>当用户与控件交互时，控件会将操作消息发送到其目标对象。</p>
+</li>
+<li>
+<p>动作消息不是事件，但它们仍可以利用响应者链。</p>
+</li>
+<li>
+<p>当控件的目标对象为nil时，UIKit从目标对象开始并遍历响应者链，直到找到实现适当操作方法的对象为止。</p>
+<ul>
+<li>例如，UIKit编辑菜单使用此行为来搜索响应者对象，这些对象实现了诸如cut（_ :)，copy（_ :)或paste（_ :)之类的方法。</li>
+</ul>
+</li>
+<li>
+<p>手势识别器会先接收触摸和按下事件，然后再进行查看。</p>
+</li>
+<li>
+<p>如果视图的手势识别器无法识别一系列触摸，则UIKit会将触摸发送到视图。</p>
+</li>
+<li>
+<p>如果视图无法处理触摸，UIKit会将它们向上传递到响应者链。</p>
+</li>
+<li>
+<p>有关使用手势识别器处理事件的更多信息，请参见处理UIKit手势。</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="determining-which-responder-contained-a-touch-event">Determining Which Responder Contained a Touch Event</h3>
+<blockquote>
+<p>UIKit uses view-based hit-testing to determine where touch events occur.
+Specifically, UIKit compares the touch location to the bounds of view objects in the view hierarchy.
+The hitTest(_:with:) method of UIView traverses the view hierarchy, looking for the deepest subview that contains the specified touch, which becomes the first responder for the touch event.</p>
+<ul>
+<li>UIKit 使用基于视图的命中测试 hit-testing 来确定触摸事件发生的位置.</li>
+<li>具体来说, UIKit 将触摸位置和视图层次结构中的视图对象的边界进行比较</li>
+<li>UIView 的 hittest(_: with : ) 方法遍历视图层次结构, 查找包含指定触摸的最深子视图, 该子视图成为触摸事件的第一响应者</li>
+</ul>
+<p>Note</p>
+<p>If a touch location is outside of a view’s bounds, the <a href="https://developer.apple.com/documentation/uikit/uiview/1622469-hittest?language=objc"><code>hitTest:withEvent:</code></a> method ignores that view and all of its subviews.</p>
+<p>As a result, when a view’s <a href="https://developer.apple.com/documentation/uikit/uiview/1622415-clipstobounds?language=objc"><code>clipsToBounds</code></a>property is <code>NO</code>, subviews outside of that view’s bounds are not returned even if they happen to contain the touch.</p>
+<p>For more information about the hit-testing behavior, see the discussion of the <a href="https://developer.apple.com/documentation/uikit/uiview/1622469-hittest?language=objc"><code>hitTest:withEvent:</code></a> method in <a href="https://developer.apple.com/documentation/uikit/uiview?language=objc"><code>UIView</code></a>.</p>
+<ul>
+<li>如果触摸位置在视图范围之外, 则 hitTest: withEvent: 方法将忽略该视图及其所有的子视图</li>
+<li>因此, 如果视图的 clipsToBounds 属性为 false, 则即使该视图恰好包含触摸，也不会反悔该视图范围之外的子视图</li>
+</ul>
+<p>When a touch occurs, UIKit creates a UITouch object and associates it with a view.</p>
+<p>As the touch location or other parameters change, UIKit updates the same UITouch object with the new information.</p>
+<p>The only property that does not change is the view. (Even when the touch location moves outside the original view, the value in the touch’s view property does not change.) When the touch ends, UIKit releases the UITouch object.</p>
+<ul>
+<li>发生触摸时，UIKit将创建一个UITouch对象并将其与视图关联。</li>
+<li>随着触摸位置或其他参数的更改，UIKit会使用新信息更新相同的UITouch对象。</li>
+<li>唯一不变的属性是视图。 （即使触摸位置移至原始视图之外，触摸的view属性中的值也不会更改。）触摸结束时，UIKit会释放UITouch对象。</li>
+</ul>
+</blockquote>
+<h3 id="altering-the-responder-chain">Altering the Responder Chain</h3>
+<blockquote>
+<p>You can alter the responder chain by overriding the <a href="https://developer.apple.com/documentation/uikit/uiresponder/1621099-nextresponder?language=objc"><code>nextResponder</code></a> property of your responder objects. When you do this, the next responder is the object that you return.</p>
+<p>Many UIKit classes already override this property and return specific objects, including:</p>
+<ul>
+<li><a href="https://developer.apple.com/documentation/uikit/uiview?language=objc"><code>UIView</code></a> objects. If the view is the root view of a view controller, the next responder is the view controller; otherwise, the next responder is the view’s superview.</li>
+<li><a href="https://developer.apple.com/documentation/uikit/uiviewcontroller?language=objc"><code>UIViewController</code></a> objects.
+<ul>
+<li>If the view controller’s view is the root view of a window, the next responder is the window object.</li>
+<li>If the view controller was presented by another view controller, the next responder is the presenting view controller.</li>
+</ul>
+</li>
+<li><a href="https://developer.apple.com/documentation/uikit/uiwindow?language=objc"><code>UIWindow</code></a> objects. The window&rsquo;s next responder is the <a href="https://developer.apple.com/documentation/uikit/uiapplication?language=objc"><code>UIApplication</code></a> object.</li>
+<li><a href="https://developer.apple.com/documentation/uikit/uiapplication?language=objc"><code>UIApplication</code></a> object. The next responder is the app delegate, but only if the app delegate is an instance of <a href="https://developer.apple.com/documentation/uikit/uiresponder?language=objc"><code>UIResponder</code></a> and is not a view, view controller, or the app object itself.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>你可以覆盖响应者的 nextResponder 属性来更改响应者链。执行此操作时，下一个响应者是你返回的对象。</li>
+<li>许多 UIKit 类已经重写此属性并且返回特定的对象. 包括 :
+<ul>
+<li>UIView 对象, 如果此view是控制器的根视图，则下一个响应者是视图控制器；否则，下一个响应者是视图的父视图.</li>
+<li>UIViewController 对象, 如果视图控制器的视图是窗口的根视图, 则下一个响应者是窗口对象</li>
+<li>如果控制器是由另一个视图控制器呈现的， 则下一个响应者是呈现视图控制器</li>
+<li>UIWindow 对象, 窗口的下一个响应者是 UIApplication 对象</li>
+<li>UIApplication 对象, 下一个响应者是 AppDelegate, 但仅当AppDelegate 是UIResponder的子类，并且不是视图，视图控制器或者 UIApplication本身。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="question">Question</h2>
+<ul>
+<li><a href="">What is hitTest:withEvent: ? How this method implemented?</a></li>
+<li><a href="">What is pointInside:withEvent: ? How this method implemented?</a></li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<h3 id="first-steps">First Steps</h3>
+<p><a href="https://developer.apple.com/documentation/uikit/uiresponder?language=objc"><code>UIResponder</code></a></p>
+<p>An abstract interface for responding to and handling events.</p>
+<p><a href="https://developer.apple.com/documentation/uikit/uievent?language=objc"><code>UIEvent</code></a></p>
+<p>An object that describes a single user interaction with your app.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Jul 21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/ios/">ios</a>
+          <a href="/tags/apple-developer-documentation%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92/">Apple Developer documentation翻译计划</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/leetcode%E5%88%B7%E9%A2%98%E5%9B%9E%E9%A1%BE%E4%B8%8E%E6%80%BB%E7%BB%93/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">LeetCode刷题回顾与总结</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D/">
+            <span class="next-text nav-default">原型模式,深拷贝,浅拷贝</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhxiongfei.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
