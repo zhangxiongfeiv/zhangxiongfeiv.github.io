@@ -6,7 +6,7 @@
     <description>Recent content in Tags on API调用工程师的进阶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 21 Jul 2020 11:52:08 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2020 17:32:04 +0800</lastBuildDate>
     
 	<atom:link href="https://zhxiongfei.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Apple Developer documentation翻译计划</title>
       <link>https://zhxiongfei.github.io/tags/apple-developer-documentation%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92/</link>
-      <pubDate>Tue, 21 Jul 2020 11:52:08 +0800</pubDate>
+      <pubDate>Tue, 21 Jul 2020 17:32:04 +0800</pubDate>
       
       <guid>https://zhxiongfei.github.io/tags/apple-developer-documentation%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92/</guid>
       <description></description>
@@ -23,9 +23,18 @@
     <item>
       <title>iOS</title>
       <link>https://zhxiongfei.github.io/tags/ios/</link>
-      <pubDate>Tue, 21 Jul 2020 11:52:08 +0800</pubDate>
+      <pubDate>Tue, 21 Jul 2020 17:32:04 +0800</pubDate>
       
       <guid>https://zhxiongfei.github.io/tags/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Apple Developer ducomentation翻译计划</title>
+      <link>https://zhxiongfei.github.io/tags/apple-developer-ducomentation%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92/</link>
+      <pubDate>Tue, 21 Jul 2020 17:06:53 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/tags/apple-developer-ducomentation%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92/</guid>
       <description></description>
     </item>
     

@@ -6,10 +6,28 @@
     <description>Recent content in iOS on API调用工程师的进阶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 21 Jul 2020 11:52:08 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2020 17:32:04 +0800</lastBuildDate>
     
 	<atom:link href="https://zhxiongfei.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PointInside:withEvent:</title>
+      <link>https://zhxiongfei.github.io/post/pointinside-withevent/</link>
+      <pubDate>Tue, 21 Jul 2020 17:32:04 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/pointinside-withevent/</guid>
+      <description>pointInside:withEvent: 苹果官方文档原文地址 Returns a Boolean value indicating whether the receiver contains the specified point. 返回一个布尔值, 表示接收方是否包含指定点. Declaration 1 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event; Parameters point A point that is in the receiver’s local coordinate</description>
+    </item>
+    
+    <item>
+      <title>HitTest:withEvent:</title>
+      <link>https://zhxiongfei.github.io/post/hittest-withevent/</link>
+      <pubDate>Tue, 21 Jul 2020 17:06:53 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/hittest-withevent/</guid>
+      <description>hitTest:withEvent: 苹果官方文档原文地址 : hitTest:withEvent: Returns the farthest descendant of the receiver in the view hierarchy (including itself) that contains a specified point. 返回包含指定点的视图层次结构中接收者的最远后代 (包括自身). Declaration 1 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event; Parameters point</description>
+    </item>
     
     <item>
       <title>Using Responders and the Responder Chain to Handle Events</title>
