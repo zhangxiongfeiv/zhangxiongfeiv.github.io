@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>回溯 on API调用工程师的进阶</title>
+    <link>https://zhxiongfei.github.io/tags/%E5%9B%9E%E6%BA%AF/</link>
+    <description>Recent content in 回溯 on API调用工程师的进阶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 22 Sep 2020 11:54:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhxiongfei.github.io/tags/%E5%9B%9E%E6%BA%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>回溯算法总结</title>
+      <link>https://zhxiongfei.github.io/post/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Tue, 22 Sep 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</guid>
+      <description>(转)回溯算法入门级详解 + 练习 (查看原文) 回溯算法与深度优先遍历 以下是维基百科中 回溯算法 和 深度优先遍历 的定义。 回溯法 回溯法采用试错的思想，它</description>
+    </item>
+    
+  </channel>
+</rss>

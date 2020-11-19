@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apple Documents on API调用工程师的进阶</title>
+    <link>https://zhxiongfei.github.io/tags/apple-documents/</link>
+    <description>Recent content in Apple Documents on API调用工程师的进阶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 14 Aug 2020 11:54:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhxiongfei.github.io/tags/apple-documents/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Advanced Memory Management Programming Guide</title>
+      <link>https://zhxiongfei.github.io/post/advanced-memory-management-programming-guide/</link>
+      <pubDate>Fri, 14 Aug 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/advanced-memory-management-programming-guide/</guid>
+      <description>Advanced Memory Management Programming Guide (高级内存管理编程指南) 原文地址 Application memory management is the process of allocating memory during your program’s runtime, using it, and freeing it when you are done with it. A well-written program uses as little memory as possible. In Objective-C, it can also be seen as</description>
+    </item>
+    
+  </channel>
+</rss>

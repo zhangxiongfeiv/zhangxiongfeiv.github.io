@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>网络分层 - API调用工程师的进阶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="网络分层 网络互连模型 为了更好的促进互联网的研究和发展，国际标准组织 ISO 在1985年制定了网络互连模型 OSI (Open System Interconnect Reference Model), 具有7层结构 应用层 协议 : FTP,HTTP,SMTP,DNS,DHCP 报文" /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="网络分层" />
+<meta property="og:description" content="网络分层 网络互连模型 为了更好的促进互联网的研究和发展，国际标准组织 ISO 在1985年制定了网络互连模型 OSI (Open System Interconnect Reference Model), 具有7层结构 应用层 协议 : FTP,HTTP,SMTP,DNS,DHCP 报文" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82/" />
+<meta property="article:published_time" content="2020-09-06T22:25:46+08:00" />
+<meta property="article:modified_time" content="2020-09-06T22:25:46+08:00" />
+<meta itemprop="name" content="网络分层">
+<meta itemprop="description" content="网络分层 网络互连模型 为了更好的促进互联网的研究和发展，国际标准组织 ISO 在1985年制定了网络互连模型 OSI (Open System Interconnect Reference Model), 具有7层结构 应用层 协议 : FTP,HTTP,SMTP,DNS,DHCP 报文">
+<meta itemprop="datePublished" content="2020-09-06T22:25:46&#43;08:00" />
+<meta itemprop="dateModified" content="2020-09-06T22:25:46&#43;08:00" />
+<meta itemprop="wordCount" content="2763">
+
+
+
+<meta itemprop="keywords" content="网络," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="网络分层"/>
+<meta name="twitter:description" content="网络分层 网络互连模型 为了更好的促进互联网的研究和发展，国际标准组织 ISO 在1985年制定了网络互连模型 OSI (Open System Interconnect Reference Model), 具有7层结构 应用层 协议 : FTP,HTTP,SMTP,DNS,DHCP 报文"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">网络分层</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Sep 06 </span>
+        
+          <span class="more-meta"> 2763 words </span>
+          <span class="more-meta"> 6 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#网络分层">网络分层</a>
+      <ul>
+        <li><a href="#网络互连模型">网络互连模型</a></li>
+        <li><a href="#物理层">物理层</a></li>
+        <li><a href="#数据链路层">数据链路层</a></li>
+        <li><a href="#网络层">网络层</a></li>
+        <li><a href="#传输层transport">传输层(Transport)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="网络分层">网络分层</h2>
+<h3 id="网络互连模型">网络互连模型</h3>
+<ul>
+<li>为了更好的促进互联网的研究和发展，国际标准组织 ISO 在1985年制定了网络互连模型
+<ul>
+<li>OSI (Open System Interconnect Reference Model), 具有7层结构</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk407vvktnj31bm0j2tgj.jpg" alt="屏幕快照 2020-10-27 下午5.08.52"></p>
+<ul>
+<li>应用层
+<ul>
+<li>协议 : FTP,HTTP,SMTP,DNS,DHCP</li>
+<li>报文，用户数据</li>
+</ul>
+</li>
+<li>传输层
+<ul>
+<li>协议：TCP,UDP</li>
+<li>段(Segments)</li>
+</ul>
+</li>
+<li>网络层
+<ul>
+<li>IP，ARP，ICMP</li>
+<li>包(Packets)</li>
+</ul>
+</li>
+<li>数据链路层
+<ul>
+<li>CSMA,CD,PPP</li>
+<li>帧(Frames)</li>
+</ul>
+</li>
+<li>物理层
+<ul>
+<li>比特流</li>
+</ul>
+</li>
+</ul>
+<h3 id="物理层">物理层</h3>
+<ul>
+<li>物理层定义了接口标准，线缆标准，传输速率，传输方式等</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk40keriegj31au0kgtxy.jpg" alt="屏幕快照 2020-10-27 下午5.20.58"></p>
+<p>数字信号，模拟信号</p>
+<p>模拟信号(Analog Signal)</p>
+<ul>
+<li>连续的信号，适合长距离传输</li>
+<li>抗干扰能力差，受到干扰时波形变形很难纠正</li>
+</ul>
+<p>数字信号(Digital Signal)</p>
+<ul>
+<li>离散的信号，不适合长距离传输</li>
+<li>抗干扰能力强，受到干扰时波形失真可以修复</li>
+</ul>
+<h4 id="数据通信模型">数据通信模型</h4>
+<ul>
+<li>局域网通信模型
+<ul>
+<li>PC	通过网线传输数字信号与集线器/交换机通信</li>
+<li>另一台PC同样通过这种方式与集线器/交换机通信。 进而实现两台计算机通信</li>
+<li>注意网线不能超过100米</li>
+</ul>
+</li>
+<li>广域网通信模型
+<ul>
+<li>PC  通过网线与调制解调器(猫)通信 (传输数字信号)</li>
+<li>调制解调器通过电话线与另外一个调制解调器通信 (传输模拟信号)</li>
+<li>再由调制解调器将模拟信号转换问数字信号</li>
+<li>注意光纤的使用光电调制解调器</li>
+</ul>
+</li>
+</ul>
+<h4 id="信道channel">信道(Channel)</h4>
+<ul>
+<li>信道：信息传输的通道，一个传输介质上(比如网线) 上可以有多条信道</li>
+<li>单工通信
+<ul>
+<li>信号只能往一个方向传输，任何时候都不能改变信号的传输方向</li>
+<li>比如无线电广播，有线电视广播</li>
+</ul>
+</li>
+<li>半双工通信
+<ul>
+<li>信号可以双向传输，但必须交替进行，同一时间只能往一个方向传输</li>
+<li>比如对讲机</li>
+</ul>
+</li>
+<li>全双工通信
+<ul>
+<li>信号可以同时双向传输</li>
+<li>比如手机(听，说同时进行)</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据链路层">数据链路层</h3>
+<ul>
+<li>链路：从1个节点到相邻节点的一个段物理线路(有线或无线)，中间没有其他转换节点</li>
+<li>数据链路: 在一条链路上传输数据时，需要有对应的通信协议来控制数据的传输
+<ul>
+<li>不同类型的数据链路，所用的通信协议可能是不同的
+<ul>
+<li>广播信道: CSMA/CD协议 (比如同轴电缆，集线器等组成的网络)</li>
+<li>点对点信道: PPP协议(比如2个路由器之间的信道)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据链路的3个基本问题
+<ul>
+<li>封装成帧</li>
+<li>透明传输</li>
+<li>差错检验</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据链路层---封装成帧">数据链路层 - 封装成帧</h4>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk411dw125j30nu09umzf.jpg" alt="屏幕快照 2020-10-27 下午5.37.21"></p>
+<ul>
+<li>帧(Frame) 的数据部分
+<ul>
+<li>就是网络层传递下来的数据包(IP数据包，Packet)</li>
+</ul>
+</li>
+<li>最大传输单元MTU (Maximum Transferr Unit)
+<ul>
+<li>每一种数据链路层协议都规定了所能够传送的帧的数据长度上限</li>
+<li>以太网的MTU为1500个字节</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据链路层---透明传输">数据链路层 - 透明传输</h4>
+<ul>
+<li>使用SOH(Start Of Header) 作为帧开始符</li>
+<li>使用EOT(End Of Transmission) 作为帧结束符</li>
+</ul>
+<p>会出现如下问题 :</p>
+<p>当数据部分出现EOT时，部分数据会被当作无效帧而丢弃</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk416id4f5j30zk0a4770.jpg" alt="屏幕快照 2020-10-27 下午5.42.17"></p>
+<p>所以，数据部分一旦出现了SOH，EOT，就需要进行转义</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk418i95n4j310w0f840u.jpg" alt="屏幕快照 2020-10-27 下午5.44.06"></p>
+<h4 id="数据链路层---差错校验">数据链路层 - 差错校验</h4>
+<ul>
+<li>FCS是根据数据部分 + 首部计算得出的<img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk41j5tx8pj30pu08qdhi.jpg" alt="屏幕快照 2020-10-27 下午5.54.26"></li>
+</ul>
+<h4 id="csmacd协议">CSMA/CD协议</h4>
+<ul>
+<li>CSMA/CD (Carrier Sense Multiple Access with Collision Detection)
+<ul>
+<li>载波侦听多路访问 / 冲突检测</li>
+</ul>
+</li>
+<li>使用了 CSMA/CD的的网络可以成为以太网(Ethenet), 它传输的是以太网帧
+<ul>
+<li>以太网帧的格式有： Ethernet V2标准，以太网的帧至少64字节</li>
+<li>用交换机组建呢的网络，现在已经支持全双工通信，不再需要使用CSMA/CD，但它传输的帧依然是以太网帧
+<ul>
+<li>所以，用交换机组建的网络，依然可以称为以太网</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Ethernet V2帧的格式</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk429ed77dj31740iotpq.jpg" alt="屏幕快照 2020-10-27 下午6.19.39"></p>
+<ul>
+<li>首部 : 目标MAC + 源MAC</li>
+<li>以太网帧 : 首部 + 数据 + FCS</li>
+<li>数据的长度至少是: 64 -6 -6 -2 - 4 = 46字节</li>
+<li>当数据部分的长度小于46字节时
+<ul>
+<li>数据链路层会在数据的后面加入一些字节填充</li>
+<li>接收端会将添加的字节去掉</li>
+</ul>
+</li>
+<li>长度总结
+<ul>
+<li>以太网帧的数据长度 : 46 - 1500字节</li>
+<li>以太网帧的长度 ： 64 - 1518字节(目标MAC + 源MAC + 网络类型 + 数据 + FCS)</li>
+</ul>
+</li>
+</ul>
+<h4 id="网卡">网卡</h4>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk42hxfasgj30vi0fcjt1.jpg" alt="image-20201027182752857"></p>
+<ul>
+<li>网卡接收到一个帧，首先会进行差错校验，如果校验通过则接收，否则丢弃</li>
+<li>Wireshark抓到的帧没有FCS，因为它抓到的是差错校验通过的帧(帧尾的FCS会被硬件去掉)
+<ul>
+<li>Wireshark抓不到差错校验的帧</li>
+</ul>
+</li>
+</ul>
+<h4 id="ppp协议point-to-point-protocol">PPP协议(Point to Point Protocol)</h4>
+<ul>
+<li>Address字段 : 图中的值都是 0xFF, 形同虚设，点到点信道不需要源MAC，目标MAC地址</li>
+<li>Control字段 ：图中的值都是 0x03,目前没什么用</li>
+<li>Protocol字段 : 内部用到的协议类型</li>
+<li>帧开始符，帧结束符: 0x7E</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk430ojlwxj30za0d2dhl.jpg" alt="image-20201027184551067"></p>
+<h4 id="ppp协议---字节填充">PPP协议 - 字节填充</h4>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk4346w2wjj31360ci0wy.jpg" alt="屏幕快照 2020-10-27 下午6.48.38"></p>
+<h3 id="网络层">网络层</h3>
+<ul>
+<li>
+<p>网络层数据包(IP数据包，Packet) 由首部，数据两部分组成</p>
+<ul>
+<li>数据 : 很多时候由传输层传递下来的数据段(Segment)</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gkawh3o5twj30pc0aqju7.jpg" alt="屏幕快照 2020-11-02 下午4.18.17"></p>
+</li>
+</ul>
+<h4 id="网络层首部---版本首部长度区分服务">网络层首部 - 版本，首部长度，区分服务</h4>
+<ul>
+<li>版本(Version)
+<ul>
+<li>占4位
+<ul>
+<li>0b0100 : IPv4</li>
+<li>0b0110 : IPv6</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>首部长度(Header Length)
+<ul>
+<li>占4位，二进制乘以4才是最终长度</li>
+<li>0b0101 : 20(最大值)</li>
+<li>0b1111 : 60(最大值)</li>
+</ul>
+</li>
+<li>区分服务(Differentiated Services Field)
+<ul>
+<li>占8位</li>
+<li>可用于提高网络的服务质量(QoS, Quality of Service)</li>
+</ul>
+</li>
+<li>总长度
+<ul>
+<li>占16位</li>
+<li>首部 + 数据的长度之和，最大值是65535</li>
+<li>由于帧的数据不能超过1500字节，所以过大的IP数据包，需要分成片(fragments) 传输给数据链路层
+<ul>
+<li>每一篇都有自己的网络层首部(IP首部)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>标识(Identification)
+<ul>
+<li>占16位</li>
+<li>数据包的ID，当你数据包过大进行拆分时，同一个数据包的所有片的标识都是一样的</li>
+<li>有一个计数器专门管理数据包的ID，每发出一个数据包，ID就加1</li>
+</ul>
+</li>
+<li>标识(Flags)
+<ul>
+<li>占3位</li>
+<li>第一位 : 保留</li>
+<li>第二位 ：1代表不允许分片，0代表允许分片</li>
+<li>第三位 : 1代表不是最后一片，0代表是最后一片</li>
+</ul>
+</li>
+</ul>
+<h4 id="ping---几个用法">ping - 几个用法</h4>
+<ul>
+<li>ping /?
+<ul>
+<li>查看 ping 的用法</li>
+</ul>
+</li>
+<li>ping ip地址 -l 数据包大小
+<ul>
+<li>发送指定大小的数据包</li>
+</ul>
+</li>
+<li>ping ip地址 -f
+<ul>
+<li>不允许网络层分页</li>
+</ul>
+</li>
+<li>pinng ip地址 -i TTL
+<ul>
+<li>设置TTL的值</li>
+</ul>
+</li>
+<li>通过tracert, pathping 命令，可以跟踪数据包经过了那些路由器</li>
+</ul>
+<h4 id="网络层首部---片偏移">网络层首部 - 片偏移</h4>
+<ul>
+<li>片偏移 (Fragment Offset)
+<ul>
+<li>占13位</li>
+<li>片偏移乘以8 ： 字节偏移</li>
+<li>每一片的长度一定是8的整数倍</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gkawrau1rqj30rs096dik.jpg" alt="屏幕快照 2020-11-02 下午4.28.13"></p>
+<ul>
+<li>
+<p>生存时间</p>
+<ul>
+<li>
+<p>占8位</p>
+</li>
+<li>
+<p>每个路由器在转发之前会将TTL减1，一旦发现TTL减为0，路由器会返回错误报告</p>
+</li>
+<li>
+<p>观察使用ping命令后的TTL，能够推测出对方的操作系统，中间经过了多少个路由器</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gkawsycuw5j30og08cwh1.jpg" alt="屏幕快照 2020-11-02 下午4.29.44"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>协议(Protocol)</p>
+<ul>
+<li>
+<p>占8位</p>
+</li>
+<li>
+<p>表明所封装的数据是使用了什么协议</p>
+</li>
+<li>
+<p>首部校验和(Header Checksum)</p>
+<ul>
+<li>用于检查首部是否有错误</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gkawuxy18bj30zi03kdh9.jpg" alt="屏幕快照 2020-11-02 下午4.31.40"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="传输层transport">传输层(Transport)</h3>
+<ul>
+<li>
+<p>传输层有2个协议</p>
+<ul>
+<li>
+<p>TCP(Transmission Control Protocol), 传输控制协议</p>
+</li>
+<li>
+<p>UDP(User Datagram Protocol), 用户数据报协议</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">连接性</td>
+<td>面向连接</td>
+<td>无连接</td>
+</tr>
+<tr>
+<td align="left">可靠性</td>
+<td>可靠传输，不丢包</td>
+<td>不可靠传输，尽最大努力交付，可能丢包</td>
+</tr>
+<tr>
+<td align="left">首部占用空间</td>
+<td>大</td>
+<td>小</td>
+</tr>
+<tr>
+<td align="left">传输速率</td>
+<td>慢</td>
+<td>快</td>
+</tr>
+<tr>
+<td align="left">资源消耗</td>
+<td>大</td>
+<td>小</td>
+</tr>
+<tr>
+<td align="left">应用场景</td>
+<td>浏览器，文件传输，邮件发送</td>
+<td>音视频通话，直播</td>
+</tr>
+<tr>
+<td align="left">应用层协议</td>
+<td>HTTP，HTTPS，FTP，SSMTP，DNS</td>
+<td>DNS</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="udp---数据格式">UDP - 数据格式</h4>
+<ul>
+<li>UDP 是无连接的，减少了建立和释放连接的开销</li>
+<li>UDP尽最大努力交付，不保证可靠交付
+<ul>
+<li>因此不需要维护一些复杂的参数，首部只有8个字节(TCP的首部至少20个字节)</li>
+</ul>
+</li>
+<li>UDP长度(Length)
+<ul>
+<li>占16位，首部的长度 + 数据的长度</li>
+</ul>
+</li>
+</ul>
+<h4 id="udp---检验和checksum">UDP - 检验和(Checksum)</h4>
+<ul>
+<li>
+<p>检验和的计算内容 : 伪首部 + 首部 + 数据</p>
+<ul>
+<li>伪首部 ： 仅在计算检验和时起作用，并不会传递给网络层</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gkax25elu5j30m60cg0zo.jpg" alt="屏幕快照 2020-11-02 下午4.38.37"></p>
+</li>
+</ul>
+<h4 id="端口port">端口(Port)</h4>
+<ul>
+<li>UDP首部中端口是占用2字节
+<ul>
+<li>可以推测出端口号的取值范围是 0-65535</li>
+</ul>
+</li>
+<li>客户端的源端口号是临时开启的随机端口</li>
+<li>防火墙可以设置开启/关闭某些端口来提高安全性</li>
+<li>常用命令行
+<ul>
+<li>netstat -an : 查看被占用的端口</li>
+<li>netstat -anb : 查看被占用的端口，占用端口的应用程序</li>
+<li>telnet 主机 端口: 查看是否可以访问某些主机的某个端口</li>
+</ul>
+</li>
+</ul>
+<h4 id="tcp----数据格式">TCP -  数据格式</h4>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Sep 06
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E4%B8%BA%E4%BB%80%E4%B9%88ios-app%E8%83%BD%E4%B8%80%E7%9B%B4%E5%93%8D%E5%BA%94%E4%BA%8B%E4%BB%B6-runloop/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">为什么iOS App可以响应事件？- RunLoop</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/advanced-memory-management-programming-guide/">
+            <span class="next-text nav-default">Advanced Memory Management Programming Guide</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhxiongfei.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

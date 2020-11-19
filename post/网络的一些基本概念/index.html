@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>网络的一些基本概念 - API调用工程师的进阶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="飞熊" /><meta name="description" content="网络的一些基本概念 因特网 : 全世界最大的互联网 将全世界所有的计算机连接在一起 一般使用大写I开头的Internet特指因特网 ISP Internet Service Provider, Intern" /><meta name="keywords" content="iOS, 算法, Blog" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="网络的一些基本概念" />
+<meta property="og:description" content="网络的一些基本概念 因特网 : 全世界最大的互联网 将全世界所有的计算机连接在一起 一般使用大写I开头的Internet特指因特网 ISP Internet Service Provider, Intern" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" />
+<meta property="article:published_time" content="2020-10-14T11:54:29+08:00" />
+<meta property="article:modified_time" content="2020-10-14T11:54:29+08:00" />
+<meta itemprop="name" content="网络的一些基本概念">
+<meta itemprop="description" content="网络的一些基本概念 因特网 : 全世界最大的互联网 将全世界所有的计算机连接在一起 一般使用大写I开头的Internet特指因特网 ISP Internet Service Provider, Intern">
+<meta itemprop="datePublished" content="2020-10-14T11:54:29&#43;08:00" />
+<meta itemprop="dateModified" content="2020-10-14T11:54:29&#43;08:00" />
+<meta itemprop="wordCount" content="894">
+
+
+
+<meta itemprop="keywords" content="网络," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="网络的一些基本概念"/>
+<meta name="twitter:description" content="网络的一些基本概念 因特网 : 全世界最大的互联网 将全世界所有的计算机连接在一起 一般使用大写I开头的Internet特指因特网 ISP Internet Service Provider, Intern"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Fly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">Abouts</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Fly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">Abouts</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">网络的一些基本概念</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Oct 14 </span>
+        
+          <span class="more-meta"> 894 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#网络的一些基本概念">网络的一些基本概念</a>
+      <ul>
+        <li><a href="#网络分类">网络分类</a></li>
+        <li><a href="#常见的几种接口">常见的几种接口</a></li>
+        <li><a href="#上网方式">上网方式</a></li>
+        <li><a href="#公网ip私网ip">公网IP，私网IP</a></li>
+        <li><a href="#nat">NAT</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="网络的一些基本概念">网络的一些基本概念</h2>
+<ul>
+<li>
+<p>因特网 : 全世界最大的互联网</p>
+<ul>
+<li>将全世界所有的计算机连接在一起</li>
+<li>一般使用大写I开头的Internet特指因特网</li>
+</ul>
+</li>
+<li>
+<p>ISP</p>
+<ul>
+<li>Internet Service Provider, Internet服务提供商，比如移动，联通，电信等</li>
+<li>平时拉的宽带都是通过ISP连接到Internet de</li>
+</ul>
+</li>
+</ul>
+<h3 id="网络分类">网络分类</h3>
+<ul>
+<li>
+<p>按照网络的范围进行分类，可以分为：局域网，城域网，广域网等</p>
+</li>
+<li>
+<p>局域网 (Local Area Network,LAN)</p>
+<ul>
+<li>一般是范围在几百米到十几公里内的计算机所构成的计算机网络</li>
+<li>常用于公司，家庭，学校，医院，机关，一栋大楼的</li>
+<li>局域网中使用最广泛的网络技术叫: 以太网(Ethernet)</li>
+<li>在电脑，手机上经常看见的一个英文 WLAN (Wireless LAN), 意思是无线局域网</li>
+</ul>
+</li>
+<li>
+<p>城域网(Metropolitan Area Network, MAN)</p>
+<ul>
+<li>一般范围是数十公里到数百公里，可以覆盖一个城市</li>
+</ul>
+</li>
+<li>
+<p>广域网(Wide Area Network, WAN)</p>
+<ul>
+<li>一般范围是几百公里到几千公里，可以覆盖一个国家，通常都需要使用 ISO 的线路</li>
+</ul>
+</li>
+</ul>
+<h3 id="常见的几种接口">常见的几种接口</h3>
+<ul>
+<li>FastEthernet
+<ul>
+<li>快速以太网接口(100M)</li>
+</ul>
+</li>
+<li>GigabitEtherneet
+<ul>
+<li>千兆以太网接口</li>
+</ul>
+</li>
+<li>Serial
+<ul>
+<li>串行接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="上网方式">上网方式</h3>
+<ul>
+<li>
+<p>电话入网</p>
+<ul>
+<li>就是平时说的， ADSL电话拨号上网(Asymmetric Digital Subscriber Line)
+<ul>
+<li>非对称数字用户线路，提供上，下行不对称的传输带宽</li>
+</ul>
+</li>
+<li>猫(Modem)
+<ul>
+<li>调制调节器，进行数字信号和模拟信号的转换</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>光纤入户</p>
+<ul>
+<li>跟电话入网类似，不同之处在于光猫</li>
+<li>光猫(Optical Modem), 光调制解调器，进行数字信号和光信号的转换</li>
+</ul>
+</li>
+<li>
+<p>网线入户</p>
+</li>
+</ul>
+<p>家中无线路由器的逻辑结构</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gjz313lmcvj30zk0f4gos.jpg" alt="image-20201023105830070"></p>
+<h3 id="公网ip私网ip">公网IP，私网IP</h3>
+<ul>
+<li>IP地址也分为 : 公网IP，私网IP</li>
+<li>公网IP
+<ul>
+<li>Internet上的路由器中之后到达公司的路由表，没有达到私网的路由表</li>
+<li>公网IP由因特网信息中心(Internet Network Information Center, Inter NIC)统一分配和管理</li>
+<li>ISP需要向Inter NIC申请公网IP</li>
+</ul>
+</li>
+<li>私网IP
+<ul>
+<li>主要用于局域网。下边是保留的私网网段
+<ul>
+<li>A类 : 10.0.0.0/8, 1个A类网络</li>
+<li>B类 :  172.16.0.0/16 - 172.31.0.0/16, 16个B类网络</li>
+<li>C类 :  192.168.0.0/24 ~ 192.168.255.0/24, 256个C类网络</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="nat">NAT</h3>
+<ul>
+<li>私网IP访问Internet需要进行NAT转换为公网IP
+<ul>
+<li>NAT (Network Address Translation)</li>
+<li>这一步可以由路由器完成</li>
+</ul>
+</li>
+<li>NAT的特点
+<ul>
+<li>可以节约公网IP</li>
+<li>会隐藏内部真是的IP</li>
+</ul>
+</li>
+<li>NAT的分类
+<ul>
+<li>静态转换
+<ul>
+<li>手动配置NAT映射表</li>
+<li>一对一转换</li>
+</ul>
+</li>
+<li>动态转换
+<ul>
+<li>定义外币地址池，动态随机转换</li>
+<li>一对一转换</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>PAT(Port Address Translation)
+<ul>
+<li>多对一转换，最大程度节约公网IP</li>
+<li>采用端口多路复用方式，通过端口号标识不同的数据流</li>
+<li>目前采用最广泛的NAT实现方式</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">飞熊</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        Oct 14
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/ip%E5%9C%B0%E5%9D%80mac%E5%9C%B0%E5%9D%80%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">IP地址,MAC地址,计算机连接方式</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">
+            <span class="next-text nav-default">回溯算法总结</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="310311589@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhangxiongfeiv" class="iconfont icon-github" title="github"></a>
+      <a href="https://leetcode-cn.com/u/zhangxiongfei/" class="iconfont icon-leetcode" title="leetcode"></a>
+  <a href="https://zhxiongfei.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">飞熊</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

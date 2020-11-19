@@ -21,6 +21,69 @@
     </item>
     
     <item>
+      <title>利用RunLoop控制线程生命周期</title>
+      <link>https://zhxiongfei.github.io/post/%E5%88%A9%E7%94%A8runloop%E6%8E%A7%E5%88%B6%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
+      <pubDate>Mon, 02 Nov 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E5%88%A9%E7%94%A8runloop%E6%8E%A7%E5%88%B6%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</guid>
+      <description>利用RunLoop控制线程生命周期 需求 子线程频繁的做任务，此时如果每次做任务时创建子线程，任务完成销毁子线程，频繁得创建销毁线程对系统的开销</description>
+    </item>
+    
+    <item>
+      <title>IP地址,MAC地址,计算机连接方式</title>
+      <link>https://zhxiongfei.github.io/post/ip%E5%9C%B0%E5%9D%80mac%E5%9C%B0%E5%9D%80%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Thu, 22 Oct 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/ip%E5%9C%B0%E5%9D%80mac%E5%9C%B0%E5%9D%80%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F/</guid>
+      <description>IP地址,MAC地址,计算机连接方式 计算机之间的通信基础 需要得知对方的 IP地址 最终是根据MAC地址(网卡地址),输送数据到网卡，被网卡接收 如</description>
+    </item>
+    
+    <item>
+      <title>网络的一些基本概念</title>
+      <link>https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Wed, 14 Oct 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid>
+      <description>网络的一些基本概念 因特网 : 全世界最大的互联网 将全世界所有的计算机连接在一起 一般使用大写I开头的Internet特指因特网 ISP Internet Service Provider, Intern</description>
+    </item>
+    
+    <item>
+      <title>回溯算法总结</title>
+      <link>https://zhxiongfei.github.io/post/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Tue, 22 Sep 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</guid>
+      <description>(转)回溯算法入门级详解 + 练习 (查看原文) 回溯算法与深度优先遍历 以下是维基百科中 回溯算法 和 深度优先遍历 的定义。 回溯法 回溯法采用试错的思想，它</description>
+    </item>
+    
+    <item>
+      <title>为什么iOS App可以响应事件？- RunLoop</title>
+      <link>https://zhxiongfei.github.io/post/%E4%B8%BA%E4%BB%80%E4%B9%88ios-app%E8%83%BD%E4%B8%80%E7%9B%B4%E5%93%8D%E5%BA%94%E4%BA%8B%E4%BB%B6-runloop/</link>
+      <pubDate>Wed, 16 Sep 2020 22:25:46 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E4%B8%BA%E4%BB%80%E4%B9%88ios-app%E8%83%BD%E4%B8%80%E7%9B%B4%E5%93%8D%E5%BA%94%E4%BA%8B%E4%BB%B6-runloop/</guid>
+      <description>为什么iOS App可以响应事件？- RunLoop 什么是RunLoop？ 顾名思义 运行循环 在程序运行过程中循环做一些事情 应用范畴 定时器(Timer), PerformSelector GCD Async</description>
+    </item>
+    
+    <item>
+      <title>网络分层</title>
+      <link>https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82/</link>
+      <pubDate>Sun, 06 Sep 2020 22:25:46 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82/</guid>
+      <description>网络分层 网络互连模型 为了更好的促进互联网的研究和发展，国际标准组织 ISO 在1985年制定了网络互连模型 OSI (Open System Interconnect Reference Model), 具有7层结构 应用层 协议 : FTP,HTTP,SMTP,DNS,DHCP 报文</description>
+    </item>
+    
+    <item>
+      <title>Advanced Memory Management Programming Guide</title>
+      <link>https://zhxiongfei.github.io/post/advanced-memory-management-programming-guide/</link>
+      <pubDate>Fri, 14 Aug 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/advanced-memory-management-programming-guide/</guid>
+      <description>Advanced Memory Management Programming Guide (高级内存管理编程指南) 原文地址 Application memory management is the process of allocating memory during your program’s runtime, using it, and freeing it when you are done with it. A well-written program uses as little memory as possible. In Objective-C, it can also be seen as</description>
+    </item>
+    
+    <item>
       <title>PointInside:withEvent:</title>
       <link>https://zhxiongfei.github.io/post/pointinside-withevent/</link>
       <pubDate>Tue, 21 Jul 2020 17:32:04 +0800</pubDate>

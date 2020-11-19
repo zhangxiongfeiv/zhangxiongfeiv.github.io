@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网络 on API调用工程师的进阶</title>
+    <link>https://zhxiongfei.github.io/tags/%E7%BD%91%E7%BB%9C/</link>
+    <description>Recent content in 网络 on API调用工程师的进阶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 22 Oct 2020 11:54:29 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhxiongfei.github.io/tags/%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>IP地址,MAC地址,计算机连接方式</title>
+      <link>https://zhxiongfei.github.io/post/ip%E5%9C%B0%E5%9D%80mac%E5%9C%B0%E5%9D%80%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Thu, 22 Oct 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/ip%E5%9C%B0%E5%9D%80mac%E5%9C%B0%E5%9D%80%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F/</guid>
+      <description>IP地址,MAC地址,计算机连接方式 计算机之间的通信基础 需要得知对方的 IP地址 最终是根据MAC地址(网卡地址),输送数据到网卡，被网卡接收 如</description>
+    </item>
+    
+    <item>
+      <title>网络的一些基本概念</title>
+      <link>https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Wed, 14 Oct 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid>
+      <description>网络的一些基本概念 因特网 : 全世界最大的互联网 将全世界所有的计算机连接在一起 一般使用大写I开头的Internet特指因特网 ISP Internet Service Provider, Intern</description>
+    </item>
+    
+    <item>
+      <title>网络分层</title>
+      <link>https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82/</link>
+      <pubDate>Sun, 06 Sep 2020 22:25:46 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82/</guid>
+      <description>网络分层 网络互连模型 为了更好的促进互联网的研究和发展，国际标准组织 ISO 在1985年制定了网络互连模型 OSI (Open System Interconnect Reference Model), 具有7层结构 应用层 协议 : FTP,HTTP,SMTP,DNS,DHCP 报文</description>
+    </item>
+    
+  </channel>
+</rss>
