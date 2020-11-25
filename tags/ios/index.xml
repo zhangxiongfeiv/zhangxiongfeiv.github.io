@@ -6,10 +6,19 @@
     <description>Recent content in iOS on API调用工程师的进阶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 02 Nov 2020 11:54:29 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2020 11:54:29 +0800</lastBuildDate>
     
 	<atom:link href="https://zhxiongfei.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Grand Central Dispach(GCD)</title>
+      <link>https://zhxiongfei.github.io/post/grand-central-dispachgcd/</link>
+      <pubDate>Tue, 24 Nov 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/grand-central-dispachgcd/</guid>
+      <description>Grand Central Dispach(GCD) 什么是GCD？ Grand Central Dispatch(GCD)是异步执行任务的技术之一。一般将应用程序中记述的线程管理用的代码在系统级中实现。开发者只需</description>
+    </item>
     
     <item>
       <title>利用RunLoop控制线程生命周期</title>

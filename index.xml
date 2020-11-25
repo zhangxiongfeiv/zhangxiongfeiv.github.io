@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Grand Central Dispach(GCD)</title>
+      <link>https://zhxiongfei.github.io/post/grand-central-dispachgcd/</link>
+      <pubDate>Tue, 24 Nov 2020 11:54:29 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/grand-central-dispachgcd/</guid>
+      <description>Grand Central Dispach(GCD) 什么是GCD？ Grand Central Dispatch(GCD)是异步执行任务的技术之一。一般将应用程序中记述的线程管理用的代码在系统级中实现。开发者只需</description>
+    </item>
+    
+    <item>
       <title>利用RunLoop控制线程生命周期</title>
       <link>https://zhxiongfei.github.io/post/%E5%88%A9%E7%94%A8runloop%E6%8E%A7%E5%88%B6%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
       <pubDate>Mon, 02 Nov 2020 11:54:29 +0800</pubDate>

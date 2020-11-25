@@ -20,14 +20,5 @@
       <description>pointInside:withEvent: 苹果官方文档原文地址 Returns a Boolean value indicating whether the receiver contains the specified point. 返回一个布尔值, 表示接收方是否包含指定点. Declaration 1 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event; Parameters point A point that is in the receiver’s local coordinate</description>
     </item>
     
-    <item>
-      <title>Using Responders and the Responder Chain to Handle Events</title>
-      <link>https://zhxiongfei.github.io/post/using-responders-and-the-responder-chain-to-handle-events/</link>
-      <pubDate>Tue, 21 Jul 2020 11:52:08 +0800</pubDate>
-      
-      <guid>https://zhxiongfei.github.io/post/using-responders-and-the-responder-chain-to-handle-events/</guid>
-      <description>Using Responders and the Responder Chain to Handle Events 原文地址 : Using Responders and the Responder Chain to Handle Events 使用响应者和响应链来处理事件 Learn how to handle events that propagate through your app. 了解如何处理应用事件的传递. Overview Apps receive and handle events using responder objects.</description>
-    </item>
-    
   </channel>
 </rss>

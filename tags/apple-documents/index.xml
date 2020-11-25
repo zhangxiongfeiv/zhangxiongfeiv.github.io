@@ -20,5 +20,23 @@
       <description>Advanced Memory Management Programming Guide (高级内存管理编程指南) 原文地址 Application memory management is the process of allocating memory during your program’s runtime, using it, and freeing it when you are done with it. A well-written program uses as little memory as possible. In Objective-C, it can also be seen as</description>
     </item>
     
+    <item>
+      <title>HitTest:withEvent:</title>
+      <link>https://zhxiongfei.github.io/post/hittest-withevent/</link>
+      <pubDate>Tue, 21 Jul 2020 17:06:53 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/hittest-withevent/</guid>
+      <description>hitTest:withEvent: 苹果官方文档原文地址 : hitTest:withEvent: Returns the farthest descendant of the receiver in the view hierarchy (including itself) that contains a specified point. 返回包含指定点的视图层次结构中接收者的最远后代 (包括自身). Declaration 1 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event; Parameters point</description>
+    </item>
+    
+    <item>
+      <title>Using Responders and the Responder Chain to Handle Events</title>
+      <link>https://zhxiongfei.github.io/post/using-responders-and-the-responder-chain-to-handle-events/</link>
+      <pubDate>Tue, 21 Jul 2020 11:52:08 +0800</pubDate>
+      
+      <guid>https://zhxiongfei.github.io/post/using-responders-and-the-responder-chain-to-handle-events/</guid>
+      <description>Using Responders and the Responder Chain to Handle Events 原文地址 : Using Responders and the Responder Chain to Handle Events 使用响应者和响应链来处理事件 Learn how to handle events that propagate through your app. 了解如何处理应用事件的传递. Overview Apps receive and handle events using responder objects.</description>
+    </item>
+    
   </channel>
 </rss>
